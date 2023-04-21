@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "我的",
+  "enablePullDownRefresh": false,
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "tui-navigation-bar": "/components/thorui/tui-navigation-bar/tui-navigation-bar",
+    "tui-tabbar": "/components/thorui/tui-tabbar/tui-tabbar"
+  }
+}

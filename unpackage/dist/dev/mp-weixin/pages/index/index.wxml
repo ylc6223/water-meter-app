@@ -1,0 +1,1 @@
+<view><text>首页</text><tui-tabbar vue-id="8dd740cc-1" bind:__l="__l"></tui-tabbar></view>
