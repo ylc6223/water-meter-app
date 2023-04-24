@@ -1,39 +1,32 @@
 <template>
 	<!-- #ifdef APP-PLUS || MP-WEIXIN || H5 -->
-	<!-- #ifdef VUE2 -->
 	<view class="tui-drag__wrap" :list="list" :style="{ height: getHeight + 'rpx' }" :basedata="baseData"
 		:change:list="handler.listObserver" :change:basedata="handler.baseDataObserver"
-		:catch:touchmove="wxDrag?handler.stopMove:''">
+		:catch:touchmove="wxDrag?true:''">
 		<!-- #endif -->
-		<!-- #ifdef VUE3 -->
-		<view class="tui-drag__wrap" :list="list" :style="{ height: getHeight + 'rpx' }" :basedata="baseData"
-			:change:list="handler.listObserver" :change:basedata="handler.baseDataObserver"
-			:catch:touchmove="wxDrag?true:''">
+		<!-- #ifndef APP-PLUS || MP-WEIXIN || H5 -->
+		<view class="tui-drag__wrap" :style="{ height: getHeight + 'rpx' }">
 			<!-- #endif -->
-			<!-- #endif -->
-			<!-- #ifndef APP-PLUS || MP-WEIXIN || H5 -->
-			<view class="tui-drag__wrap" :style="{ height: getHeight + 'rpx' }">
-				<!-- #endif -->
-				<view class="tui-drag__item" v-for="(item, index) in list" :key="item.id" :data-index="index"
-					:style="{ width: 100 / columns + '%', height: itemHeight + 'rpx' }" @longpress="handler.longPress"
-					:data-basedata="baseData" :data-edit="isEdit" @touchstart="handler.touchStart"
-					@touchmove="handler.touchMove" @touchend="handler.touchEnd">
-					<slot :entity="item.data" :fixed="item.fixed" :index="index" :height="itemHeight" :isEdit="isEdit">
-					</slot>
-				</view>
-
-				<!-- #ifndef APP-PLUS || MP-WEIXIN || H5-->
-				<view class="tui-drag__item"
-					:class="{'tui-drag__current':current===index,'tui-drag__transition':current!==index && !isInit,'tui-drag__fixed':item.fixed,'tui-drag__hidden':isInit}"
-					v-for="(item, index) in list" :key="item.id" :data-index="index"
-					:style="{ width: 100 / columns + '%', height: itemHeight + 'rpx',transform:`translate3d(${index === current && !item.fixed ? transX : item.transX}, ${index === current && !item.fixed  ? transY: item.transY}, 0px)`}"
-					@longpress="longPress" @touchstart="touchstart" @touchmove.stop.prevent="touchmove"
-					@touchend="touchend">
-					<slot :entity="item.data" :fixed="item.fixed" :index="index" :height="itemHeight" :isEdit="isEdit">
-					</slot>
-				</view>
-				<!-- #endif -->
+			<view class="tui-drag__item" v-for="(item, index) in list" :key="item.id" :data-index="index"
+				:style="{ width: 100 / columns + '%', height: itemHeight + 'rpx' }" @longpress="handler.longPress"
+				:data-basedata="baseData" :data-edit="isEdit" @touchstart="handler.touchStart"
+				@touchmove="handler.touchMove" @touchend="handler.touchEnd">
+				<slot :entity="item.data" :fixed="item.fixed" :index="index" :height="itemHeight" :isEdit="isEdit">
+				</slot>
 			</view>
+
+			<!-- #ifndef APP-PLUS || MP-WEIXIN || H5-->
+			<view class="tui-drag__item"
+				:class="{'tui-drag__current':current===index,'tui-drag__transition':current!==index && !isInit,'tui-drag__fixed':item.fixed,'tui-drag__hidden':isInit}"
+				v-for="(item, index) in list" :key="item.id" :data-index="index"
+				:style="{ width: 100 / columns + '%', height: itemHeight + 'rpx',transform:`translate3d(${index === current && !item.fixed ? transX : item.transX}, ${index === current && !item.fixed  ? transY: item.transY}, 0px)`}"
+				@longpress="longPress" @touchstart="touchstart" @touchmove.stop.prevent="touchmove"
+				@touchend="touchend">
+				<slot :entity="item.data" :fixed="item.fixed" :index="index" :height="itemHeight" :isEdit="isEdit">
+				</slot>
+			</view>
+			<!-- #endif -->
+		</view>
 </template>
 <!-- #ifdef APP-PLUS || H5 || MP-WEIXIN -->
 <script src="./tui-drag.wxs" lang="wxs" module="handler"></script>

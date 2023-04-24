@@ -17,9 +17,10 @@
 				borderRadius: radius,
 				fontSize: size + 'rpx',
 				color: disabled && disabledBackground ? disabledColor : color
-			}" :loading="loading" :form-type="formType" :open-type="openType" @getuserinfo="bindgetuserinfo"
-			@getphonenumber="bindgetphonenumber" @contact="bindcontact" @error="binderror"
-			@opensetting="bindopensetting" :disabled="disabled" :scope="scope" @tap.stop="handleTap">
+			}" :loading="loading" :form-type="formType" :open-type="openType" :app-parameter="appParameter"
+			@getuserinfo="bindgetuserinfo" @getphonenumber="bindgetphonenumber" @contact="bindcontact"
+			@error="binderror" @opensetting="bindopensetting" @chooseavatar="bindchooseavatar"
+			@launchapp="bindlaunchapp" :disabled="disabled" :scope="scope" @tap.stop="handleTap">
 			<text class="tui-button__text" :class="{'tui-text__bold':bold}" v-if="text"
 				:style="{fontSize: size + 'rpx',lineHeight:size + 'rpx',color: disabled && disabledBackground ? disabledColor : color}">{{text}}</text>
 			<slot></slot>
@@ -133,6 +134,10 @@
 				type: String,
 				default: ''
 			},
+			appParameter: {
+				type: String,
+				default: ''
+			},
 			index: {
 				type: [Number, String],
 				default: 0
@@ -194,6 +199,16 @@
 				detail = {}
 			} = {}) {
 				this.$emit('opensetting', detail);
+			},
+			bindchooseavatar({
+				detail = {}
+			} = {}) {
+				this.$emit('chooseavatar', detail);
+			},
+			bindlaunchapp({
+				detail = {}
+			} = {}) {
+				this.$emit('launchapp', detail);
 			}
 		}
 	};

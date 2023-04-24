@@ -1,6 +1,6 @@
 <template>
 	<canvas class="tui-vcode--box" :canvas-id="canvasId" :id="canvasId"
-		:style="{width:width + 'px',height: height + 'px'}" @tap="draw"></canvas>
+		:style="{width:width + 'px',height: height + 'px'}" @tap="draw" v-if="canvasId"></canvas>
 </template>
 
 <script>
@@ -78,9 +78,11 @@
 			this.ctx = null
 		},
 		mounted() {
-			setTimeout(() => {
-				this.draw()
-			}, 50)
+			this.$nextTick(()=>{
+				setTimeout(() => {
+					this.draw()
+				}, 50)
+			})
 		},
 		// #ifndef VUE3
 		beforeDestroy() {

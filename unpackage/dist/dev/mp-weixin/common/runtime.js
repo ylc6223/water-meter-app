@@ -105,11 +105,11 @@
 /******/
 /******/
 /******/ 		// mini-css-extract-plugin CSS loading
-/******/ 		var cssChunks = {"components/thorui/tui-tabbar/tui-tabbar":1,"components/thorui/tui-navigation-bar/tui-navigation-bar":1,"components/thorui/tui-icon/tui-icon":1};
+/******/ 		var cssChunks = {"components/thorui/tui-tabbar/tui-tabbar":1,"components/thorui/tui-icon/tui-icon":1,"components/thorui/tui-button/tui-button":1,"components/thorui/tui-form-button/tui-form-button":1,"components/thorui/tui-modal/tui-modal":1,"components/thorui/tui-navigation-bar/tui-navigation-bar":1,"components/xui-card/xui-card":1,"components/thorui/tui-form/tui-form":1,"components/thorui/tui-input/tui-input":1};
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
-/******/ 				var href = "" + ({"components/thorui/tui-tabbar/tui-tabbar":"components/thorui/tui-tabbar/tui-tabbar","components/thorui/tui-navigation-bar/tui-navigation-bar":"components/thorui/tui-navigation-bar/tui-navigation-bar","components/thorui/tui-icon/tui-icon":"components/thorui/tui-icon/tui-icon"}[chunkId]||chunkId) + ".wxss";
+/******/ 				var href = "" + ({"components/thorui/tui-tabbar/tui-tabbar":"components/thorui/tui-tabbar/tui-tabbar","components/thorui/tui-icon/tui-icon":"components/thorui/tui-icon/tui-icon","components/thorui/tui-button/tui-button":"components/thorui/tui-button/tui-button","components/thorui/tui-form-button/tui-form-button":"components/thorui/tui-form-button/tui-form-button","components/thorui/tui-modal/tui-modal":"components/thorui/tui-modal/tui-modal","components/thorui/tui-navigation-bar/tui-navigation-bar":"components/thorui/tui-navigation-bar/tui-navigation-bar","components/xui-card/xui-card":"components/xui-card/xui-card","components/thorui/tui-form/tui-form":"components/thorui/tui-form/tui-form","components/thorui/tui-input/tui-input":"components/thorui/tui-input/tui-input"}[chunkId]||chunkId) + ".wxss";
 /******/ 				var fullhref = __webpack_require__.p + href;
 /******/ 				var existingLinkTags = document.getElementsByTagName("link");
 /******/ 				for(var i = 0; i < existingLinkTags.length; i++) {

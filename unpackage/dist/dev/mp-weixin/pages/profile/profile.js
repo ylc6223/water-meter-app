@@ -101,10 +101,25 @@ var components
 try {
   components = {
     tuiNavigationBar: function () {
-      return __webpack_require__.e(/*! import() | components/thorui/tui-navigation-bar/tui-navigation-bar */ "components/thorui/tui-navigation-bar/tui-navigation-bar").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-navigation-bar/tui-navigation-bar.vue */ 71))
+      return __webpack_require__.e(/*! import() | components/thorui/tui-navigation-bar/tui-navigation-bar */ "components/thorui/tui-navigation-bar/tui-navigation-bar").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-navigation-bar/tui-navigation-bar.vue */ 88))
+    },
+    tuiIcon: function () {
+      return Promise.all(/*! import() | components/thorui/tui-icon/tui-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/thorui/tui-icon/tui-icon")]).then(__webpack_require__.bind(null, /*! @/components/thorui/tui-icon/tui-icon.vue */ 95))
+    },
+    tuiFormButton: function () {
+      return __webpack_require__.e(/*! import() | components/thorui/tui-form-button/tui-form-button */ "components/thorui/tui-form-button/tui-form-button").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-form-button/tui-form-button.vue */ 103))
+    },
+    xuiCard: function () {
+      return __webpack_require__.e(/*! import() | components/xui-card/xui-card */ "components/xui-card/xui-card").then(__webpack_require__.bind(null, /*! @/components/xui-card/xui-card.vue */ 110))
+    },
+    tuiModal: function () {
+      return __webpack_require__.e(/*! import() | components/thorui/tui-modal/tui-modal */ "components/thorui/tui-modal/tui-modal").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-modal/tui-modal.vue */ 117))
+    },
+    tuiButton: function () {
+      return __webpack_require__.e(/*! import() | components/thorui/tui-button/tui-button */ "components/thorui/tui-button/tui-button").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-button/tui-button.vue */ 151))
     },
     tuiTabbar: function () {
-      return __webpack_require__.e(/*! import() | components/thorui/tui-tabbar/tui-tabbar */ "components/thorui/tui-tabbar/tui-tabbar").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-tabbar/tui-tabbar.vue */ 64))
+      return __webpack_require__.e(/*! import() | components/thorui/tui-tabbar/tui-tabbar */ "components/thorui/tui-tabbar/tui-tabbar").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-tabbar/tui-tabbar.vue */ 81))
     },
   }
 } catch (e) {
@@ -128,6 +143,14 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  if (!_vm._isMounted) {
+    _vm.e0 = function ($event) {
+      _vm.modal = true
+    }
+    _vm.e1 = function ($event) {
+      _vm.modal = false
+    }
+  }
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -161,7 +184,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(uni) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -180,9 +203,127 @@ var _vuex = __webpack_require__(/*! vuex */ 34);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default = {
   data: function data() {
-    return {};
+    return {
+      modal: false,
+      options: {
+        //注意：小程序端需确保域名已授权访问
+        path: 'https://assets5.lottiefiles.com/packages/lf20_tri3EJ5bUI.json',
+        autoplay: true,
+        //是否循环播放动画，可选，不传默认为true
+        loop: true
+      }
+    };
+  },
+  onLoad: function onLoad() {
+    uni.hideTabBar();
   },
   methods: {
     /**
@@ -205,10 +346,23 @@ var _default = {
         statusBarHeight = _ref.statusBarHeight,
         opacity = _ref.opacity,
         windowHeight = _ref.windowHeight;
-    }
+    },
+    hide: function hide() {},
+    //去登录
+    navToLogin: function navToLogin() {
+      uni.navigateTo({
+        url: "../../subpackage/user/login",
+        fail: function fail(e) {
+          console.log(e);
+        }
+      });
+    },
+    //切换用户端
+    toggleClient: function toggleClient() {}
   }
 };
 exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
 

@@ -323,7 +323,7 @@
 			onInput(event) {
 				let value = event.detail.value;
 				if (this.trim) value = this.trimStr(value);
-				const lenth = value.length;
+				let lenth = value.length;
 				const max = Number(this.maxlength)
 				if (lenth > max && max !== -1) {
 					lenth = max;
@@ -553,9 +553,13 @@
 	}
 
 	.tui-textarea__counter {
+		/* #ifndef APP-NVUE */
+		width: 100%;
+		/* #endif */
 		padding-top: 8rpx;
 		text-align: right;
 		/* #ifdef APP-NVUE */
+		width: 100%;
 		flex-direction: row;
 		flex: 1;
 		justify-content: flex-end;

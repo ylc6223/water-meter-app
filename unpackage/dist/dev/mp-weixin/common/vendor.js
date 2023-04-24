@@ -1556,7 +1556,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"water-meter-app","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"water-meter-app","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -8913,7 +8913,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"water-meter-app","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"water-meter-app","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -8934,14 +8934,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"water-meter-app","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"water-meter-app","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"water-meter-app","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"water-meter-app","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -9037,7 +9037,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"water-meter-app","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"water-meter-app","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -12023,7 +12023,348 @@ function multiFilter(array, filters) {
 /* 67 */,
 /* 68 */,
 /* 69 */,
-/* 70 */,
+/* 70 */
+/*!*******************************************************************************!*\
+  !*** D:/source-code/water-meter-app/components/common/tui-utils/tui-utils.js ***!
+  \*******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ 18));
+/**
+ * 工具类：常用数据处理
+ * @author echo.
+ * @version 1.1.0
+ * https://www.thorui.cn/doc
+ **/
+
+var utils = {
+  /**
+   * @desc 去左右空格
+   * @param value 需要处理的字符串
+   **/
+  trim: function trim(value) {
+    return value.replace(/(^\s*)|(\s*$)/g, "");
+  },
+  /**
+   * @desc 去所有空格
+   * @param value 需要处理的字符串
+   **/
+  trimAll: function trimAll(value) {
+    return value.replace(/\s+/g, "");
+  },
+  /**
+   * @desc 替换所有相同字符串
+   * @param text 需要处理的字符串
+   * @param repstr 被替换的字符
+   * @param newstr 替换后的字符
+   **/
+  replaceAll: function replaceAll(text, repstr, newstr) {
+    return text.replace(new RegExp(repstr, "gm"), newstr);
+  },
+  /**
+   * @desc 格式化手机号码
+   * @param num 手机号码
+   **/
+  formatNumber: function formatNumber(num) {
+    return num.length === 11 ? num.replace(/^(\d{3})\d{4}(\d{4})$/, '$1****$2') : num;
+  },
+  /**
+   * @desc 金额格式化，保留两位小数
+   * @param money 金额值
+   **/
+  formatMoney: function formatMoney(money) {
+    return parseFloat(money).toFixed(2).toString().split('').reverse().join('').replace(/(\d{3})/g, '$1,').replace(/\,$/, '').split('').reverse().join('');
+  },
+  /**
+   * @desc 日期格式化
+   * @param formatStr 格式化字符串(y-m-d h:i:s)
+   * @param fdate 需要格式化日期
+   * @param type  fdate的格式：1-日期字符串(2017/12/04 12:12:12) 2-时间戳(1603676514690) 3-日期字符串，无连接符(20171204121212) 
+   * 4-new Date()时间格式(Thu Oct 01 2020 00:00:00 GMT+0800 (中国标准时间))
+   * @param isMs  时间戳精度是否为毫秒（精度是秒时传false），type=2时有效
+   **/
+  formatDate: function formatDate(formatStr, fdate) {
+    var type = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
+    var isMs = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
+    var date = "";
+    if (type === 3) {
+      date = utils._formatTimeStr(fdate, formatStr);
+    } else {
+      date = utils._formatDate(formatStr, fdate, type, isMs);
+    }
+    return date;
+  },
+  _formatDate: function _formatDate(formatStr, fdate) {
+    var type = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
+    var isMs = arguments.length > 3 ? arguments[3] : undefined;
+    if (!fdate) return;
+    var fTime,
+      fStr = 'ymdhis';
+    if (type === 4) {
+      fTime = fdate;
+    } else {
+      fdate = fdate.toString();
+      if (~fdate.indexOf('.')) {
+        fdate = fdate.substring(0, fdate.indexOf('.'));
+      }
+      fdate = fdate.replace('T', ' ').replace(/\-/g, '/');
+      if (!formatStr) formatStr = "y-m-d h:i:s";
+      if (fdate) {
+        if (type === 2) {
+          fdate = isMs ? Number(fdate) : Number(fdate) * 1000;
+        }
+        fTime = new Date(fdate);
+      } else {
+        fTime = new Date();
+      }
+    }
+    var month = fTime.getMonth() + 1;
+    var day = fTime.getDate();
+    var hours = fTime.getHours();
+    var minu = fTime.getMinutes();
+    var second = fTime.getSeconds();
+    month = month < 10 ? '0' + month : month;
+    day = day < 10 ? '0' + day : day;
+    hours = hours < 10 ? '0' + hours : hours;
+    minu = minu < 10 ? '0' + minu : minu;
+    second = second < 10 ? '0' + second : second;
+    var formatArr = [fTime.getFullYear().toString(), month.toString(), day.toString(), hours.toString(), minu.toString(), second.toString()];
+    for (var i = 0; i < formatArr.length; i++) {
+      formatStr = formatStr.replace(fStr.charAt(i), formatArr[i]);
+    }
+    return formatStr;
+  },
+  /**
+   * @desc 格式化时间
+   * @param timeStr 时间字符串 20191212162001
+   * @param formatStr 需要的格式 如 y-m-d h:i:s | y/m/d h:i:s | y/m/d | y年m月d日 等
+   **/
+  _formatTimeStr: function _formatTimeStr(timeStr, formatStr) {
+    if (!timeStr) return;
+    timeStr = timeStr.toString();
+    if (timeStr.length === 14) {
+      var timeArr = timeStr.split('');
+      var fStr = 'ymdhis';
+      if (!formatStr) {
+        formatStr = 'y-m-d h:i:s';
+      }
+      var formatArr = [(0, _toConsumableArray2.default)(timeArr).splice(0, 4).join(''), (0, _toConsumableArray2.default)(timeArr).splice(4, 2).join(''), (0, _toConsumableArray2.default)(timeArr).splice(6, 2).join(''), (0, _toConsumableArray2.default)(timeArr).splice(8, 2).join(''), (0, _toConsumableArray2.default)(timeArr).splice(10, 2).join(''), (0, _toConsumableArray2.default)(timeArr).splice(12, 2).join('')];
+      for (var i = 0; i < formatArr.length; i++) {
+        formatStr = formatStr.replace(fStr.charAt(i), formatArr[i]);
+      }
+      return formatStr;
+    }
+    return timeStr;
+  },
+  /**
+   * @desc RGB颜色转十六进制颜色
+   * @param r
+   * @param g
+   * @param b
+   **/
+  rgbToHex: function rgbToHex(r, g, b) {
+    return "#" + utils._toHex(r) + utils._toHex(g) + utils._toHex(b);
+  },
+  _toHex: function _toHex(n) {
+    n = parseInt(n, 10);
+    if (isNaN(n)) return "00";
+    n = Math.max(0, Math.min(n, 255));
+    return "0123456789ABCDEF".charAt((n - n % 16) / 16) + "0123456789ABCDEF".charAt(n % 16);
+  },
+  /**
+   * @desc 十六进制颜色转RGB颜色
+   * @param hex 颜色值 #333 或 #333333
+   **/
+  hexToRGB: function hexToRGB(hex) {
+    if (hex.length === 4) {
+      var text = hex.substring(1, 4);
+      hex = '#' + text + text;
+    }
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16)
+    } : null;
+  },
+  /**
+   * @desc 唯一标识，随机数
+   * @param n 随机数位数
+   **/
+  unique: function unique(n) {
+    n = n || 6;
+    var rnd = '';
+    for (var i = 0; i < n; i++) {
+      rnd += Math.floor(Math.random() * 10);
+    }
+    return 'tui_' + new Date().getTime() + rnd;
+  },
+  /**
+   * @desc 获取uuid
+   */
+  getUUID: function getUUID() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      return (c === 'x' ? Math.random() * 16 | 0 : 'r&0x3' | '0x8').toString(16);
+    });
+  },
+  /**
+   * @desc 简单数组合并去重
+   * @param arr1 数组1
+   * @param arr2 数组2 可不传
+   **/
+  distinctArray: function distinctArray(arr1, arr2) {
+    arr1 = arr1 || [];
+    arr2 = arr2 || [];
+    return (0, _toConsumableArray2.default)(new Set([].concat((0, _toConsumableArray2.default)(arr1), (0, _toConsumableArray2.default)(arr2))));
+  },
+  /**
+   * @desc 获取日期时间段
+   * @param type 1-今天 2-昨天 3-本周 4-本月 5-本年
+   **/
+  getDateTimeSlot: function getDateTimeSlot(type) {
+    var now = new Date();
+    var start = now.toDateString();
+    var end = now.toDateString();
+    switch (type) {
+      case 1:
+        start = "".concat(start, " 00:00:00");
+        end = "".concat(end, " 23:59:59");
+        break;
+      case 2:
+        now.setTime(now.getTime() - 3600 * 1000 * 24 * 1);
+        start = "".concat(now.toDateString(), " 00:00:00");
+        end = "".concat(now.toDateString(), " 23:59:59");
+        break;
+      case 3:
+        // 获取星期几,getDay()返回值是 0（周日） 到 6（周六） 之间的一个整数。0||7为7，即weekday的值为1-7
+        var weekday = now.getDay() || 7;
+        // 往前算（weekday-1）天，年份、月份会自动变化
+        now.setDate(now.getDate() - weekday + 1);
+        start = "".concat(now.toDateString(), " 00:00:00");
+        end = "".concat(end, " 23:59:59");
+        break;
+      case 4:
+        start = "".concat(now.getFullYear(), "-").concat(now.getMonth() + 1, "-01 00:00:00");
+        end = "".concat(end, " 23:59:59");
+        break;
+      case 5:
+        start = "".concat(now.getFullYear(), "-01-01 00:00:00");
+        end = "".concat(end, " 23:59:59");
+        break;
+      default:
+        break;
+    }
+    return {
+      start: new Date(start.replace(/\-/g, '/')),
+      end: new Date(end.replace(/\-/g, '/'))
+    };
+  },
+  /*
+   * @desc 获取Url参数，返回一个对象
+   * @param url url地址
+   * ?a=1&b=2 ==> {a: "1", b: "2"}
+   */
+  getUrlParam: function getUrlParam(url) {
+    var arrObj = url.split("?");
+    var params = {};
+    if (arrObj.length > 1) {
+      arrObj = arrObj[1].split("&");
+      arrObj.forEach(function (item) {
+        item = item.split("=");
+        params[item[0]] = item[1];
+      });
+    }
+    return params;
+  },
+  /**
+   * @method 函数防抖
+   * @desc 短时间内多次触发同一事件，只执行最后一次，或者只执行最开始的一次，中间的不执行。
+   * @param func 目标函数
+   * @param wait 延迟执行毫秒数
+   * @param immediate true - 立即执行， false - 延迟执行
+   */
+  debounce: function debounce(func) {
+    var wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1000;
+    var immediate = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+    var timer;
+    return function () {
+      var context = this,
+        args = arguments;
+      if (timer) clearTimeout(timer);
+      if (immediate) {
+        var callNow = !timer;
+        timer = setTimeout(function () {
+          timer = null;
+        }, wait);
+        if (callNow) func.apply(context, args);
+      } else {
+        timer = setTimeout(function () {
+          func.apply(context, args);
+        }, wait);
+      }
+    };
+  },
+  /**
+   * @method 函数节流
+   * @desc 指连续触发事件，但是在 n 秒内只执行一次函数。即 2n 秒内执行 2 次... 。会稀释函数的执行频率。
+   * @param func 函数
+   * @param wait 延迟执行毫秒数
+   * @param type 1 在时间段开始的时候触发 2 在时间段结束的时候触发
+   */
+  throttle: function throttle(func) {
+    var wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1000;
+    var type = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
+    var previous = 0;
+    var timeout;
+    return function () {
+      var context = this;
+      var args = arguments;
+      if (type === 1) {
+        var now = Date.now();
+        if (now - previous > wait) {
+          func.apply(context, args);
+          previous = now;
+        }
+      } else if (type === 2) {
+        if (!timeout) {
+          timeout = setTimeout(function () {
+            timeout = null;
+            func.apply(context, args);
+          }, wait);
+        }
+      }
+    };
+  }
+};
+var _default = {
+  trim: utils.trim,
+  trimAll: utils.trimAll,
+  replaceAll: utils.replaceAll,
+  formatNumber: utils.formatNumber,
+  formatMoney: utils.formatMoney,
+  formatDate: utils.formatDate,
+  rgbToHex: utils.rgbToHex,
+  hexToRGB: utils.hexToRGB,
+  unique: utils.unique,
+  distinctArray: utils.distinctArray,
+  getDateTimeSlot: utils.getDateTimeSlot,
+  getUrlParam: utils.getUrlParam,
+  getUUID: utils.getUUID,
+  debounce: utils.debounce,
+  throttle: utils.throttle
+};
+exports.default = _default;
+
+/***/ }),
 /* 71 */,
 /* 72 */,
 /* 73 */,
@@ -12036,7 +12377,24 @@ function multiFilter(array, filters) {
 /* 80 */,
 /* 81 */,
 /* 82 */,
-/* 83 */
+/* 83 */,
+/* 84 */,
+/* 85 */,
+/* 86 */,
+/* 87 */,
+/* 88 */,
+/* 89 */,
+/* 90 */,
+/* 91 */,
+/* 92 */,
+/* 93 */,
+/* 94 */,
+/* 95 */,
+/* 96 */,
+/* 97 */,
+/* 98 */,
+/* 99 */,
+/* 100 */
 /*!*****************************************************************************!*\
   !*** D:/source-code/water-meter-app/components/thorui/tui-icon/tui-icon.js ***!
   \*****************************************************************************/
@@ -12239,6 +12597,374 @@ var _default = {
   "wifi": "\uE640",
   "play": "\uE7D5",
   "suspend": "\uE7D4"
+};
+exports.default = _default;
+
+/***/ }),
+/* 101 */,
+/* 102 */,
+/* 103 */,
+/* 104 */,
+/* 105 */,
+/* 106 */,
+/* 107 */,
+/* 108 */,
+/* 109 */,
+/* 110 */,
+/* 111 */,
+/* 112 */,
+/* 113 */,
+/* 114 */,
+/* 115 */,
+/* 116 */,
+/* 117 */,
+/* 118 */,
+/* 119 */,
+/* 120 */,
+/* 121 */,
+/* 122 */,
+/* 123 */,
+/* 124 */,
+/* 125 */,
+/* 126 */,
+/* 127 */,
+/* 128 */,
+/* 129 */
+/*!***********************************************************************************!*\
+  !*** D:/source-code/water-meter-app/components/thorui/tui-form/tui-validation.js ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+/**
+ * 表单验证
+ * @author echo.
+ * @version 1.6.6
+ **/
+
+var form = {
+  //非必填情况下,如果值为空,则不进行校验
+  //当出现错误时返回错误消息，否则返回空即为验证通过
+  /*
+   formData:Object 表单对象。{key:value,key:value},key==rules.name
+   rules: Array [{name:name,rule:[],msg:[],validator:[],{name:name,rule:[],msg:[],validator:[]}]
+  		name:name 属性=> 元素的名称
+  		rule:字符串数组 ["required","isMobile","isEmail","isCarNo","isIdCard","isAmount","isNum","isChinese","isNotChinese","isEnglish",isEnAndNo","isSpecial","isEmoji",""isDate","isUrl","isSame:key","range:[1,9]","minLength:9","maxLength:Number","isKeyword:key1,key2,key3..."]
+  		msg:数组 []。 与数组 rule 长度相同,对应的错误提示信息
+  		validator:[{msg:'错误消息',method:Function}]，自定义验证方法组，函数约定：(value)=>{ return true or false}
+  */
+  validation: function validation(formData, rules) {
+    var _iterator = _createForOfIteratorHelper(rules),
+      _step;
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var item = _step.value;
+        var key = item.name;
+        var rule = item.rule;
+        var validator = item.validator;
+        var msgArr = item.msg;
+        if (!key || !rule || rule.length === 0 || !msgArr || msgArr.length === 0 || !~rule.indexOf("required") && formData[key].toString().length === 0) {
+          continue;
+        }
+        for (var i = 0, length = rule.length; i < length; i++) {
+          var ruleItem = rule[i];
+          var msg = msgArr[i];
+          if (!msg || !ruleItem) continue;
+          //数据处理
+          var value = null;
+          if (~ruleItem.indexOf(":")) {
+            var temp = ruleItem.split(":");
+            ruleItem = temp[0];
+            value = temp[1];
+          }
+          var isError = false;
+          switch (ruleItem) {
+            case "required":
+              isError = form._isNullOrEmpty(formData[key]);
+              break;
+            case "isMobile":
+              isError = !form._isMobile(formData[key]);
+              break;
+            case "isEmail":
+              isError = !form._isEmail(formData[key]);
+              break;
+            case "isCarNo":
+              isError = !form._isCarNo(formData[key]);
+              break;
+            case "isIdCard":
+              isError = !form._isIdCard(formData[key]);
+              break;
+            case "isAmount":
+              isError = !form._isAmount(formData[key]);
+              break;
+            case "isNum":
+              isError = !form._isNum(formData[key]);
+              break;
+            case "isChinese":
+              isError = !form._isChinese(formData[key]);
+              break;
+            case "isNotChinese":
+              isError = !form._isNotChinese(formData[key]);
+              break;
+            case "isEnglish":
+              isError = !form._isEnglish(formData[key]);
+              break;
+            case "isEnAndNo":
+              isError = !form._isEnAndNo(formData[key]);
+              break;
+            case "isEnOrNo":
+              isError = !form._isEnOrNo(formData[key]);
+              break;
+            case "isSpecial":
+              isError = form._isSpecial(formData[key]);
+              break;
+            case "isEmoji":
+              isError = form._isEmoji(formData[key]);
+              break;
+            case "isDate":
+              isError = !form._isDate(formData[key]);
+              break;
+            case "isUrl":
+              isError = !form._isUrl(formData[key]);
+              break;
+            case "isSame":
+              isError = !form._isSame(formData[key], formData[value]);
+              break;
+            case "range":
+              var range = null;
+              try {
+                range = JSON.parse(value);
+                if (range.length <= 1) {
+                  throw new Error("range值传入有误！");
+                }
+              } catch (e) {
+                return "range值传入有误！";
+              }
+              isError = !form._isRange(formData[key], range[0], range[1]);
+              break;
+            case "minLength":
+              isError = !form._minLength(formData[key], value);
+              break;
+            case "maxLength":
+              isError = !form._maxLength(formData[key], value);
+              break;
+            case "isKeyword":
+              isError = !form._isKeyword(formData[key], value);
+              break;
+            default:
+              break;
+          }
+          if (isError) {
+            return msg;
+          }
+        }
+        if (validator && validator.length > 0) {
+          var _iterator2 = _createForOfIteratorHelper(validator),
+            _step2;
+          try {
+            for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+              var model = _step2.value;
+              var func = model.method;
+              if (func && !func(formData[key])) {
+                return model.msg;
+              }
+            }
+          } catch (err) {
+            _iterator2.e(err);
+          } finally {
+            _iterator2.f();
+          }
+        }
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+    return "";
+  },
+  //允许填写字符串null或者undefined
+  _isNullOrEmpty: function _isNullOrEmpty(value) {
+    return value === null || value === '' || value === undefined ? true : false;
+  },
+  _isMobile: function _isMobile(value) {
+    return /^(?:13\d|14\d|15\d|16\d|17\d|18\d|19\d)\d{5}(\d{3}|\*{3})$/.test(value);
+  },
+  _isEmail: function _isEmail(value) {
+    return /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/.test(value);
+  },
+  _isCarNo: function _isCarNo(value) {
+    // 新能源车牌
+    var xreg = /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}(([0-9]{5}[DF]$)|([DF][A-HJ-NP-Z0-9][0-9]{4}$))/;
+    // 旧车牌
+    var creg = /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-HJ-NP-Z0-9]{4}[A-HJ-NP-Z0-9挂学警港澳]{1}$/;
+    if (value.length === 7) {
+      return creg.test(value);
+    } else if (value.length === 8) {
+      return xreg.test(value);
+    } else {
+      return false;
+    }
+  },
+  _isIdCard: function _isIdCard(value) {
+    var idCard = value;
+    if (idCard.length == 15) {
+      return this.__isValidityBrithBy15IdCard;
+    } else if (idCard.length == 18) {
+      var arrIdCard = idCard.split("");
+      if (this.__isValidityBrithBy18IdCard(idCard) && this.__isTrueValidateCodeBy18IdCard(arrIdCard)) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  },
+  __isTrueValidateCodeBy18IdCard: function __isTrueValidateCodeBy18IdCard(arrIdCard) {
+    var sum = 0;
+    var Wi = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2, 1];
+    var ValideCode = [1, 0, 10, 9, 8, 7, 6, 5, 4, 3, 2];
+    if (arrIdCard[17].toLowerCase() == 'x') {
+      arrIdCard[17] = 10;
+    }
+    for (var i = 0; i < 17; i++) {
+      sum += Wi[i] * arrIdCard[i];
+    }
+    var valCodePosition = sum % 11;
+    if (arrIdCard[17] == ValideCode[valCodePosition]) {
+      return true;
+    } else {
+      return false;
+    }
+  },
+  __isValidityBrithBy18IdCard: function __isValidityBrithBy18IdCard(idCard18) {
+    var year = idCard18.substring(6, 10);
+    var month = idCard18.substring(10, 12);
+    var day = idCard18.substring(12, 14);
+    var temp_date = new Date(year, parseFloat(month) - 1, parseFloat(day));
+    if (temp_date.getFullYear() != parseFloat(year) || temp_date.getMonth() != parseFloat(month) - 1 || temp_date.getDate() != parseFloat(day)) {
+      return false;
+    } else {
+      return true;
+    }
+  },
+  __isValidityBrithBy15IdCard: function __isValidityBrithBy15IdCard(idCard15) {
+    var year = idCard15.substring(6, 8);
+    var month = idCard15.substring(8, 10);
+    var day = idCard15.substring(10, 12);
+    var temp_date = new Date(year, parseFloat(month) - 1, parseFloat(day));
+    if (temp_date.getYear() != parseFloat(year) || temp_date.getMonth() != parseFloat(month) - 1 || temp_date.getDate() != parseFloat(day)) {
+      return false;
+    } else {
+      return true;
+    }
+  },
+  _isAmount: function _isAmount(value) {
+    //金额，只允许保留两位小数
+    return /^([0-9]*[.]?[0-9])[0-9]{0,1}$/.test(value);
+  },
+  _isNum: function _isNum(value) {
+    //只能为数字
+    return /^[0-9]+$/.test(value);
+  },
+  //是否全部为中文
+  _isChinese: function _isChinese(value) {
+    var reg = /^[\u4e00-\u9fa5]+$/;
+    return value !== "" && reg.test(value) && !form._isSpecial(value) && !form._isEmoji(value);
+  },
+  //是否不包含中文，可以有特殊字符
+  _isNotChinese: function _isNotChinese(value) {
+    var reg = /.*[\u4e00-\u9fa5]+.*$/;
+    var result = true;
+    if (reg.test(value)) {
+      result = false;
+    }
+    return result;
+  },
+  _isEnglish: function _isEnglish(value) {
+    return /^[a-zA-Z]*$/.test(value);
+  },
+  _isEnAndNo: function _isEnAndNo(value) {
+    //8~20位数字和字母组合
+    return /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,20}$/.test(value);
+  },
+  _isEnOrNo: function _isEnOrNo(value) {
+    //英文或者数字
+    var reg = /.*[\u4e00-\u9fa5]+.*$/;
+    var result = true;
+    if (reg.test(value) || form._isSpecial(value) || form._isEmoji(value)) {
+      result = false;
+    }
+    return result;
+  },
+  _isSpecial: function _isSpecial(value) {
+    //是否包含特殊字符
+    var regEn = /[`~!@#$%^&*()_+<>?:"{},.\/;'[\]]/im,
+      regCn = /[·！#￥（——）：；“”‘、，|《。》？、【】[\]]/im;
+    if (regEn.test(value) || regCn.test(value)) {
+      return true;
+    }
+    return false;
+  },
+  _isEmoji: function _isEmoji(value) {
+    //是否包含表情
+    return /\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDE4F]/g.test(value);
+  },
+  _isDate: function _isDate(value) {
+    //2019-10-12
+    var reg = /^(?:(?!0000)[0-9]{4}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-8])|(?:0[13-9]|1[0-2])-(?:29|30)|(?:0[13578]|1[02])-31)|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:0[48]|[2468][048]|[13579][26])00)-02-29)$/;
+    return reg.test(value);
+  },
+  _isUrl: function _isUrl(value) {
+    return /^((https?|ftp|file):\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})(:[0-9]{1,5})?((\/?)|(\/[\\\w_!~*\\'()\\\.;?:@&=+$,%#-]+)+\/?)$/.test(value);
+  },
+  _isSame: function _isSame(value1, value2) {
+    return value1 === value2;
+  },
+  _isRange: function _isRange(value, range1, range2) {
+    if (!range1 && range1 != 0 && !range2 && range2 != 0) {
+      return true;
+    } else if (!range1 && range1 != 0) {
+      return value <= range2;
+    } else if (!range2 && range2 != 0) {
+      return value >= range1;
+    } else {
+      return value >= range1 && value <= range2;
+    }
+  },
+  _minLength: function _minLength(value, min) {
+    return value.length >= Number(min);
+  },
+  _maxLength: function _maxLength(value, max) {
+    return value.length <= Number(max);
+  },
+  _isKeyword: function _isKeyword(value, keywords) {
+    //是否包含关键词，敏感词，多个以英文逗号分隔，包含则为false,弹出提示语！
+    var result = true;
+    if (!keywords) return result;
+    var key = keywords.split(',');
+    for (var i = 0, len = key.length; i < len; i++) {
+      if (~value.indexOf(key[i])) {
+        result = false;
+        break;
+      }
+    }
+    return result;
+  }
+};
+var _default = {
+  validation: form.validation
 };
 exports.default = _default;
 

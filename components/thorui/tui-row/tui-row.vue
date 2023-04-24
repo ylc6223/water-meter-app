@@ -7,7 +7,7 @@
 
 <script>
 	export default {
-		name: "tui-row",
+		name: "tuiRow",
 		props: {
 			//是否为flex布局
 			isFlex: {

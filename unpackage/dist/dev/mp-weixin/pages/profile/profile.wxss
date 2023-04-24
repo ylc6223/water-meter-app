@@ -25,7 +25,65 @@
 /* 透明度 */
 /* 文章场景相关 */
 .tui-header-bg.data-v-60cb334c {
-  height: 236px;
-  background-color: #3498db;
+  position: relative;
+  height: 460rpx;
+  background-color: #1dd1a1;
+}
+.actions-box.data-v-60cb334c {
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  bottom: 20rpx;
+  height: 160rpx;
+  margin: 0 auto;
+  border-top-left-radius: 28rpx;
+  border-top-right-radius: 28rpx;
+  background-color: #54a0ff;
+}
+.actions-box > view.data-v-60cb334c {
+  padding: 0 4%;
+}
+.user-info.data-v-60cb334c {
+  margin-top: 128rpx;
+}
+.user-info .avatar.data-v-60cb334c {
+  width: 126rpx;
+  height: 126rpx;
+  margin-left: 8%;
+  border-radius: 50%;
+  background-color: #FFF;
+  overflow: hidden;
+}
+.user-info .avatar image.data-v-60cb334c {
+  width: 100%;
+  height: 100%;
+}
+.user-info .avatar + view.data-v-60cb334c {
+  margin-left: 26rpx;
+}
+.menulist.data-v-60cb334c {
+  position: relative;
+  box-sizing: border-box;
+  z-index: 999;
+  margin-top: -30rpx;
+  padding: 4%;
+  width: 100%;
+  height: calc(100vh - 530rpx);
+  border-top-left-radius: 32rpx;
+  border-top-right-radius: 32rpx;
+  background-color: #F7F7F7;
+}
+.menulist .details xui-card.data-v-60cb334c:first-child {
+  margin-right: 10rpx;
+}
+.menulist .details xui-card.data-v-60cb334c:last-child {
+  margin-left: 10rpx;
+}
+.menulist .menu-icon.data-v-60cb334c {
+  width: 48rpx;
+  height: 48rpx;
+}
+.menulist .list.data-v-60cb334c  xui-card:first-child .card {
+  margin: 0;
 }
 

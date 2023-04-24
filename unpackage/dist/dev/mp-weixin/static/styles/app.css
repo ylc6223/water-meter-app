@@ -1,4 +1,7 @@
 /* #ifndef APP-NVUE */
+*{
+	box-sizing: border-box;
+}
 page {
 	background-color: #F8F8F8;
 	font-size: 32rpx;

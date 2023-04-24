@@ -12,6 +12,9 @@
 	}
 </script>
 
-<style>
+<style lang="scss">
+	@import url('@/static/styles/utils.scss');
+	@import url('@/static/styles/app.css');
+	@import url('@/static/styles/thorui-extend.css');
 	/*每个页面公共css */
 </style>

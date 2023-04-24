@@ -4,12 +4,20 @@
     "pages/dashboard/dashboard",
     "pages/profile/profile"
   ],
-  "subPackages": [],
+  "subPackages": [
+    {
+      "root": "subpackage/user",
+      "pages": [
+        "login",
+        "register"
+      ]
+    }
+  ],
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "uni-app",
     "navigationBarBackgroundColor": "#F8F8F8",
-    "backgroundColor": "#F8F8F8"
+    "backgroundColor": "#F7F7F7"
   },
   "tabBar": {
     "color": "#666666",
@@ -18,21 +26,15 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页",
-        "iconPath": "",
-        "selectedIconPath": ""
+        "text": ""
       },
       {
         "pagePath": "pages/dashboard/dashboard",
-        "text": "",
-        "iconPath": "",
-        "selectedIconPath": ""
+        "text": ""
       },
       {
         "pagePath": "pages/profile/profile",
-        "text": "我的",
-        "iconPath": "",
-        "selectedIconPath": ""
+        "text": ""
       }
     ]
   },

@@ -25,6 +25,11 @@
 				type: Boolean,
 				default: false
 			},
+			//当设置checked 属性值时是否触发父级change方法
+			triggerGroup: {
+				type: Boolean,
+				default: true
+			},
 			disabled: {
 				type: Boolean,
 				default: false
@@ -78,7 +83,7 @@
 				this.val = newVal;
 			},
 			val(newVal) {
-				if (this.group) {
+				if (this.triggerGroup && this.group) {
 					this.group.changeValue(this.val, this);
 				}
 			}
@@ -111,6 +116,9 @@
 			checkboxChange(e) {
 				if (this.disabled) return;
 				this.val = !this.val;
+				if (!this.triggerGroup && this.group) {
+					this.group.changeValue(this.val, this);
+				}
 				this.$emit('change', {
 					checked: this.val,
 					value: this.value

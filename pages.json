@@ -22,27 +22,42 @@
 
 		}
 	],
+	"subPackages": [{
+		"root": "subpackage/user",
+		"pages": [{
+				"path": "login",
+				"style": {
+					"navigationBarTextStyle": "black",
+					"navigationBarTitleText": "",
+					"navigationBarBackgroundColor": "#FFF",
+					"backgroundColor": "#FFF"
+				}
+			},
+			{
+				"path": "register",
+				"style": {
+					"navigationBarTitleText": "",
+					"enablePullDownRefresh": false
+				}
+
+			}
+		]
+	}],
 	"tabBar": {
 		"color": "#666666",
 		"selectedColor": "#5677FC",
 		"backgroundColor": "#FFFFFF",
 		"list": [{
 				"pagePath": "pages/index/index",
-				"text": "首页",
-				"iconPath": "",
-				"selectedIconPath": ""
+				"text": ""
 			},
 			{
 				"pagePath": "pages/dashboard/dashboard",
-				"text": "",
-				"iconPath": "",
-				"selectedIconPath": ""
+				"text": ""
 			},
 			{
 				"pagePath": "pages/profile/profile",
-				"text": "我的",
-				"iconPath": "",
-				"selectedIconPath": ""
+				"text": ""
 			}
 		]
 	},
@@ -50,12 +65,12 @@
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"backgroundColor": "#F7F7F7"
 	},
 	"easycom": {
 		"autoscan": true,
 		"custom": {
-			"xfab-(.*)": "@/components/xfab-$1/xfab-$1.vue",
+			"xfab-(.*)": "@/components/xfab-$1/xui-$1.vue",
 			"tui-(.*)": "@/components/thorui/tui-$1/tui-$1.vue"
 		}
 	},

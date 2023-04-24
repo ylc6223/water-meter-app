@@ -23,13 +23,6 @@ function styleChange(left, ins) {
 	var tsb = ins.selectComponent('.tui-slider-block')
 	var tsg = ins.selectComponent('.tui-slide-glided')
 	if (!tsb || !tsg) return;
-	if (left == 0) {
-		tsb.addClass('tui-slider__reset')
-		tsg.addClass('tui-slider__reset')
-	} else {
-		tsb.removeClass('tui-slider__reset')
-		tsg.removeClass('tui-slider__reset')
-	}
 	tsb.setStyle({
 		transform: 'translate3d(' + left + 'px,0,0)'
 	})
@@ -55,7 +48,7 @@ function touchmove(e, ins) {
 function touchend(e, ins) {
 	if (disabled) return;
 	var state = e.instance.getState()
-	var left = slideBarWidth - slideBlockWidth
+	let left = slideBarWidth - slideBlockWidth
 	if (left - state.lastLeft <= errorRange) {
 		styleChange(left, ins)
 		ins.callMethod('success')

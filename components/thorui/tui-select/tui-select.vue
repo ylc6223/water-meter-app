@@ -17,7 +17,7 @@
 				<view class="tui-select--list">
 					<view class="tui-select--item" :style="{padding:padding}" @tap="itemClick(index)"
 						v-for="(model,index) in itemList" :key="index"
-						:class="{'tui-select--reverse':reverse,'tui-select--item-active':highlight}">
+						:class="{'tui-select--reverse':reverse,'tui-select--item-active':highlight && !model.disabled,'tui-select--disabled':model.disabled}">
 						<view class="tui-select--checkbox" :class="{'tui-select--is-checkmark ':isCheckMark}"
 							:style="{background:model.checked && !isCheckMark ?checkboxColor:'transparent',borderColor:model.checked && !isCheckMark ?checkboxColor:borderColor}">
 							<view class="tui-select--checkmark"
@@ -203,14 +203,15 @@
 						vals = vals.map(item => {
 							return {
 								text: item,
-								checked: false
+								checked: false,
+								disabled: false
 							}
 						})
 					} else {
-						vals.map((item,index) => {
+						vals.map((item, index) => {
 							item.checked = item.checked || false
-							if(!this.multiple && item.checked){
-								this.index=index
+							if (!this.multiple && item.checked) {
+								this.index = index
 							}
 						})
 					}
@@ -220,6 +221,7 @@
 			itemClick(index) {
 				let vals = [...this.itemList]
 				let item = vals[index]
+				if (item && item.disabled) return;
 				if (this.multiple) {
 					item.checked = !item.checked;
 				} else {
@@ -325,6 +327,13 @@
 		cursor: pointer;
 		/* #endif */
 		position: relative;
+	}
+
+	.tui-select--disabled {
+		opacity: .5;
+		/* #ifdef H5 */
+		cursor: not-allowed;
+		/* #endif */
 	}
 
 	.tui-select--item-line {

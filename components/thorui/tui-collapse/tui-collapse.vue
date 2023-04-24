@@ -3,13 +3,11 @@
 		<view class="tui-collapse-head" :style="{backgroundColor:hdBgColor}" @tap.stop="handleClick">
 			<view class="tui-header" :class="{'tui-opacity':disabled}">
 				<slot name="title"></slot>
-				<view class="tui-collapse-icon tui-icon-arrow" :class="{'tui-icon-active':isOpen}"
-					:style="{color:arrowColor}" v-if="arrow"></view>
+				<view class="tui-collapse-icon tui-icon-arrow" :class="{'tui-icon-active':isOpen}" :style="{color:arrowColor}" v-if="arrow"></view>
 			</view>
 		</view>
 		<view class="tui-collapse-body_box" :style="{backgroundColor:bdBgColor,height:isOpen?height:'0rpx'}">
-			<view class="tui-collapse-body"
-				:class="{'tui-collapse-transform':height=='auto','tui-collapse-body_show':isOpen && height=='auto'}">
+			<view class="tui-collapse-body" :class="{'tui-collapse-transform':height=='auto','tui-collapse-body_show':isOpen && height=='auto'}">
 				<slot name="content"></slot>
 			</view>
 		</view>
@@ -53,12 +51,12 @@
 			},
 			// 是否禁用
 			disabled: {
-				type: Boolean,
+				type: [Boolean, String],
 				default: false
 			},
 			//是否带箭头
 			arrow: {
-				type: Boolean,
+				type: [Boolean, String],
 				default: true
 			},
 			//箭头颜色
@@ -138,12 +136,10 @@
 		position: relative;
 		z-index: 2;
 	}
-
-	.tui-collapse-body_box {
-		transition: all 0.25s;
-		overflow: hidden;
-	}
-
+   .tui-collapse-body_box{
+	   transition: all 0.25s;
+	   overflow: hidden;
+   }
 	.tui-collapse-body {
 		transition: all 0.25s;
 		overflow: hidden;
@@ -152,8 +148,8 @@
 	}
 
 	.tui-collapse-transform {
-		/* opacity: 0; */
-		/* visibility: hidden; */
+		opacity: 0;
+		visibility: hidden;
 		-webkit-transform: translateY(-40%);
 		transform: translateY(-40%);
 	}
