@@ -158,6 +158,9 @@
 .justify-self-stretch{
 	justify-self: stretch;
 }
+.p-30{
+	padding: 30rpx;
+}
 .pl-30{
 	padding-left: 30rpx;
 }
@@ -173,6 +176,12 @@
 .mx-10{
 	margin: 0 10rpx;
 }
+.my-15{
+	margin: 15rpx 0;
+}
+.my-30{
+	margin: 30rpx 0;
+}
 .relative{
 	position: relative;
 }
@@ -184,6 +193,9 @@
 }
 .w-full{
 	width: 100%;
+}
+.h-full{
+	height: 100%;
 }
 .z-999{
 	z-index: 999;

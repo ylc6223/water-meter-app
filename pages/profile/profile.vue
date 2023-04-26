@@ -9,7 +9,7 @@
 				<view class="avatar">
 					<image src="../../static/logo.png" mode=""></image>
 				</view>
-				<view class="flex flex-col">
+				<view class="flex flex-col" v-if="defaultClient==='admin'">
 					<text class="text-white">点击登录</text>
 					<text class="text-gray">共0台设备</text>
 				</view>
@@ -17,16 +17,20 @@
 			<view class="actions-box flex items-center">
 				<view class="flex items-center w-full justify-between">
 					<view class="flex items-center">
-						<tui-icon name="people-fill" color="#FEA91A"></tui-icon>
-						<text class="text-white">当前管理端</text>
+						<tui-icon name="people-fill" color="#E74C3C"></tui-icon>
+						<text v-if="defaultClient==='admin'" class="text-white">当前管理端</text>
+						<text v-else class="text-white">当前用户端</text>
 					</view>
-					<tui-form-button background="#FECA57" radius="28rpx" width="235rpx" height="67rpx" color="#000"
-						@tap="toggleClient">进入用户端</tui-form-button>
+					<tui-form-button background="#ffc048" radius="67rpx" width="235rpx" height="67rpx" color="#000"
+						@click="toggleClient">
+						<text v-if="defaultClient==='admin'">进入用户端</text>
+						<text v-else>进入管理端</text>
+					</tui-form-button>
 				</view>
 			</view>
 		</view>
 		<view class="menulist">
-			<view class="details flex justify-between">
+			<view v-if="defaultClient==='admin'" class="details flex justify-between">
 				<xui-card border-radius="20" class="flex-1">
 					<view class="flex items-center">
 						<image class="menu-icon" src="/static/icons/money-bag.svg" mode=""></image>
@@ -46,8 +50,7 @@
 					</view>
 				</xui-card>
 			</view>
-			<view class="list">
-
+			<view class="list" v-if="defaultClient==='admin'">
 				<xui-card border-radius="20" class="flex-1">
 					<view class="flex items-center justify-between">
 						<view class="flex items-center">
@@ -95,7 +98,68 @@
 						</view>
 					</view>
 				</xui-card>
+			</view>
 
+			<view class="list" v-else>
+				<xui-card border-radius="20" class="flex-1">
+					<view class="flex items-center justify-between">
+						<view class="flex items-center">
+							<image class="menu-icon" src="/static/icons//log.svg" mode=""></image>
+							<text>充值记录</text>
+						</view>
+						<view class="flex items-center">
+							<tui-icon name="arrowright"></tui-icon>
+						</view>
+					</view>
+				</xui-card>
+
+				<xui-card border-radius="20" class="flex-1">
+					<view class="flex items-center justify-between">
+						<view class="flex items-center">
+							<image class="menu-icon" src="/static/icons//write.svg" mode=""></image>
+							<text>抄表记录</text>
+						</view>
+						<view class="flex items-center">
+							<tui-icon name="arrowright"></tui-icon>
+						</view>
+					</view>
+				</xui-card>
+
+				<xui-card border-radius="20" class="flex-1">
+					<view class="flex items-center justify-between">
+						<view class="flex items-center">
+							<image class="menu-icon" src="/static/icons//question-circle.svg" mode=""></image>
+							<text>常见问题</text>
+						</view>
+						<view class="flex items-center">
+							<tui-icon name="arrowright"></tui-icon>
+						</view>
+					</view>
+				</xui-card>
+
+				<xui-card border-radius="20" class="flex-1">
+					<view class="flex items-center justify-between">
+						<view class="flex items-center">
+							<image class="menu-icon" src="/static/icons//setting.svg" mode=""></image>
+							<text>设置</text>
+						</view>
+						<view class="flex items-center">
+							<tui-icon name="arrowright"></tui-icon>
+						</view>
+					</view>
+				</xui-card>
+
+				<xui-card border-radius="20" class="flex-1">
+					<view class="flex items-center justify-between">
+						<view class="flex items-center">
+							<image class="menu-icon" src="/static/icons//setting.svg" mode=""></image>
+							<text>权限设置</text>
+						</view>
+						<view class="flex items-center">
+							<tui-icon name="arrowright"></tui-icon>
+						</view>
+					</view>
+				</xui-card>
 			</view>
 		</view>
 
@@ -130,7 +194,8 @@
 					autoplay: true,
 					//是否循环播放动画，可选，不传默认为true
 					loop: true
-				}
+				},
+				defaultClient: 'consumer' //默认为用户端
 			}
 		},
 		onLoad() {
@@ -174,17 +239,41 @@
 			},
 			//切换用户端
 			toggleClient() {
+				if (this.defaultClient === 'consumer') {
+					// 切换到管理端
+					this.switchClient('admin')
+					this.defaultClient = 'admin'
+					this.resetTabBarIndex()
+					uni.switchTab({
+						url: '/pages/index/index'
+					})
+				} else if (this.defaultClient === 'admin') {
+					//切换到用户端
+					this.switchClient('consumer')
+					this.defaultClient = 'consumer'
+					this.resetTabBarIndex()
+					uni.switchTab({
+						url: '/pages/index/index'
+					})
+				} else {
 
-			}
+				}
+			},
+			...mapMutations(["switchClient", "resetTabBarIndex"])
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
+	page{
+		font-weight: bold;
+		color: #333;
+	}
 	.tui-header-bg {
 		position: relative;
 		height: 460rpx;
 		background-color: #1dd1a1;
+		background-color: #27ae60;
 	}
 
 	.actions-box {
@@ -196,7 +285,8 @@
 		margin: 0 auto;
 		border-top-left-radius: 28rpx;
 		border-top-right-radius: 28rpx;
-		background-color: #54a0ff;
+		// background-color: #54a0ff;
+		background-color: #393b4f;
 
 		&>view {
 			padding: 0 4%;

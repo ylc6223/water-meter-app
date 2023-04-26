@@ -1,5 +1,5 @@
 <template>
-	<view class="card" :style="{'border-radius':borderRadius+'rpx'}" :hover-class="hover ? 'card-hover' : ''"
+	<view class="card" :style="{'border-radius':borderRadius+'rpx','box-shadow':'0px 2px 4px rgba(0, 0, 0, 0.1)'}" :hover-class="hover ? 'card-hover' : ''"
 		:hover-stay-time="150">
 		<slot></slot>
 	</view>
@@ -17,6 +17,11 @@
 				type: Boolean,
 				default: true
 			},
+			//是否需要阴影
+			shadow: {
+				type: Boolean,
+				default: false
+			}
 		},
 		computed: {
 			cardStyle() {
