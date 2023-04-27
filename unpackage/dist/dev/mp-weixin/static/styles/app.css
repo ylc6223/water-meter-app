@@ -1,12 +1,91 @@
 /* #ifndef APP-NVUE */
-*{
+* {
 	box-sizing: border-box;
 }
+
 page {
 	background-color: #F8F8F8;
 	font-size: 32rpx;
-	font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+	/* font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif; */
+	font-family: 'SimHei';
+
+	/* 颜色变量 */
+
+	/* 行为相关颜色 */
+	--xui-color-primary: #007aff;
+	--xui-color-success: #4cd964;
+	--xui-color-warning: #f0ad4e;
+	--xui-color-error: #dd524d;
+
+	/* 文字基本颜色 */
+	--xui-text-color: #212121; //基本色
+	--xui-text-color-inverse: #fff; //反色
+	--xui-text-color-grey: #83888E; //辅助灰色，如加载更多的提示信息
+	--xui-text-color-placeholder: #808080;
+	--xui-text-color-disable: #c0c0c0;
+
+	/* 背景颜色 */
+	--xui-bg-color: #07c160;
+	--xui-bg-color-grey: #f8f8f8;
+	--xui-bg-color-hover: #f1f1f1; //点击状态颜色
+	--xui-bg-color-mask: rgba(0, 0, 0, 0.4); //遮罩颜色
+
+	/* 边框颜色 */
+	--xui-border-color: #c8c7cc;
+
+	/* 尺寸变量 */
+
+	/* 文字尺寸 */
+	--xui-font-size-xs: 12px;
+	--xui-font-size-sm: 14px;
+	--xui-font-size-base: 16px;
+	--xui-font-size-lg: 18px;
+	--xui-font-size-xl: 20px;
+	--xui-font-size-2xl: 24px;
+	--xui-font-size-3xl: 30px;
+
+	/* 图片尺寸 */
+	--xui-img-size-sm: 20px;
+	--xui-img-size-base: 26px;
+	--xui-img-size-lg: 40px;
+
+	/* Border Radius */
+	--xui-border-radius-sm: 2px;
+	--xui-border-radius-base: 3px;
+	--xui-border-radius-lg: 6px;
+	--xui-border-radius-circle: 50%;
+
+	/* 水平间距 */
+	--xui-spacing-row-sm: 5px;
+	--xui-spacing-row-base: 10px;
+	--xui-spacing-row-lg: 15px;
+
+	/* 垂直间距 */
+	--xui-spacing-col-sm: 4px;
+	--xui-spacing-col-base: 8px;
+	--xui-spacing-col-lg: 12px;
+
+	/* 透明度 */
+	--xui-opacity-disabled: 0.3; // 组件禁用态的透明度
+
+	/* 文章场景相关 */
+	--xui-color-title: #2C405A; // 文章标题颜色
+	--xui-font-size-title: 20px;
+	--xui-color-subtitle: #555555; // 二级标题颜色
+	--xui-font-size-subtitle: 26px;
+	--xui-color-paragraph: #3F536E; // 文章段落颜色
+	--xui-font-size-paragraph: 15px;
 }
+
+.title-text {
+	color: var(--xui-text-color);
+	font-size: var(--xui-font-size-lg);
+}
+.sub-title-text{
+	color: var(--xui-text-color-grey);
+	font-size: var(--xui-font-size-base);
+}
+
 
 .tui-page__hd {
 	width: 100%;

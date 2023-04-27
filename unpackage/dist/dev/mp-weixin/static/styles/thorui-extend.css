@@ -156,6 +156,10 @@ page {
 	align-items: center;
 }
 
+.tui-animation-show {
+	transform: rotate(180deg);
+}
+
 /*chcekbox radio*/
 
 /* #ifdef MP-WEIXIN */
@@ -545,7 +549,7 @@ page {
 	position: absolute;
 	height: 200%;
 	width: 200%;
-	border: 1px solid var(--thorui-border-color,#d1d1d1);
+	border: 1px solid var(--thorui-border-color, #d1d1d1);
 	transform-origin: 0 0;
 	-webkit-transform-origin: 0 0;
 	-webkit-transform: scale(0.5);
@@ -889,7 +893,7 @@ page {
 	text-align: justify;
 }
 
-.thorui-pl__right{
+.thorui-pl__right {
 	text-align-last: right;
 }
 

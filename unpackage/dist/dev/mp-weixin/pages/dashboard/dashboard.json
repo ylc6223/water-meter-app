@@ -1,7 +1,12 @@
 {
-  "navigationBarTitleText": "",
+  "navigationBarTitleText": "设备列表",
   "enablePullDownRefresh": false,
+  "navigationStyle": "custom",
   "usingComponents": {
+    "tui-navigation-bar": "/components/thorui/tui-navigation-bar/tui-navigation-bar",
+    "tui-wing-blank": "/components/thorui/tui-wing-blank/tui-wing-blank",
+    "tui-slide-view": "/components/thorui/tui-slide-view/tui-slide-view",
+    "tui-icon": "/components/thorui/tui-icon/tui-icon",
     "tui-tabbar": "/components/thorui/tui-tabbar/tui-tabbar"
   }
 }

@@ -36,7 +36,7 @@ const store = new Vuex.Store({
 				"verify": true
 			}
 		],
-		tabBarIndex: 0 //当前选中第几项
+		tabBarIndex: 0 ,//当前选中第几项,
 	},
 	mutations: {
 		changeTabBar(state, payload) {

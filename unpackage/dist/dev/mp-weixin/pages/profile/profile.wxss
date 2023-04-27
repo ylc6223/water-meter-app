@@ -24,10 +24,15 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+page.data-v-60cb334c {
+  font-weight: bold;
+  color: #333;
+}
 .tui-header-bg.data-v-60cb334c {
   position: relative;
   height: 460rpx;
   background-color: #1dd1a1;
+  background-color: #27ae60;
 }
 .actions-box.data-v-60cb334c {
   position: absolute;
@@ -38,7 +43,7 @@
   margin: 0 auto;
   border-top-left-radius: 28rpx;
   border-top-right-radius: 28rpx;
-  background-color: #54a0ff;
+  background-color: #393b4f;
 }
 .actions-box > view.data-v-60cb334c {
   padding: 0 4%;

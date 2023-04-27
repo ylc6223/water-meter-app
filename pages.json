@@ -9,7 +9,8 @@
 		}, {
 			"path": "pages/dashboard/dashboard",
 			"style": {
-				"navigationBarTitleText": "",
+				"navigationBarTitleText": "设备列表",
+				// "navigationBarBackgroundColor": "#27AE60",
 				"enablePullDownRefresh": false,
 				"navigationStyle": "custom"
 			}
@@ -25,26 +26,47 @@
 		}
 	],
 	"subPackages": [{
-		"root": "subpackage/user",
-		"pages": [{
-				"path": "login",
+			"root": "subpackage/user",
+			"pages": [{
+					"path": "login",
+					"style": {
+						"navigationBarTextStyle": "black",
+						"navigationBarTitleText": "",
+						"navigationBarBackgroundColor": "#FFF",
+						"backgroundColor": "#FFF"
+					}
+				},
+				{
+					"path": "register",
+					"style": {
+						"navigationBarTitleText": "",
+						"enablePullDownRefresh": false
+					}
+				}
+			]
+		},
+		{
+			"root": "subpackage/consumer",
+			"pages": [{
+				"path": "recharge-history/recharge-history",
 				"style": {
 					"navigationBarTextStyle": "black",
-					"navigationBarTitleText": "",
+					"navigationBarTitleText": "充值记录",
 					"navigationBarBackgroundColor": "#FFF",
-					"backgroundColor": "#FFF"
+					"enablePullDownRefresh": false
 				}
-			},
-			{
-				"path": "register",
+			}, {
+				"path": "check-history/check-history",
 				"style": {
-					"navigationBarTitleText": "",
+					"navigationBarTextStyle": "black",
+					"navigationBarTitleText": "抄表记录",
+					"navigationBarBackgroundColor": "#FFF",
 					"enablePullDownRefresh": false
 				}
 
-			}
-		]
-	}],
+			}]
+		}
+	],
 	"tabBar": {
 		"color": "#666666",
 		"selectedColor": "#5677FC",

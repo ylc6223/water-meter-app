@@ -1,19 +1,21 @@
 <template>
 	<view class="container relative">
-		<tui-navigation-bar splitLine @init="initNavigation" backgroundColor="#ffffff00" color="#333">
+		<tui-navigation-bar :isOpacity="true" @init="initNavigation" backgroundColor="#ffffff00" transparent isCustom
+			color="#FFF" title="水表管理大师">
 			<!-- #ifndef MP-ALIPAY || MP-BAIDU -->
-			<!-- #endif -->
-		</tui-navigation-bar>
-		<view class="head">
-			<view class="tui-header-bg">
-				<view class="title-bar flex items-center">
+			<template>
+				<view class="navigation-bar flex items-center" :style="{'height':titleBarHeight+'px'}">
 					<view class="scan">
 						<tui-icon name="sweep" color="#FFF"></tui-icon>
 					</view>
-					<text class="nav-title text-white">水表管理大师</text>
+					<text class="navigation-bar-title text-white">水表管理大师</text>
 				</view>
-			</view>
-			<view class="tui-header-slide">
+			</template>
+			<!-- #endif -->
+		</tui-navigation-bar>
+		<!-- 占位背景容器 -->
+		<view class="tui-header-bg">
+			<view class="tui-header-slide" :style="{'top':navigationBarHeight +'px'}">
 				<swiper class="swiper" circular :indicator-dots="indicatorDots" :autoplay="true" :interval="interval"
 					:duration="duration">
 					<swiper-item v-for="item in 1" :key="item">
@@ -22,7 +24,9 @@
 				</swiper>
 			</view>
 		</view>
-		<view class="device-list">
+
+		<!-- <view class="card-wrap" :style="{'margin-top':navigationBarHeight+'px','height': cardHeight+'px'}"> -->
+		<view class="card-wrap" :style="{'margin-top':navigationBarHeight+'px'}">
 			<xui-card :hover="false" :shadow="true">
 				<view v-if="nodevice" class="flex h-full flex-col items-center justify-center">
 					<view class="nodata-img">
@@ -72,7 +76,7 @@
 						</view>
 					</view>
 
-					<tui-button class="paybtn" shape="circle" type="green">
+					<tui-button shape="circle" type="green">
 						水表充值
 					</tui-button>
 				</view>
@@ -91,7 +95,10 @@
 		data() {
 			return {
 				nodevice: false, //未绑定设备
-
+				titleBarHeight: 0,
+				navigationBarHeight: 0,
+				screenHeight: 0, //屏幕高度
+				cardHeight: 0 //卡片高度
 			}
 		},
 		created() {
@@ -99,6 +106,10 @@
 		},
 		onLoad() {
 			uni.hideTabBar()
+			const systemInfo = uni.getSystemInfoSync()
+			this.screenHeight = systemInfo.screenHeight
+			//屏幕高度-轮播图高度-导航栏高度-tabbar高度 -冗余高度
+			this.cardHeight = this.screenHeight - 150 - this.navigationBarHeight - 55
 		},
 		methods: {
 			...mapMutations(["changeTabBar", "resetTabBarIndex"]),
@@ -123,86 +134,73 @@
 				opacity,
 				windowHeight
 			}) {
-
+				this.titleBarHeight = height - statusBarHeight
+				this.navigationBarHeight = height
 			},
 			hide() {
 
 			},
 		},
-		computed: mapState(["tabBarIndex", "tabBar"]),
+		computed: {
+			...mapState(["tabBarIndex", "tabBar"]),
+		},
 	}
 </script>
 
 <style scoped lang="scss">
-	.head {
+	.navigation-bar {
 		position: relative;
-		height: 371rpx;
-	}
-
-	.tui-header-bg {
-		height: 262rpx;
-		background: rgb(147, 224, 231);
-		background: linear-gradient(0deg, rgba(147, 224, 231, 1) 0%, rgba(31, 142, 214, 1) 100%);
-		border-bottom-left-radius: 42rpx;
-		border-bottom-right-radius: 42rpx;
-	}
-
-	.title-bar {
-		position: relative;
-		padding-top: 24px;
 
 		.scan {
 			margin-left: 4%;
 		}
 
-		.nav-title {
+		.navigation-bar-title {
 			position: absolute;
 			left: 50%;
 			transform: translateX(-50%);
 			font-size: 20px;
 			line-height: 1.5;
-			font-weight: bold;
 			text-align: center;
 		}
 	}
 
-	.tui-header-slide {
-		position: absolute;
-		margin: 0 4%;
-		bottom: -20rpx;
+	.tui-header-bg {
+		position: relative;
+		height: 267rpx;
+		background: rgb(147, 224, 231);
+		background: linear-gradient(0deg, rgba(147, 224, 231, 1) 0%, rgba(31, 142, 214, 1) 100%);
+		border-bottom-left-radius: 42rpx;
+		border-bottom-right-radius: 42rpx;
 
-		swiper {
-			width: 688rpx;
-			margin: 0 auto;
+		.tui-header-slide {
+			position: absolute;
+			z-index: 999;
+			margin: 0 4%;
 
-			.swiper-item {
-				border-radius: 48rpx;
-				height: 246rpx;
-				background: #2193b0;
-				/* fallback for old browsers */
-				// background: -webkit-linear-gradient(to bottom, #6dd5ed, #2193b0);
-				// /* Chrome 10-25, Safari 5.1-6 */
-				// background: linear-gradient(to bottom, #6dd5ed, #2193b0);
-				// /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+			swiper {
+				width: 688rpx;
+				margin: 0 auto;
 
+				.swiper-item {
+					border-radius: 48rpx;
+					height: 246rpx;
+					background: #27AE60;
+					/* fallback for old browsers */
+					// /* Chrome 10-25, Safari 5.1-6 */
+					// /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+				}
 			}
 		}
 	}
 
-	.device-list {
+	.card-wrap {
 		position: relative;
-		height: calc(100vh - 371rpx - 55px);
+		height: 48%;
+		min-height: 300px;
 		margin: 0 4%;
-
-		::v-deep xui-card .card {
-			position: absolute;
-			box-sizing: border-box;
-			top: 0;
-			left: 0;
-			right: 0;
-			height: 94%;
-		}
-
+		box-sizing: border-box;
 		.nodata-img {
 			image {
 				width: 200rpx;
@@ -236,7 +234,7 @@
 				width: 560rpx;
 				border-radius: 30rpx;
 				background-color: #F8F8F8;
-				margin-bottom: 40rpx;
+				margin-bottom: 20rpx;
 
 				.meter-info-item {
 					margin: 10rpx 0;
@@ -251,13 +249,6 @@
 
 		xui-card.card {
 			position: relative;
-		}
-		.paybtn{
-			position: absolute;
-			left: 0;
-			right: 0;
-			bottom: 30rpx;
-			margin: 0 4%;
 		}
 	}
 </style>

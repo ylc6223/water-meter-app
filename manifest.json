@@ -53,11 +53,19 @@
         "appid" : "wx11178112d7d04327",
         "setting" : {
             "urlCheck" : false,
-            "es6" : true,
-            "minified" : false,
-            "postcss" : true
+            "minified" : true,
+            "postcss" : true,
+            "es6" : true
         },
-        "usingComponents" : true
+        "usingComponents" : true,
+        "permission" : {
+            "scope.userLocation" : {
+                "desc" : "获取位置信息"
+            }
+        },
+        "optimization" : {
+            "subPackages" : true
+        }
     },
     "mp-alipay" : {
         "usingComponents" : true

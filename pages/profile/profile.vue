@@ -101,59 +101,12 @@
 			</view>
 
 			<view class="list" v-else>
-				<xui-card border-radius="20" class="flex-1">
+				<xui-card border-radius="20" class="flex-1" v-for="(uitem,index) in consumerMenuList" :key="index"
+					@tap="navTo(uitem.url,$event)">
 					<view class="flex items-center justify-between">
 						<view class="flex items-center">
-							<image class="menu-icon" src="/static/icons//log.svg" mode=""></image>
-							<text>充值记录</text>
-						</view>
-						<view class="flex items-center">
-							<tui-icon name="arrowright"></tui-icon>
-						</view>
-					</view>
-				</xui-card>
-
-				<xui-card border-radius="20" class="flex-1">
-					<view class="flex items-center justify-between">
-						<view class="flex items-center">
-							<image class="menu-icon" src="/static/icons//write.svg" mode=""></image>
-							<text>抄表记录</text>
-						</view>
-						<view class="flex items-center">
-							<tui-icon name="arrowright"></tui-icon>
-						</view>
-					</view>
-				</xui-card>
-
-				<xui-card border-radius="20" class="flex-1">
-					<view class="flex items-center justify-between">
-						<view class="flex items-center">
-							<image class="menu-icon" src="/static/icons//question-circle.svg" mode=""></image>
-							<text>常见问题</text>
-						</view>
-						<view class="flex items-center">
-							<tui-icon name="arrowright"></tui-icon>
-						</view>
-					</view>
-				</xui-card>
-
-				<xui-card border-radius="20" class="flex-1">
-					<view class="flex items-center justify-between">
-						<view class="flex items-center">
-							<image class="menu-icon" src="/static/icons//setting.svg" mode=""></image>
-							<text>设置</text>
-						</view>
-						<view class="flex items-center">
-							<tui-icon name="arrowright"></tui-icon>
-						</view>
-					</view>
-				</xui-card>
-
-				<xui-card border-radius="20" class="flex-1">
-					<view class="flex items-center justify-between">
-						<view class="flex items-center">
-							<image class="menu-icon" src="/static/icons//setting.svg" mode=""></image>
-							<text>权限设置</text>
+							<image class="menu-icon" :src="uitem.iconPath" mode=""></image>
+							<text>{{uitem.text}}</text>
 						</view>
 						<view class="flex items-center">
 							<tui-icon name="arrowright"></tui-icon>
@@ -195,7 +148,29 @@
 					//是否循环播放动画，可选，不传默认为true
 					loop: true
 				},
-				defaultClient: 'consumer' //默认为用户端
+				defaultClient: 'consumer', //默认为用户端
+				consumerMenuList: [{
+						text: '充值记录',
+						iconPath: '/static/icons//log.svg',
+						url: '../../subpackage/consumer/recharge-history/recharge-history'
+					},
+					{
+						text: '抄表记录',
+						iconPath: '/static/icons//write.svg',
+						url: '../../subpackage/consumer/check-history/check-history'
+					},
+					{
+						text: '常见问题',
+						iconPath: '/static/icons//question-circle.svg',
+						url: ''
+					},
+					{
+						text: '设置',
+						iconPath: '/static/icons//setting.svg',
+						url: ''
+					},
+				],
+				adminMenuList: []
 			}
 		},
 		onLoad() {
@@ -259,16 +234,26 @@
 
 				}
 			},
-			...mapMutations(["switchClient", "resetTabBarIndex"])
+			...mapMutations(["switchClient", "resetTabBarIndex"]),
+			navTo(url, e) {
+				console.log(url);
+				uni.navigateTo({
+					url: url,
+					fail(e) {
+						console.log("fail", e);
+					}
+				});
+			},
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
-	page{
+	page {
 		font-weight: bold;
 		color: #333;
 	}
+
 	.tui-header-bg {
 		position: relative;
 		height: 460rpx;
