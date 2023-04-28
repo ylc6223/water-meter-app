@@ -101,25 +101,28 @@ var components
 try {
   components = {
     tuiNavigationBar: function () {
-      return __webpack_require__.e(/*! import() | components/thorui/tui-navigation-bar/tui-navigation-bar */ "components/thorui/tui-navigation-bar/tui-navigation-bar").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-navigation-bar/tui-navigation-bar.vue */ 97))
+      return __webpack_require__.e(/*! import() | components/thorui/tui-navigation-bar/tui-navigation-bar */ "components/thorui/tui-navigation-bar/tui-navigation-bar").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-navigation-bar/tui-navigation-bar.vue */ 107))
     },
     tuiIcon: function () {
-      return Promise.all(/*! import() | components/thorui/tui-icon/tui-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/thorui/tui-icon/tui-icon")]).then(__webpack_require__.bind(null, /*! @/components/thorui/tui-icon/tui-icon.vue */ 104))
+      return Promise.all(/*! import() | components/thorui/tui-icon/tui-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/thorui/tui-icon/tui-icon")]).then(__webpack_require__.bind(null, /*! @/components/thorui/tui-icon/tui-icon.vue */ 114))
     },
     tuiFormButton: function () {
-      return __webpack_require__.e(/*! import() | components/thorui/tui-form-button/tui-form-button */ "components/thorui/tui-form-button/tui-form-button").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-form-button/tui-form-button.vue */ 119))
+      return __webpack_require__.e(/*! import() | components/thorui/tui-form-button/tui-form-button */ "components/thorui/tui-form-button/tui-form-button").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-form-button/tui-form-button.vue */ 129))
     },
     xuiCard: function () {
-      return __webpack_require__.e(/*! import() | components/xui-card/xui-card */ "components/xui-card/xui-card").then(__webpack_require__.bind(null, /*! @/components/xui-card/xui-card.vue */ 112))
+      return __webpack_require__.e(/*! import() | components/xui-card/xui-card */ "components/xui-card/xui-card").then(__webpack_require__.bind(null, /*! @/components/xui-card/xui-card.vue */ 122))
     },
     tuiModal: function () {
-      return __webpack_require__.e(/*! import() | components/thorui/tui-modal/tui-modal */ "components/thorui/tui-modal/tui-modal").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-modal/tui-modal.vue */ 156))
+      return __webpack_require__.e(/*! import() | components/thorui/tui-modal/tui-modal */ "components/thorui/tui-modal/tui-modal").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-modal/tui-modal.vue */ 143))
+    },
+    tuiLottie: function () {
+      return Promise.all(/*! import() | components/thorui/tui-lottie/tui-lottie */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/thorui/tui-lottie/tui-lottie")]).then(__webpack_require__.bind(null, /*! @/components/thorui/tui-lottie/tui-lottie.vue */ 150))
     },
     tuiButton: function () {
-      return __webpack_require__.e(/*! import() | components/thorui/tui-button/tui-button */ "components/thorui/tui-button/tui-button").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-button/tui-button.vue */ 126))
+      return __webpack_require__.e(/*! import() | components/thorui/tui-button/tui-button */ "components/thorui/tui-button/tui-button").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-button/tui-button.vue */ 136))
     },
     tuiTabbar: function () {
-      return __webpack_require__.e(/*! import() | components/thorui/tui-tabbar/tui-tabbar */ "components/thorui/tui-tabbar/tui-tabbar").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-tabbar/tui-tabbar.vue */ 133))
+      return __webpack_require__.e(/*! import() | components/thorui/tui-tabbar/tui-tabbar */ "components/thorui/tui-tabbar/tui-tabbar").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-tabbar/tui-tabbar.vue */ 158))
     },
   }
 } catch (e) {
@@ -148,7 +151,7 @@ var render = function () {
       _vm.modal = true
     }
     _vm.e1 = function ($event) {
-      _vm.modal = false
+      _vm.showModal = false
     }
   }
 }
@@ -201,7 +204,7 @@ var _default = {
       modal: false,
       options: {
         //注意：小程序端需确保域名已授权访问
-        path: 'https://assets5.lottiefiles.com/packages/lf20_tri3EJ5bUI.json',
+        path: 'https://assets7.lottiefiles.com/packages/lf20_dqe40b1q.json',
         autoplay: true,
         //是否循环播放动画，可选，不传默认为true
         loop: true
@@ -223,13 +226,33 @@ var _default = {
       }, {
         text: '设置',
         iconPath: '/static/icons//setting.svg',
-        url: ''
+        url: '../../subpackage/user/app-setting'
+      }, {
+        text: '权限设置',
+        iconPath: '/static/icons//setting.svg',
+        url: '#'
       }],
-      adminMenuList: []
+      adminMenuList: [],
+      userInfo: null,
+      isEmpower: false,
+      //用户是否已授权
+      showModal: false //控制授权对话框显示隐藏
     };
   },
   onLoad: function onLoad() {
     uni.hideTabBar();
+  },
+  onShow: function onShow() {
+    var that = this;
+    try {
+      var userInfo = that.$g.tui.getUserInfo();
+      this.userInfo = this.userInfo ? this.userInfo : userInfo;
+      if (userInfo) {
+        return;
+      } else {
+        this.showModal = true; //唤起授权
+      }
+    } catch (e) {}
   },
   methods: _objectSpread(_objectSpread({
     /**
@@ -253,7 +276,6 @@ var _default = {
         opacity = _ref.opacity,
         windowHeight = _ref.windowHeight;
     },
-    hide: function hide() {},
     //去登录
     navToLogin: function navToLogin() {
       uni.navigateTo({
@@ -286,10 +308,56 @@ var _default = {
   }, (0, _vuex.mapMutations)(["switchClient", "resetTabBarIndex"])), {}, {
     navTo: function navTo(url, e) {
       console.log(url);
+      if (url === '#') {
+        uni.openSetting({
+          success: function success(res) {
+            console.log(res.authSetting);
+          }
+        });
+        return;
+      }
       uni.navigateTo({
         url: url,
         fail: function fail(e) {
           console.log("fail", e);
+        }
+      });
+    },
+    //用户向小程序授权允许获取用户信息
+    empower: function empower() {
+      var that = this;
+      uni.getSetting({
+        success: function success(res) {
+          //未授权获取用户信息
+          if (!res.authSetting['scope.userInfo']) {
+            //要求授权并获取用户信息
+            uni.authorize({
+              scope: 'scope.userInfo',
+              success: function success() {
+                // 用户已经同意小程序获取用户信息，后续调用相关接口不会弹窗询问
+                that.getUserInfo();
+              }
+            });
+          } else {
+            //直接获取用户信息
+            that.getUserInfo();
+          }
+        }
+      });
+    },
+    //向微信获取用户信息
+    getUserInfo: function getUserInfo() {
+      var that = this;
+      uni.getUserInfo({
+        success: function success(result) {
+          console.log(result);
+          that.$g.tui.setUserInfo(result.userInfo);
+          that.userInfo = result.userInfo;
+          that.isEmpower = true;
+          that.showModal = false;
+        },
+        fail: function fail(e) {
+          console.log('获取用户信息失败');
         }
       });
     }

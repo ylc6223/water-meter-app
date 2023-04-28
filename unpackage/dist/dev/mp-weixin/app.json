@@ -9,7 +9,8 @@
       "root": "subpackage/user",
       "pages": [
         "login",
-        "register"
+        "register",
+        "app-setting"
       ]
     },
     {

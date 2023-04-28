@@ -28,7 +28,7 @@
 		</tui-wing-blank>
 
 		<!-- <xui-card></xui-card> -->
-		<tui-tabbar></tui-tabbar>
+		<tui-tabbar zIndex="8999"></tui-tabbar>
 	</view>
 </template>
 

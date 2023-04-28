@@ -47,6 +47,7 @@
 			},
 			init(vals) {
 				if (!vals || (!vals.path && !vals.animationData)) return;
+				console.log(,"@");
 				this.ani && this.ani.destroy();
 				this.$nextTick(() => {
 					this.ani = lottie.loadAnimation({

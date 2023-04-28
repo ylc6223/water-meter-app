@@ -78,4 +78,4 @@
 		font-size: var(--xui-font-size-xl);
 		font-weight: 500;
 	}
-</style>
+</style>''

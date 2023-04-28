@@ -15,11 +15,12 @@
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
-    }
+    },
+    "ignoreUploadUnusedFiles": false
   },
   "compileType": "miniprogram",
   "libVersion": "",
-  "appid": "wx11178112d7d04327",
+  "appid": "wx8d2876d0b14e73c8",
   "projectname": "water-meter-app",
   "condition": {
     "search": {

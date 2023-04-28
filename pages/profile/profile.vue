@@ -6,8 +6,12 @@
 		</tui-navigation-bar>
 		<view class="tui-header-bg">
 			<view class="user-info flex items-center" @tap="modal = true">
-				<view class="avatar">
-					<image src="../../static/logo.png" mode=""></image>
+				<view v-if="!userInfo" class="avatar">
+					<image src="../../static/logo.png"></image>
+
+				</view>
+				<view v-else class="avatar noshadow">
+					<image :src="userInfo.avatarUrl"></image>
 				</view>
 				<view class="flex flex-col" v-if="defaultClient==='admin'">
 					<text class="text-white">点击登录</text>
@@ -116,20 +120,21 @@
 			</view>
 		</view>
 
-		<tui-modal :show="modal" @cancel="hide" :custom="true" :maskClosable="true" width="80%">
-			<view class="tui-modal-custom flex flex-col items-center">
-				<!-- <tui-lottie width="362" :options="options"></tui-lottie> -->
-				<text class="block">您还未登录</text>
-				<text class="block">请先登录在进行操作</text>
-				<view class="w-full">
-					<tui-button height="72rpx" :size="28" type="primary" shape="circle"
-						@tap="navToLogin">立即登录</tui-button>
+		<tui-modal :show="showModal" custom :maskClosable="true">
+			<view class="flex flex-col items-center">
+				<tui-lottie width="450" height="400" :options="options"></tui-lottie>
+				<text class="block my-15 title-text">您还未授权</text>
+				<text class="block sub-title-text">请先授权再进行操作</text>
+				<view class="w-full my-30">
+					<tui-button height="72rpx" :size="28" shape="circle" type="green" @tap="empower">立即授权</tui-button>
 				</view>
-				<text @tap="modal=false">稍后再说</text>
+				<view @tap="showModal=false">
+					<text class="text-gray">稍后再说</text>
+				</view>
 			</view>
 		</tui-modal>
 
-		<tui-tabbar></tui-tabbar>
+		<tui-tabbar zIndex="8999"></tui-tabbar>
 	</view>
 </template>
 
@@ -143,7 +148,7 @@
 				modal: false,
 				options: {
 					//注意：小程序端需确保域名已授权访问
-					path: 'https://assets5.lottiefiles.com/packages/lf20_tri3EJ5bUI.json',
+					path: 'https://assets7.lottiefiles.com/packages/lf20_dqe40b1q.json',
 					autoplay: true,
 					//是否循环播放动画，可选，不传默认为true
 					loop: true
@@ -167,14 +172,34 @@
 					{
 						text: '设置',
 						iconPath: '/static/icons//setting.svg',
-						url: ''
+						url: '../../subpackage/user/app-setting'
+					},
+					{
+						text: '权限设置',
+						iconPath: '/static/icons//setting.svg',
+						url: '#',
 					},
 				],
-				adminMenuList: []
+				adminMenuList: [],
+				userInfo: null,
+				isEmpower: false, //用户是否已授权
+				showModal: false, //控制授权对话框显示隐藏
 			}
 		},
 		onLoad() {
 			uni.hideTabBar()
+		},
+		onShow() {
+			const that = this
+			try {
+				const userInfo = that.$g.tui.getUserInfo()
+				this.userInfo = this.userInfo ? this.userInfo : userInfo
+				if (userInfo) {
+					return
+				} else {
+					this.showModal = true //唤起授权
+				}
+			} catch (e) {}
 		},
 		methods: {
 			/**
@@ -198,9 +223,6 @@
 				opacity,
 				windowHeight
 			}) {
-
-			},
-			hide() {
 
 			},
 			//去登录
@@ -237,6 +259,14 @@
 			...mapMutations(["switchClient", "resetTabBarIndex"]),
 			navTo(url, e) {
 				console.log(url);
+				if (url === '#') {
+					uni.openSetting({
+						success(res) {
+							console.log(res.authSetting)
+						}
+					});
+					return
+				}
 				uni.navigateTo({
 					url: url,
 					fail(e) {
@@ -244,6 +274,44 @@
 					}
 				});
 			},
+			//用户向小程序授权允许获取用户信息
+			empower() {
+				const that = this
+				uni.getSetting({
+					success(res) {
+						//未授权获取用户信息
+						if (!res.authSetting['scope.userInfo']) {
+							//要求授权并获取用户信息
+							uni.authorize({
+								scope: 'scope.userInfo',
+								success() {
+									// 用户已经同意小程序获取用户信息，后续调用相关接口不会弹窗询问
+									that.getUserInfo()
+								}
+							})
+						} else {
+							//直接获取用户信息
+							that.getUserInfo()
+						}
+					}
+				})
+			},
+			//向微信获取用户信息
+			getUserInfo() {
+				const that = this
+				uni.getUserInfo({
+					success(result) {
+						console.log(result);
+						that.$g.tui.setUserInfo(result.userInfo)
+						that.userInfo = result.userInfo
+						that.isEmpower = true
+						that.showModal = false
+					},
+					fail(e) {
+						console.log('获取用户信息失败');
+					}
+				})
+			}
 		}
 	}
 </script>
@@ -282,16 +350,23 @@
 		margin-top: 128rpx;
 
 		.avatar {
+			position: relative;
+			z-index: 999;
 			width: 126rpx;
 			height: 126rpx;
 			margin-left: 8%;
 			border-radius: 50%;
-			background-color: #FFF;
+			background-color: #27AE60;
+			box-shadow: 0px 0px 0px 5rpx #393B4F;
 			overflow: hidden;
 
 			& image {
 				width: 100%;
 				height: 100%;
+			}
+
+			&.noshadow {
+				box-shadow: none;
 			}
 		}
 

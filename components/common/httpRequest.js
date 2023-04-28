@@ -24,7 +24,7 @@ const tui = {
 		uni.showModal({
 			title: title || '提示',
 			content: content,
-			showCancel: showCancel,
+			showCancel: showCancel||true,
 			cancelColor: "#555",
 			confirmColor: confirmColor || "#5677fc",
 			confirmText: confirmText || "确定",

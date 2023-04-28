@@ -233,7 +233,7 @@
 	color: #FFF;
 }
 .text-gray{
-	color: #e0d7d7;
+	color: #999;
 }
 page {
 	background-color: #F8F8F8;

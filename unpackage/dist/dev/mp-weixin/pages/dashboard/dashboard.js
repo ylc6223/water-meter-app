@@ -101,19 +101,19 @@ var components
 try {
   components = {
     tuiNavigationBar: function () {
-      return __webpack_require__.e(/*! import() | components/thorui/tui-navigation-bar/tui-navigation-bar */ "components/thorui/tui-navigation-bar/tui-navigation-bar").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-navigation-bar/tui-navigation-bar.vue */ 97))
+      return __webpack_require__.e(/*! import() | components/thorui/tui-navigation-bar/tui-navigation-bar */ "components/thorui/tui-navigation-bar/tui-navigation-bar").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-navigation-bar/tui-navigation-bar.vue */ 107))
     },
     tuiWingBlank: function () {
-      return __webpack_require__.e(/*! import() | components/thorui/tui-wing-blank/tui-wing-blank */ "components/thorui/tui-wing-blank/tui-wing-blank").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-wing-blank/tui-wing-blank.vue */ 140))
+      return __webpack_require__.e(/*! import() | components/thorui/tui-wing-blank/tui-wing-blank */ "components/thorui/tui-wing-blank/tui-wing-blank").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-wing-blank/tui-wing-blank.vue */ 165))
     },
     tuiSlideView: function () {
-      return __webpack_require__.e(/*! import() | components/thorui/tui-slide-view/tui-slide-view */ "components/thorui/tui-slide-view/tui-slide-view").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-slide-view/tui-slide-view.vue */ 147))
+      return __webpack_require__.e(/*! import() | components/thorui/tui-slide-view/tui-slide-view */ "components/thorui/tui-slide-view/tui-slide-view").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-slide-view/tui-slide-view.vue */ 172))
     },
     tuiIcon: function () {
-      return Promise.all(/*! import() | components/thorui/tui-icon/tui-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/thorui/tui-icon/tui-icon")]).then(__webpack_require__.bind(null, /*! @/components/thorui/tui-icon/tui-icon.vue */ 104))
+      return Promise.all(/*! import() | components/thorui/tui-icon/tui-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/thorui/tui-icon/tui-icon")]).then(__webpack_require__.bind(null, /*! @/components/thorui/tui-icon/tui-icon.vue */ 114))
     },
     tuiTabbar: function () {
-      return __webpack_require__.e(/*! import() | components/thorui/tui-tabbar/tui-tabbar */ "components/thorui/tui-tabbar/tui-tabbar").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-tabbar/tui-tabbar.vue */ 133))
+      return __webpack_require__.e(/*! import() | components/thorui/tui-tabbar/tui-tabbar */ "components/thorui/tui-tabbar/tui-tabbar").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-tabbar/tui-tabbar.vue */ 158))
     },
   }
 } catch (e) {

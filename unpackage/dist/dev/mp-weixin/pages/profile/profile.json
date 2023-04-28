@@ -8,6 +8,7 @@
     "tui-form-button": "/components/thorui/tui-form-button/tui-form-button",
     "xui-card": "/components/xui-card/xui-card",
     "tui-modal": "/components/thorui/tui-modal/tui-modal",
+    "tui-lottie": "/components/thorui/tui-lottie/tui-lottie",
     "tui-button": "/components/thorui/tui-button/tui-button",
     "tui-tabbar": "/components/thorui/tui-tabbar/tui-tabbar"
   }

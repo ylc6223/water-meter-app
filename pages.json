@@ -22,7 +22,6 @@
 				"enablePullDownRefresh": false,
 				"navigationStyle": "custom"
 			}
-
 		}
 	],
 	"subPackages": [{
@@ -42,6 +41,13 @@
 						"navigationBarTitleText": "",
 						"enablePullDownRefresh": false
 					}
+				}, {
+					"path": "app-setting",
+					"style": {
+						"navigationBarTitleText": "设置",
+						"enablePullDownRefresh": false
+					}
+
 				}
 			]
 		},
