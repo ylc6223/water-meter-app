@@ -17,7 +17,8 @@
       "root": "subpackage/consumer",
       "pages": [
         "recharge-history/recharge-history",
-        "check-history/check-history"
+        "check-history/check-history",
+        "recharge/recharge"
       ]
     }
   ],

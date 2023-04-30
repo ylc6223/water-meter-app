@@ -1,7 +1,7 @@
 <template>
 	<view class="tui-data-checkbox" :style="{marginBottom:'-'+gap+'rpx'}">
 		<view class="tui-data__cb-item" :class="{'tui-data__cb-disabled':item.disable}"
-			:style="{width:width?width+'rpx':'auto',padding:padding,borderRadius:radius,marginRight:gap+'rpx',marginBottom:gap+'rpx',background:item.checked?activeBgColor:background,borderColor:item.checked?borderColor:background}"
+			:style="{width:width?width.slice(-1)==='%'?width:width+'rpx':'auto',padding:padding,borderRadius:radius,marginRight:gap+'rpx',marginBottom:gap+'rpx',background:item.checked?activeBgColor:background,borderColor:item.checked?borderColor:background}"
 			v-for="(item,index) in itemList" :key="index" @tap.stop="itemTap(index)">
 			<text class="tui-cb__text"
 				:style="{fontSize:size+'rpx',color:item.checked?activeColor:color}">{{item.text}}</text>

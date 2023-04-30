@@ -70,6 +70,15 @@
 					"enablePullDownRefresh": false
 				}
 
+			}, {
+				"path": "recharge/recharge",
+				"style": {
+					"navigationBarTitleText": "充值",
+					"enablePullDownRefresh": false,
+					"navigationStyle": "custom"
+					
+				}
+
 			}]
 		}
 	],

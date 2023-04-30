@@ -30,13 +30,14 @@
 		<!-- <view class="card-wrap" :style="{'margin-top':navigationBarHeight+'px','height': cardHeight+'px'}"> -->
 		<view class="card-wrap" :style="{'margin-top':navigationBarHeight+'px'}">
 			<xui-card :hover="false" :shadow="true">
-				<view v-if="nodevice" class="flex h-full flex-col items-center justify-center">
+				<view v-if="nodevice" class="flex h-full flex-col items-center justify-center"
+					style="min-height: 300px;">
 					<view class="nodata-img">
 						<image src="../../static/icons/shebei.svg" mode=""></image>
 					</view>
 					<text class="small-text">没有设备</text>
-					<tui-form-button background="#5677FC" radius="45rpx" width="300rpx" height="90rpx" color="#000"
-						@click="scanningDevice">
+					<tui-form-button background="#07C160" radius="45rpx" width="300rpx" height="90rpx" color="#000"
+						@click="scanCode">
 						<text class="text-white">扫描设备二维码</text>
 					</tui-form-button>
 				</view>
@@ -78,7 +79,7 @@
 						</view>
 					</view>
 
-					<tui-button shape="circle" type="green">
+					<tui-button shape="circle" type="green" @tap="gotoPay">
 						水表充值
 					</tui-button>
 				</view>
@@ -98,6 +99,20 @@
 				</view>
 			</view>
 		</tui-modal>
+
+		<tui-modal :show="showTipModal" custom :maskClosable="true">
+			<view class="flex flex-col items-center">
+				<text class="block my-15 title-text">提示</text>
+				<image class="qrcode" src="../../static/imgs/qrcode.jpg" mode=""></image>
+				<text class="block my-15 title-text">首次充值需要扫描</text>
+				<text class="block my-15 title-text">设备上的二维码,识别表号</text>
+				<view class="w-full my-30">
+					<tui-button height="72rpx" :size="28" shape="circle" type="green"
+						@tap="showTipModal=false">知道了</tui-button>
+				</view>
+			</view>
+		</tui-modal>
+
 		<tui-tabbar zIndex="8999"></tui-tabbar>
 	</view>
 </template>
@@ -117,13 +132,14 @@
 					//是否循环播放动画，可选，不传默认为true
 					loop: true
 				},
-				nodevice: false, //未绑定设备
+				nodevice: true, //未绑定设备
 				titleBarHeight: 0, //标题栏高度
 				navigationBarHeight: 0, //导航栏高度
 				screenHeight: 0, //屏幕高度
 				cardHeight: 0, //卡片高度
 				isEmpower: false, //用户是否已授权
 				showModal: false, //控制授权对话框显示隐藏
+				showTipModal: false, //控制提示用户充值需扫码的显示隐藏
 				banners: [{
 						url: '../../static/imgs/banner.png'
 					},
@@ -150,6 +166,8 @@
 				const userInfo = that.$g.tui.getUserInfo()
 				this.userInfo = this.userInfo ? this.userInfo : userInfo
 				if (userInfo) {
+					//获取完用户信息,提示用户首次充值需扫设备上二维码
+					that.showTipModal = that.nodevice ? true : false
 					return
 				} else {
 					this.showModal = true //唤起授权
@@ -185,15 +203,20 @@
 			},
 			//扫码
 			scanCode() {
+				const that = this
 				uni.scanCode({
 					scanType: [
 						'qrCode'
 					],
-					success() {
-
+					success(res) {
+						console.log(res.rawData);
+						//扫到水表上的二维码
+						that.nodevice = false
+						//尝试申请使用蓝牙
+						that.startBleAuth()
 					},
 					fail() {
-
+						that.nodevice = true
 					},
 					complete() {
 
@@ -222,12 +245,13 @@
 					}
 				})
 			},
-			wxLogin(){
-				
+			wxLogin() {
+
 			},
 			//向微信获取用户信息
 			getUserInfo() {
 				const that = this
+				that.$g.tui.showLoading('登陆中')
 				uni.getUserInfo({
 					success(result) {
 						console.log(result);
@@ -235,10 +259,42 @@
 						that.userInfo = result.userInfo
 						that.isEmpower = true
 						that.showModal = false
+						uni.hideLoading()
+						if (!that.userInfo) {
+							return
+						}
+						//获取完用户信息,提示用户首次充值需扫设备上二维码
+						that.showTipModal = true
 					},
 					fail(e) {
 						console.log('获取用户信息失败');
 					}
+				})
+			},
+			////尝试授权使用蓝牙，如先前已同意则静默开启蓝牙并连接
+			startBleAuth() {
+				uni.getSetting({
+					success(res) {
+						//蓝牙未授权
+						if (!res.authSetting['scope.bluetooth']) {
+							//要求授权并开启蓝牙
+							uni.authorize({
+								scope: 'scope.bluetooth',
+								success() {
+									//后续静默开启蓝牙并连接
+									//开启蓝牙通信
+								}
+							})
+						} else {
+							//开启蓝牙通信
+						}
+					}
+				})
+			},
+			//充值水费
+			gotoPay() {
+				uni.navigateTo({
+					url: '../../subpackage/consumer/recharge/recharge'
 				})
 			}
 		},
@@ -273,8 +329,10 @@
 	.tui-header-bg {
 		position: relative;
 		height: 267rpx;
-		background: rgb(147, 224, 231);
-		background: linear-gradient(0deg, rgba(147, 224, 231, 1) 0%, rgba(31, 142, 214, 1) 100%);
+		// background: rgb(147, 224, 231);
+		// background: linear-gradient(0deg, rgba(147, 224, 231, 1) 0%, rgba(31, 142, 214, 1) 100%);
+		background: rgb(185, 240, 208);
+		background: linear-gradient(0deg, rgba(185, 240, 208, 1) 0%, rgba(49, 185, 106, 1) 100%);
 		border-bottom-left-radius: 42rpx;
 		border-bottom-right-radius: 42rpx;
 
@@ -307,8 +365,6 @@
 
 	.card-wrap {
 		position: relative;
-		height: 48%;
-		min-height: 300px;
 		margin: 0 4%;
 		box-sizing: border-box;
 
@@ -358,8 +414,14 @@
 			}
 		}
 
-		xui-card.card {
+		xui-card {
 			position: relative;
+			height: 100%;
 		}
+	}
+
+	image.qrcode {
+		width: 250rpx;
+		height: 250rpx;
 	}
 </style>

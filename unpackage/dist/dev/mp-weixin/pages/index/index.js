@@ -150,6 +150,9 @@ var render = function () {
     _vm.e0 = function ($event) {
       _vm.showModal = false
     }
+    _vm.e1 = function ($event) {
+      _vm.showTipModal = false
+    }
   }
 }
 var recyclableRender = false
@@ -205,7 +208,7 @@ var _default = {
         //是否循环播放动画，可选，不传默认为true
         loop: true
       },
-      nodevice: false,
+      nodevice: true,
       //未绑定设备
       titleBarHeight: 0,
       //标题栏高度
@@ -219,6 +222,8 @@ var _default = {
       //用户是否已授权
       showModal: false,
       //控制授权对话框显示隐藏
+      showTipModal: false,
+      //控制提示用户充值需扫码的显示隐藏
       banners: [{
         url: '../../static/imgs/banner.png'
       }, {
@@ -243,6 +248,8 @@ var _default = {
       var userInfo = that.$g.tui.getUserInfo();
       this.userInfo = this.userInfo ? this.userInfo : userInfo;
       if (userInfo) {
+        //获取完用户信息,提示用户首次充值需扫设备上二维码
+        that.showTipModal = that.nodevice ? true : false;
         return;
       } else {
         this.showModal = true; //唤起授权
@@ -276,10 +283,19 @@ var _default = {
     },
     //扫码
     scanCode: function scanCode() {
+      var that = this;
       uni.scanCode({
         scanType: ['qrCode'],
-        success: function success() {},
-        fail: function fail() {},
+        success: function success(res) {
+          console.log(res.rawData);
+          //扫到水表上的二维码
+          that.nodevice = false;
+          //尝试申请使用蓝牙
+          that.startBleAuth();
+        },
+        fail: function fail() {
+          that.nodevice = true;
+        },
         complete: function complete() {}
       });
     },
@@ -309,6 +325,7 @@ var _default = {
     //向微信获取用户信息
     getUserInfo: function getUserInfo() {
       var that = this;
+      that.$g.tui.showLoading('登陆中');
       uni.getUserInfo({
         success: function success(result) {
           console.log(result);
@@ -316,10 +333,42 @@ var _default = {
           that.userInfo = result.userInfo;
           that.isEmpower = true;
           that.showModal = false;
+          uni.hideLoading();
+          if (!that.userInfo) {
+            return;
+          }
+          //获取完用户信息,提示用户首次充值需扫设备上二维码
+          that.showTipModal = true;
         },
         fail: function fail(e) {
           console.log('获取用户信息失败');
         }
+      });
+    },
+    ////尝试授权使用蓝牙，如先前已同意则静默开启蓝牙并连接
+    startBleAuth: function startBleAuth() {
+      uni.getSetting({
+        success: function success(res) {
+          //蓝牙未授权
+          if (!res.authSetting['scope.bluetooth']) {
+            //要求授权并开启蓝牙
+            uni.authorize({
+              scope: 'scope.bluetooth',
+              success: function success() {
+                //后续静默开启蓝牙并连接
+                //开启蓝牙通信
+              }
+            });
+          } else {
+            //开启蓝牙通信
+          }
+        }
+      });
+    },
+    //充值水费
+    gotoPay: function gotoPay() {
+      uni.navigateTo({
+        url: '../../subpackage/consumer/recharge/recharge'
       });
     }
   }),
