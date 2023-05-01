@@ -49,6 +49,18 @@
 				</view>
 			</xui-card>
 			<tui-button shape="circle" type="green">立即支付</tui-button>
+			<view class="user-protocol flex items-center">
+				<label>
+					<tui-checkbox-group class="flex items-center" v-model="val">
+						<tui-checkbox checked value="1" color="#07c160" borderColor="#999">
+						</tui-checkbox>
+						<text>我已阅读并同意</text>
+					</tui-checkbox-group>
+				</label>
+				<navigator url="../../public/richtext">
+					<text>《充值协议》</text>
+				</navigator>
+			</view>
 		</view>
 	</view>
 </template>
@@ -60,7 +72,9 @@
 				titleBarHeight: 0, //标题栏高度
 				navigationBarHeight: 0, //导航栏高度
 				options: ['50元', '100元', '150元', '200元', '300元', '500元', ],
-				defaultRechargeAmount: '50元'
+				defaultRechargeAmount: '50元',
+				defaultAgree: true,
+				val: ''
 			}
 		},
 		onLoad() {},
@@ -111,9 +125,11 @@
 	.navigation-bar {
 		margin: 0 15rpx;
 	}
-	.relative{
+
+	.relative {
 		padding: 0 15rpx;
 	}
+
 	.active {
 		background: rgb(39, 174, 96);
 		background: radial-gradient(circle, rgba(39, 174, 96, 1) 0%, rgba(46, 204, 113, 1) 100%);
@@ -137,17 +153,21 @@
 		border-color: #27ae60;
 		color: #FFF;
 	}
-	::v-deep xui-card.amount .card{
+
+	::v-deep xui-card.amount .card {
 		// background: #beffda !important;
 		background: #ecf7f1 !important;
 		background: radial-gradient(circle, rgba(39, 174, 96, 1) 0%, rgba(46, 204, 113, 1) 100%);
-		.text{
+
+		.text {
 			color: #2ECC71;
 		}
 	}
-	::v-deep xui-card.warn .card{
+
+	::v-deep xui-card.warn .card {
 		background: #ffedd3 !important;
-		.warning-text{
+
+		.warning-text {
 			color: #ffa729;
 			font-size: 28rpx;
 			line-height: 1.5;

@@ -84,7 +84,66 @@ module.exports = _defineProperty, module.exports.__esModule = true, module.expor
 
 /***/ }),
 
-/***/ 119:
+/***/ 12:
+/*!**************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/toPropertyKey.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var _typeof = __webpack_require__(/*! ./typeof.js */ 13)["default"];
+var toPrimitive = __webpack_require__(/*! ./toPrimitive.js */ 14);
+function _toPropertyKey(arg) {
+  var key = toPrimitive(arg, "string");
+  return _typeof(key) === "symbol" ? key : String(key);
+}
+module.exports = _toPropertyKey, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 13:
+/*!*******************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/typeof.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+
+  return (module.exports = _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) {
+    return typeof obj;
+  } : function (obj) {
+    return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+  }, module.exports.__esModule = true, module.exports["default"] = module.exports), _typeof(obj);
+}
+module.exports = _typeof, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 14:
+/*!************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/toPrimitive.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var _typeof = __webpack_require__(/*! ./typeof.js */ 13)["default"];
+function _toPrimitive(input, hint) {
+  if (_typeof(input) !== "object" || input === null) return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== undefined) {
+    var res = prim.call(input, hint || "default");
+    if (_typeof(res) !== "object") return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
+}
+module.exports = _toPrimitive, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 143:
 /*!*****************************************************************************!*\
   !*** D:/source-code/water-meter-app/components/thorui/tui-icon/tui-icon.js ***!
   \*****************************************************************************/
@@ -292,65 +351,6 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 12:
-/*!**************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/toPropertyKey.js ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var _typeof = __webpack_require__(/*! ./typeof.js */ 13)["default"];
-var toPrimitive = __webpack_require__(/*! ./toPrimitive.js */ 14);
-function _toPropertyKey(arg) {
-  var key = toPrimitive(arg, "string");
-  return _typeof(key) === "symbol" ? key : String(key);
-}
-module.exports = _toPropertyKey, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-
-/***/ 13:
-/*!*******************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/typeof.js ***!
-  \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-
-  return (module.exports = _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) {
-    return typeof obj;
-  } : function (obj) {
-    return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-  }, module.exports.__esModule = true, module.exports["default"] = module.exports), _typeof(obj);
-}
-module.exports = _typeof, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-
-/***/ 14:
-/*!************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/toPrimitive.js ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var _typeof = __webpack_require__(/*! ./typeof.js */ 13)["default"];
-function _toPrimitive(input, hint) {
-  if (_typeof(input) !== "object" || input === null) return input;
-  var prim = input[Symbol.toPrimitive];
-  if (prim !== undefined) {
-    var res = prim.call(input, hint || "default");
-    if (_typeof(res) !== "object") return res;
-    throw new TypeError("@@toPrimitive must return a primitive value.");
-  }
-  return (hint === "string" ? String : Number)(input);
-}
-module.exports = _toPrimitive, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-
 /***/ 15:
 /*!**********************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/construct.js ***!
@@ -379,7 +379,47 @@ module.exports = _construct, module.exports.__esModule = true, module.exports["d
 
 /***/ }),
 
-/***/ 155:
+/***/ 16:
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/setPrototypeOf.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _setPrototypeOf(o, p) {
+  module.exports = _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  }, module.exports.__esModule = true, module.exports["default"] = module.exports;
+  return _setPrototypeOf(o, p);
+}
+module.exports = _setPrototypeOf, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 17:
+/*!*************************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/isNativeReflectConstruct.js ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _isNativeReflectConstruct() {
+  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+  if (Reflect.construct.sham) return false;
+  if (typeof Proxy === "function") return true;
+  try {
+    Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+module.exports = _isNativeReflectConstruct, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 179:
 /*!********************************************************************************!*\
   !*** D:/source-code/water-meter-app/components/thorui/tui-lottie/lottie.mp.js ***!
   \********************************************************************************/
@@ -6476,46 +6516,6 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 16:
-/*!***************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/setPrototypeOf.js ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _setPrototypeOf(o, p) {
-  module.exports = _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  }, module.exports.__esModule = true, module.exports["default"] = module.exports;
-  return _setPrototypeOf(o, p);
-}
-module.exports = _setPrototypeOf, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-
-/***/ 17:
-/*!*************************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/isNativeReflectConstruct.js ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _isNativeReflectConstruct() {
-  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
-  if (Reflect.construct.sham) return false;
-  if (typeof Proxy === "function") return true;
-  try {
-    Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-module.exports = _isNativeReflectConstruct, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-
 /***/ 18:
 /*!******************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/toConsumableArray.js ***!
@@ -6531,347 +6531,6 @@ function _toConsumableArray(arr) {
   return arrayWithoutHoles(arr) || iterableToArray(arr) || unsupportedIterableToArray(arr) || nonIterableSpread();
 }
 module.exports = _toConsumableArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-
-/***/ 186:
-/*!***********************************************************************************!*\
-  !*** D:/source-code/water-meter-app/components/thorui/tui-form/tui-validation.js ***!
-  \***********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-/**
- * 表单验证
- * @author echo.
- * @version 1.6.6
- **/
-
-var form = {
-  //非必填情况下,如果值为空,则不进行校验
-  //当出现错误时返回错误消息，否则返回空即为验证通过
-  /*
-   formData:Object 表单对象。{key:value,key:value},key==rules.name
-   rules: Array [{name:name,rule:[],msg:[],validator:[],{name:name,rule:[],msg:[],validator:[]}]
-  		name:name 属性=> 元素的名称
-  		rule:字符串数组 ["required","isMobile","isEmail","isCarNo","isIdCard","isAmount","isNum","isChinese","isNotChinese","isEnglish",isEnAndNo","isSpecial","isEmoji",""isDate","isUrl","isSame:key","range:[1,9]","minLength:9","maxLength:Number","isKeyword:key1,key2,key3..."]
-  		msg:数组 []。 与数组 rule 长度相同,对应的错误提示信息
-  		validator:[{msg:'错误消息',method:Function}]，自定义验证方法组，函数约定：(value)=>{ return true or false}
-  */
-  validation: function validation(formData, rules) {
-    var _iterator = _createForOfIteratorHelper(rules),
-      _step;
-    try {
-      for (_iterator.s(); !(_step = _iterator.n()).done;) {
-        var item = _step.value;
-        var key = item.name;
-        var rule = item.rule;
-        var validator = item.validator;
-        var msgArr = item.msg;
-        if (!key || !rule || rule.length === 0 || !msgArr || msgArr.length === 0 || !~rule.indexOf("required") && formData[key].toString().length === 0) {
-          continue;
-        }
-        for (var i = 0, length = rule.length; i < length; i++) {
-          var ruleItem = rule[i];
-          var msg = msgArr[i];
-          if (!msg || !ruleItem) continue;
-          //数据处理
-          var value = null;
-          if (~ruleItem.indexOf(":")) {
-            var temp = ruleItem.split(":");
-            ruleItem = temp[0];
-            value = temp[1];
-          }
-          var isError = false;
-          switch (ruleItem) {
-            case "required":
-              isError = form._isNullOrEmpty(formData[key]);
-              break;
-            case "isMobile":
-              isError = !form._isMobile(formData[key]);
-              break;
-            case "isEmail":
-              isError = !form._isEmail(formData[key]);
-              break;
-            case "isCarNo":
-              isError = !form._isCarNo(formData[key]);
-              break;
-            case "isIdCard":
-              isError = !form._isIdCard(formData[key]);
-              break;
-            case "isAmount":
-              isError = !form._isAmount(formData[key]);
-              break;
-            case "isNum":
-              isError = !form._isNum(formData[key]);
-              break;
-            case "isChinese":
-              isError = !form._isChinese(formData[key]);
-              break;
-            case "isNotChinese":
-              isError = !form._isNotChinese(formData[key]);
-              break;
-            case "isEnglish":
-              isError = !form._isEnglish(formData[key]);
-              break;
-            case "isEnAndNo":
-              isError = !form._isEnAndNo(formData[key]);
-              break;
-            case "isEnOrNo":
-              isError = !form._isEnOrNo(formData[key]);
-              break;
-            case "isSpecial":
-              isError = form._isSpecial(formData[key]);
-              break;
-            case "isEmoji":
-              isError = form._isEmoji(formData[key]);
-              break;
-            case "isDate":
-              isError = !form._isDate(formData[key]);
-              break;
-            case "isUrl":
-              isError = !form._isUrl(formData[key]);
-              break;
-            case "isSame":
-              isError = !form._isSame(formData[key], formData[value]);
-              break;
-            case "range":
-              var range = null;
-              try {
-                range = JSON.parse(value);
-                if (range.length <= 1) {
-                  throw new Error("range值传入有误！");
-                }
-              } catch (e) {
-                return "range值传入有误！";
-              }
-              isError = !form._isRange(formData[key], range[0], range[1]);
-              break;
-            case "minLength":
-              isError = !form._minLength(formData[key], value);
-              break;
-            case "maxLength":
-              isError = !form._maxLength(formData[key], value);
-              break;
-            case "isKeyword":
-              isError = !form._isKeyword(formData[key], value);
-              break;
-            default:
-              break;
-          }
-          if (isError) {
-            return msg;
-          }
-        }
-        if (validator && validator.length > 0) {
-          var _iterator2 = _createForOfIteratorHelper(validator),
-            _step2;
-          try {
-            for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-              var model = _step2.value;
-              var func = model.method;
-              if (func && !func(formData[key])) {
-                return model.msg;
-              }
-            }
-          } catch (err) {
-            _iterator2.e(err);
-          } finally {
-            _iterator2.f();
-          }
-        }
-      }
-    } catch (err) {
-      _iterator.e(err);
-    } finally {
-      _iterator.f();
-    }
-    return "";
-  },
-  //允许填写字符串null或者undefined
-  _isNullOrEmpty: function _isNullOrEmpty(value) {
-    return value === null || value === '' || value === undefined ? true : false;
-  },
-  _isMobile: function _isMobile(value) {
-    return /^(?:13\d|14\d|15\d|16\d|17\d|18\d|19\d)\d{5}(\d{3}|\*{3})$/.test(value);
-  },
-  _isEmail: function _isEmail(value) {
-    return /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/.test(value);
-  },
-  _isCarNo: function _isCarNo(value) {
-    // 新能源车牌
-    var xreg = /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}(([0-9]{5}[DF]$)|([DF][A-HJ-NP-Z0-9][0-9]{4}$))/;
-    // 旧车牌
-    var creg = /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-HJ-NP-Z0-9]{4}[A-HJ-NP-Z0-9挂学警港澳]{1}$/;
-    if (value.length === 7) {
-      return creg.test(value);
-    } else if (value.length === 8) {
-      return xreg.test(value);
-    } else {
-      return false;
-    }
-  },
-  _isIdCard: function _isIdCard(value) {
-    var idCard = value;
-    if (idCard.length == 15) {
-      return this.__isValidityBrithBy15IdCard;
-    } else if (idCard.length == 18) {
-      var arrIdCard = idCard.split("");
-      if (this.__isValidityBrithBy18IdCard(idCard) && this.__isTrueValidateCodeBy18IdCard(arrIdCard)) {
-        return true;
-      } else {
-        return false;
-      }
-    } else {
-      return false;
-    }
-  },
-  __isTrueValidateCodeBy18IdCard: function __isTrueValidateCodeBy18IdCard(arrIdCard) {
-    var sum = 0;
-    var Wi = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2, 1];
-    var ValideCode = [1, 0, 10, 9, 8, 7, 6, 5, 4, 3, 2];
-    if (arrIdCard[17].toLowerCase() == 'x') {
-      arrIdCard[17] = 10;
-    }
-    for (var i = 0; i < 17; i++) {
-      sum += Wi[i] * arrIdCard[i];
-    }
-    var valCodePosition = sum % 11;
-    if (arrIdCard[17] == ValideCode[valCodePosition]) {
-      return true;
-    } else {
-      return false;
-    }
-  },
-  __isValidityBrithBy18IdCard: function __isValidityBrithBy18IdCard(idCard18) {
-    var year = idCard18.substring(6, 10);
-    var month = idCard18.substring(10, 12);
-    var day = idCard18.substring(12, 14);
-    var temp_date = new Date(year, parseFloat(month) - 1, parseFloat(day));
-    if (temp_date.getFullYear() != parseFloat(year) || temp_date.getMonth() != parseFloat(month) - 1 || temp_date.getDate() != parseFloat(day)) {
-      return false;
-    } else {
-      return true;
-    }
-  },
-  __isValidityBrithBy15IdCard: function __isValidityBrithBy15IdCard(idCard15) {
-    var year = idCard15.substring(6, 8);
-    var month = idCard15.substring(8, 10);
-    var day = idCard15.substring(10, 12);
-    var temp_date = new Date(year, parseFloat(month) - 1, parseFloat(day));
-    if (temp_date.getYear() != parseFloat(year) || temp_date.getMonth() != parseFloat(month) - 1 || temp_date.getDate() != parseFloat(day)) {
-      return false;
-    } else {
-      return true;
-    }
-  },
-  _isAmount: function _isAmount(value) {
-    //金额，只允许保留两位小数
-    return /^([0-9]*[.]?[0-9])[0-9]{0,1}$/.test(value);
-  },
-  _isNum: function _isNum(value) {
-    //只能为数字
-    return /^[0-9]+$/.test(value);
-  },
-  //是否全部为中文
-  _isChinese: function _isChinese(value) {
-    var reg = /^[\u4e00-\u9fa5]+$/;
-    return value !== "" && reg.test(value) && !form._isSpecial(value) && !form._isEmoji(value);
-  },
-  //是否不包含中文，可以有特殊字符
-  _isNotChinese: function _isNotChinese(value) {
-    var reg = /.*[\u4e00-\u9fa5]+.*$/;
-    var result = true;
-    if (reg.test(value)) {
-      result = false;
-    }
-    return result;
-  },
-  _isEnglish: function _isEnglish(value) {
-    return /^[a-zA-Z]*$/.test(value);
-  },
-  _isEnAndNo: function _isEnAndNo(value) {
-    //8~20位数字和字母组合
-    return /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,20}$/.test(value);
-  },
-  _isEnOrNo: function _isEnOrNo(value) {
-    //英文或者数字
-    var reg = /.*[\u4e00-\u9fa5]+.*$/;
-    var result = true;
-    if (reg.test(value) || form._isSpecial(value) || form._isEmoji(value)) {
-      result = false;
-    }
-    return result;
-  },
-  _isSpecial: function _isSpecial(value) {
-    //是否包含特殊字符
-    var regEn = /[`~!@#$%^&*()_+<>?:"{},.\/;'[\]]/im,
-      regCn = /[·！#￥（——）：；“”‘、，|《。》？、【】[\]]/im;
-    if (regEn.test(value) || regCn.test(value)) {
-      return true;
-    }
-    return false;
-  },
-  _isEmoji: function _isEmoji(value) {
-    //是否包含表情
-    return /\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDE4F]/g.test(value);
-  },
-  _isDate: function _isDate(value) {
-    //2019-10-12
-    var reg = /^(?:(?!0000)[0-9]{4}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-8])|(?:0[13-9]|1[0-2])-(?:29|30)|(?:0[13578]|1[02])-31)|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:0[48]|[2468][048]|[13579][26])00)-02-29)$/;
-    return reg.test(value);
-  },
-  _isUrl: function _isUrl(value) {
-    return /^((https?|ftp|file):\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})(:[0-9]{1,5})?((\/?)|(\/[\\\w_!~*\\'()\\\.;?:@&=+$,%#-]+)+\/?)$/.test(value);
-  },
-  _isSame: function _isSame(value1, value2) {
-    return value1 === value2;
-  },
-  _isRange: function _isRange(value, range1, range2) {
-    if (!range1 && range1 != 0 && !range2 && range2 != 0) {
-      return true;
-    } else if (!range1 && range1 != 0) {
-      return value <= range2;
-    } else if (!range2 && range2 != 0) {
-      return value >= range1;
-    } else {
-      return value >= range1 && value <= range2;
-    }
-  },
-  _minLength: function _minLength(value, min) {
-    return value.length >= Number(min);
-  },
-  _maxLength: function _maxLength(value, max) {
-    return value.length <= Number(max);
-  },
-  _isKeyword: function _isKeyword(value, keywords) {
-    //是否包含关键词，敏感词，多个以英文逗号分隔，包含则为false,弹出提示语！
-    var result = true;
-    if (!keywords) return result;
-    var key = keywords.split(',');
-    for (var i = 0, len = key.length; i < len; i++) {
-      if (~value.indexOf(key[i])) {
-        result = false;
-        break;
-      }
-    }
-    return result;
-  }
-};
-var _default = {
-  validation: form.validation
-};
-exports.default = _default;
 
 /***/ }),
 
@@ -9309,6 +8968,347 @@ function _nonIterableSpread() {
   throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 module.exports = _nonIterableSpread, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 210:
+/*!***********************************************************************************!*\
+  !*** D:/source-code/water-meter-app/components/thorui/tui-form/tui-validation.js ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+/**
+ * 表单验证
+ * @author echo.
+ * @version 1.6.6
+ **/
+
+var form = {
+  //非必填情况下,如果值为空,则不进行校验
+  //当出现错误时返回错误消息，否则返回空即为验证通过
+  /*
+   formData:Object 表单对象。{key:value,key:value},key==rules.name
+   rules: Array [{name:name,rule:[],msg:[],validator:[],{name:name,rule:[],msg:[],validator:[]}]
+  		name:name 属性=> 元素的名称
+  		rule:字符串数组 ["required","isMobile","isEmail","isCarNo","isIdCard","isAmount","isNum","isChinese","isNotChinese","isEnglish",isEnAndNo","isSpecial","isEmoji",""isDate","isUrl","isSame:key","range:[1,9]","minLength:9","maxLength:Number","isKeyword:key1,key2,key3..."]
+  		msg:数组 []。 与数组 rule 长度相同,对应的错误提示信息
+  		validator:[{msg:'错误消息',method:Function}]，自定义验证方法组，函数约定：(value)=>{ return true or false}
+  */
+  validation: function validation(formData, rules) {
+    var _iterator = _createForOfIteratorHelper(rules),
+      _step;
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var item = _step.value;
+        var key = item.name;
+        var rule = item.rule;
+        var validator = item.validator;
+        var msgArr = item.msg;
+        if (!key || !rule || rule.length === 0 || !msgArr || msgArr.length === 0 || !~rule.indexOf("required") && formData[key].toString().length === 0) {
+          continue;
+        }
+        for (var i = 0, length = rule.length; i < length; i++) {
+          var ruleItem = rule[i];
+          var msg = msgArr[i];
+          if (!msg || !ruleItem) continue;
+          //数据处理
+          var value = null;
+          if (~ruleItem.indexOf(":")) {
+            var temp = ruleItem.split(":");
+            ruleItem = temp[0];
+            value = temp[1];
+          }
+          var isError = false;
+          switch (ruleItem) {
+            case "required":
+              isError = form._isNullOrEmpty(formData[key]);
+              break;
+            case "isMobile":
+              isError = !form._isMobile(formData[key]);
+              break;
+            case "isEmail":
+              isError = !form._isEmail(formData[key]);
+              break;
+            case "isCarNo":
+              isError = !form._isCarNo(formData[key]);
+              break;
+            case "isIdCard":
+              isError = !form._isIdCard(formData[key]);
+              break;
+            case "isAmount":
+              isError = !form._isAmount(formData[key]);
+              break;
+            case "isNum":
+              isError = !form._isNum(formData[key]);
+              break;
+            case "isChinese":
+              isError = !form._isChinese(formData[key]);
+              break;
+            case "isNotChinese":
+              isError = !form._isNotChinese(formData[key]);
+              break;
+            case "isEnglish":
+              isError = !form._isEnglish(formData[key]);
+              break;
+            case "isEnAndNo":
+              isError = !form._isEnAndNo(formData[key]);
+              break;
+            case "isEnOrNo":
+              isError = !form._isEnOrNo(formData[key]);
+              break;
+            case "isSpecial":
+              isError = form._isSpecial(formData[key]);
+              break;
+            case "isEmoji":
+              isError = form._isEmoji(formData[key]);
+              break;
+            case "isDate":
+              isError = !form._isDate(formData[key]);
+              break;
+            case "isUrl":
+              isError = !form._isUrl(formData[key]);
+              break;
+            case "isSame":
+              isError = !form._isSame(formData[key], formData[value]);
+              break;
+            case "range":
+              var range = null;
+              try {
+                range = JSON.parse(value);
+                if (range.length <= 1) {
+                  throw new Error("range值传入有误！");
+                }
+              } catch (e) {
+                return "range值传入有误！";
+              }
+              isError = !form._isRange(formData[key], range[0], range[1]);
+              break;
+            case "minLength":
+              isError = !form._minLength(formData[key], value);
+              break;
+            case "maxLength":
+              isError = !form._maxLength(formData[key], value);
+              break;
+            case "isKeyword":
+              isError = !form._isKeyword(formData[key], value);
+              break;
+            default:
+              break;
+          }
+          if (isError) {
+            return msg;
+          }
+        }
+        if (validator && validator.length > 0) {
+          var _iterator2 = _createForOfIteratorHelper(validator),
+            _step2;
+          try {
+            for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+              var model = _step2.value;
+              var func = model.method;
+              if (func && !func(formData[key])) {
+                return model.msg;
+              }
+            }
+          } catch (err) {
+            _iterator2.e(err);
+          } finally {
+            _iterator2.f();
+          }
+        }
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+    return "";
+  },
+  //允许填写字符串null或者undefined
+  _isNullOrEmpty: function _isNullOrEmpty(value) {
+    return value === null || value === '' || value === undefined ? true : false;
+  },
+  _isMobile: function _isMobile(value) {
+    return /^(?:13\d|14\d|15\d|16\d|17\d|18\d|19\d)\d{5}(\d{3}|\*{3})$/.test(value);
+  },
+  _isEmail: function _isEmail(value) {
+    return /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/.test(value);
+  },
+  _isCarNo: function _isCarNo(value) {
+    // 新能源车牌
+    var xreg = /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}(([0-9]{5}[DF]$)|([DF][A-HJ-NP-Z0-9][0-9]{4}$))/;
+    // 旧车牌
+    var creg = /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-HJ-NP-Z0-9]{4}[A-HJ-NP-Z0-9挂学警港澳]{1}$/;
+    if (value.length === 7) {
+      return creg.test(value);
+    } else if (value.length === 8) {
+      return xreg.test(value);
+    } else {
+      return false;
+    }
+  },
+  _isIdCard: function _isIdCard(value) {
+    var idCard = value;
+    if (idCard.length == 15) {
+      return this.__isValidityBrithBy15IdCard;
+    } else if (idCard.length == 18) {
+      var arrIdCard = idCard.split("");
+      if (this.__isValidityBrithBy18IdCard(idCard) && this.__isTrueValidateCodeBy18IdCard(arrIdCard)) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  },
+  __isTrueValidateCodeBy18IdCard: function __isTrueValidateCodeBy18IdCard(arrIdCard) {
+    var sum = 0;
+    var Wi = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2, 1];
+    var ValideCode = [1, 0, 10, 9, 8, 7, 6, 5, 4, 3, 2];
+    if (arrIdCard[17].toLowerCase() == 'x') {
+      arrIdCard[17] = 10;
+    }
+    for (var i = 0; i < 17; i++) {
+      sum += Wi[i] * arrIdCard[i];
+    }
+    var valCodePosition = sum % 11;
+    if (arrIdCard[17] == ValideCode[valCodePosition]) {
+      return true;
+    } else {
+      return false;
+    }
+  },
+  __isValidityBrithBy18IdCard: function __isValidityBrithBy18IdCard(idCard18) {
+    var year = idCard18.substring(6, 10);
+    var month = idCard18.substring(10, 12);
+    var day = idCard18.substring(12, 14);
+    var temp_date = new Date(year, parseFloat(month) - 1, parseFloat(day));
+    if (temp_date.getFullYear() != parseFloat(year) || temp_date.getMonth() != parseFloat(month) - 1 || temp_date.getDate() != parseFloat(day)) {
+      return false;
+    } else {
+      return true;
+    }
+  },
+  __isValidityBrithBy15IdCard: function __isValidityBrithBy15IdCard(idCard15) {
+    var year = idCard15.substring(6, 8);
+    var month = idCard15.substring(8, 10);
+    var day = idCard15.substring(10, 12);
+    var temp_date = new Date(year, parseFloat(month) - 1, parseFloat(day));
+    if (temp_date.getYear() != parseFloat(year) || temp_date.getMonth() != parseFloat(month) - 1 || temp_date.getDate() != parseFloat(day)) {
+      return false;
+    } else {
+      return true;
+    }
+  },
+  _isAmount: function _isAmount(value) {
+    //金额，只允许保留两位小数
+    return /^([0-9]*[.]?[0-9])[0-9]{0,1}$/.test(value);
+  },
+  _isNum: function _isNum(value) {
+    //只能为数字
+    return /^[0-9]+$/.test(value);
+  },
+  //是否全部为中文
+  _isChinese: function _isChinese(value) {
+    var reg = /^[\u4e00-\u9fa5]+$/;
+    return value !== "" && reg.test(value) && !form._isSpecial(value) && !form._isEmoji(value);
+  },
+  //是否不包含中文，可以有特殊字符
+  _isNotChinese: function _isNotChinese(value) {
+    var reg = /.*[\u4e00-\u9fa5]+.*$/;
+    var result = true;
+    if (reg.test(value)) {
+      result = false;
+    }
+    return result;
+  },
+  _isEnglish: function _isEnglish(value) {
+    return /^[a-zA-Z]*$/.test(value);
+  },
+  _isEnAndNo: function _isEnAndNo(value) {
+    //8~20位数字和字母组合
+    return /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,20}$/.test(value);
+  },
+  _isEnOrNo: function _isEnOrNo(value) {
+    //英文或者数字
+    var reg = /.*[\u4e00-\u9fa5]+.*$/;
+    var result = true;
+    if (reg.test(value) || form._isSpecial(value) || form._isEmoji(value)) {
+      result = false;
+    }
+    return result;
+  },
+  _isSpecial: function _isSpecial(value) {
+    //是否包含特殊字符
+    var regEn = /[`~!@#$%^&*()_+<>?:"{},.\/;'[\]]/im,
+      regCn = /[·！#￥（——）：；“”‘、，|《。》？、【】[\]]/im;
+    if (regEn.test(value) || regCn.test(value)) {
+      return true;
+    }
+    return false;
+  },
+  _isEmoji: function _isEmoji(value) {
+    //是否包含表情
+    return /\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDE4F]/g.test(value);
+  },
+  _isDate: function _isDate(value) {
+    //2019-10-12
+    var reg = /^(?:(?!0000)[0-9]{4}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-8])|(?:0[13-9]|1[0-2])-(?:29|30)|(?:0[13578]|1[02])-31)|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:0[48]|[2468][048]|[13579][26])00)-02-29)$/;
+    return reg.test(value);
+  },
+  _isUrl: function _isUrl(value) {
+    return /^((https?|ftp|file):\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})(:[0-9]{1,5})?((\/?)|(\/[\\\w_!~*\\'()\\\.;?:@&=+$,%#-]+)+\/?)$/.test(value);
+  },
+  _isSame: function _isSame(value1, value2) {
+    return value1 === value2;
+  },
+  _isRange: function _isRange(value, range1, range2) {
+    if (!range1 && range1 != 0 && !range2 && range2 != 0) {
+      return true;
+    } else if (!range1 && range1 != 0) {
+      return value <= range2;
+    } else if (!range2 && range2 != 0) {
+      return value >= range1;
+    } else {
+      return value >= range1 && value <= range2;
+    }
+  },
+  _minLength: function _minLength(value, min) {
+    return value.length >= Number(min);
+  },
+  _maxLength: function _maxLength(value, max) {
+    return value.length <= Number(max);
+  },
+  _isKeyword: function _isKeyword(value, keywords) {
+    //是否包含关键词，敏感词，多个以英文逗号分隔，包含则为false,弹出提示语！
+    var result = true;
+    if (!keywords) return result;
+    var key = keywords.split(',');
+    for (var i = 0, len = key.length; i < len; i++) {
+      if (~value.indexOf(key[i])) {
+        result = false;
+        break;
+      }
+    }
+    return result;
+  }
+};
+var _default = {
+  validation: form.validation
+};
+exports.default = _default;
 
 /***/ }),
 
@@ -16007,6 +16007,617 @@ try {
 
 module.exports = g;
 
+
+/***/ }),
+
+/***/ 309:
+/*!**********************************************************************************!*\
+  !*** D:/source-code/water-meter-app/components/uni/uParse/src/libs/html2json.js ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(wx) {
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _wxDiscode = _interopRequireDefault(__webpack_require__(/*! ./wxDiscode */ 310));
+var _htmlparser = _interopRequireDefault(__webpack_require__(/*! ./htmlparser */ 311));
+/**
+ * html2Json 改造来自: https://github.com/Jxck/html2json
+ *
+ *
+ * author: Di (微信小程序开发工程师)
+ * organization: WeAppDev(微信小程序开发论坛)(http://weappdev.com)
+ *               垂直微信小程序开发交流社区
+ *
+ * github地址: https://github.com/icindy/wxParse
+ *
+ * for: 微信小程序富文本解析
+ * detail : http://weappdev.com/t/wxparse-alpha0-1-html-markdown/184
+ */
+
+function makeMap(str) {
+  var obj = {};
+  var items = str.split(',');
+  for (var i = 0; i < items.length; i += 1) {
+    obj[items[i]] = true;
+  }
+  return obj;
+}
+
+// Block Elements - HTML 5
+var block = makeMap('br,code,address,article,applet,aside,audio,blockquote,button,canvas,center,dd,del,dir,div,dl,dt,fieldset,figcaption,figure,footer,form,frameset,h1,h2,h3,h4,h5,h6,header,hgroup,hr,iframe,ins,isindex,li,map,menu,noframes,noscript,object,ol,output,p,pre,section,script,table,tbody,td,tfoot,th,thead,tr,ul,video');
+
+// Inline Elements - HTML 5
+var inline = makeMap('a,abbr,acronym,applet,b,basefont,bdo,big,button,cite,del,dfn,em,font,i,iframe,img,input,ins,kbd,label,map,object,q,s,samp,script,select,small,span,strike,strong,sub,sup,textarea,tt,u,var');
+
+// Elements that you can, intentionally, leave open
+// (and which close themselves)
+var closeSelf = makeMap('colgroup,dd,dt,li,options,p,td,tfoot,th,thead,tr');
+function removeDOCTYPE(html) {
+  var isDocument = /<body.*>([^]*)<\/body>/.test(html);
+  return isDocument ? RegExp.$1 : html;
+}
+function trimHtml(html) {
+  return html.replace(/<!--.*?-->/gi, '').replace(/\/\*.*?\*\//gi, '').replace(/[ ]+</gi, '<').replace(/<script[^]*<\/script>/gi, '').replace(/<style[^]*<\/style>/gi, '');
+}
+function getScreenInfo() {
+  var screen = {};
+  wx.getSystemInfo({
+    success: function success(res) {
+      screen.width = res.windowWidth;
+      screen.height = res.windowHeight;
+    }
+  });
+  return screen;
+}
+function html2json(html, customHandler, imageProp, host) {
+  // 处理字符串
+  html = removeDOCTYPE(html);
+  html = trimHtml(html);
+  html = _wxDiscode.default.strDiscode(html);
+  // 生成node节点
+  var bufArray = [];
+  var results = {
+    nodes: [],
+    imageUrls: []
+  };
+  var screen = getScreenInfo();
+  function Node(tag) {
+    this.node = 'element';
+    this.tag = tag;
+    this.$screen = screen;
+  }
+  (0, _htmlparser.default)(html, {
+    start: function start(tag, attrs, unary) {
+      // node for this element
+      var node = new Node(tag);
+      if (bufArray.length !== 0) {
+        var parent = bufArray[0];
+        if (parent.nodes === undefined) {
+          parent.nodes = [];
+        }
+      }
+      if (block[tag]) {
+        node.tagType = 'block';
+      } else if (inline[tag]) {
+        node.tagType = 'inline';
+      } else if (closeSelf[tag]) {
+        node.tagType = 'closeSelf';
+      }
+      node.attr = attrs.reduce(function (pre, attr) {
+        var name = attr.name;
+        var value = attr.value;
+        if (name === 'class') {
+          node.classStr = value;
+        }
+        // has multi attibutes
+        // make it array of attribute
+        if (name === 'style') {
+          node.styleStr = value;
+        }
+        if (value.match(/ /)) {
+          value = value.split(' ');
+        }
+
+        // if attr already exists
+        // merge it
+        if (pre[name]) {
+          if (Array.isArray(pre[name])) {
+            // already array, push to last
+            pre[name].push(value);
+          } else {
+            // single value, make it array
+            pre[name] = [pre[name], value];
+          }
+        } else {
+          // not exist, put it
+          pre[name] = value;
+        }
+        return pre;
+      }, {});
+
+      // 优化样式相关属性
+      if (node.classStr) {
+        node.classStr += " ".concat(node.tag);
+      } else {
+        node.classStr = node.tag;
+      }
+      if (node.tagType === 'inline') {
+        node.classStr += ' inline';
+      }
+
+      // 对img添加额外数据
+      if (node.tag === 'img') {
+        var imgUrl = node.attr.src;
+        imgUrl = _wxDiscode.default.urlToHttpUrl(imgUrl, imageProp.domain);
+        Object.assign(node.attr, imageProp, {
+          src: imgUrl || ''
+        });
+        if (imgUrl) {
+          results.imageUrls.push(imgUrl);
+        }
+      }
+
+      // 处理a标签属性
+      if (node.tag === 'a') {
+        node.attr.href = node.attr.href || '';
+      }
+
+      // 处理font标签样式属性
+      if (node.tag === 'font') {
+        var fontSize = ['x-small', 'small', 'medium', 'large', 'x-large', 'xx-large', '-webkit-xxx-large'];
+        var styleAttrs = {
+          color: 'color',
+          face: 'font-family',
+          size: 'font-size'
+        };
+        if (!node.styleStr) node.styleStr = '';
+        Object.keys(styleAttrs).forEach(function (key) {
+          if (node.attr[key]) {
+            var value = key === 'size' ? fontSize[node.attr[key] - 1] : node.attr[key];
+            node.styleStr += "".concat(styleAttrs[key], ": ").concat(value, ";");
+          }
+        });
+      }
+
+      // 临时记录source资源
+      if (node.tag === 'source') {
+        results.source = node.attr.src;
+      }
+      if (customHandler.start) {
+        customHandler.start(node, results);
+      }
+      if (unary) {
+        // if this tag doesn't have end tag
+        // like <img src="hoge.png"/>
+        // add to parents
+        var _parent = bufArray[0] || results;
+        if (_parent.nodes === undefined) {
+          _parent.nodes = [];
+        }
+        _parent.nodes.push(node);
+      } else {
+        bufArray.unshift(node);
+      }
+    },
+    end: function end(tag) {
+      // merge into parent tag
+      var node = bufArray.shift();
+      if (node.tag !== tag) {
+        console.error('invalid state: mismatch end tag');
+      }
+
+      // 当有缓存source资源时于于video补上src资源
+      if (node.tag === 'video' && results.source) {
+        node.attr.src = results.source;
+        delete results.source;
+      }
+      if (customHandler.end) {
+        customHandler.end(node, results);
+      }
+      if (bufArray.length === 0) {
+        results.nodes.push(node);
+      } else {
+        var parent = bufArray[0];
+        if (!parent.nodes) {
+          parent.nodes = [];
+        }
+        parent.nodes.push(node);
+      }
+    },
+    chars: function chars(text) {
+      if (!text.trim()) return;
+      var node = {
+        node: 'text',
+        text: text
+      };
+      if (customHandler.chars) {
+        customHandler.chars(node, results);
+      }
+      if (bufArray.length === 0) {
+        results.nodes.push(node);
+      } else {
+        var parent = bufArray[0];
+        if (parent.nodes === undefined) {
+          parent.nodes = [];
+        }
+        parent.nodes.push(node);
+      }
+    }
+  });
+  return results;
+}
+var _default = html2json;
+exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/wx.js */ 1)["default"]))
+
+/***/ }),
+
+/***/ 310:
+/*!**********************************************************************************!*\
+  !*** D:/source-code/water-meter-app/components/uni/uParse/src/libs/wxDiscode.js ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+// HTML 支持的数学符号
+function strNumDiscode(str) {
+  str = str.replace(/&forall;/g, '∀');
+  str = str.replace(/&part;/g, '∂');
+  str = str.replace(/&exist;/g, '∃');
+  str = str.replace(/&empty;/g, '∅');
+  str = str.replace(/&nabla;/g, '∇');
+  str = str.replace(/&isin;/g, '∈');
+  str = str.replace(/&notin;/g, '∉');
+  str = str.replace(/&ni;/g, '∋');
+  str = str.replace(/&prod;/g, '∏');
+  str = str.replace(/&sum;/g, '∑');
+  str = str.replace(/&minus;/g, '−');
+  str = str.replace(/&lowast;/g, '∗');
+  str = str.replace(/&radic;/g, '√');
+  str = str.replace(/&prop;/g, '∝');
+  str = str.replace(/&infin;/g, '∞');
+  str = str.replace(/&ang;/g, '∠');
+  str = str.replace(/&and;/g, '∧');
+  str = str.replace(/&or;/g, '∨');
+  str = str.replace(/&cap;/g, '∩');
+  str = str.replace(/&cup;/g, '∪');
+  str = str.replace(/&int;/g, '∫');
+  str = str.replace(/&there4;/g, '∴');
+  str = str.replace(/&sim;/g, '∼');
+  str = str.replace(/&cong;/g, '≅');
+  str = str.replace(/&asymp;/g, '≈');
+  str = str.replace(/&ne;/g, '≠');
+  str = str.replace(/&le;/g, '≤');
+  str = str.replace(/&ge;/g, '≥');
+  str = str.replace(/&sub;/g, '⊂');
+  str = str.replace(/&sup;/g, '⊃');
+  str = str.replace(/&nsub;/g, '⊄');
+  str = str.replace(/&sube;/g, '⊆');
+  str = str.replace(/&supe;/g, '⊇');
+  str = str.replace(/&oplus;/g, '⊕');
+  str = str.replace(/&otimes;/g, '⊗');
+  str = str.replace(/&perp;/g, '⊥');
+  str = str.replace(/&sdot;/g, '⋅');
+  return str;
+}
+
+// HTML 支持的希腊字母
+function strGreeceDiscode(str) {
+  str = str.replace(/&Alpha;/g, 'Α');
+  str = str.replace(/&Beta;/g, 'Β');
+  str = str.replace(/&Gamma;/g, 'Γ');
+  str = str.replace(/&Delta;/g, 'Δ');
+  str = str.replace(/&Epsilon;/g, 'Ε');
+  str = str.replace(/&Zeta;/g, 'Ζ');
+  str = str.replace(/&Eta;/g, 'Η');
+  str = str.replace(/&Theta;/g, 'Θ');
+  str = str.replace(/&Iota;/g, 'Ι');
+  str = str.replace(/&Kappa;/g, 'Κ');
+  str = str.replace(/&Lambda;/g, 'Λ');
+  str = str.replace(/&Mu;/g, 'Μ');
+  str = str.replace(/&Nu;/g, 'Ν');
+  str = str.replace(/&Xi;/g, 'Ν');
+  str = str.replace(/&Omicron;/g, 'Ο');
+  str = str.replace(/&Pi;/g, 'Π');
+  str = str.replace(/&Rho;/g, 'Ρ');
+  str = str.replace(/&Sigma;/g, 'Σ');
+  str = str.replace(/&Tau;/g, 'Τ');
+  str = str.replace(/&Upsilon;/g, 'Υ');
+  str = str.replace(/&Phi;/g, 'Φ');
+  str = str.replace(/&Chi;/g, 'Χ');
+  str = str.replace(/&Psi;/g, 'Ψ');
+  str = str.replace(/&Omega;/g, 'Ω');
+  str = str.replace(/&alpha;/g, 'α');
+  str = str.replace(/&beta;/g, 'β');
+  str = str.replace(/&gamma;/g, 'γ');
+  str = str.replace(/&delta;/g, 'δ');
+  str = str.replace(/&epsilon;/g, 'ε');
+  str = str.replace(/&zeta;/g, 'ζ');
+  str = str.replace(/&eta;/g, 'η');
+  str = str.replace(/&theta;/g, 'θ');
+  str = str.replace(/&iota;/g, 'ι');
+  str = str.replace(/&kappa;/g, 'κ');
+  str = str.replace(/&lambda;/g, 'λ');
+  str = str.replace(/&mu;/g, 'μ');
+  str = str.replace(/&nu;/g, 'ν');
+  str = str.replace(/&xi;/g, 'ξ');
+  str = str.replace(/&omicron;/g, 'ο');
+  str = str.replace(/&pi;/g, 'π');
+  str = str.replace(/&rho;/g, 'ρ');
+  str = str.replace(/&sigmaf;/g, 'ς');
+  str = str.replace(/&sigma;/g, 'σ');
+  str = str.replace(/&tau;/g, 'τ');
+  str = str.replace(/&upsilon;/g, 'υ');
+  str = str.replace(/&phi;/g, 'φ');
+  str = str.replace(/&chi;/g, 'χ');
+  str = str.replace(/&psi;/g, 'ψ');
+  str = str.replace(/&omega;/g, 'ω');
+  str = str.replace(/&thetasym;/g, 'ϑ');
+  str = str.replace(/&upsih;/g, 'ϒ');
+  str = str.replace(/&piv;/g, 'ϖ');
+  str = str.replace(/&middot;/g, '·');
+  return str;
+}
+function strcharacterDiscode(str) {
+  // 加入常用解析
+  str = str.replace(/&nbsp;/g, ' ');
+  str = str.replace(/&ensp;/g, ' ');
+  str = str.replace(/&emsp;/g, '　');
+  str = str.replace(/&quot;/g, "'");
+  str = str.replace(/&amp;/g, '&');
+  str = str.replace(/&lt;/g, '<');
+  str = str.replace(/&gt;/g, '>');
+  str = str.replace(/&#8226;/g, '•');
+  return str;
+}
+
+// HTML 支持的其他实体
+function strOtherDiscode(str) {
+  str = str.replace(/&OElig;/g, 'Œ');
+  str = str.replace(/&oelig;/g, 'œ');
+  str = str.replace(/&Scaron;/g, 'Š');
+  str = str.replace(/&scaron;/g, 'š');
+  str = str.replace(/&Yuml;/g, 'Ÿ');
+  str = str.replace(/&fnof;/g, 'ƒ');
+  str = str.replace(/&circ;/g, 'ˆ');
+  str = str.replace(/&tilde;/g, '˜');
+  str = str.replace(/&ensp;/g, '');
+  str = str.replace(/&emsp;/g, '');
+  str = str.replace(/&thinsp;/g, '');
+  str = str.replace(/&zwnj;/g, '');
+  str = str.replace(/&zwj;/g, '');
+  str = str.replace(/&lrm;/g, '');
+  str = str.replace(/&rlm;/g, '');
+  str = str.replace(/&ndash;/g, '–');
+  str = str.replace(/&mdash;/g, '—');
+  str = str.replace(/&lsquo;/g, '‘');
+  str = str.replace(/&rsquo;/g, '’');
+  str = str.replace(/&sbquo;/g, '‚');
+  str = str.replace(/&ldquo;/g, '“');
+  str = str.replace(/&rdquo;/g, '”');
+  str = str.replace(/&bdquo;/g, '„');
+  str = str.replace(/&dagger;/g, '†');
+  str = str.replace(/&Dagger;/g, '‡');
+  str = str.replace(/&bull;/g, '•');
+  str = str.replace(/&hellip;/g, '…');
+  str = str.replace(/&permil;/g, '‰');
+  str = str.replace(/&prime;/g, '′');
+  str = str.replace(/&Prime;/g, '″');
+  str = str.replace(/&lsaquo;/g, '‹');
+  str = str.replace(/&rsaquo;/g, '›');
+  str = str.replace(/&oline;/g, '‾');
+  str = str.replace(/&euro;/g, '€');
+  str = str.replace(/&trade;/g, '™');
+  str = str.replace(/&larr;/g, '←');
+  str = str.replace(/&uarr;/g, '↑');
+  str = str.replace(/&rarr;/g, '→');
+  str = str.replace(/&darr;/g, '↓');
+  str = str.replace(/&harr;/g, '↔');
+  str = str.replace(/&crarr;/g, '↵');
+  str = str.replace(/&lceil;/g, '⌈');
+  str = str.replace(/&rceil;/g, '⌉');
+  str = str.replace(/&lfloor;/g, '⌊');
+  str = str.replace(/&rfloor;/g, '⌋');
+  str = str.replace(/&loz;/g, '◊');
+  str = str.replace(/&spades;/g, '♠');
+  str = str.replace(/&clubs;/g, '♣');
+  str = str.replace(/&hearts;/g, '♥');
+  str = str.replace(/&diams;/g, '♦');
+  str = str.replace(/&#39;/g, "'");
+  return str;
+}
+function strDiscode(str) {
+  str = strNumDiscode(str);
+  str = strGreeceDiscode(str);
+  str = strcharacterDiscode(str);
+  str = strOtherDiscode(str);
+  return str;
+}
+function urlToHttpUrl(url, domain) {
+  if (/^\/\//.test(url)) {
+    return "https:".concat(url);
+  } else if (/^\//.test(url)) {
+    return "https://".concat(domain).concat(url);
+  }
+  return url;
+}
+var _default = {
+  strDiscode: strDiscode,
+  urlToHttpUrl: urlToHttpUrl
+};
+exports.default = _default;
+
+/***/ }),
+
+/***/ 311:
+/*!***********************************************************************************!*\
+  !*** D:/source-code/water-meter-app/components/uni/uParse/src/libs/htmlparser.js ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+/**
+ *
+ * htmlParser改造自: https://github.com/blowsie/Pure-JavaScript-HTML5-Parser
+ *
+ * author: Di (微信小程序开发工程师)
+ * organization: WeAppDev(微信小程序开发论坛)(http://weappdev.com)
+ *               垂直微信小程序开发交流社区
+ *
+ * github地址: https://github.com/icindy/wxParse
+ *
+ * for: 微信小程序富文本解析
+ * detail : http://weappdev.com/t/wxparse-alpha0-1-html-markdown/184
+ */
+// Regular Expressions for parsing tags and attributes
+
+var startTag = /^<([-A-Za-z0-9_]+)((?:\s+[a-zA-Z0-9_:][-a-zA-Z0-9_:.]*(?:\s*=\s*(?:(?:"[^"]*")|(?:'[^']*')|[^>\s]+))?)*)\s*(\/?)>/;
+var endTag = /^<\/([-A-Za-z0-9_]+)[^>]*>/;
+var attr = /([a-zA-Z0-9_:][-a-zA-Z0-9_:.]*)(?:\s*=\s*(?:(?:"((?:\\.|[^"])*)")|(?:'((?:\\.|[^'])*)')|([^>\s]+)))?/g;
+function makeMap(str) {
+  var obj = {};
+  var items = str.split(',');
+  for (var i = 0; i < items.length; i += 1) {
+    obj[items[i]] = true;
+  }
+  return obj;
+}
+
+// Empty Elements - HTML 5
+var empty = makeMap('area,base,basefont,br,col,frame,hr,img,input,link,meta,param,embed,command,keygen,source,track,wbr');
+
+// Block Elements - HTML 5
+var block = makeMap('address,code,article,applet,aside,audio,blockquote,button,canvas,center,dd,del,dir,div,dl,dt,fieldset,figcaption,figure,footer,form,frameset,h1,h2,h3,h4,h5,h6,header,hgroup,hr,iframe,ins,isindex,li,map,menu,noframes,noscript,object,ol,output,p,pre,section,script,table,tbody,td,tfoot,th,thead,tr,ul,video');
+
+// Inline Elements - HTML 5
+var inline = makeMap('a,abbr,acronym,applet,b,basefont,bdo,big,br,button,cite,del,dfn,em,font,i,iframe,img,input,ins,kbd,label,map,object,q,s,samp,script,select,small,span,strike,strong,sub,sup,textarea,tt,u,var');
+
+// Elements that you can, intentionally, leave open
+// (and which close themselves)
+var closeSelf = makeMap('colgroup,dd,dt,li,options,p,td,tfoot,th,thead,tr');
+
+// Attributes that have their values filled in disabled="disabled"
+var fillAttrs = makeMap('checked,compact,declare,defer,disabled,ismap,multiple,nohref,noresize,noshade,nowrap,readonly,selected');
+function HTMLParser(html, handler) {
+  var index;
+  var chars;
+  var match;
+  var last = html;
+  var stack = [];
+  stack.last = function () {
+    return stack[stack.length - 1];
+  };
+  function parseEndTag(tag, tagName) {
+    // If no tag name is provided, clean shop
+    var pos;
+    if (!tagName) {
+      pos = 0;
+    } else {
+      // Find the closest opened tag of the same type
+      tagName = tagName.toLowerCase();
+      for (pos = stack.length - 1; pos >= 0; pos -= 1) {
+        if (stack[pos] === tagName) break;
+      }
+    }
+    if (pos >= 0) {
+      // Close all the open elements, up the stack
+      for (var i = stack.length - 1; i >= pos; i -= 1) {
+        if (handler.end) handler.end(stack[i]);
+      }
+
+      // Remove the open elements from the stack
+      stack.length = pos;
+    }
+  }
+  function parseStartTag(tag, tagName, rest, unary) {
+    tagName = tagName.toLowerCase();
+    if (block[tagName]) {
+      while (stack.last() && inline[stack.last()]) {
+        parseEndTag('', stack.last());
+      }
+    }
+    if (closeSelf[tagName] && stack.last() === tagName) {
+      parseEndTag('', tagName);
+    }
+    unary = empty[tagName] || !!unary;
+    if (!unary) stack.push(tagName);
+    if (handler.start) {
+      var attrs = [];
+      rest.replace(attr, function genAttr(matches, name) {
+        var value = arguments[2] || arguments[3] || arguments[4] || (fillAttrs[name] ? name : '');
+        attrs.push({
+          name: name,
+          value: value,
+          escaped: value.replace(/(^|[^\\])"/g, '$1\\"') // "
+        });
+      });
+
+      if (handler.start) {
+        handler.start(tagName, attrs, unary);
+      }
+    }
+  }
+  while (html) {
+    chars = true;
+    if (html.indexOf('</') === 0) {
+      match = html.match(endTag);
+      if (match) {
+        html = html.substring(match[0].length);
+        match[0].replace(endTag, parseEndTag);
+        chars = false;
+      }
+
+      // start tag
+    } else if (html.indexOf('<') === 0) {
+      match = html.match(startTag);
+      if (match) {
+        html = html.substring(match[0].length);
+        match[0].replace(startTag, parseStartTag);
+        chars = false;
+      }
+    }
+    if (chars) {
+      index = html.indexOf('<');
+      var text = '';
+      while (index === 0) {
+        text += '<';
+        html = html.substring(1);
+        index = html.indexOf('<');
+      }
+      text += index < 0 ? html : html.substring(0, index);
+      html = index < 0 ? '' : html.substring(index);
+      if (handler.chars) handler.chars(text);
+    }
+    if (html === last) throw new Error("Parse Error: ".concat(html));
+    last = html;
+  }
+
+  // Clean up any remaining tags
+  parseEndTag();
+}
+var _default = HTMLParser;
+exports.default = _default;
 
 /***/ }),
 

@@ -18,7 +18,14 @@
       "pages": [
         "recharge-history/recharge-history",
         "check-history/check-history",
-        "recharge/recharge"
+        "recharge/recharge",
+        "recharge/recharge-protocol"
+      ]
+    },
+    {
+      "root": "subpackage/public",
+      "pages": [
+        "richtext"
       ]
     }
   ],

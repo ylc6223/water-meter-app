@@ -76,9 +76,29 @@
 					"navigationBarTitleText": "充值",
 					"enablePullDownRefresh": false,
 					"navigationStyle": "custom"
-					
+
 				}
 
+			}, {
+				"path": "recharge/recharge-protocol",
+				"style": {
+					"navigationBarTitleText": "",
+					"enablePullDownRefresh": false,
+					"navigationStyle": "custom"
+				}
+
+			}]
+		},
+		{
+			"root": "subpackage/public",
+			"pages": [{
+				"path": "richtext",
+				"style": {
+					"navigationBarTextStyle": "black",
+					"navigationBarTitleText": "充值协议",
+					"navigationBarBackgroundColor": "#FFF",
+					"enablePullDownRefresh": false
+				}
 			}]
 		}
 	],
