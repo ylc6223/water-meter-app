@@ -27,8 +27,7 @@
 			</view>
 		</view>
 
-		<!-- <view class="card-wrap" :style="{'margin-top':navigationBarHeight+'px','height': cardHeight+'px'}"> -->
-		<view class="card-wrap" :style="{'margin-top':navigationBarHeight+'px'}">
+		<view class="card-wrap" :style="{'top':navigationBarHeight+123+'px','bottom':'0'}">
 			<xui-card :hover="false" :shadow="true">
 				<view v-if="nodevice" class="flex h-full flex-col items-center justify-center"
 					style="min-height: 300px;">
@@ -136,10 +135,10 @@
 				titleBarHeight: 0, //标题栏高度
 				navigationBarHeight: 0, //导航栏高度
 				screenHeight: 0, //屏幕高度
-				cardHeight: 0, //卡片高度
 				isEmpower: false, //用户是否已授权
 				showModal: false, //控制授权对话框显示隐藏
 				showTipModal: false, //控制提示用户充值需扫码的显示隐藏
+				tabbarHeight: 0,
 				banners: [{
 						url: '../../static/imgs/banner.png'
 					},
@@ -147,7 +146,8 @@
 						url: '../../static/imgs/banner1.png'
 					}
 				],
-				userInfo: null
+				userInfo: null,
+				contentHeight: 0
 			}
 		},
 		created() {
@@ -157,8 +157,10 @@
 			uni.hideTabBar()
 			const systemInfo = uni.getSystemInfoSync()
 			this.screenHeight = systemInfo.screenHeight
-			//内容高度 = 屏幕高度-轮播图高度-导航栏高度-tabbar高度 -冗余高度
-			this.cardHeight = this.screenHeight - 150 - this.navigationBarHeight - 55
+			const isIphoneX = this.$g.tui.isIphoneX()
+			if(isIphoneX){
+				
+			}
 		},
 		onShow() {
 			const that = this
@@ -245,9 +247,6 @@
 					}
 				})
 			},
-			wxLogin() {
-
-			},
 			//向微信获取用户信息
 			getUserInfo() {
 				const that = this
@@ -296,15 +295,18 @@
 				uni.navigateTo({
 					url: '../../subpackage/consumer/recharge/recharge'
 				})
-			}
+			},
 		},
 		computed: {
-			...mapState(["tabBarIndex", "tabBar"]),
+			...mapState(["tabBarIndex", "tabBar", "device"]),
 		},
 	}
 </script>
 
 <style scoped lang="scss">
+	.container{
+		min-height: 100vh;
+	}
 	::v-deep tui-modal .tui-modal-box {
 		// width: 80% !important;
 	}
@@ -327,7 +329,10 @@
 	}
 
 	.tui-header-bg {
-		position: relative;
+		// position: relative;
+		position: absolute;
+		left: 0;
+		right: 0;
 		height: 267rpx;
 		// background: rgb(147, 224, 231);
 		// background: linear-gradient(0deg, rgba(147, 224, 231, 1) 0%, rgba(31, 142, 214, 1) 100%);
@@ -423,5 +428,8 @@
 	image.qrcode {
 		width: 250rpx;
 		height: 250rpx;
+	}
+	.is-iphonex{
+		
 	}
 </style>

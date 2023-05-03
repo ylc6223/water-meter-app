@@ -112,10 +112,10 @@ const store = new Vuex.Store({
 			]
 			const tabBar = payload === 'admin' ? adminTabbar : payload === 'consumer' ? consumerTabbar : []
 			state.tabBar = tabBar
-		}
+		},
 	},
 	actions: {
-
+		
 	}
 })
 

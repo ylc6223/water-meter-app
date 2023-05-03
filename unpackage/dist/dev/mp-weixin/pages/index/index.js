@@ -101,28 +101,28 @@ var components
 try {
   components = {
     tuiNavigationBar: function () {
-      return __webpack_require__.e(/*! import() | components/thorui/tui-navigation-bar/tui-navigation-bar */ "components/thorui/tui-navigation-bar/tui-navigation-bar").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-navigation-bar/tui-navigation-bar.vue */ 131))
+      return __webpack_require__.e(/*! import() | components/thorui/tui-navigation-bar/tui-navigation-bar */ "components/thorui/tui-navigation-bar/tui-navigation-bar").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-navigation-bar/tui-navigation-bar.vue */ 132))
     },
     tuiIcon: function () {
-      return Promise.all(/*! import() | components/thorui/tui-icon/tui-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/thorui/tui-icon/tui-icon")]).then(__webpack_require__.bind(null, /*! @/components/thorui/tui-icon/tui-icon.vue */ 138))
+      return Promise.all(/*! import() | components/thorui/tui-icon/tui-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/thorui/tui-icon/tui-icon")]).then(__webpack_require__.bind(null, /*! @/components/thorui/tui-icon/tui-icon.vue */ 139))
     },
     xuiCard: function () {
-      return __webpack_require__.e(/*! import() | components/xui-card/xui-card */ "components/xui-card/xui-card").then(__webpack_require__.bind(null, /*! @/components/xui-card/xui-card.vue */ 146))
+      return __webpack_require__.e(/*! import() | components/xui-card/xui-card */ "components/xui-card/xui-card").then(__webpack_require__.bind(null, /*! @/components/xui-card/xui-card.vue */ 147))
     },
     tuiFormButton: function () {
-      return __webpack_require__.e(/*! import() | components/thorui/tui-form-button/tui-form-button */ "components/thorui/tui-form-button/tui-form-button").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-form-button/tui-form-button.vue */ 153))
+      return __webpack_require__.e(/*! import() | components/thorui/tui-form-button/tui-form-button */ "components/thorui/tui-form-button/tui-form-button").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-form-button/tui-form-button.vue */ 154))
     },
     tuiButton: function () {
-      return __webpack_require__.e(/*! import() | components/thorui/tui-button/tui-button */ "components/thorui/tui-button/tui-button").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-button/tui-button.vue */ 160))
+      return __webpack_require__.e(/*! import() | components/thorui/tui-button/tui-button */ "components/thorui/tui-button/tui-button").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-button/tui-button.vue */ 161))
     },
     tuiModal: function () {
-      return __webpack_require__.e(/*! import() | components/thorui/tui-modal/tui-modal */ "components/thorui/tui-modal/tui-modal").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-modal/tui-modal.vue */ 167))
+      return __webpack_require__.e(/*! import() | components/thorui/tui-modal/tui-modal */ "components/thorui/tui-modal/tui-modal").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-modal/tui-modal.vue */ 168))
     },
     tuiLottie: function () {
-      return Promise.all(/*! import() | components/thorui/tui-lottie/tui-lottie */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/thorui/tui-lottie/tui-lottie")]).then(__webpack_require__.bind(null, /*! @/components/thorui/tui-lottie/tui-lottie.vue */ 174))
+      return Promise.all(/*! import() | components/thorui/tui-lottie/tui-lottie */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/thorui/tui-lottie/tui-lottie")]).then(__webpack_require__.bind(null, /*! @/components/thorui/tui-lottie/tui-lottie.vue */ 175))
     },
     tuiTabbar: function () {
-      return __webpack_require__.e(/*! import() | components/thorui/tui-tabbar/tui-tabbar */ "components/thorui/tui-tabbar/tui-tabbar").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-tabbar/tui-tabbar.vue */ 182))
+      return __webpack_require__.e(/*! import() | components/thorui/tui-tabbar/tui-tabbar */ "components/thorui/tui-tabbar/tui-tabbar").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-tabbar/tui-tabbar.vue */ 183))
     },
   }
 } catch (e) {
@@ -216,20 +216,20 @@ var _default = {
       //导航栏高度
       screenHeight: 0,
       //屏幕高度
-      cardHeight: 0,
-      //卡片高度
       isEmpower: false,
       //用户是否已授权
       showModal: false,
       //控制授权对话框显示隐藏
       showTipModal: false,
       //控制提示用户充值需扫码的显示隐藏
+      tabbarHeight: 0,
       banners: [{
         url: '../../static/imgs/banner.png'
       }, {
         url: '../../static/imgs/banner1.png'
       }],
-      userInfo: null
+      userInfo: null,
+      contentHeight: 0
     };
   },
   created: function created() {
@@ -239,8 +239,8 @@ var _default = {
     uni.hideTabBar();
     var systemInfo = uni.getSystemInfoSync();
     this.screenHeight = systemInfo.screenHeight;
-    //内容高度 = 屏幕高度-轮播图高度-导航栏高度-tabbar高度 -冗余高度
-    this.cardHeight = this.screenHeight - 150 - this.navigationBarHeight - 55;
+    var isIphoneX = this.$g.tui.isIphoneX();
+    if (isIphoneX) {}
   },
   onShow: function onShow() {
     var that = this;
@@ -321,7 +321,6 @@ var _default = {
         }
       });
     },
-    wxLogin: function wxLogin() {},
     //向微信获取用户信息
     getUserInfo: function getUserInfo() {
       var that = this;
@@ -372,7 +371,7 @@ var _default = {
       });
     }
   }),
-  computed: _objectSpread({}, (0, _vuex.mapState)(["tabBarIndex", "tabBar"]))
+  computed: _objectSpread({}, (0, _vuex.mapState)(["tabBarIndex", "tabBar", "device"]))
 };
 exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))

@@ -11,7 +11,11 @@ const tui = {
 		//return 'https://uat.thorui.cn'
 		// return 'https://prod.thorui.cn'
 	},
-	toast: function({text, duration, success}) {
+	toast: function({
+		text,
+		duration,
+		success
+	}) {
 		uni.showToast({
 			// #ifndef MP-ALIPAY
 			duration: duration || 2000,
@@ -20,11 +24,18 @@ const tui = {
 			icon: success ? 'success' : 'none'
 		})
 	},
-	modal: function({title, content, showCancel, callback, confirmColor, confirmText}) {
+	modal: function({
+		title,
+		content,
+		showCancel,
+		callback,
+		confirmColor,
+		confirmText
+	}) {
 		uni.showModal({
 			title: title || '提示',
 			content: content,
-			showCancel: showCancel||true,
+			showCancel: showCancel || true,
 			cancelColor: "#555",
 			confirmColor: confirmColor || "#5677fc",
 			confirmText: confirmText || "确定",
@@ -44,7 +55,13 @@ const tui = {
 	isPhoneX: function() {
 		const res = uni.getSystemInfoSync();
 		let iphonex = false;
-		let models = ['iphonex', 'iphonexr', 'iphonexsmax', 'iphone11', 'iphone11pro', 'iphone11promax']
+		let models = [
+			'iphonex', 'iphonexr', 'iphonexs', 'iphonexsmax',
+			'iphone11', 'iphone11pro', 'iphone11promax',
+			'iphone12mini', 'iphone12', 'iphone12pro', 'iphone12promax',
+			'iphone13mini', 'iphone13', 'iphone13pro', 'iphone13promax',
+			'iphone14', 'iphone14plus', 'iphone14pro', 'iphone14promax'
+		]
 		const model = res.model.replace(/\s/g, "").toLowerCase()
 		if (models.includes(model)) {
 			iphonex = true;

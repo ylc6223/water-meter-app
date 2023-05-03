@@ -143,7 +143,7 @@ module.exports = _toPrimitive, module.exports.__esModule = true, module.exports[
 
 /***/ }),
 
-/***/ 143:
+/***/ 144:
 /*!*****************************************************************************!*\
   !*** D:/source-code/water-meter-app/components/thorui/tui-icon/tui-icon.js ***!
   \*****************************************************************************/
@@ -419,7 +419,25 @@ module.exports = _isNativeReflectConstruct, module.exports.__esModule = true, mo
 
 /***/ }),
 
-/***/ 179:
+/***/ 18:
+/*!******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/toConsumableArray.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayWithoutHoles = __webpack_require__(/*! ./arrayWithoutHoles.js */ 19);
+var iterableToArray = __webpack_require__(/*! ./iterableToArray.js */ 20);
+var unsupportedIterableToArray = __webpack_require__(/*! ./unsupportedIterableToArray.js */ 8);
+var nonIterableSpread = __webpack_require__(/*! ./nonIterableSpread.js */ 21);
+function _toConsumableArray(arr) {
+  return arrayWithoutHoles(arr) || iterableToArray(arr) || unsupportedIterableToArray(arr) || nonIterableSpread();
+}
+module.exports = _toConsumableArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 180:
 /*!********************************************************************************!*\
   !*** D:/source-code/water-meter-app/components/thorui/tui-lottie/lottie.mp.js ***!
   \********************************************************************************/
@@ -6516,24 +6534,6 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 18:
-/*!******************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/toConsumableArray.js ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var arrayWithoutHoles = __webpack_require__(/*! ./arrayWithoutHoles.js */ 19);
-var iterableToArray = __webpack_require__(/*! ./iterableToArray.js */ 20);
-var unsupportedIterableToArray = __webpack_require__(/*! ./unsupportedIterableToArray.js */ 8);
-var nonIterableSpread = __webpack_require__(/*! ./nonIterableSpread.js */ 21);
-function _toConsumableArray(arr) {
-  return arrayWithoutHoles(arr) || iterableToArray(arr) || unsupportedIterableToArray(arr) || nonIterableSpread();
-}
-module.exports = _toConsumableArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-
 /***/ 19:
 /*!******************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/arrayWithoutHoles.js ***!
@@ -8971,7 +8971,7 @@ module.exports = _nonIterableSpread, module.exports.__esModule = true, module.ex
 
 /***/ }),
 
-/***/ 210:
+/***/ 211:
 /*!***********************************************************************************!*\
   !*** D:/source-code/water-meter-app/components/thorui/tui-form/tui-validation.js ***!
   \***********************************************************************************/
@@ -15979,38 +15979,7 @@ internalMixin(Vue);
 
 /***/ }),
 
-/***/ 3:
-/*!***********************************!*\
-  !*** (webpack)/buildin/global.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || new Function("return this")();
-} catch (e) {
-	// This works if the window reference is available
-	if (typeof window === "object") g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-
-/***/ 309:
+/***/ 273:
 /*!**********************************************************************************!*\
   !*** D:/source-code/water-meter-app/components/uni/uParse/src/libs/html2json.js ***!
   \**********************************************************************************/
@@ -16025,8 +15994,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _wxDiscode = _interopRequireDefault(__webpack_require__(/*! ./wxDiscode */ 310));
-var _htmlparser = _interopRequireDefault(__webpack_require__(/*! ./htmlparser */ 311));
+var _wxDiscode = _interopRequireDefault(__webpack_require__(/*! ./wxDiscode */ 274));
+var _htmlparser = _interopRequireDefault(__webpack_require__(/*! ./htmlparser */ 275));
 /**
  * html2Json 改造来自: https://github.com/Jxck/html2json
  *
@@ -16259,7 +16228,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 310:
+/***/ 274:
 /*!**********************************************************************************!*\
   !*** D:/source-code/water-meter-app/components/uni/uParse/src/libs/wxDiscode.js ***!
   \**********************************************************************************/
@@ -16463,7 +16432,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 311:
+/***/ 275:
 /*!***********************************************************************************!*\
   !*** D:/source-code/water-meter-app/components/uni/uParse/src/libs/htmlparser.js ***!
   \***********************************************************************************/
@@ -16618,6 +16587,37 @@ function HTMLParser(html, handler) {
 }
 var _default = HTMLParser;
 exports.default = _default;
+
+/***/ }),
+
+/***/ 3:
+/*!***********************************!*\
+  !*** (webpack)/buildin/global.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || new Function("return this")();
+} catch (e) {
+	// This works if the window reference is available
+	if (typeof window === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
 
 /***/ }),
 
@@ -18209,7 +18209,7 @@ var tui = {
   isPhoneX: function isPhoneX() {
     var res = uni.getSystemInfoSync();
     var iphonex = false;
-    var models = ['iphonex', 'iphonexr', 'iphonexsmax', 'iphone11', 'iphone11pro', 'iphone11promax'];
+    var models = ['iphonex', 'iphonexr', 'iphonexs', 'iphonexsmax', 'iphone11', 'iphone11pro', 'iphone11promax', 'iphone12mini', 'iphone12', 'iphone12pro', 'iphone12promax', 'iphone13mini', 'iphone13', 'iphone13pro', 'iphone13promax', 'iphone14', 'iphone14plus', 'iphone14pro', 'iphone14promax'];
     var model = res.model.replace(/\s/g, "").toLowerCase();
     if (models.includes(model)) {
       iphonex = true;

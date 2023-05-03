@@ -23,15 +23,15 @@
 <p class=MsoNormal style='text-indent:22.0pt;line-height:115%'><span
 lang=ZH-CN>欢迎您使用泽尔智能水表小程序平台提供的软件及服务！</span></p>
 
-<p class=MsoNormal style='text-indent:22.0pt'><span lang=ZH-CN>为使用益华数字科技有限公司（以下简你</span>“<span lang=ZH-CN>益华数字</span>''<span
-lang=ZH-CN>或</span>“<span lang=ZH-CN>益华</span>''<span lang=ZH-CN>）提供的泽尔智能水表小程序平台（以下简称</span>“<span
-lang=ZH-CN>本平台</span>''<span lang=ZH-CN>或</span>&quot;<span lang=ZH-CN>泽尔智能水表管家</span>&quot;<span
-lang=ZH-CN>）软件及服务（以下简称</span>“<span lang=ZH-CN>本服务</span>'<span lang=ZH-CN>），您应当阅读并遵守《泽尔智能水表管家充值协议》（以下简称</span>“<span
-lang=ZH-CN>本协议</span>''<span lang=ZH-CN>）。</span></p>
+<p class=MsoNormal style='text-indent:22.0pt'><span lang=ZH-CN>为使用益华数字科技有限公司（以下简称</span>“<span lang=ZH-CN>益华数字</span>”<span
+lang=ZH-CN>或</span>“<span lang=ZH-CN>益华</span>”<span lang=ZH-CN>）提供的泽尔智能水表小程序平台（以下简称</span>“<span
+lang=ZH-CN>本平台</span>”<span lang=ZH-CN>或</span>“<span lang=ZH-CN>泽尔智能水表管家</span>”<span
+lang=ZH-CN>）软件及服务（以下简称</span>“<span lang=ZH-CN>本服务</span>”<span lang=ZH-CN>），您应当阅读并遵守《泽尔智能水表管家充值协议》（以下简称</span>“<span
+lang=ZH-CN>本协议</span><span lang=ZH-CN>）。</span></p>
 
-<p class=MsoNormal style='text-indent:22.0pt'><span lang=ZH-CN>请您务必审慎阅渎、充分理解各条款内容，特别是免除或限制责任的相应条款，并选择接受或不接受。</span></p>
+<p class=MsoNormal style='text-indent:22.0pt'><span lang=ZH-CN>请您务必审慎阅读、充分理解各条款内容，特别是免除或限制责任的相应条款，并选择接受或不接受。</span></p>
 
-<p class=MsoNormal style='text-indent:22.0pt'><span lang=ZH-CN>除非您已阅渎并接受本协议所有条款，否则您无权使用本平台及相关服务。您的立即充值或立即支付行为即视为您已阅读并同息上述协议的约束。</span></p>
+<p class=MsoNormal style='text-indent:22.0pt'><span lang=ZH-CN>除非您已阅读并接受本协议所有条款，否则您无权使用本平台及相关服务。您的立即充值或立即支付行为即视为您已阅读并同意上述协议的约束。</span></p>
 
 <p class=MsoNormal style='text-indent:22.0pt'><span lang=ZH-CN>本协议下的条款可由益华数字科技随时变更，用户须定期审阅本协议。协议条款一旦发生变动，益华数字科技将会在本页面进行更新，并在泽尔智能水表管家相关的页面上提示变更内容。变更后的协议一经公布即有效代替原来的协议。用户如不同意益华数字科技对本协议所作的任何变更，应立即停止使用益华数字科技提供的泽尔智能水表管家软件及服务。如用户在本协议变更后继续使用泽尔智能水表管家软件及服务，即视作用户已完全同意变更后的协议。用户可随时在本页面查阅最新的充值规则。</span></p>
 
@@ -45,10 +45,10 @@ lang=ZH-CN>本协议</span>''<span lang=ZH-CN>）。</span></p>
 <p class=MsoNormal style='text-indent:22.0pt'>1.1 <span lang=ZH-CN>泽尔智能水表管家：是指泽尔智能水表管家的开发者益华数字科技向用户提供的水量或余额的充值工具，同时为用户提供包括但不限于抄表、查看数据、充值等功能的服务软件。</span></p>
 
 <p class=MsoNormal style='text-indent:22.0pt'>1.2 <span lang=ZH-CN>用户：是指启用、浏览数据或充值的用户，在本协议中更多的称为</span>“<span
-lang=ZH-CN>您</span>''<span lang=ZH-CN>。</span></p>
+lang=ZH-CN>您</span>”<span lang=ZH-CN>。</span></p>
 
 <p class=MsoNormal style='text-indent:22.0pt'>1.3 <span lang=ZH-CN>管理员是指启用、浏览数据、充值或管理的用户，在本协议中更多的称为</span>“<span
-lang=ZH-CN>供水方。</span></p>
+lang=ZH-CN>供水方”。</span></p>
 
 <p class=MsoNormal style='text-indent:22.0pt'>1.4 <span lang=ZH-CN>充值金额：您通过泽尔智能水表管家充值水量丶或余额向供水方实际支付的金额</span>(<span
 lang=ZH-CN>人民币</span>)<span lang=ZH-CN>。</span></p>
@@ -62,7 +62,7 @@ lang=ZH-CN>由微信丶支付宝或第三方服务平台收取。</span></p>
 
 <h3>2<span lang=ZH-CN>．</span>1<span lang=ZH-CN>充值</span></h3>
 
-<p class=MsoNormal style='text-indent:22.0pt'>2.1.1 <span lang=ZH-CN>用户理解并同意，充值的金额或代币可用于支付綁定在本平台上的水表对应的供水方的水量，但不可用于转移、转赠。</span></p>
+<p class=MsoNormal style='text-indent:22.0pt'>2.1.1 <span lang=ZH-CN>用户理解并同意，充值的金额或代币可用于支付绑定在本平台上的水表对应的供水方的水量，但不可用于转移、转赠。</span></p>
 
 <p class=MsoNormal style='text-indent:22.0pt'>2.1.2 <span lang=ZH-CN>用户理解并同意充值的金额或代币不支持七天无理由退换，充值一旦成功，充值即确定完成，益华数字科技将不提供任何更改、修正服务。代币余额未使用部分，不能直接通过本平台退款，需要用户和供水方在线下协商退款，然后通过供水方在本平台的管理端清零代币余额。由供水方发起的代币清零，益华数字科技不提供任何的更改、修正服务，需要用户与供水方自行协商。</span></p>
 
@@ -71,14 +71,12 @@ lang=ZH-CN>由微信丶支付宝或第三方服务平台收取。</span></p>
 <p class=MsoNormal style='text-indent:22.0pt'>2.1.4 <span lang=ZH-CN>用户必须仔细确认自已充值的水表信息（包含但不限于水表名称、安装位置、单价等）是否正确，若因为用户自身操作不当、不了解或未充分了解充值计费方式等因素造成充错水表或错选充值种类等情形而损害自身权益，不得因此要求益华数字科技作任何补偿或赔偿。</span></p>
 
 <p class=MsoNormal style='text-indent:22.0pt'>2.1.5 <span lang=ZH-CN>用户在充值水量或余额时，立即支付后需要在第三方支付企业提供的支付完成页面上点击</span>“<span
-lang=ZH-CN>完成</span>''<span lang=ZH-CN>或</span>“<span lang=ZH-CN>返回</span>&quot;<span
+lang=ZH-CN>完成</span><span lang=ZH-CN>或</span>“<span lang=ZH-CN>返回</span>&quot;<span
 lang=ZH-CN>按钮，确保水量或余额成功的充值到该水表里。因用户没有点击第三方企业提供的支付完成页面上点击</span>“<span
-lang=ZH-CN>完成</span>''<span lang=ZH-CN>或</span>“<span lang=ZH-CN>返回</span>''<span
+lang=ZH-CN>完成</span><span lang=ZH-CN>或</span>“<span lang=ZH-CN>返回</span><span
 lang=ZH-CN>按钮，以及充值后直接退出泽尔智能水表管家导致水量或余额没有成功充值到该水表里造成的损失益华数字科技不承担任何补偿或赔偿。</span></p>
 
-<p class=MsoNormal style='text-indent:22.0pt'>2.1.6 <span lang=ZH-CN>用户在充值时使用第三方支付企业提供的服务时，应当遵守与该第三方的各项协议及其服务规则；在使用第三方支付服务过程中，用户应当妥善保管个人信息，包括但不限于银</span></p>
-
-<p class=MsoNormal><span lang=ZH-CN>行卡账号、密码、验证码等；用户同意并确认，益华数字科技对因第三方支付服务产生的纠纷不承担任何责任，且不承担任何补偿或赔偿。</span></p>
+<p class=MsoNormal style='text-indent:22.0pt'>2.1.6 <span lang=ZH-CN>用户在充值时使用第三方支付企业提供的服务时，应当遵守与该第三方的各项协议及其服务规则；在使用第三方支付服务过程中，用户应当妥善保管个人信息，包括但不限于银行卡账号、密码、验证码等；用户同意并确认，益华数字科技对因第三方支付服务产生的纠纷不承担任何责任，且不承担任何补偿或赔偿。</span></p>
 
 <p class=MsoNormal style='text-indent:22.0pt'>2.1.7 <span lang=ZH-CN>若因违反本协议条款，导致账号被冻结及</span>/<span
 lang=ZH-CN>或终止使用的用户，不得因此要求益华数字科技作任何补偿或赔偿，也不得追益华数字科技任何责任。</span></p>

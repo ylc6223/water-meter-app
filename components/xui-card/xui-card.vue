@@ -35,8 +35,10 @@
 
 <style lang="scss" scoped>
 	.card {
+		box-sizing: border-box;
 		background-color: white;
 		// box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+		height: 100%;
 		padding: 28rpx;
 		margin: 20rpx 0;
 	}

@@ -10,9 +10,8 @@
 			"path": "pages/dashboard/dashboard",
 			"style": {
 				"navigationBarTitleText": "设备列表",
-				// "navigationBarBackgroundColor": "#27AE60",
-				"enablePullDownRefresh": false,
-				"navigationStyle": "custom"
+				"navigationBarBackgroundColor": "#F8F8F8",
+				"enablePullDownRefresh": false
 			}
 
 		}, {
@@ -123,8 +122,8 @@
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"navigationBarBackgroundColor": "#FFF",
+		"backgroundColor": "#FFF"
 	},
 	"easycom": {
 		"autoscan": true,

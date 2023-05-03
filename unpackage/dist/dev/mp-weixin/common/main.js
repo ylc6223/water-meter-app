@@ -16,9 +16,9 @@ var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/hel
 __webpack_require__(/*! uni-pages */ 26);
 var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ 27));
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 25));
-var _store = _interopRequireDefault(__webpack_require__(/*! ./store */ 33));
 var _httpRequest = _interopRequireDefault(__webpack_require__(/*! @/components/common/httpRequest.js */ 35));
 var _request = _interopRequireDefault(__webpack_require__(/*! ./request.js */ 39));
+var _store = _interopRequireDefault(__webpack_require__(/*! ./store */ 33));
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 // @ts-ignore
@@ -151,21 +151,7 @@ var _default = {
         }
       });
     }
-    // wx.getSystemInfo({
-    // 	success: (res) => {
-    // 		const statusBarHeight = res.statusBarHeight
-    // 		//标题栏高度 = 胶囊底部距顶部的距离+胶囊顶部距离 - (状态栏高度*2)
-    // 		//导航栏高度 = 胶囊按钮高度 + 状态栏到胶囊按钮间距 * 2 + 状态栏高度
-    // 		const titleBarHeight = wx.getMenuButtonBoundingClientRect().bottom + wx
-    // 			.getMenuButtonBoundingClientRect().top - (res.statusBarHeight * 2)
-    // 	},
-    // 	failure() {
-    // 		this.globalData.statusBarHeight = 0
-    // 		this.globalData.titleBarHeight = 0
-    // 	}
-    // })
   },
-
   onShow: function onShow() {
     console.log('App Show');
   },

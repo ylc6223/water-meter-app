@@ -22,19 +22,6 @@
 					}
 				});
 			}
-			// wx.getSystemInfo({
-			// 	success: (res) => {
-			// 		const statusBarHeight = res.statusBarHeight
-			// 		//标题栏高度 = 胶囊底部距顶部的距离+胶囊顶部距离 - (状态栏高度*2)
-			// 		//导航栏高度 = 胶囊按钮高度 + 状态栏到胶囊按钮间距 * 2 + 状态栏高度
-			// 		const titleBarHeight = wx.getMenuButtonBoundingClientRect().bottom + wx
-			// 			.getMenuButtonBoundingClientRect().top - (res.statusBarHeight * 2)
-			// 	},
-			// 	failure() {
-			// 		this.globalData.statusBarHeight = 0
-			// 		this.globalData.titleBarHeight = 0
-			// 	}
-			// })
 			// #endif
 		},
 		onShow: function() {
@@ -52,5 +39,4 @@
 	@import url('@/static/styles/thorui-extend.css');
 	@import url('@/static/fonts/iconfont.css');
 	@import url('@/components/uni/uParse/src/wxParse.css');
-	/*每个页面公共css */
 </style>

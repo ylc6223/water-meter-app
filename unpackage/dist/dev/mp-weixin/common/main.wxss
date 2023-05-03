@@ -1679,5 +1679,4 @@ page {
 .wxParse .uni-audio-default {
 	display: block;
 }
-/*每个页面公共css */
 

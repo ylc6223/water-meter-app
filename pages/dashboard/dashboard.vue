@@ -1,12 +1,7 @@
 <template>
 	<view class="container relative">
-		<tui-navigation-bar :isOpacity="true" @init="initNavigation" backgroundColor="#ffffff00" transparent
-			title="设备列表" color="#333">
-			<!-- #ifndef MP-ALIPAY || MP-BAIDU -->
-			<!-- #endif -->
-		</tui-navigation-bar>
 		<tui-wing-blank size="large">
-			<view :style="{'margin-top':navigationBarHeight+'px'}" @click="toggleDevice">
+			<view @click="toggleDevice">
 				<block v-for="item in 3" :key="item">
 					<tui-slide-view class="device-item" :buttons="buttons" @click.stop="handleClick">
 						<view class="tui-list-cell flex items-center">
