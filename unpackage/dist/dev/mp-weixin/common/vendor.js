@@ -144,9 +144,9 @@ module.exports = _toPrimitive, module.exports.__esModule = true, module.exports[
 /***/ }),
 
 /***/ 145:
-/*!*****************************************************************************!*\
-  !*** D:/source-code/water-meter-app/components/thorui/tui-icon/tui-icon.js ***!
-  \*****************************************************************************/
+/*!**********************************************************************************************!*\
+  !*** C:/Users/26090/WebstormProjects/water-meter-app/components/thorui/tui-icon/tui-icon.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -438,9 +438,9 @@ module.exports = _toConsumableArray, module.exports.__esModule = true, module.ex
 /***/ }),
 
 /***/ 181:
-/*!********************************************************************************!*\
-  !*** D:/source-code/water-meter-app/components/thorui/tui-lottie/lottie.mp.js ***!
-  \********************************************************************************/
+/*!*************************************************************************************************!*\
+  !*** C:/Users/26090/WebstormProjects/water-meter-app/components/thorui/tui-lottie/lottie.mp.js ***!
+  \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7285,8 +7285,8 @@ function populateParameters(result) {
     appVersion: "1.0.0",
     appVersionCode: "100",
     appLanguage: getAppLanguage(hostLanguage),
-    uniCompileVersion: "3.7.9",
-    uniRuntimeVersion: "3.7.9",
+    uniCompileVersion: "3.7.11",
+    uniRuntimeVersion: "3.7.11",
     uniPlatform: undefined || "mp-weixin",
     deviceBrand: deviceBrand,
     deviceModel: model,
@@ -8062,7 +8062,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"water-meter-app","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"water-meter-app","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -8972,9 +8972,9 @@ module.exports = _nonIterableSpread, module.exports.__esModule = true, module.ex
 /***/ }),
 
 /***/ 212:
-/*!***********************************************************************************!*\
-  !*** D:/source-code/water-meter-app/components/thorui/tui-form/tui-validation.js ***!
-  \***********************************************************************************/
+/*!****************************************************************************************************!*\
+  !*** C:/Users/26090/WebstormProjects/water-meter-app/components/thorui/tui-form/tui-validation.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15426,7 +15426,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"water-meter-app","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"water-meter-app","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -15447,14 +15447,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"water-meter-app","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"water-meter-app","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"water-meter-app","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"water-meter-app","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -15550,7 +15550,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"water-meter-app","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"water-meter-app","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -15969,9 +15969,9 @@ internalMixin(Vue);
 /***/ }),
 
 /***/ 26:
-/*!*************************************************!*\
-  !*** D:/source-code/water-meter-app/pages.json ***!
-  \*************************************************/
+/*!******************************************************************!*\
+  !*** C:/Users/26090/WebstormProjects/water-meter-app/pages.json ***!
+  \******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -15980,9 +15980,9 @@ internalMixin(Vue);
 /***/ }),
 
 /***/ 281:
-/*!**********************************************************************************!*\
-  !*** D:/source-code/water-meter-app/components/uni/uParse/src/libs/html2json.js ***!
-  \**********************************************************************************/
+/*!***************************************************************************************************!*\
+  !*** C:/Users/26090/WebstormProjects/water-meter-app/components/uni/uParse/src/libs/html2json.js ***!
+  \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16229,9 +16229,9 @@ exports.default = _default;
 /***/ }),
 
 /***/ 282:
-/*!**********************************************************************************!*\
-  !*** D:/source-code/water-meter-app/components/uni/uParse/src/libs/wxDiscode.js ***!
-  \**********************************************************************************/
+/*!***************************************************************************************************!*\
+  !*** C:/Users/26090/WebstormProjects/water-meter-app/components/uni/uParse/src/libs/wxDiscode.js ***!
+  \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16433,9 +16433,9 @@ exports.default = _default;
 /***/ }),
 
 /***/ 283:
-/*!***********************************************************************************!*\
-  !*** D:/source-code/water-meter-app/components/uni/uParse/src/libs/htmlparser.js ***!
-  \***********************************************************************************/
+/*!****************************************************************************************************!*\
+  !*** C:/Users/26090/WebstormProjects/water-meter-app/components/uni/uParse/src/libs/htmlparser.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16754,9 +16754,9 @@ function normalizeComponent (
 /***/ }),
 
 /***/ 33:
-/*!***********************************************************************!*\
-  !*** D:/source-code/water-meter-app/components/common/httpRequest.js ***!
-  \***********************************************************************/
+/*!****************************************************************************************!*\
+  !*** C:/Users/26090/WebstormProjects/water-meter-app/components/common/httpRequest.js ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17368,9 +17368,9 @@ module.exports = _asyncToGenerator, module.exports.__esModule = true, module.exp
 /***/ }),
 
 /***/ 37:
-/*!*************************************************!*\
-  !*** D:/source-code/water-meter-app/request.js ***!
-  \*************************************************/
+/*!******************************************************************!*\
+  !*** C:/Users/26090/WebstormProjects/water-meter-app/request.js ***!
+  \******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17455,9 +17455,9 @@ exports.default = _default;
 /***/ }),
 
 /***/ 38:
-/*!*****************************************************************************!*\
-  !*** D:/source-code/water-meter-app/components/common/tui-request/index.js ***!
-  \*****************************************************************************/
+/*!**********************************************************************************************!*\
+  !*** C:/Users/26090/WebstormProjects/water-meter-app/components/common/tui-request/index.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17621,9 +17621,9 @@ exports.default = _default;
 /***/ }),
 
 /***/ 39:
-/*!********************************************************************************!*\
-  !*** D:/source-code/water-meter-app/components/common/tui-request/tui-base.js ***!
-  \********************************************************************************/
+/*!*************************************************************************************************!*\
+  !*** C:/Users/26090/WebstormProjects/water-meter-app/components/common/tui-request/tui-base.js ***!
+  \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17730,9 +17730,9 @@ module.exports = _interopRequireDefault, module.exports.__esModule = true, modul
 /***/ }),
 
 /***/ 40:
-/*!****************************************************************************************!*\
-  !*** D:/source-code/water-meter-app/components/common/tui-request/tui-taskKeyStore.js ***!
-  \****************************************************************************************/
+/*!*********************************************************************************************************!*\
+  !*** C:/Users/26090/WebstormProjects/water-meter-app/components/common/tui-request/tui-taskKeyStore.js ***!
+  \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17798,9 +17798,9 @@ function createTaskKeyStore() {
 /***/ }),
 
 /***/ 41:
-/*!*****************************************************!*\
-  !*** D:/source-code/water-meter-app/utils/index.js ***!
-  \*****************************************************/
+/*!**********************************************************************!*\
+  !*** C:/Users/26090/WebstormProjects/water-meter-app/utils/index.js ***!
+  \**********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17853,9 +17853,9 @@ function multiFilter(array, filters) {
 /***/ }),
 
 /***/ 42:
-/*!*****************************************************!*\
-  !*** D:/source-code/water-meter-app/store/index.js ***!
-  \*****************************************************/
+/*!**********************************************************************!*\
+  !*** C:/Users/26090/WebstormProjects/water-meter-app/store/index.js ***!
+  \**********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19255,102 +19255,10 @@ module.exports = _slicedToArray, module.exports.__esModule = true, module.export
 
 /***/ }),
 
-/***/ 6:
-/*!***************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/arrayWithHoles.js ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
-module.exports = _arrayWithHoles, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-
-/***/ 7:
-/*!*********************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/iterableToArrayLimit.js ***!
-  \*********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _iterableToArrayLimit(arr, i) {
-  var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"];
-  if (null != _i) {
-    var _s,
-      _e,
-      _x,
-      _r,
-      _arr = [],
-      _n = !0,
-      _d = !1;
-    try {
-      if (_x = (_i = _i.call(arr)).next, 0 === i) {
-        if (Object(_i) !== _i) return;
-        _n = !1;
-      } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0) {
-        ;
-      }
-    } catch (err) {
-      _d = !0, _e = err;
-    } finally {
-      try {
-        if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return;
-      } finally {
-        if (_d) throw _e;
-      }
-    }
-    return _arr;
-  }
-}
-module.exports = _iterableToArrayLimit, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-
-/***/ 8:
-/*!***************************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js ***!
-  \***************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var arrayLikeToArray = __webpack_require__(/*! ./arrayLikeToArray.js */ 9);
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return arrayLikeToArray(o, minLen);
-}
-module.exports = _unsupportedIterableToArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-
-/***/ 9:
-/*!*****************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/arrayLikeToArray.js ***!
-  \*****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
-  }
-  return arr2;
-}
-module.exports = _arrayLikeToArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-
-/***/ 91:
-/*!**************************************************************************!*\
-  !*** D:/source-code/water-meter-app/utils/bluetooth/bluetoothManager.js ***!
-  \**************************************************************************/
+/***/ 50:
+/*!*******************************************************************************************!*\
+  !*** C:/Users/26090/WebstormProjects/water-meter-app/utils/bluetooth/bluetoothManager.js ***!
+  \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19662,6 +19570,98 @@ var Bluetooth = /*#__PURE__*/function () {
 var _default = Bluetooth;
 exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+
+/***/ }),
+
+/***/ 6:
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/arrayWithHoles.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+module.exports = _arrayWithHoles, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 7:
+/*!*********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/iterableToArrayLimit.js ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _iterableToArrayLimit(arr, i) {
+  var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"];
+  if (null != _i) {
+    var _s,
+      _e,
+      _x,
+      _r,
+      _arr = [],
+      _n = !0,
+      _d = !1;
+    try {
+      if (_x = (_i = _i.call(arr)).next, 0 === i) {
+        if (Object(_i) !== _i) return;
+        _n = !1;
+      } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0) {
+        ;
+      }
+    } catch (err) {
+      _d = !0, _e = err;
+    } finally {
+      try {
+        if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return;
+      } finally {
+        if (_d) throw _e;
+      }
+    }
+    return _arr;
+  }
+}
+module.exports = _iterableToArrayLimit, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 8:
+/*!***************************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayLikeToArray = __webpack_require__(/*! ./arrayLikeToArray.js */ 9);
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return arrayLikeToArray(o, minLen);
+}
+module.exports = _unsupportedIterableToArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 9:
+/*!*****************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/arrayLikeToArray.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+  return arr2;
+}
+module.exports = _arrayLikeToArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ })
 

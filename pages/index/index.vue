@@ -29,7 +29,7 @@
 
 		<view class="card-wrap" :style="{'top':navigationBarHeight+123+'px','bottom':'0'}">
 			<xui-card :hover="false" :shadow="true">
-				<view v-if="!bindingDevice" class="flex h-full flex-col items-center justify-center"
+				<view v-if="!isBinding" class="flex h-full flex-col items-center justify-center"
 					style="min-height: 300px;">
 					<view class="nodata-img">
 						<image src="../../static/icons/shebei.svg" mode=""></image>
@@ -132,10 +132,10 @@
 					//是否循环播放动画，可选，不传默认为true
 					loop: true
 				},
-				bindingDevice: null, //绑定的设备
 				titleBarHeight: 0, //标题栏高度
 				navigationBarHeight: 0, //导航栏高度
 				screenHeight: 0, //屏幕高度
+				isBinding: false, //是否已绑定设备
 				isEmpower: false, //用户是否已授权
 				showModal: false, //控制授权对话框显示隐藏
 				showTipModal: false, //控制提示用户充值需扫码的显示隐藏
@@ -149,7 +149,6 @@
 				],
 				userInfo: null,
 				contentHeight: 0,
-				preventOnShow: false, //阻止页面的 onShow 事件再次触发
 			}
 		},
 		created() {
@@ -161,19 +160,17 @@
 			this.screenHeight = systemInfo.screenHeight
 		},
 		onShow() {
-			console.log('show');
 			const that = this
 			try {
 				const userInfo = that.$g.tui.getUserInfo()
 				this.userInfo = this.userInfo ? this.userInfo : userInfo
-				if (userInfo) {
-					that.bindingDevice = uni.getStorageSync('bindDevice')
-					//获取完用户信息,提示用户首次充值需扫设备上二维码
-					that.showTipModal = that.bindingDevice ? false : true
-					console.log(that.bindingDevice, "@@@@@@");
-					return
-				} else {
+				//检查授权状态
+				if (!that.isEmpower && !userInfo) {
+					//未授权
 					this.showModal = true //唤起授权
+				} else {
+					//已授权情况下检查是否绑定了蓝牙设备
+					!this.checkBindMeter() && (this.showTipModal = true)
 				}
 			} catch (e) {}
 		},
@@ -220,59 +217,61 @@
 						uni.setStorageSync('bindDevice', {
 							name: 'zeer'
 						})
-						console.log(uni.getStorageSync('bindDevice'));
-						that.preventOnShow = true
 					},
 					fail() {
-						that.bindingDevice = null
+						uni.setStorageSync('bindDevice', '')
 					}
 				})
 			},
-			//用户向小程序授权允许获取用户信息
+			//授权允许获取用户信息
 			empower() {
 				const that = this
 				uni.getSetting({
-					success(res) {
+					async success(res) {
 						//未授权获取用户信息
 						if (!res.authSetting['scope.userInfo']) {
 							//要求授权并获取用户信息
 							uni.authorize({
 								scope: 'scope.userInfo',
 								async success() {
+									that.$g.tui.showLoading('登陆中')
 									// 用户已经同意小程序获取用户信息，后续调用相关接口不会弹窗询问
-									await that.getUserInfo()
+									const userInfo = await that.getUserInfo()
+									that.$g.tui.setUserInfo(userInfo)
+									that.userInfo = userInfo
+									that.isEmpower = true
+									uni.hideLoading()
+									that.showModal = false
+										//已授权情况下检查是否绑定了蓝牙设备,未绑将显示提示
+										!that.checkBindMeter() && (that.showTipModal = true)
 
 								}
 							})
 						} else {
-							//直接获取用户信息
-							that.getUserInfo()
+							that.$g.tui.showLoading('登陆中')
+							// 用户已经同意小程序获取用户信息，后续调用相关接口不会弹窗询问
+							const userInfo = await that.getUserInfo()
+							that.$g.tui.setUserInfo(userInfo)
+							that.userInfo = userInfo
+							that.isEmpower = true
+							uni.hideLoading()
+							that.showModal = false
+								//已授权情况下检查是否绑定了蓝牙设备,未绑将显示提示
+								!that.checkBindMeter() && (that.showTipModal = true)
 						}
 					}
 				})
 			},
 			//向微信获取用户信息
 			getUserInfo() {
-				const that = this
-				that.$g.tui.showLoading('登陆中')
 				return new Promise((resolve, reject) => {
 					uni.getUserInfo({
 						success(result) {
-							that.$g.tui.setUserInfo(result.userInfo)
-							that.userInfo = result.userInfo
-							that.isEmpower = true
-							that.showModal = false
-							uni.hideLoading()
-							if (!that.userInfo) {
-								return
-							}
-							//获取完用户信息,根据用户是否绑定选择提示
-							if (!that.bindingDevice) {
-								that.showTipModal = true
-							}
+							resolve(result.userInfo)
 						},
 						fail(e) {
 							console.log('获取用户信息失败');
+							reject(e)
 						}
 					})
 				})
@@ -312,6 +311,11 @@
 			bleFoundCallback(devices) {
 				//devices 被搜寻到的符合条件的设备组成的数组
 				console.log(devices, "搜寻到的设备");
+			},
+			//检查当前是否绑定了水表
+			checkBindMeter() {
+				this.isBinding = uni.getStorageSync('bindDevice')
+				return uni.getStorageSync('bindDevice')
 			}
 		},
 		computed: {
