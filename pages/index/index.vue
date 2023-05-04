@@ -29,7 +29,7 @@
 
 		<view class="card-wrap" :style="{'top':navigationBarHeight+123+'px','bottom':'0'}">
 			<xui-card :hover="false" :shadow="true">
-				<view v-if="nodevice" class="flex h-full flex-col items-center justify-center"
+				<view v-if="!bindingDevice" class="flex h-full flex-col items-center justify-center"
 					style="min-height: 300px;">
 					<view class="nodata-img">
 						<image src="../../static/icons/shebei.svg" mode=""></image>
@@ -117,6 +117,7 @@
 </template>
 
 <script>
+	import Bluetooth from "@/utils/bluetooth/bluetoothManager.js"
 	import {
 		mapState,
 		mapMutations
@@ -131,7 +132,7 @@
 					//是否循环播放动画，可选，不传默认为true
 					loop: true
 				},
-				nodevice: true, //未绑定设备
+				bindingDevice: null, //绑定的设备
 				titleBarHeight: 0, //标题栏高度
 				navigationBarHeight: 0, //导航栏高度
 				screenHeight: 0, //屏幕高度
@@ -147,7 +148,8 @@
 					}
 				],
 				userInfo: null,
-				contentHeight: 0
+				contentHeight: 0,
+				preventOnShow: false, //阻止页面的 onShow 事件再次触发
 			}
 		},
 		created() {
@@ -157,19 +159,18 @@
 			uni.hideTabBar()
 			const systemInfo = uni.getSystemInfoSync()
 			this.screenHeight = systemInfo.screenHeight
-			const isIphoneX = this.$g.tui.isIphoneX()
-			if(isIphoneX){
-				
-			}
 		},
 		onShow() {
+			console.log('show');
 			const that = this
 			try {
 				const userInfo = that.$g.tui.getUserInfo()
 				this.userInfo = this.userInfo ? this.userInfo : userInfo
 				if (userInfo) {
+					that.bindingDevice = uni.getStorageSync('bindDevice')
 					//获取完用户信息,提示用户首次充值需扫设备上二维码
-					that.showTipModal = that.nodevice ? true : false
+					that.showTipModal = that.bindingDevice ? false : true
+					console.log(that.bindingDevice, "@@@@@@");
 					return
 				} else {
 					this.showModal = true //唤起授权
@@ -211,17 +212,19 @@
 						'qrCode'
 					],
 					success(res) {
-						console.log(res.rawData);
-						//扫到水表上的二维码
-						that.nodevice = false
+						console.log(res, "@");
+						//扫到水表上的二维码,根据表号获取mac地址 连接对应的蓝牙
 						//尝试申请使用蓝牙
 						that.startBleAuth()
+						//绑定设备
+						uni.setStorageSync('bindDevice', {
+							name: 'zeer'
+						})
+						console.log(uni.getStorageSync('bindDevice'));
+						that.preventOnShow = true
 					},
 					fail() {
-						that.nodevice = true
-					},
-					complete() {
-
+						that.bindingDevice = null
 					}
 				})
 			},
@@ -235,9 +238,10 @@
 							//要求授权并获取用户信息
 							uni.authorize({
 								scope: 'scope.userInfo',
-								success() {
+								async success() {
 									// 用户已经同意小程序获取用户信息，后续调用相关接口不会弹窗询问
-									that.getUserInfo()
+									await that.getUserInfo()
+
 								}
 							})
 						} else {
@@ -251,27 +255,31 @@
 			getUserInfo() {
 				const that = this
 				that.$g.tui.showLoading('登陆中')
-				uni.getUserInfo({
-					success(result) {
-						console.log(result);
-						that.$g.tui.setUserInfo(result.userInfo)
-						that.userInfo = result.userInfo
-						that.isEmpower = true
-						that.showModal = false
-						uni.hideLoading()
-						if (!that.userInfo) {
-							return
+				return new Promise((resolve, reject) => {
+					uni.getUserInfo({
+						success(result) {
+							that.$g.tui.setUserInfo(result.userInfo)
+							that.userInfo = result.userInfo
+							that.isEmpower = true
+							that.showModal = false
+							uni.hideLoading()
+							if (!that.userInfo) {
+								return
+							}
+							//获取完用户信息,根据用户是否绑定选择提示
+							if (!that.bindingDevice) {
+								that.showTipModal = true
+							}
+						},
+						fail(e) {
+							console.log('获取用户信息失败');
 						}
-						//获取完用户信息,提示用户首次充值需扫设备上二维码
-						that.showTipModal = true
-					},
-					fail(e) {
-						console.log('获取用户信息失败');
-					}
+					})
 				})
 			},
-			////尝试授权使用蓝牙，如先前已同意则静默开启蓝牙并连接
+			//尝试授权使用蓝牙，如先前已同意则静默开启蓝牙并连接
 			startBleAuth() {
+				const that = this
 				uni.getSetting({
 					success(res) {
 						//蓝牙未授权
@@ -281,10 +289,14 @@
 								scope: 'scope.bluetooth',
 								success() {
 									//后续静默开启蓝牙并连接
+									const bl = new Bluetooth()
+									bl.initBluetoothAdapter(that.bleFoundCallback)
 									//开启蓝牙通信
 								}
 							})
 						} else {
+							const bl = new Bluetooth()
+							bl.initBluetoothAdapter(that.bleFoundCallback)
 							//开启蓝牙通信
 						}
 					}
@@ -296,6 +308,11 @@
 					url: '../../subpackage/consumer/recharge/recharge'
 				})
 			},
+			//发现蓝牙水表模块回调
+			bleFoundCallback(devices) {
+				//devices 被搜寻到的符合条件的设备组成的数组
+				console.log(devices, "搜寻到的设备");
+			}
 		},
 		computed: {
 			...mapState(["tabBarIndex", "tabBar", "device"]),
@@ -304,9 +321,10 @@
 </script>
 
 <style scoped lang="scss">
-	.container{
+	.container {
 		min-height: 100vh;
 	}
+
 	::v-deep tui-modal .tui-modal-box {
 		// width: 80% !important;
 	}
@@ -429,7 +447,6 @@
 		width: 250rpx;
 		height: 250rpx;
 	}
-	.is-iphonex{
-		
-	}
+
+	.is-iphonex {}
 </style>

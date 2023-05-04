@@ -143,7 +143,7 @@ module.exports = _toPrimitive, module.exports.__esModule = true, module.exports[
 
 /***/ }),
 
-/***/ 144:
+/***/ 145:
 /*!*****************************************************************************!*\
   !*** D:/source-code/water-meter-app/components/thorui/tui-icon/tui-icon.js ***!
   \*****************************************************************************/
@@ -437,7 +437,7 @@ module.exports = _toConsumableArray, module.exports.__esModule = true, module.ex
 
 /***/ }),
 
-/***/ 180:
+/***/ 181:
 /*!********************************************************************************!*\
   !*** D:/source-code/water-meter-app/components/thorui/tui-lottie/lottie.mp.js ***!
   \********************************************************************************/
@@ -8062,7 +8062,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"water-meter-app","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"water-meter-app","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -8971,7 +8971,7 @@ module.exports = _nonIterableSpread, module.exports.__esModule = true, module.ex
 
 /***/ }),
 
-/***/ 211:
+/***/ 212:
 /*!***********************************************************************************!*\
   !*** D:/source-code/water-meter-app/components/thorui/tui-form/tui-validation.js ***!
   \***********************************************************************************/
@@ -15426,7 +15426,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"water-meter-app","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"water-meter-app","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -15447,14 +15447,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"water-meter-app","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"water-meter-app","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"water-meter-app","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"water-meter-app","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -15550,7 +15550,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"water-meter-app","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"water-meter-app","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -15979,7 +15979,7 @@ internalMixin(Vue);
 
 /***/ }),
 
-/***/ 273:
+/***/ 281:
 /*!**********************************************************************************!*\
   !*** D:/source-code/water-meter-app/components/uni/uParse/src/libs/html2json.js ***!
   \**********************************************************************************/
@@ -15994,8 +15994,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _wxDiscode = _interopRequireDefault(__webpack_require__(/*! ./wxDiscode */ 274));
-var _htmlparser = _interopRequireDefault(__webpack_require__(/*! ./htmlparser */ 275));
+var _wxDiscode = _interopRequireDefault(__webpack_require__(/*! ./wxDiscode */ 282));
+var _htmlparser = _interopRequireDefault(__webpack_require__(/*! ./htmlparser */ 283));
 /**
  * html2Json 改造来自: https://github.com/Jxck/html2json
  *
@@ -16228,7 +16228,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 274:
+/***/ 282:
 /*!**********************************************************************************!*\
   !*** D:/source-code/water-meter-app/components/uni/uParse/src/libs/wxDiscode.js ***!
   \**********************************************************************************/
@@ -16432,7 +16432,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 275:
+/***/ 283:
 /*!***********************************************************************************!*\
   !*** D:/source-code/water-meter-app/components/uni/uParse/src/libs/htmlparser.js ***!
   \***********************************************************************************/
@@ -16754,6 +16754,1105 @@ function normalizeComponent (
 /***/ }),
 
 /***/ 33:
+/*!***********************************************************************!*\
+  !*** D:/source-code/water-meter-app/components/common/httpRequest.js ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 34));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 36));
+/**
+ * 常用方法封装 请求，文件上传等
+ * @author echo. 
+ **/
+
+var tui = {
+  //接口地址
+  interfaceUrl: function interfaceUrl() {
+    return 'https://www.thorui.cn';
+    //return 'https://test.thorui.cn'
+    //return 'https://uat.thorui.cn'
+    // return 'https://prod.thorui.cn'
+  },
+
+  toast: function toast(_ref) {
+    var text = _ref.text,
+      duration = _ref.duration,
+      success = _ref.success;
+    uni.showToast({
+      duration: duration || 2000,
+      title: text || "出错啦~",
+      icon: success ? 'success' : 'none'
+    });
+  },
+  modal: function modal(_ref2) {
+    var title = _ref2.title,
+      content = _ref2.content,
+      showCancel = _ref2.showCancel,
+      callback = _ref2.callback,
+      confirmColor = _ref2.confirmColor,
+      confirmText = _ref2.confirmText;
+    uni.showModal({
+      title: title || '提示',
+      content: content,
+      showCancel: showCancel || true,
+      cancelColor: "#555",
+      confirmColor: confirmColor || "#5677fc",
+      confirmText: confirmText || "确定",
+      success: function success(res) {
+        if (res.confirm) {
+          callback && callback(true);
+        } else {
+          callback && callback(false);
+        }
+      }
+    });
+  },
+  isAndroid: function isAndroid() {
+    var res = uni.getSystemInfoSync();
+    return res.platform.toLocaleLowerCase() == "android";
+  },
+  isPhoneX: function isPhoneX() {
+    var res = uni.getSystemInfoSync();
+    var iphonex = false;
+    var models = ['iphonex', 'iphonexr', 'iphonexs', 'iphonexsmax', 'iphone11', 'iphone11pro', 'iphone11promax', 'iphone12mini', 'iphone12', 'iphone12pro', 'iphone12promax', 'iphone13mini', 'iphone13', 'iphone13pro', 'iphone13promax', 'iphone14', 'iphone14plus', 'iphone14pro', 'iphone14promax'];
+    var model = res.model.replace(/\s/g, "").toLowerCase();
+    if (models.includes(model)) {
+      iphonex = true;
+    }
+    return iphonex;
+  },
+  constNum: function constNum() {
+    var time = 0;
+    return time;
+  },
+  delayed: null,
+  loadding: false,
+  showLoading: function showLoading(title) {
+    var mask = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+    uni.showLoading({
+      mask: mask,
+      title: title || '请稍候...'
+    });
+  },
+  /**
+   * 请求数据处理
+   * @param string url 请求地址
+   * @param string method 请求方式
+   *  GET or POST
+   * @param {*} postData 请求参数
+   * @param bool isDelay 是否延迟显示loading
+   * @param bool isForm 数据格式
+   *  true: 'application/x-www-form-urlencoded'
+   *  false:'application/json'
+   * @param bool hideLoading 是否隐藏loading
+   *  true: 隐藏
+   *  false:显示
+   */
+  request: function () {
+    var _request = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee(url, method, postData, isDelay, isForm, hideLoading) {
+      return _regenerator.default.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              //接口请求
+              tui.loadding && uni.hideLoading();
+              tui.loadding = false;
+              if (!hideLoading) {
+                if (isDelay) {
+                  tui.delayed = setTimeout(function () {
+                    tui.loadding = true;
+                    tui.showLoading();
+                    clearTimeout(tui.delayed);
+                  }, 1000);
+                } else {
+                  tui.loadding = true;
+                  tui.showLoading();
+                }
+              }
+              return _context.abrupt("return", new Promise(function (resolve, reject) {
+                uni.request({
+                  url: tui.interfaceUrl() + url,
+                  data: postData,
+                  header: {
+                    'content-type': isForm ? 'application/x-www-form-urlencoded' : 'application/json',
+                    'Authorization': tui.getToken()
+                  },
+                  method: method,
+                  //'GET','POST'
+                  dataType: 'json',
+                  success: function success(res) {
+                    clearTimeout(tui.delayed);
+                    tui.delayed = null;
+                    if (tui.loadding && !hideLoading) {
+                      uni.hideLoading();
+                    }
+                    resolve(res.data);
+                  },
+                  fail: function fail(res) {
+                    clearTimeout(tui.delayed);
+                    tui.delayed = null;
+                    tui.toast("网络不给力，请稍后再试~");
+                    reject(res);
+                  }
+                });
+              }));
+            case 4:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+    function request(_x, _x2, _x3, _x4, _x5, _x6) {
+      return _request.apply(this, arguments);
+    }
+    return request;
+  }(),
+  /**
+   * 上传文件
+   * @param string url 请求地址
+   * @param string src 文件路径
+   */
+  uploadFile: function uploadFile(url, src) {
+    tui.showLoading();
+    return new Promise(function (resolve, reject) {
+      var uploadTask = uni.uploadFile({
+        url: tui.interfaceUrl() + url,
+        filePath: src,
+        name: 'imageFile',
+        header: {
+          'Authorization': tui.getToken()
+        },
+        formData: {
+          // sizeArrayText:""
+        },
+        success: function success(res) {
+          uni.hideLoading();
+          var d = JSON.parse(res.data.replace(/\ufeff/g, "") || "{}");
+          if (d.code % 100 == 0) {
+            //返回图片地址
+            var fileObj = d.data;
+            resolve(fileObj);
+          } else {
+            that.toast(res.msg);
+          }
+        },
+        fail: function fail(res) {
+          reject(res);
+          that.toast(res.msg);
+        }
+      });
+    });
+  },
+  tuiJsonp: function tuiJsonp(url, callback, callbackname) {},
+  //设置用户信息
+  setUserInfo: function setUserInfo(user) {
+    uni.setStorageSync("userInfo", user);
+  },
+  //设置用户信息
+  getUserInfo: function getUserInfo() {
+    return uni.getStorageSync("userInfo");
+  },
+  //获取token
+  getToken: function getToken() {
+    return uni.getStorageSync("accessToken");
+  },
+  //判断是否登录
+  isLogin: function isLogin() {
+    return uni.getStorageSync("userInfo") ? true : false;
+  },
+  //跳转页面，校验登录状态
+  href: function href(url, isVerify) {
+    if (isVerify && !tui.isLogin()) {
+      uni.navigateTo({
+        url: '/pages/login/login'
+      });
+    } else {
+      uni.navigateTo({
+        url: url
+      });
+    }
+  }
+};
+var _default = tui;
+exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+
+/***/ }),
+
+/***/ 34:
+/*!************************************************************************************************!*\
+  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/@babel/runtime/regenerator/index.js ***!
+  \************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// TODO(Babel 8): Remove this file.
+
+var runtime = __webpack_require__(/*! @babel/runtime/helpers/regeneratorRuntime */ 35)();
+module.exports = runtime;
+
+/***/ }),
+
+/***/ 35:
+/*!*******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/regeneratorRuntime.js ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var _typeof = __webpack_require__(/*! ./typeof.js */ 13)["default"];
+function _regeneratorRuntime() {
+  "use strict";
+
+  /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
+  module.exports = _regeneratorRuntime = function _regeneratorRuntime() {
+    return exports;
+  }, module.exports.__esModule = true, module.exports["default"] = module.exports;
+  var exports = {},
+    Op = Object.prototype,
+    hasOwn = Op.hasOwnProperty,
+    defineProperty = Object.defineProperty || function (obj, key, desc) {
+      obj[key] = desc.value;
+    },
+    $Symbol = "function" == typeof Symbol ? Symbol : {},
+    iteratorSymbol = $Symbol.iterator || "@@iterator",
+    asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator",
+    toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
+  function define(obj, key, value) {
+    return Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: !0,
+      configurable: !0,
+      writable: !0
+    }), obj[key];
+  }
+  try {
+    define({}, "");
+  } catch (err) {
+    define = function define(obj, key, value) {
+      return obj[key] = value;
+    };
+  }
+  function wrap(innerFn, outerFn, self, tryLocsList) {
+    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator,
+      generator = Object.create(protoGenerator.prototype),
+      context = new Context(tryLocsList || []);
+    return defineProperty(generator, "_invoke", {
+      value: makeInvokeMethod(innerFn, self, context)
+    }), generator;
+  }
+  function tryCatch(fn, obj, arg) {
+    try {
+      return {
+        type: "normal",
+        arg: fn.call(obj, arg)
+      };
+    } catch (err) {
+      return {
+        type: "throw",
+        arg: err
+      };
+    }
+  }
+  exports.wrap = wrap;
+  var ContinueSentinel = {};
+  function Generator() {}
+  function GeneratorFunction() {}
+  function GeneratorFunctionPrototype() {}
+  var IteratorPrototype = {};
+  define(IteratorPrototype, iteratorSymbol, function () {
+    return this;
+  });
+  var getProto = Object.getPrototypeOf,
+    NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+  NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype);
+  var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype);
+  function defineIteratorMethods(prototype) {
+    ["next", "throw", "return"].forEach(function (method) {
+      define(prototype, method, function (arg) {
+        return this._invoke(method, arg);
+      });
+    });
+  }
+  function AsyncIterator(generator, PromiseImpl) {
+    function invoke(method, arg, resolve, reject) {
+      var record = tryCatch(generator[method], generator, arg);
+      if ("throw" !== record.type) {
+        var result = record.arg,
+          value = result.value;
+        return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) {
+          invoke("next", value, resolve, reject);
+        }, function (err) {
+          invoke("throw", err, resolve, reject);
+        }) : PromiseImpl.resolve(value).then(function (unwrapped) {
+          result.value = unwrapped, resolve(result);
+        }, function (error) {
+          return invoke("throw", error, resolve, reject);
+        });
+      }
+      reject(record.arg);
+    }
+    var previousPromise;
+    defineProperty(this, "_invoke", {
+      value: function value(method, arg) {
+        function callInvokeWithMethodAndArg() {
+          return new PromiseImpl(function (resolve, reject) {
+            invoke(method, arg, resolve, reject);
+          });
+        }
+        return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg();
+      }
+    });
+  }
+  function makeInvokeMethod(innerFn, self, context) {
+    var state = "suspendedStart";
+    return function (method, arg) {
+      if ("executing" === state) throw new Error("Generator is already running");
+      if ("completed" === state) {
+        if ("throw" === method) throw arg;
+        return doneResult();
+      }
+      for (context.method = method, context.arg = arg;;) {
+        var delegate = context.delegate;
+        if (delegate) {
+          var delegateResult = maybeInvokeDelegate(delegate, context);
+          if (delegateResult) {
+            if (delegateResult === ContinueSentinel) continue;
+            return delegateResult;
+          }
+        }
+        if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) {
+          if ("suspendedStart" === state) throw state = "completed", context.arg;
+          context.dispatchException(context.arg);
+        } else "return" === context.method && context.abrupt("return", context.arg);
+        state = "executing";
+        var record = tryCatch(innerFn, self, context);
+        if ("normal" === record.type) {
+          if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue;
+          return {
+            value: record.arg,
+            done: context.done
+          };
+        }
+        "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg);
+      }
+    };
+  }
+  function maybeInvokeDelegate(delegate, context) {
+    var methodName = context.method,
+      method = delegate.iterator[methodName];
+    if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel;
+    var record = tryCatch(method, delegate.iterator, context.arg);
+    if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel;
+    var info = record.arg;
+    return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel);
+  }
+  function pushTryEntry(locs) {
+    var entry = {
+      tryLoc: locs[0]
+    };
+    1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry);
+  }
+  function resetTryEntry(entry) {
+    var record = entry.completion || {};
+    record.type = "normal", delete record.arg, entry.completion = record;
+  }
+  function Context(tryLocsList) {
+    this.tryEntries = [{
+      tryLoc: "root"
+    }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0);
+  }
+  function values(iterable) {
+    if (iterable) {
+      var iteratorMethod = iterable[iteratorSymbol];
+      if (iteratorMethod) return iteratorMethod.call(iterable);
+      if ("function" == typeof iterable.next) return iterable;
+      if (!isNaN(iterable.length)) {
+        var i = -1,
+          next = function next() {
+            for (; ++i < iterable.length;) {
+              if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next;
+            }
+            return next.value = undefined, next.done = !0, next;
+          };
+        return next.next = next;
+      }
+    }
+    return {
+      next: doneResult
+    };
+  }
+  function doneResult() {
+    return {
+      value: undefined,
+      done: !0
+    };
+  }
+  return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", {
+    value: GeneratorFunctionPrototype,
+    configurable: !0
+  }), defineProperty(GeneratorFunctionPrototype, "constructor", {
+    value: GeneratorFunction,
+    configurable: !0
+  }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) {
+    var ctor = "function" == typeof genFun && genFun.constructor;
+    return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name));
+  }, exports.mark = function (genFun) {
+    return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun;
+  }, exports.awrap = function (arg) {
+    return {
+      __await: arg
+    };
+  }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () {
+    return this;
+  }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) {
+    void 0 === PromiseImpl && (PromiseImpl = Promise);
+    var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl);
+    return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) {
+      return result.done ? result.value : iter.next();
+    });
+  }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () {
+    return this;
+  }), define(Gp, "toString", function () {
+    return "[object Generator]";
+  }), exports.keys = function (val) {
+    var object = Object(val),
+      keys = [];
+    for (var key in object) {
+      keys.push(key);
+    }
+    return keys.reverse(), function next() {
+      for (; keys.length;) {
+        var key = keys.pop();
+        if (key in object) return next.value = key, next.done = !1, next;
+      }
+      return next.done = !0, next;
+    };
+  }, exports.values = values, Context.prototype = {
+    constructor: Context,
+    reset: function reset(skipTempReset) {
+      if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) {
+        "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined);
+      }
+    },
+    stop: function stop() {
+      this.done = !0;
+      var rootRecord = this.tryEntries[0].completion;
+      if ("throw" === rootRecord.type) throw rootRecord.arg;
+      return this.rval;
+    },
+    dispatchException: function dispatchException(exception) {
+      if (this.done) throw exception;
+      var context = this;
+      function handle(loc, caught) {
+        return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught;
+      }
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i],
+          record = entry.completion;
+        if ("root" === entry.tryLoc) return handle("end");
+        if (entry.tryLoc <= this.prev) {
+          var hasCatch = hasOwn.call(entry, "catchLoc"),
+            hasFinally = hasOwn.call(entry, "finallyLoc");
+          if (hasCatch && hasFinally) {
+            if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0);
+            if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc);
+          } else if (hasCatch) {
+            if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0);
+          } else {
+            if (!hasFinally) throw new Error("try statement without catch or finally");
+            if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc);
+          }
+        }
+      }
+    },
+    abrupt: function abrupt(type, arg) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) {
+          var finallyEntry = entry;
+          break;
+        }
+      }
+      finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null);
+      var record = finallyEntry ? finallyEntry.completion : {};
+      return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record);
+    },
+    complete: function complete(record, afterLoc) {
+      if ("throw" === record.type) throw record.arg;
+      return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel;
+    },
+    finish: function finish(finallyLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel;
+      }
+    },
+    "catch": function _catch(tryLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc === tryLoc) {
+          var record = entry.completion;
+          if ("throw" === record.type) {
+            var thrown = record.arg;
+            resetTryEntry(entry);
+          }
+          return thrown;
+        }
+      }
+      throw new Error("illegal catch attempt");
+    },
+    delegateYield: function delegateYield(iterable, resultName, nextLoc) {
+      return this.delegate = {
+        iterator: values(iterable),
+        resultName: resultName,
+        nextLoc: nextLoc
+      }, "next" === this.method && (this.arg = undefined), ContinueSentinel;
+    }
+  }, exports;
+}
+module.exports = _regeneratorRuntime, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 36:
+/*!*****************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/asyncToGenerator.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+  try {
+    var info = gen[key](arg);
+    var value = info.value;
+  } catch (error) {
+    reject(error);
+    return;
+  }
+  if (info.done) {
+    resolve(value);
+  } else {
+    Promise.resolve(value).then(_next, _throw);
+  }
+}
+function _asyncToGenerator(fn) {
+  return function () {
+    var self = this,
+      args = arguments;
+    return new Promise(function (resolve, reject) {
+      var gen = fn.apply(self, args);
+      function _next(value) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+      }
+      function _throw(err) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+      }
+      _next(undefined);
+    });
+  };
+}
+module.exports = _asyncToGenerator, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 37:
+/*!*************************************************!*\
+  !*** D:/source-code/water-meter-app/request.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _tuiRequest = _interopRequireDefault(__webpack_require__(/*! @/components/common/tui-request */ 38));
+var _httpRequest = _interopRequireDefault(__webpack_require__(/*! @/components/common/httpRequest.js */ 33));
+var _index = __webpack_require__(/*! @/utils/index.js */ 41);
+//工具类
+
+//初始化请求配置项
+_tuiRequest.default.create({
+  host: 'http://8.142.169.72:9018',
+  header: {
+    // 'content-type': 'application/x-www-form-urlencoded'
+    'content-type': 'application/json;charset=UTF-8'
+  }
+  //concise:true 
+});
+//请求拦截
+_tuiRequest.default.interceptors.request.use(function (config) {
+  var token = uni.getStorageSync('accessToken');
+  if (config.header) {
+    config.header['Authorization'] = "Bearer " + token;
+  } else {
+    config.header = {
+      'Authorization': "Bearer " + token
+    };
+  }
+  // get请求映射params参数
+  if (config.method === 'GET' && config.data) {
+    var url = config.url + '?' + (0, _index.transParams)(config.data);
+    url = url.slice(0, -1); //把最后一个&符截去
+    config.data = {};
+    config.url = url;
+  }
+  return config;
+});
+//响应拦截
+_tuiRequest.default.interceptors.response.use(function (response) {
+  if (response.statusCode == 200) {
+    if (response.data.code == 200) {
+      return response.data;
+    }
+    if (response.data.code == 401) {
+      _httpRequest.default.modal({
+        content: response.data.message,
+        callback: function callback(bl) {
+          if (bl) {
+            uni.reLaunch({
+              url: "/subpackage/user/login"
+            });
+          } else {
+            return;
+          }
+        }
+      });
+      return Promise.reject(response.data.message);
+    }
+    if (response.data.code == 500) {
+      return response.data;
+    } else {
+      throw response.data.message;
+    }
+  } else {
+    throw "服务器错误";
+  }
+
+  //TODO
+  //return response
+});
+var _default = _tuiRequest.default;
+exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+
+/***/ }),
+
+/***/ 38:
+/*!*****************************************************************************!*\
+  !*** D:/source-code/water-meter-app/components/common/tui-request/index.js ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ 23));
+var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ 24));
+var _tuiBase = _interopRequireDefault(__webpack_require__(/*! ./tui-base.js */ 39));
+var _tuiTaskKeyStore = _interopRequireDefault(__webpack_require__(/*! ./tui-taskKeyStore.js */ 40));
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+var store = (0, _tuiTaskKeyStore.default)();
+var THORUI_INNER = /*#__PURE__*/function () {
+  function THORUI_INNER() {
+    var initConfig = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    (0, _classCallCheck2.default)(this, THORUI_INNER);
+    this.initConfig = initConfig;
+    this.request = [];
+    this.response = [];
+    this.dispatchRequest = this.dispatchRequest.bind(this);
+    this.loading = false;
+  }
+  (0, _createClass2.default)(THORUI_INNER, [{
+    key: "dispatchRequest",
+    value: function dispatchRequest() {
+      var _this = this;
+      var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      var params = _tuiBase.default.mergeConfig(this.initConfig, config);
+      if (params.requestTaskKey && store.requestTaskStorage(params.requestTaskKey)) {
+        return new Promise(function (resolve, reject) {
+          reject({
+            statusCode: -9999,
+            errMsg: 'request:cancelled'
+          });
+        });
+      }
+      var options = _tuiBase.default.getOptions(params);
+      var promise = Promise.resolve(options);
+      promise = promise.then(function (config) {
+        if (params.showLoading && !_this.loading) {
+          _this.loading = true;
+          _tuiBase.default.showLoading();
+        }
+        return new Promise(function (resolve, reject) {
+          var requestTask = uni.request(_objectSpread(_objectSpread({}, options), {}, {
+            success: function success(res) {
+              if (params.showLoading && _this.loading) {
+                _this.loading = false;
+                uni.hideLoading();
+              }
+              resolve(params.concise ? res.data : res);
+            },
+            fail: function fail(err) {
+              if (params.showLoading && _this.loading) {
+                _this.loading = false;
+                uni.hideLoading();
+              }
+              if (params.errorMsg) {
+                _tuiBase.default.toast(params.errorMsg);
+              }
+              reject(err);
+            },
+            complete: function complete() {
+              store.removeRequestTaskKey(params.requestTaskKey);
+            }
+          }));
+          if (params.timeout && typeof params.timeout === 'number' && params.timeout > 3000) {
+            setTimeout(function () {
+              try {
+                store.removeRequestTaskKey(params.requestTaskKey);
+                requestTask.abort();
+              } catch (e) {}
+              resolve({
+                statusCode: -9999,
+                errMsg: 'request:cancelled'
+              });
+            }, params.timeout);
+          }
+        });
+      });
+      return promise;
+    }
+  }]);
+  return THORUI_INNER;
+}();
+var inner = new THORUI_INNER(_tuiBase.default.config());
+var http = {
+  interceptors: {
+    request: {
+      use: function use(fulfilled, rejected) {
+        inner.request.push({
+          fulfilled: fulfilled,
+          rejected: rejected
+        });
+      },
+      eject: function eject(name) {
+        if (inner.request[name]) {
+          inner.request[name] = null;
+        }
+      }
+    },
+    response: {
+      use: function use(fulfilled, rejected) {
+        inner.response.push({
+          fulfilled: fulfilled,
+          rejected: rejected
+        });
+      },
+      eject: function eject(name) {
+        if (inner.response[name]) {
+          inner.response[name] = null;
+        }
+      }
+    }
+  },
+  create: function create(config) {
+    inner.initConfig = _tuiBase.default.mergeConfig(_tuiBase.default.config(), config, true);
+  },
+  get: function get(url) {
+    var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    config.method = 'GET';
+    config.url = url || config.url || '';
+    return http.request(config);
+  },
+  post: function post(url) {
+    var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    config.method = 'POST';
+    config.url = url || config.url || '';
+    return http.request(config);
+  },
+  all: function all(requests) {
+    return Promise.all(requests);
+  },
+  request: function request() {
+    var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var chain = [inner.dispatchRequest, undefined];
+    var promise = Promise.resolve(config);
+    inner.request.forEach(function (interceptor) {
+      chain.unshift(interceptor.fulfilled, interceptor.rejected);
+    });
+    inner.response.forEach(function (interceptor) {
+      chain.push(interceptor.fulfilled, interceptor.rejected);
+    });
+    while (chain.length) {
+      promise = promise.then(chain.shift(), chain.shift());
+    }
+    return promise;
+  }
+};
+var _default = http;
+exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+
+/***/ }),
+
+/***/ 39:
+/*!********************************************************************************!*\
+  !*** D:/source-code/water-meter-app/components/common/tui-request/tui-base.js ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+var base = {
+  /**
+   * content-type:
+   * form=>application/x-www-form-urlencoded
+   * json=>application/json
+   * ......
+   */
+  config: function config() {
+    return {
+      //接口域名：https://base.com
+      host: '',
+      //接口地址：/login
+      url: '',
+      data: {},
+      header: {
+        'content-type': 'application/json'
+      },
+      //有效值必须大写
+      method: 'POST',
+      //大于0时才生效，否则使用全局配置或者默认值
+      timeout: 0,
+      dataType: 'json',
+      //String，不同接口请求名称不可相同，否则会拦截重复key的请求，不传默认不拦截
+      requestTaskKey: '',
+      //是否只返回简洁的接口数据：true 仅返回接口数据data，false 返回包含header、statusCode、errMsg、data等数据
+      concise: false,
+      showLoading: true,
+      errorMsg: '网络不给力，请稍后再试~'
+    };
+  },
+  getOptions: function getOptions(config) {
+    var options = _objectSpread({}, config);
+    ['host', 'timeout', 'requestTaskKey', 'showLoading', 'errorMsg'].forEach(function (item) {
+      delete options[item];
+    });
+    return options;
+  },
+  merge: function merge(a, b) {
+    return Object.assign({}, a, b);
+  },
+  mergeConfig: function mergeConfig(defaultConfig, config, init) {
+    var header = base.merge(defaultConfig.header, config.header || {});
+    var params = base.merge(defaultConfig, config);
+    params.header = header;
+    if (!init) {
+      var url = base.combineURLs(params.host, params.url);
+      params.url = url;
+    }
+    return params;
+  },
+  //如果host为空，则直接使用传入的目标地址
+  combineURLs: function combineURLs(host, target) {
+    return host ? host.replace(/\s+/g, '') + '/' + target.replace(/\s+/g, '').replace(/^\/+/, '') : target;
+  },
+  toast: function toast(text, duration, success) {
+    uni.showToast({
+      title: text || "出错啦~",
+      icon: success ? 'success' : 'none',
+      duration: duration || 2000
+    });
+  },
+  showLoading: function showLoading(title) {
+    var mask = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+    uni.showLoading({
+      mask: mask,
+      title: title || '请稍候...'
+    });
+  }
+};
+var _default = base;
+exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+
+/***/ }),
+
+/***/ 4:
+/*!**********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/interopRequireDefault.js ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    "default": obj
+  };
+}
+module.exports = _interopRequireDefault, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 40:
+/*!****************************************************************************************!*\
+  !*** D:/source-code/water-meter-app/components/common/tui-request/tui-taskKeyStore.js ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = createTaskKeyStore;
+var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ 18));
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ 23));
+var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ 24));
+var RequestTaskKeyStore = /*#__PURE__*/function () {
+  function RequestTaskKeyStore() {
+    var keys = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+    (0, _classCallCheck2.default)(this, RequestTaskKeyStore);
+    this.taskKeyStore = keys;
+  }
+  (0, _createClass2.default)(RequestTaskKeyStore, [{
+    key: "setRequestTaskStorage",
+    value: function setRequestTaskStorage(taskArr, taskKey) {
+      taskKey && taskArr.push(taskKey);
+      this.taskKeyStore = taskArr;
+    }
+  }, {
+    key: "removeRequestTaskKey",
+    value: function removeRequestTaskKey(taskKey) {
+      if (!taskKey) return;
+      var taskArr = (0, _toConsumableArray2.default)(this.taskKeyStore);
+      var index = taskArr.indexOf(taskKey);
+      if (~index) {
+        taskArr.splice(index, 1);
+        this.setRequestTaskStorage(taskArr);
+      }
+    }
+  }, {
+    key: "requestTaskStorage",
+    value: function requestTaskStorage(taskKey) {
+      var result = false;
+      if (!taskKey) return result;
+      var taskArr = (0, _toConsumableArray2.default)(this.taskKeyStore);
+      if (taskArr.length > 0) {
+        if (~taskArr.indexOf(taskKey)) {
+          result = true;
+        } else {
+          this.setRequestTaskStorage(taskArr, taskKey);
+        }
+      } else {
+        taskKey && this.setRequestTaskStorage(taskArr, taskKey);
+      }
+      return result;
+    }
+  }]);
+  return RequestTaskKeyStore;
+}();
+function createTaskKeyStore() {
+  var keys = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  return new RequestTaskKeyStore(keys);
+}
+
+/***/ }),
+
+/***/ 41:
+/*!*****************************************************!*\
+  !*** D:/source-code/water-meter-app/utils/index.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.multiFilter = multiFilter;
+exports.transParams = transParams;
+var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 13));
+//json转query参数
+function transParams(params) {
+  var result = '';
+  for (var _i = 0, _Object$keys = Object.keys(params); _i < _Object$keys.length; _i++) {
+    var propName = _Object$keys[_i];
+    var value = params[propName]; //键值
+    var part = encodeURIComponent(propName) + "="; //给键名加=
+    if (value !== null && value !== "" && typeof value !== "undefined") {
+      if ((0, _typeof2.default)(value) === 'object') {
+        for (var _i2 = 0, _Object$keys2 = Object.keys(value); _i2 < _Object$keys2.length; _i2++) {
+          var key = _Object$keys2[_i2];
+          if (value[key] !== null && value[key] !== "" && typeof value[key] !== 'undefined') {
+            var _params = propName + '[' + key + ']';
+            var subPart = encodeURIComponent(_params) + "=";
+            result += subPart + encodeURIComponent(value[key]) + "&";
+          }
+        }
+      } else {
+        result += part + encodeURIComponent(value) + "&";
+      }
+    }
+  }
+  return result;
+}
+//多条件筛选
+function multiFilter(array, filters) {
+  var filterKeys = Object.keys(filters);
+  return array.filter(function (item) {
+    return filterKeys.every(function (key) {
+      //如果筛选条件空返回所有
+      if (!filters[key].length) return true;
+      return !!~filters[key].indexOf(item[key]);
+    });
+  });
+}
+
+/***/ }),
+
+/***/ 42:
 /*!*****************************************************!*\
   !*** D:/source-code/water-meter-app/store/index.js ***!
   \*****************************************************/
@@ -16769,7 +17868,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 25));
-var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ 34));
+var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ 43));
 _vue.default.use(_vuex.default);
 var store = new _vuex.default.Store({
   state: {
@@ -16881,7 +17980,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 34:
+/***/ 43:
 /*!**************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vuex3/dist/vuex.common.js ***!
   \**************************************************************************************/
@@ -18138,1105 +19237,6 @@ module.exports = index_cjs;
 
 /***/ }),
 
-/***/ 35:
-/*!***********************************************************************!*\
-  !*** D:/source-code/water-meter-app/components/common/httpRequest.js ***!
-  \***********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 36));
-var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 38));
-/**
- * 常用方法封装 请求，文件上传等
- * @author echo. 
- **/
-
-var tui = {
-  //接口地址
-  interfaceUrl: function interfaceUrl() {
-    return 'https://www.thorui.cn';
-    //return 'https://test.thorui.cn'
-    //return 'https://uat.thorui.cn'
-    // return 'https://prod.thorui.cn'
-  },
-
-  toast: function toast(_ref) {
-    var text = _ref.text,
-      duration = _ref.duration,
-      success = _ref.success;
-    uni.showToast({
-      duration: duration || 2000,
-      title: text || "出错啦~",
-      icon: success ? 'success' : 'none'
-    });
-  },
-  modal: function modal(_ref2) {
-    var title = _ref2.title,
-      content = _ref2.content,
-      showCancel = _ref2.showCancel,
-      callback = _ref2.callback,
-      confirmColor = _ref2.confirmColor,
-      confirmText = _ref2.confirmText;
-    uni.showModal({
-      title: title || '提示',
-      content: content,
-      showCancel: showCancel || true,
-      cancelColor: "#555",
-      confirmColor: confirmColor || "#5677fc",
-      confirmText: confirmText || "确定",
-      success: function success(res) {
-        if (res.confirm) {
-          callback && callback(true);
-        } else {
-          callback && callback(false);
-        }
-      }
-    });
-  },
-  isAndroid: function isAndroid() {
-    var res = uni.getSystemInfoSync();
-    return res.platform.toLocaleLowerCase() == "android";
-  },
-  isPhoneX: function isPhoneX() {
-    var res = uni.getSystemInfoSync();
-    var iphonex = false;
-    var models = ['iphonex', 'iphonexr', 'iphonexs', 'iphonexsmax', 'iphone11', 'iphone11pro', 'iphone11promax', 'iphone12mini', 'iphone12', 'iphone12pro', 'iphone12promax', 'iphone13mini', 'iphone13', 'iphone13pro', 'iphone13promax', 'iphone14', 'iphone14plus', 'iphone14pro', 'iphone14promax'];
-    var model = res.model.replace(/\s/g, "").toLowerCase();
-    if (models.includes(model)) {
-      iphonex = true;
-    }
-    return iphonex;
-  },
-  constNum: function constNum() {
-    var time = 0;
-    return time;
-  },
-  delayed: null,
-  loadding: false,
-  showLoading: function showLoading(title) {
-    var mask = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
-    uni.showLoading({
-      mask: mask,
-      title: title || '请稍候...'
-    });
-  },
-  /**
-   * 请求数据处理
-   * @param string url 请求地址
-   * @param string method 请求方式
-   *  GET or POST
-   * @param {*} postData 请求参数
-   * @param bool isDelay 是否延迟显示loading
-   * @param bool isForm 数据格式
-   *  true: 'application/x-www-form-urlencoded'
-   *  false:'application/json'
-   * @param bool hideLoading 是否隐藏loading
-   *  true: 隐藏
-   *  false:显示
-   */
-  request: function () {
-    var _request = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee(url, method, postData, isDelay, isForm, hideLoading) {
-      return _regenerator.default.wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              //接口请求
-              tui.loadding && uni.hideLoading();
-              tui.loadding = false;
-              if (!hideLoading) {
-                if (isDelay) {
-                  tui.delayed = setTimeout(function () {
-                    tui.loadding = true;
-                    tui.showLoading();
-                    clearTimeout(tui.delayed);
-                  }, 1000);
-                } else {
-                  tui.loadding = true;
-                  tui.showLoading();
-                }
-              }
-              return _context.abrupt("return", new Promise(function (resolve, reject) {
-                uni.request({
-                  url: tui.interfaceUrl() + url,
-                  data: postData,
-                  header: {
-                    'content-type': isForm ? 'application/x-www-form-urlencoded' : 'application/json',
-                    'Authorization': tui.getToken()
-                  },
-                  method: method,
-                  //'GET','POST'
-                  dataType: 'json',
-                  success: function success(res) {
-                    clearTimeout(tui.delayed);
-                    tui.delayed = null;
-                    if (tui.loadding && !hideLoading) {
-                      uni.hideLoading();
-                    }
-                    resolve(res.data);
-                  },
-                  fail: function fail(res) {
-                    clearTimeout(tui.delayed);
-                    tui.delayed = null;
-                    tui.toast("网络不给力，请稍后再试~");
-                    reject(res);
-                  }
-                });
-              }));
-            case 4:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee);
-    }));
-    function request(_x, _x2, _x3, _x4, _x5, _x6) {
-      return _request.apply(this, arguments);
-    }
-    return request;
-  }(),
-  /**
-   * 上传文件
-   * @param string url 请求地址
-   * @param string src 文件路径
-   */
-  uploadFile: function uploadFile(url, src) {
-    tui.showLoading();
-    return new Promise(function (resolve, reject) {
-      var uploadTask = uni.uploadFile({
-        url: tui.interfaceUrl() + url,
-        filePath: src,
-        name: 'imageFile',
-        header: {
-          'Authorization': tui.getToken()
-        },
-        formData: {
-          // sizeArrayText:""
-        },
-        success: function success(res) {
-          uni.hideLoading();
-          var d = JSON.parse(res.data.replace(/\ufeff/g, "") || "{}");
-          if (d.code % 100 == 0) {
-            //返回图片地址
-            var fileObj = d.data;
-            resolve(fileObj);
-          } else {
-            that.toast(res.msg);
-          }
-        },
-        fail: function fail(res) {
-          reject(res);
-          that.toast(res.msg);
-        }
-      });
-    });
-  },
-  tuiJsonp: function tuiJsonp(url, callback, callbackname) {},
-  //设置用户信息
-  setUserInfo: function setUserInfo(user) {
-    uni.setStorageSync("userInfo", user);
-  },
-  //设置用户信息
-  getUserInfo: function getUserInfo() {
-    return uni.getStorageSync("userInfo");
-  },
-  //获取token
-  getToken: function getToken() {
-    return uni.getStorageSync("accessToken");
-  },
-  //判断是否登录
-  isLogin: function isLogin() {
-    return uni.getStorageSync("userInfo") ? true : false;
-  },
-  //跳转页面，校验登录状态
-  href: function href(url, isVerify) {
-    if (isVerify && !tui.isLogin()) {
-      uni.navigateTo({
-        url: '/pages/login/login'
-      });
-    } else {
-      uni.navigateTo({
-        url: url
-      });
-    }
-  }
-};
-var _default = tui;
-exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
-
-/***/ }),
-
-/***/ 36:
-/*!************************************************************************************************!*\
-  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/@babel/runtime/regenerator/index.js ***!
-  \************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// TODO(Babel 8): Remove this file.
-
-var runtime = __webpack_require__(/*! @babel/runtime/helpers/regeneratorRuntime */ 37)();
-module.exports = runtime;
-
-/***/ }),
-
-/***/ 37:
-/*!*******************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/regeneratorRuntime.js ***!
-  \*******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var _typeof = __webpack_require__(/*! ./typeof.js */ 13)["default"];
-function _regeneratorRuntime() {
-  "use strict";
-
-  /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
-  module.exports = _regeneratorRuntime = function _regeneratorRuntime() {
-    return exports;
-  }, module.exports.__esModule = true, module.exports["default"] = module.exports;
-  var exports = {},
-    Op = Object.prototype,
-    hasOwn = Op.hasOwnProperty,
-    defineProperty = Object.defineProperty || function (obj, key, desc) {
-      obj[key] = desc.value;
-    },
-    $Symbol = "function" == typeof Symbol ? Symbol : {},
-    iteratorSymbol = $Symbol.iterator || "@@iterator",
-    asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator",
-    toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
-  function define(obj, key, value) {
-    return Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: !0,
-      configurable: !0,
-      writable: !0
-    }), obj[key];
-  }
-  try {
-    define({}, "");
-  } catch (err) {
-    define = function define(obj, key, value) {
-      return obj[key] = value;
-    };
-  }
-  function wrap(innerFn, outerFn, self, tryLocsList) {
-    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator,
-      generator = Object.create(protoGenerator.prototype),
-      context = new Context(tryLocsList || []);
-    return defineProperty(generator, "_invoke", {
-      value: makeInvokeMethod(innerFn, self, context)
-    }), generator;
-  }
-  function tryCatch(fn, obj, arg) {
-    try {
-      return {
-        type: "normal",
-        arg: fn.call(obj, arg)
-      };
-    } catch (err) {
-      return {
-        type: "throw",
-        arg: err
-      };
-    }
-  }
-  exports.wrap = wrap;
-  var ContinueSentinel = {};
-  function Generator() {}
-  function GeneratorFunction() {}
-  function GeneratorFunctionPrototype() {}
-  var IteratorPrototype = {};
-  define(IteratorPrototype, iteratorSymbol, function () {
-    return this;
-  });
-  var getProto = Object.getPrototypeOf,
-    NativeIteratorPrototype = getProto && getProto(getProto(values([])));
-  NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype);
-  var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype);
-  function defineIteratorMethods(prototype) {
-    ["next", "throw", "return"].forEach(function (method) {
-      define(prototype, method, function (arg) {
-        return this._invoke(method, arg);
-      });
-    });
-  }
-  function AsyncIterator(generator, PromiseImpl) {
-    function invoke(method, arg, resolve, reject) {
-      var record = tryCatch(generator[method], generator, arg);
-      if ("throw" !== record.type) {
-        var result = record.arg,
-          value = result.value;
-        return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) {
-          invoke("next", value, resolve, reject);
-        }, function (err) {
-          invoke("throw", err, resolve, reject);
-        }) : PromiseImpl.resolve(value).then(function (unwrapped) {
-          result.value = unwrapped, resolve(result);
-        }, function (error) {
-          return invoke("throw", error, resolve, reject);
-        });
-      }
-      reject(record.arg);
-    }
-    var previousPromise;
-    defineProperty(this, "_invoke", {
-      value: function value(method, arg) {
-        function callInvokeWithMethodAndArg() {
-          return new PromiseImpl(function (resolve, reject) {
-            invoke(method, arg, resolve, reject);
-          });
-        }
-        return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg();
-      }
-    });
-  }
-  function makeInvokeMethod(innerFn, self, context) {
-    var state = "suspendedStart";
-    return function (method, arg) {
-      if ("executing" === state) throw new Error("Generator is already running");
-      if ("completed" === state) {
-        if ("throw" === method) throw arg;
-        return doneResult();
-      }
-      for (context.method = method, context.arg = arg;;) {
-        var delegate = context.delegate;
-        if (delegate) {
-          var delegateResult = maybeInvokeDelegate(delegate, context);
-          if (delegateResult) {
-            if (delegateResult === ContinueSentinel) continue;
-            return delegateResult;
-          }
-        }
-        if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) {
-          if ("suspendedStart" === state) throw state = "completed", context.arg;
-          context.dispatchException(context.arg);
-        } else "return" === context.method && context.abrupt("return", context.arg);
-        state = "executing";
-        var record = tryCatch(innerFn, self, context);
-        if ("normal" === record.type) {
-          if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue;
-          return {
-            value: record.arg,
-            done: context.done
-          };
-        }
-        "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg);
-      }
-    };
-  }
-  function maybeInvokeDelegate(delegate, context) {
-    var methodName = context.method,
-      method = delegate.iterator[methodName];
-    if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel;
-    var record = tryCatch(method, delegate.iterator, context.arg);
-    if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel;
-    var info = record.arg;
-    return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel);
-  }
-  function pushTryEntry(locs) {
-    var entry = {
-      tryLoc: locs[0]
-    };
-    1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry);
-  }
-  function resetTryEntry(entry) {
-    var record = entry.completion || {};
-    record.type = "normal", delete record.arg, entry.completion = record;
-  }
-  function Context(tryLocsList) {
-    this.tryEntries = [{
-      tryLoc: "root"
-    }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0);
-  }
-  function values(iterable) {
-    if (iterable) {
-      var iteratorMethod = iterable[iteratorSymbol];
-      if (iteratorMethod) return iteratorMethod.call(iterable);
-      if ("function" == typeof iterable.next) return iterable;
-      if (!isNaN(iterable.length)) {
-        var i = -1,
-          next = function next() {
-            for (; ++i < iterable.length;) {
-              if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next;
-            }
-            return next.value = undefined, next.done = !0, next;
-          };
-        return next.next = next;
-      }
-    }
-    return {
-      next: doneResult
-    };
-  }
-  function doneResult() {
-    return {
-      value: undefined,
-      done: !0
-    };
-  }
-  return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", {
-    value: GeneratorFunctionPrototype,
-    configurable: !0
-  }), defineProperty(GeneratorFunctionPrototype, "constructor", {
-    value: GeneratorFunction,
-    configurable: !0
-  }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) {
-    var ctor = "function" == typeof genFun && genFun.constructor;
-    return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name));
-  }, exports.mark = function (genFun) {
-    return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun;
-  }, exports.awrap = function (arg) {
-    return {
-      __await: arg
-    };
-  }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () {
-    return this;
-  }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) {
-    void 0 === PromiseImpl && (PromiseImpl = Promise);
-    var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl);
-    return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) {
-      return result.done ? result.value : iter.next();
-    });
-  }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () {
-    return this;
-  }), define(Gp, "toString", function () {
-    return "[object Generator]";
-  }), exports.keys = function (val) {
-    var object = Object(val),
-      keys = [];
-    for (var key in object) {
-      keys.push(key);
-    }
-    return keys.reverse(), function next() {
-      for (; keys.length;) {
-        var key = keys.pop();
-        if (key in object) return next.value = key, next.done = !1, next;
-      }
-      return next.done = !0, next;
-    };
-  }, exports.values = values, Context.prototype = {
-    constructor: Context,
-    reset: function reset(skipTempReset) {
-      if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) {
-        "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined);
-      }
-    },
-    stop: function stop() {
-      this.done = !0;
-      var rootRecord = this.tryEntries[0].completion;
-      if ("throw" === rootRecord.type) throw rootRecord.arg;
-      return this.rval;
-    },
-    dispatchException: function dispatchException(exception) {
-      if (this.done) throw exception;
-      var context = this;
-      function handle(loc, caught) {
-        return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught;
-      }
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i],
-          record = entry.completion;
-        if ("root" === entry.tryLoc) return handle("end");
-        if (entry.tryLoc <= this.prev) {
-          var hasCatch = hasOwn.call(entry, "catchLoc"),
-            hasFinally = hasOwn.call(entry, "finallyLoc");
-          if (hasCatch && hasFinally) {
-            if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0);
-            if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc);
-          } else if (hasCatch) {
-            if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0);
-          } else {
-            if (!hasFinally) throw new Error("try statement without catch or finally");
-            if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc);
-          }
-        }
-      }
-    },
-    abrupt: function abrupt(type, arg) {
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) {
-          var finallyEntry = entry;
-          break;
-        }
-      }
-      finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null);
-      var record = finallyEntry ? finallyEntry.completion : {};
-      return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record);
-    },
-    complete: function complete(record, afterLoc) {
-      if ("throw" === record.type) throw record.arg;
-      return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel;
-    },
-    finish: function finish(finallyLoc) {
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel;
-      }
-    },
-    "catch": function _catch(tryLoc) {
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        if (entry.tryLoc === tryLoc) {
-          var record = entry.completion;
-          if ("throw" === record.type) {
-            var thrown = record.arg;
-            resetTryEntry(entry);
-          }
-          return thrown;
-        }
-      }
-      throw new Error("illegal catch attempt");
-    },
-    delegateYield: function delegateYield(iterable, resultName, nextLoc) {
-      return this.delegate = {
-        iterator: values(iterable),
-        resultName: resultName,
-        nextLoc: nextLoc
-      }, "next" === this.method && (this.arg = undefined), ContinueSentinel;
-    }
-  }, exports;
-}
-module.exports = _regeneratorRuntime, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-
-/***/ 38:
-/*!*****************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/asyncToGenerator.js ***!
-  \*****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
-  try {
-    var info = gen[key](arg);
-    var value = info.value;
-  } catch (error) {
-    reject(error);
-    return;
-  }
-  if (info.done) {
-    resolve(value);
-  } else {
-    Promise.resolve(value).then(_next, _throw);
-  }
-}
-function _asyncToGenerator(fn) {
-  return function () {
-    var self = this,
-      args = arguments;
-    return new Promise(function (resolve, reject) {
-      var gen = fn.apply(self, args);
-      function _next(value) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
-      }
-      function _throw(err) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
-      }
-      _next(undefined);
-    });
-  };
-}
-module.exports = _asyncToGenerator, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-
-/***/ 39:
-/*!*************************************************!*\
-  !*** D:/source-code/water-meter-app/request.js ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _tuiRequest = _interopRequireDefault(__webpack_require__(/*! @/components/common/tui-request */ 40));
-var _httpRequest = _interopRequireDefault(__webpack_require__(/*! @/components/common/httpRequest.js */ 35));
-var _index = __webpack_require__(/*! @/utils/index.js */ 43);
-//工具类
-
-//初始化请求配置项
-_tuiRequest.default.create({
-  host: 'http://8.142.169.72:9018',
-  header: {
-    // 'content-type': 'application/x-www-form-urlencoded'
-    'content-type': 'application/json;charset=UTF-8'
-  }
-  //concise:true 
-});
-//请求拦截
-_tuiRequest.default.interceptors.request.use(function (config) {
-  var token = uni.getStorageSync('accessToken');
-  if (config.header) {
-    config.header['Authorization'] = "Bearer " + token;
-  } else {
-    config.header = {
-      'Authorization': "Bearer " + token
-    };
-  }
-  // get请求映射params参数
-  if (config.method === 'GET' && config.data) {
-    var url = config.url + '?' + (0, _index.transParams)(config.data);
-    url = url.slice(0, -1); //把最后一个&符截去
-    config.data = {};
-    config.url = url;
-  }
-  return config;
-});
-//响应拦截
-_tuiRequest.default.interceptors.response.use(function (response) {
-  if (response.statusCode == 200) {
-    if (response.data.code == 200) {
-      return response.data;
-    }
-    if (response.data.code == 401) {
-      _httpRequest.default.modal({
-        content: response.data.message,
-        callback: function callback(bl) {
-          if (bl) {
-            uni.reLaunch({
-              url: "/subpackage/user/login"
-            });
-          } else {
-            return;
-          }
-        }
-      });
-      return Promise.reject(response.data.message);
-    }
-    if (response.data.code == 500) {
-      return response.data;
-    } else {
-      throw response.data.message;
-    }
-  } else {
-    throw "服务器错误";
-  }
-
-  //TODO
-  //return response
-});
-var _default = _tuiRequest.default;
-exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
-
-/***/ }),
-
-/***/ 4:
-/*!**********************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/interopRequireDefault.js ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    "default": obj
-  };
-}
-module.exports = _interopRequireDefault, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-
-/***/ 40:
-/*!*****************************************************************************!*\
-  !*** D:/source-code/water-meter-app/components/common/tui-request/index.js ***!
-  \*****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
-var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ 23));
-var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ 24));
-var _tuiBase = _interopRequireDefault(__webpack_require__(/*! ./tui-base.js */ 41));
-var _tuiTaskKeyStore = _interopRequireDefault(__webpack_require__(/*! ./tui-taskKeyStore.js */ 42));
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-var store = (0, _tuiTaskKeyStore.default)();
-var THORUI_INNER = /*#__PURE__*/function () {
-  function THORUI_INNER() {
-    var initConfig = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-    (0, _classCallCheck2.default)(this, THORUI_INNER);
-    this.initConfig = initConfig;
-    this.request = [];
-    this.response = [];
-    this.dispatchRequest = this.dispatchRequest.bind(this);
-    this.loading = false;
-  }
-  (0, _createClass2.default)(THORUI_INNER, [{
-    key: "dispatchRequest",
-    value: function dispatchRequest() {
-      var _this = this;
-      var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      var params = _tuiBase.default.mergeConfig(this.initConfig, config);
-      if (params.requestTaskKey && store.requestTaskStorage(params.requestTaskKey)) {
-        return new Promise(function (resolve, reject) {
-          reject({
-            statusCode: -9999,
-            errMsg: 'request:cancelled'
-          });
-        });
-      }
-      var options = _tuiBase.default.getOptions(params);
-      var promise = Promise.resolve(options);
-      promise = promise.then(function (config) {
-        if (params.showLoading && !_this.loading) {
-          _this.loading = true;
-          _tuiBase.default.showLoading();
-        }
-        return new Promise(function (resolve, reject) {
-          var requestTask = uni.request(_objectSpread(_objectSpread({}, options), {}, {
-            success: function success(res) {
-              if (params.showLoading && _this.loading) {
-                _this.loading = false;
-                uni.hideLoading();
-              }
-              resolve(params.concise ? res.data : res);
-            },
-            fail: function fail(err) {
-              if (params.showLoading && _this.loading) {
-                _this.loading = false;
-                uni.hideLoading();
-              }
-              if (params.errorMsg) {
-                _tuiBase.default.toast(params.errorMsg);
-              }
-              reject(err);
-            },
-            complete: function complete() {
-              store.removeRequestTaskKey(params.requestTaskKey);
-            }
-          }));
-          if (params.timeout && typeof params.timeout === 'number' && params.timeout > 3000) {
-            setTimeout(function () {
-              try {
-                store.removeRequestTaskKey(params.requestTaskKey);
-                requestTask.abort();
-              } catch (e) {}
-              resolve({
-                statusCode: -9999,
-                errMsg: 'request:cancelled'
-              });
-            }, params.timeout);
-          }
-        });
-      });
-      return promise;
-    }
-  }]);
-  return THORUI_INNER;
-}();
-var inner = new THORUI_INNER(_tuiBase.default.config());
-var http = {
-  interceptors: {
-    request: {
-      use: function use(fulfilled, rejected) {
-        inner.request.push({
-          fulfilled: fulfilled,
-          rejected: rejected
-        });
-      },
-      eject: function eject(name) {
-        if (inner.request[name]) {
-          inner.request[name] = null;
-        }
-      }
-    },
-    response: {
-      use: function use(fulfilled, rejected) {
-        inner.response.push({
-          fulfilled: fulfilled,
-          rejected: rejected
-        });
-      },
-      eject: function eject(name) {
-        if (inner.response[name]) {
-          inner.response[name] = null;
-        }
-      }
-    }
-  },
-  create: function create(config) {
-    inner.initConfig = _tuiBase.default.mergeConfig(_tuiBase.default.config(), config, true);
-  },
-  get: function get(url) {
-    var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-    config.method = 'GET';
-    config.url = url || config.url || '';
-    return http.request(config);
-  },
-  post: function post(url) {
-    var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-    config.method = 'POST';
-    config.url = url || config.url || '';
-    return http.request(config);
-  },
-  all: function all(requests) {
-    return Promise.all(requests);
-  },
-  request: function request() {
-    var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-    var chain = [inner.dispatchRequest, undefined];
-    var promise = Promise.resolve(config);
-    inner.request.forEach(function (interceptor) {
-      chain.unshift(interceptor.fulfilled, interceptor.rejected);
-    });
-    inner.response.forEach(function (interceptor) {
-      chain.push(interceptor.fulfilled, interceptor.rejected);
-    });
-    while (chain.length) {
-      promise = promise.then(chain.shift(), chain.shift());
-    }
-    return promise;
-  }
-};
-var _default = http;
-exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
-
-/***/ }),
-
-/***/ 41:
-/*!********************************************************************************!*\
-  !*** D:/source-code/water-meter-app/components/common/tui-request/tui-base.js ***!
-  \********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-var base = {
-  /**
-   * content-type:
-   * form=>application/x-www-form-urlencoded
-   * json=>application/json
-   * ......
-   */
-  config: function config() {
-    return {
-      //接口域名：https://base.com
-      host: '',
-      //接口地址：/login
-      url: '',
-      data: {},
-      header: {
-        'content-type': 'application/json'
-      },
-      //有效值必须大写
-      method: 'POST',
-      //大于0时才生效，否则使用全局配置或者默认值
-      timeout: 0,
-      dataType: 'json',
-      //String，不同接口请求名称不可相同，否则会拦截重复key的请求，不传默认不拦截
-      requestTaskKey: '',
-      //是否只返回简洁的接口数据：true 仅返回接口数据data，false 返回包含header、statusCode、errMsg、data等数据
-      concise: false,
-      showLoading: true,
-      errorMsg: '网络不给力，请稍后再试~'
-    };
-  },
-  getOptions: function getOptions(config) {
-    var options = _objectSpread({}, config);
-    ['host', 'timeout', 'requestTaskKey', 'showLoading', 'errorMsg'].forEach(function (item) {
-      delete options[item];
-    });
-    return options;
-  },
-  merge: function merge(a, b) {
-    return Object.assign({}, a, b);
-  },
-  mergeConfig: function mergeConfig(defaultConfig, config, init) {
-    var header = base.merge(defaultConfig.header, config.header || {});
-    var params = base.merge(defaultConfig, config);
-    params.header = header;
-    if (!init) {
-      var url = base.combineURLs(params.host, params.url);
-      params.url = url;
-    }
-    return params;
-  },
-  //如果host为空，则直接使用传入的目标地址
-  combineURLs: function combineURLs(host, target) {
-    return host ? host.replace(/\s+/g, '') + '/' + target.replace(/\s+/g, '').replace(/^\/+/, '') : target;
-  },
-  toast: function toast(text, duration, success) {
-    uni.showToast({
-      title: text || "出错啦~",
-      icon: success ? 'success' : 'none',
-      duration: duration || 2000
-    });
-  },
-  showLoading: function showLoading(title) {
-    var mask = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
-    uni.showLoading({
-      mask: mask,
-      title: title || '请稍候...'
-    });
-  }
-};
-var _default = base;
-exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
-
-/***/ }),
-
-/***/ 42:
-/*!****************************************************************************************!*\
-  !*** D:/source-code/water-meter-app/components/common/tui-request/tui-taskKeyStore.js ***!
-  \****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = createTaskKeyStore;
-var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ 18));
-var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ 23));
-var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ 24));
-var RequestTaskKeyStore = /*#__PURE__*/function () {
-  function RequestTaskKeyStore() {
-    var keys = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-    (0, _classCallCheck2.default)(this, RequestTaskKeyStore);
-    this.taskKeyStore = keys;
-  }
-  (0, _createClass2.default)(RequestTaskKeyStore, [{
-    key: "setRequestTaskStorage",
-    value: function setRequestTaskStorage(taskArr, taskKey) {
-      taskKey && taskArr.push(taskKey);
-      this.taskKeyStore = taskArr;
-    }
-  }, {
-    key: "removeRequestTaskKey",
-    value: function removeRequestTaskKey(taskKey) {
-      if (!taskKey) return;
-      var taskArr = (0, _toConsumableArray2.default)(this.taskKeyStore);
-      var index = taskArr.indexOf(taskKey);
-      if (~index) {
-        taskArr.splice(index, 1);
-        this.setRequestTaskStorage(taskArr);
-      }
-    }
-  }, {
-    key: "requestTaskStorage",
-    value: function requestTaskStorage(taskKey) {
-      var result = false;
-      if (!taskKey) return result;
-      var taskArr = (0, _toConsumableArray2.default)(this.taskKeyStore);
-      if (taskArr.length > 0) {
-        if (~taskArr.indexOf(taskKey)) {
-          result = true;
-        } else {
-          this.setRequestTaskStorage(taskArr, taskKey);
-        }
-      } else {
-        taskKey && this.setRequestTaskStorage(taskArr, taskKey);
-      }
-      return result;
-    }
-  }]);
-  return RequestTaskKeyStore;
-}();
-function createTaskKeyStore() {
-  var keys = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-  return new RequestTaskKeyStore(keys);
-}
-
-/***/ }),
-
-/***/ 43:
-/*!*****************************************************!*\
-  !*** D:/source-code/water-meter-app/utils/index.js ***!
-  \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.multiFilter = multiFilter;
-exports.transParams = transParams;
-var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 13));
-//json转query参数
-function transParams(params) {
-  var result = '';
-  for (var _i = 0, _Object$keys = Object.keys(params); _i < _Object$keys.length; _i++) {
-    var propName = _Object$keys[_i];
-    var value = params[propName]; //键值
-    var part = encodeURIComponent(propName) + "="; //给键名加=
-    if (value !== null && value !== "" && typeof value !== "undefined") {
-      if ((0, _typeof2.default)(value) === 'object') {
-        for (var _i2 = 0, _Object$keys2 = Object.keys(value); _i2 < _Object$keys2.length; _i2++) {
-          var key = _Object$keys2[_i2];
-          if (value[key] !== null && value[key] !== "" && typeof value[key] !== 'undefined') {
-            var _params = propName + '[' + key + ']';
-            var subPart = encodeURIComponent(_params) + "=";
-            result += subPart + encodeURIComponent(value[key]) + "&";
-          }
-        }
-      } else {
-        result += part + encodeURIComponent(value) + "&";
-      }
-    }
-  }
-  return result;
-}
-//多条件筛选
-function multiFilter(array, filters) {
-  var filterKeys = Object.keys(filters);
-  return array.filter(function (item) {
-    return filterKeys.every(function (key) {
-      //如果筛选条件空返回所有
-      if (!filters[key].length) return true;
-      return !!~filters[key].indexOf(item[key]);
-    });
-  });
-}
-
-/***/ }),
-
 /***/ 5:
 /*!**************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/slicedToArray.js ***!
@@ -19344,6 +19344,324 @@ function _arrayLikeToArray(arr, len) {
   return arr2;
 }
 module.exports = _arrayLikeToArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 91:
+/*!**************************************************************************!*\
+  !*** D:/source-code/water-meter-app/utils/bluetooth/bluetoothManager.js ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 34));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 36));
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ 23));
+var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ 24));
+var Bluetooth = /*#__PURE__*/function () {
+  function Bluetooth(isIOS) {
+    (0, _classCallCheck2.default)(this, Bluetooth);
+    this.isIOS = typeof isIOS === 'undefined' ? false : isIOS; // 是否是iphone
+    this.available = false; // 蓝牙是否可用/开启
+    this.discovering = false; // 是否正在搜索设备
+    this.discoveringTimer = null; // 搜索无设备提示延时器
+    this.isDiscovery = false; // 是否搜索到设备
+    this.discoveringTimeout = 20000; // 默认搜索时长20s
+    this.connectedDeviceId = null;
+    this.discoveredDevices = []; // 用于存储发现的蓝牙设备
+  }
+  /**
+   * 初始化蓝牙模块
+   * @param {function} discoveryCallback 搜索到设备后的回调
+   */
+  (0, _createClass2.default)(Bluetooth, [{
+    key: "initBluetoothAdapter",
+    value: function initBluetoothAdapter(discoveryCallback) {
+      var _this = this;
+      var self = this;
+      return new Promise(function (resolve, reject) {
+        uni.openBluetoothAdapter({
+          mode: 'central',
+          success: function success(res) {
+            console.log("蓝牙适配器初始化成功");
+            uni.showToast({
+              duration: 1500,
+              title: "蓝牙适配器已开启~",
+              icon: 'none'
+            });
+
+            //监听寻找到新设备的事件
+            _this.onBluetoothDeviceFound().then(function (res) {
+              discoveryCallback && discoveryCallback(res);
+            });
+
+            // 开始搜寻附近的蓝牙外围设备
+            _this.startDiscovery(discoveryCallback);
+            resolve("蓝牙已启用");
+          },
+          fail: function fail(errMsg) {
+            console.log('蓝牙适配器初始化失败');
+            if (errMsg.errCode === 10001) {
+              uni.showToast({
+                duration: 2000,
+                title: "请开启手机蓝牙",
+                icon: 'none'
+              });
+              return;
+            }
+            // 监听蓝牙适配器状态变化事件
+            uni.onBluetoothAdapterStateChange(function (res) {
+              if (res.available) return;
+              self.startDiscovery(discoveryCallback);
+            });
+            reject();
+          }
+        });
+      });
+    }
+
+    //查找周围蓝牙设备
+  }, {
+    key: "startDiscovery",
+    value: function () {
+      var _startDiscovery = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee2() {
+        var self;
+        return _regenerator.default.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                uni.showLoading({
+                  title: '蓝牙搜索中'
+                });
+                self = this;
+                console.log("开始搜索附近的蓝牙外围设备");
+                _context2.prev = 3;
+                _context2.next = 6;
+                return uni.startBluetoothDevicesDiscovery({
+                  services: [],
+                  // 此处应填写需要查找的服务uuid列表，如果为空，则查找所有设备
+                  allowDuplicatesKey: false,
+                  // 不允许重复上报同一设备
+                  interval: 0
+                });
+              case 6:
+                //设置定时器，在一段时间后停止搜索并处理未找到设备的情况
+                self.discoveringTimer = setTimeout( /*#__PURE__*/(0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
+                  return _regenerator.default.wrap(function _callee$(_context) {
+                    while (1) {
+                      switch (_context.prev = _context.next) {
+                        case 0:
+                          _context.next = 2;
+                          return self.stopDiscovery();
+                        case 2:
+                          uni.hideLoading();
+                          console.log("停止搜索附近的蓝牙外围设备");
+                          if (self.discoveredDevices.length === 0) {
+                            console.log("没有找到符合条件的蓝牙设备");
+                            // 在这里处理未找到设备的逻辑，例如提示用户
+                            uni.showToast({
+                              title: '未找到符合条件设备',
+                              icon: 'error'
+                            });
+                          }
+                        case 5:
+                        case "end":
+                          return _context.stop();
+                      }
+                    }
+                  }, _callee);
+                })), self.discoveringTimeout);
+                _context2.next = 12;
+                break;
+              case 9:
+                _context2.prev = 9;
+                _context2.t0 = _context2["catch"](3);
+                console.error("搜索附近的蓝牙外围设备失败", _context2.t0);
+              case 12:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this, [[3, 9]]);
+      }));
+      function startDiscovery() {
+        return _startDiscovery.apply(this, arguments);
+      }
+      return startDiscovery;
+    }() //停止搜寻周围蓝牙设备
+  }, {
+    key: "stopDiscovery",
+    value: function stopDiscovery() {
+      uni.stopBluetoothDevicesDiscovery();
+      clearTimeout(this.discoveringTimer);
+    }
+    //卸载蓝牙事件,卸载时顺手close掉
+  }, {
+    key: "unloadBluetooth",
+    value: function unloadBluetooth() {
+      uni.closeBluetoothAdapter();
+      clearTimeout(this.discoveringTimer);
+      this.discovering && this.stopDiscovery();
+    }
+
+    //获取本机蓝牙适配器状态
+  }, {
+    key: "getBluetoothState",
+    value: function getBluetoothState() {
+      var _this2 = this;
+      return new Promise(function (resolve, reject) {
+        uni.getBluetoothAdapterState({
+          success: function success(res) {
+            _this2.updateBluetoothState(res); // 更新蓝牙适配器状态
+            resolve(res);
+          }
+        });
+      });
+    }
+
+    //更新蓝牙适配器状态
+  }, {
+    key: "updateBluetoothState",
+    value: function updateBluetoothState(state) {
+      var available = state.available,
+        discovering = state.discovering;
+      this.available = available;
+      this.discovering = discovering;
+    }
+
+    //监听寻找到新设备的事件
+  }, {
+    key: "onBluetoothDeviceFound",
+    value: function onBluetoothDeviceFound() {
+      var _this3 = this;
+      // const regex = /^ZEER\d+/g //搜寻以ZEER开头的蓝牙设备
+      return new Promise(function (resolve, reject) {
+        uni.onBluetoothDeviceFound(function (res) {
+          res.devices.forEach(function (device) {
+            // if (
+            // 	!this.discoveredDevices.some(
+            // 		(discoveredDevice) => discoveredDevice.deviceId === device
+            // 		.deviceId
+            // 	) && regex.test(device.name)
+            // )
+            // 去重设备
+            if (!_this3.discoveredDevices.some(function (discoveredDevice) {
+              return discoveredDevice.deviceId === device.deviceId;
+            })) {
+              _this3.discoveredDevices.push(device);
+              _this3.isDiscovery = true;
+              console.log("发现新设备", device);
+            }
+          });
+          // 这里resolve只执行一次，不管监听到多少设备
+          resolve(_this3.discoveredDevices);
+        });
+      });
+    }
+
+    // 连接到低功耗蓝牙设备
+  }, {
+    key: "connectToBLEDevice",
+    value: function () {
+      var _connectToBLEDevice = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee3(deviceId) {
+        var servicesResult, targetService, characteristicsResult;
+        return _regenerator.default.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                _context3.next = 3;
+                return uni.createBLEConnection({
+                  deviceId: deviceId
+                });
+              case 3:
+                console.log("低功耗蓝牙设备连接成功");
+                this.connectedDeviceId = deviceId;
+
+                // 连接成功后，发现设备的服务
+                _context3.next = 7;
+                return uni.getBLEDeviceServices({
+                  deviceId: deviceId
+                });
+              case 7:
+                servicesResult = _context3.sent;
+                console.log("获取到的服务列表：", servicesResult.services);
+
+                // 根据需要查找特定服务的特征值，这里以第一个服务为例
+                targetService = servicesResult.services[0];
+                _context3.next = 12;
+                return uni.getBLEDeviceCharacteristics({
+                  deviceId: deviceId,
+                  serviceId: targetService.uuid
+                });
+              case 12:
+                characteristicsResult = _context3.sent;
+                console.log("获取到的特征值列表：", characteristicsResult.characteristics);
+
+                // 这里可以根据需要读写特征值，订阅特征值通知等
+                _context3.next = 19;
+                break;
+              case 16:
+                _context3.prev = 16;
+                _context3.t0 = _context3["catch"](0);
+                console.error("低功耗蓝牙设备连接失败", _context3.t0);
+              case 19:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this, [[0, 16]]);
+      }));
+      function connectToBLEDevice(_x) {
+        return _connectToBLEDevice.apply(this, arguments);
+      }
+      return connectToBLEDevice;
+    }() // async checkBluetoothConnection() {
+    // 	if (!this.connectedDeviceId) {
+    // 		console.log("没有已连接的设备");
+    // 		return;
+    // 	}
+    // 	try {
+    // 		const result = await uni.getConnectedBluetoothDevices({
+    // 			services: [] // 此处应填写需要查找的服务uuid列表
+    // 		});
+    // 		const isConnected = result.devices.some(
+    // 			(device) => device.deviceId === this.connectedDeviceId
+    // 		);
+    // 		if (isConnected) {
+    // 			console.log("设备已连接");
+    // 		} else {
+    // 			console.log("设备未连接");
+    // 		}
+    // 	} catch (err) {
+    // 		console.error("检查蓝牙连接状态失败", err);
+    // 	}
+    // }
+    // async connectToDevice(deviceId) {
+    // 	try {
+    // 		await uni.createBLEConnection({
+    // 			deviceId
+    // 		});
+    // 		console.log("连接成功");
+    // 		this.connectedDeviceId = deviceId;
+    // 	} catch (err) {
+    // 		console.error("连接失败", err);
+    // 	}
+    // }
+  }]);
+  return Bluetooth;
+}();
+var _default = Bluetooth;
+exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ })
 

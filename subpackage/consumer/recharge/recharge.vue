@@ -73,7 +73,7 @@
 				<view>
 					<tui-list-view backgroundColor="#fff" marginTop="0rpx">
 						<view class="flex items-center p-30">
-							<view>
+							<view class="mr-20">
 								<tui-icon name="about-fill" size="100" color="#FFB41E" unit="rpx"></tui-icon>
 							</view>
 							<view>
@@ -106,7 +106,7 @@
 							</view>
 						</view>
 						<view class="p-30">
-							<tui-button type="green" shape="circle">确认支付</tui-button>
+							<tui-button type="green" shape="circle" @tap="confirm">确认支付</tui-button>
 						</view>
 					</tui-list-view>
 				</view>
@@ -130,7 +130,8 @@
 					quantity: '',
 					actualPrice: ''
 				},
-				popupShow: true
+				popupShow: false,
+				connectedDeviceId: null // 用于存储已连接的设备ID
 			}
 		},
 		computed: {
@@ -174,8 +175,22 @@
 					console.log(e.detail.value)
 				}
 			},
+			//支付前提醒用户同意用户协议
 			payBeforeConfirm() {
+				if (!this.val.length) {
+					this.$g.tui.toast({
+						text: '请阅读并同意《充值协议》'
+					})
+					return
+				}
 				this.popupShow = true
+			},
+			//最终确认支付
+			confirm() {
+
+			},
+			popup() {
+				this.popupShow = !this.popupShow
 			}
 		}
 	}

@@ -154,6 +154,20 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "subpackage/consumer/recharge/recharge",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "subpackage/user/app-setting",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

@@ -101,28 +101,28 @@ var components
 try {
   components = {
     tuiNavigationBar: function () {
-      return __webpack_require__.e(/*! import() | components/thorui/tui-navigation-bar/tui-navigation-bar */ "components/thorui/tui-navigation-bar/tui-navigation-bar").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-navigation-bar/tui-navigation-bar.vue */ 132))
+      return __webpack_require__.e(/*! import() | components/thorui/tui-navigation-bar/tui-navigation-bar */ "components/thorui/tui-navigation-bar/tui-navigation-bar").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-navigation-bar/tui-navigation-bar.vue */ 133))
     },
     tuiIcon: function () {
-      return Promise.all(/*! import() | components/thorui/tui-icon/tui-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/thorui/tui-icon/tui-icon")]).then(__webpack_require__.bind(null, /*! @/components/thorui/tui-icon/tui-icon.vue */ 139))
+      return Promise.all(/*! import() | components/thorui/tui-icon/tui-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/thorui/tui-icon/tui-icon")]).then(__webpack_require__.bind(null, /*! @/components/thorui/tui-icon/tui-icon.vue */ 140))
     },
     xuiCard: function () {
-      return __webpack_require__.e(/*! import() | components/xui-card/xui-card */ "components/xui-card/xui-card").then(__webpack_require__.bind(null, /*! @/components/xui-card/xui-card.vue */ 147))
+      return __webpack_require__.e(/*! import() | components/xui-card/xui-card */ "components/xui-card/xui-card").then(__webpack_require__.bind(null, /*! @/components/xui-card/xui-card.vue */ 148))
     },
     tuiFormButton: function () {
-      return __webpack_require__.e(/*! import() | components/thorui/tui-form-button/tui-form-button */ "components/thorui/tui-form-button/tui-form-button").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-form-button/tui-form-button.vue */ 154))
+      return __webpack_require__.e(/*! import() | components/thorui/tui-form-button/tui-form-button */ "components/thorui/tui-form-button/tui-form-button").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-form-button/tui-form-button.vue */ 155))
     },
     tuiButton: function () {
-      return __webpack_require__.e(/*! import() | components/thorui/tui-button/tui-button */ "components/thorui/tui-button/tui-button").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-button/tui-button.vue */ 161))
+      return __webpack_require__.e(/*! import() | components/thorui/tui-button/tui-button */ "components/thorui/tui-button/tui-button").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-button/tui-button.vue */ 162))
     },
     tuiModal: function () {
-      return __webpack_require__.e(/*! import() | components/thorui/tui-modal/tui-modal */ "components/thorui/tui-modal/tui-modal").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-modal/tui-modal.vue */ 168))
+      return __webpack_require__.e(/*! import() | components/thorui/tui-modal/tui-modal */ "components/thorui/tui-modal/tui-modal").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-modal/tui-modal.vue */ 169))
     },
     tuiLottie: function () {
-      return Promise.all(/*! import() | components/thorui/tui-lottie/tui-lottie */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/thorui/tui-lottie/tui-lottie")]).then(__webpack_require__.bind(null, /*! @/components/thorui/tui-lottie/tui-lottie.vue */ 175))
+      return Promise.all(/*! import() | components/thorui/tui-lottie/tui-lottie */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/thorui/tui-lottie/tui-lottie")]).then(__webpack_require__.bind(null, /*! @/components/thorui/tui-lottie/tui-lottie.vue */ 176))
     },
     tuiTabbar: function () {
-      return __webpack_require__.e(/*! import() | components/thorui/tui-tabbar/tui-tabbar */ "components/thorui/tui-tabbar/tui-tabbar").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-tabbar/tui-tabbar.vue */ 183))
+      return __webpack_require__.e(/*! import() | components/thorui/tui-tabbar/tui-tabbar */ "components/thorui/tui-tabbar/tui-tabbar").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-tabbar/tui-tabbar.vue */ 184))
     },
   }
 } catch (e) {
@@ -194,8 +194,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 34));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 36));
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
-var _vuex = __webpack_require__(/*! vuex */ 34);
+var _bluetoothManager = _interopRequireDefault(__webpack_require__(/*! @/utils/bluetooth/bluetoothManager.js */ 91));
+var _vuex = __webpack_require__(/*! vuex */ 43);
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 var _default = {
@@ -208,8 +211,8 @@ var _default = {
         //是否循环播放动画，可选，不传默认为true
         loop: true
       },
-      nodevice: true,
-      //未绑定设备
+      bindingDevice: null,
+      //绑定的设备
       titleBarHeight: 0,
       //标题栏高度
       navigationBarHeight: 0,
@@ -229,7 +232,8 @@ var _default = {
         url: '../../static/imgs/banner1.png'
       }],
       userInfo: null,
-      contentHeight: 0
+      contentHeight: 0,
+      preventOnShow: false //阻止页面的 onShow 事件再次触发
     };
   },
   created: function created() {
@@ -239,17 +243,18 @@ var _default = {
     uni.hideTabBar();
     var systemInfo = uni.getSystemInfoSync();
     this.screenHeight = systemInfo.screenHeight;
-    var isIphoneX = this.$g.tui.isIphoneX();
-    if (isIphoneX) {}
   },
   onShow: function onShow() {
+    console.log('show');
     var that = this;
     try {
       var userInfo = that.$g.tui.getUserInfo();
       this.userInfo = this.userInfo ? this.userInfo : userInfo;
       if (userInfo) {
+        that.bindingDevice = uni.getStorageSync('bindDevice');
         //获取完用户信息,提示用户首次充值需扫设备上二维码
-        that.showTipModal = that.nodevice ? true : false;
+        that.showTipModal = that.bindingDevice ? false : true;
+        console.log(that.bindingDevice, "@@@@@@");
         return;
       } else {
         this.showModal = true; //唤起授权
@@ -287,16 +292,20 @@ var _default = {
       uni.scanCode({
         scanType: ['qrCode'],
         success: function success(res) {
-          console.log(res.rawData);
-          //扫到水表上的二维码
-          that.nodevice = false;
+          console.log(res, "@");
+          //扫到水表上的二维码,根据表号获取mac地址 连接对应的蓝牙
           //尝试申请使用蓝牙
           that.startBleAuth();
+          //绑定设备
+          uni.setStorageSync('bindDevice', {
+            name: 'zeer'
+          });
+          console.log(uni.getStorageSync('bindDevice'));
+          that.preventOnShow = true;
         },
         fail: function fail() {
-          that.nodevice = true;
-        },
-        complete: function complete() {}
+          that.bindingDevice = null;
+        }
       });
     },
     //用户向小程序授权允许获取用户信息
@@ -310,8 +319,20 @@ var _default = {
             uni.authorize({
               scope: 'scope.userInfo',
               success: function success() {
-                // 用户已经同意小程序获取用户信息，后续调用相关接口不会弹窗询问
-                that.getUserInfo();
+                return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
+                  return _regenerator.default.wrap(function _callee$(_context) {
+                    while (1) {
+                      switch (_context.prev = _context.next) {
+                        case 0:
+                          _context.next = 2;
+                          return that.getUserInfo();
+                        case 2:
+                        case "end":
+                          return _context.stop();
+                      }
+                    }
+                  }, _callee);
+                }))();
               }
             });
           } else {
@@ -325,27 +346,31 @@ var _default = {
     getUserInfo: function getUserInfo() {
       var that = this;
       that.$g.tui.showLoading('登陆中');
-      uni.getUserInfo({
-        success: function success(result) {
-          console.log(result);
-          that.$g.tui.setUserInfo(result.userInfo);
-          that.userInfo = result.userInfo;
-          that.isEmpower = true;
-          that.showModal = false;
-          uni.hideLoading();
-          if (!that.userInfo) {
-            return;
+      return new Promise(function (resolve, reject) {
+        uni.getUserInfo({
+          success: function success(result) {
+            that.$g.tui.setUserInfo(result.userInfo);
+            that.userInfo = result.userInfo;
+            that.isEmpower = true;
+            that.showModal = false;
+            uni.hideLoading();
+            if (!that.userInfo) {
+              return;
+            }
+            //获取完用户信息,根据用户是否绑定选择提示
+            if (!that.bindingDevice) {
+              that.showTipModal = true;
+            }
+          },
+          fail: function fail(e) {
+            console.log('获取用户信息失败');
           }
-          //获取完用户信息,提示用户首次充值需扫设备上二维码
-          that.showTipModal = true;
-        },
-        fail: function fail(e) {
-          console.log('获取用户信息失败');
-        }
+        });
       });
     },
-    ////尝试授权使用蓝牙，如先前已同意则静默开启蓝牙并连接
+    //尝试授权使用蓝牙，如先前已同意则静默开启蓝牙并连接
     startBleAuth: function startBleAuth() {
+      var that = this;
       uni.getSetting({
         success: function success(res) {
           //蓝牙未授权
@@ -355,10 +380,14 @@ var _default = {
               scope: 'scope.bluetooth',
               success: function success() {
                 //后续静默开启蓝牙并连接
+                var bl = new _bluetoothManager.default();
+                bl.initBluetoothAdapter(that.bleFoundCallback);
                 //开启蓝牙通信
               }
             });
           } else {
+            var bl = new _bluetoothManager.default();
+            bl.initBluetoothAdapter(that.bleFoundCallback);
             //开启蓝牙通信
           }
         }
@@ -369,6 +398,11 @@ var _default = {
       uni.navigateTo({
         url: '../../subpackage/consumer/recharge/recharge'
       });
+    },
+    //发现蓝牙水表模块回调
+    bleFoundCallback: function bleFoundCallback(devices) {
+      //devices 被搜寻到的符合条件的设备组成的数组
+      console.log(devices, "搜寻到的设备");
     }
   }),
   computed: _objectSpread({}, (0, _vuex.mapState)(["tabBarIndex", "tabBar", "device"]))
