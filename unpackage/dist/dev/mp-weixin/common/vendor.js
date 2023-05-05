@@ -144,9 +144,9 @@ module.exports = _toPrimitive, module.exports.__esModule = true, module.exports[
 /***/ }),
 
 /***/ 145:
-/*!**********************************************************************************************!*\
-  !*** C:/Users/26090/WebstormProjects/water-meter-app/components/thorui/tui-icon/tui-icon.js ***!
-  \**********************************************************************************************/
+/*!*****************************************************************************!*\
+  !*** D:/source-code/water-meter-app/components/thorui/tui-icon/tui-icon.js ***!
+  \*****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -438,9 +438,9 @@ module.exports = _toConsumableArray, module.exports.__esModule = true, module.ex
 /***/ }),
 
 /***/ 181:
-/*!*************************************************************************************************!*\
-  !*** C:/Users/26090/WebstormProjects/water-meter-app/components/thorui/tui-lottie/lottie.mp.js ***!
-  \*************************************************************************************************/
+/*!********************************************************************************!*\
+  !*** D:/source-code/water-meter-app/components/thorui/tui-lottie/lottie.mp.js ***!
+  \********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7285,8 +7285,8 @@ function populateParameters(result) {
     appVersion: "1.0.0",
     appVersionCode: "100",
     appLanguage: getAppLanguage(hostLanguage),
-    uniCompileVersion: "3.7.11",
-    uniRuntimeVersion: "3.7.11",
+    uniCompileVersion: "3.7.9",
+    uniRuntimeVersion: "3.7.9",
     uniPlatform: undefined || "mp-weixin",
     deviceBrand: deviceBrand,
     deviceModel: model,
@@ -8971,10 +8971,10 @@ module.exports = _nonIterableSpread, module.exports.__esModule = true, module.ex
 
 /***/ }),
 
-/***/ 212:
-/*!****************************************************************************************************!*\
-  !*** C:/Users/26090/WebstormProjects/water-meter-app/components/thorui/tui-form/tui-validation.js ***!
-  \****************************************************************************************************/
+/***/ 219:
+/*!***********************************************************************************!*\
+  !*** D:/source-code/water-meter-app/components/thorui/tui-form/tui-validation.js ***!
+  \***********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15969,9 +15969,9 @@ internalMixin(Vue);
 /***/ }),
 
 /***/ 26:
-/*!******************************************************************!*\
-  !*** C:/Users/26090/WebstormProjects/water-meter-app/pages.json ***!
-  \******************************************************************/
+/*!*************************************************!*\
+  !*** D:/source-code/water-meter-app/pages.json ***!
+  \*************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -15979,10 +15979,10 @@ internalMixin(Vue);
 
 /***/ }),
 
-/***/ 281:
-/*!***************************************************************************************************!*\
-  !*** C:/Users/26090/WebstormProjects/water-meter-app/components/uni/uParse/src/libs/html2json.js ***!
-  \***************************************************************************************************/
+/***/ 288:
+/*!**********************************************************************************!*\
+  !*** D:/source-code/water-meter-app/components/uni/uParse/src/libs/html2json.js ***!
+  \**********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15994,8 +15994,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _wxDiscode = _interopRequireDefault(__webpack_require__(/*! ./wxDiscode */ 282));
-var _htmlparser = _interopRequireDefault(__webpack_require__(/*! ./htmlparser */ 283));
+var _wxDiscode = _interopRequireDefault(__webpack_require__(/*! ./wxDiscode */ 289));
+var _htmlparser = _interopRequireDefault(__webpack_require__(/*! ./htmlparser */ 290));
 /**
  * html2Json 改造来自: https://github.com/Jxck/html2json
  *
@@ -16228,10 +16228,10 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 282:
-/*!***************************************************************************************************!*\
-  !*** C:/Users/26090/WebstormProjects/water-meter-app/components/uni/uParse/src/libs/wxDiscode.js ***!
-  \***************************************************************************************************/
+/***/ 289:
+/*!**********************************************************************************!*\
+  !*** D:/source-code/water-meter-app/components/uni/uParse/src/libs/wxDiscode.js ***!
+  \**********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16432,10 +16432,10 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 283:
-/*!****************************************************************************************************!*\
-  !*** C:/Users/26090/WebstormProjects/water-meter-app/components/uni/uParse/src/libs/htmlparser.js ***!
-  \****************************************************************************************************/
+/***/ 290:
+/*!***********************************************************************************!*\
+  !*** D:/source-code/water-meter-app/components/uni/uParse/src/libs/htmlparser.js ***!
+  \***********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16754,9 +16754,9 @@ function normalizeComponent (
 /***/ }),
 
 /***/ 33:
-/*!****************************************************************************************!*\
-  !*** C:/Users/26090/WebstormProjects/water-meter-app/components/common/httpRequest.js ***!
-  \****************************************************************************************/
+/*!***********************************************************************!*\
+  !*** D:/source-code/water-meter-app/components/common/httpRequest.js ***!
+  \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17368,9 +17368,9 @@ module.exports = _asyncToGenerator, module.exports.__esModule = true, module.exp
 /***/ }),
 
 /***/ 37:
-/*!******************************************************************!*\
-  !*** C:/Users/26090/WebstormProjects/water-meter-app/request.js ***!
-  \******************************************************************/
+/*!*************************************************!*\
+  !*** D:/source-code/water-meter-app/request.js ***!
+  \*************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17455,9 +17455,9 @@ exports.default = _default;
 /***/ }),
 
 /***/ 38:
-/*!**********************************************************************************************!*\
-  !*** C:/Users/26090/WebstormProjects/water-meter-app/components/common/tui-request/index.js ***!
-  \**********************************************************************************************/
+/*!*****************************************************************************!*\
+  !*** D:/source-code/water-meter-app/components/common/tui-request/index.js ***!
+  \*****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17621,9 +17621,9 @@ exports.default = _default;
 /***/ }),
 
 /***/ 39:
-/*!*************************************************************************************************!*\
-  !*** C:/Users/26090/WebstormProjects/water-meter-app/components/common/tui-request/tui-base.js ***!
-  \*************************************************************************************************/
+/*!********************************************************************************!*\
+  !*** D:/source-code/water-meter-app/components/common/tui-request/tui-base.js ***!
+  \********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17730,9 +17730,9 @@ module.exports = _interopRequireDefault, module.exports.__esModule = true, modul
 /***/ }),
 
 /***/ 40:
-/*!*********************************************************************************************************!*\
-  !*** C:/Users/26090/WebstormProjects/water-meter-app/components/common/tui-request/tui-taskKeyStore.js ***!
-  \*********************************************************************************************************/
+/*!****************************************************************************************!*\
+  !*** D:/source-code/water-meter-app/components/common/tui-request/tui-taskKeyStore.js ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17798,9 +17798,9 @@ function createTaskKeyStore() {
 /***/ }),
 
 /***/ 41:
-/*!**********************************************************************!*\
-  !*** C:/Users/26090/WebstormProjects/water-meter-app/utils/index.js ***!
-  \**********************************************************************/
+/*!*****************************************************!*\
+  !*** D:/source-code/water-meter-app/utils/index.js ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17853,9 +17853,9 @@ function multiFilter(array, filters) {
 /***/ }),
 
 /***/ 42:
-/*!**********************************************************************!*\
-  !*** C:/Users/26090/WebstormProjects/water-meter-app/store/index.js ***!
-  \**********************************************************************/
+/*!*****************************************************!*\
+  !*** D:/source-code/water-meter-app/store/index.js ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17900,7 +17900,9 @@ var store = new _vuex.default.Store({
       "isDot": true,
       "verify": true
     }],
-    tabBarIndex: 0 //当前选中第几项,
+    tabBarIndex: 0,
+    //当前选中第几项,
+    isLogin: false //登录状态
   },
 
   mutations: {
@@ -17912,7 +17914,7 @@ var store = new _vuex.default.Store({
     resetTabBarIndex: function resetTabBarIndex(state, payload) {
       state.tabBarIndex = 0;
     },
-    switchClient: function switchClient(state, payload) {
+    switchRole: function switchRole(state, payload) {
       var adminTabbar = [{
         "pagePath": "pages/index/index",
         "text": "首页",
@@ -17971,6 +17973,9 @@ var store = new _vuex.default.Store({
       }];
       var tabBar = payload === 'admin' ? adminTabbar : payload === 'consumer' ? consumerTabbar : [];
       state.tabBar = tabBar;
+    },
+    changeLoginState: function changeLoginState(state, payload) {
+      state.isLogin = payload;
     }
   },
   actions: {}
@@ -19256,9 +19261,9 @@ module.exports = _slicedToArray, module.exports.__esModule = true, module.export
 /***/ }),
 
 /***/ 50:
-/*!*******************************************************************************************!*\
-  !*** C:/Users/26090/WebstormProjects/water-meter-app/utils/bluetooth/bluetoothManager.js ***!
-  \*******************************************************************************************/
+/*!**************************************************************************!*\
+  !*** D:/source-code/water-meter-app/utils/bluetooth/bluetoothManager.js ***!
+  \**************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

@@ -201,10 +201,12 @@
 					let scrollLeft = itemLeft - (this.windowWidth - itemWidth) / 2;
 					this.scrollLeft = scrollLeft;
 					this.translateX = itemLeft - this.gap;
+					console.log(itemLeft,this.gap);
 					this.lineWidth = itemWidth
 				} else {
 					// 不超出滚动的情况
 					this.translateX = itemLeft - this.gap;
+					console.log(itemLeft - this.gap,"####");
 					this.lineWidth = itemWidth
 				}
 			},
@@ -225,6 +227,7 @@
 							this.windowWidth = res.width || windowWidth;
 						}
 					}).selectAll(".tui-item__child").boundingClientRect((res) => {
+						console.log(res,"@@@@@");
 						this.scrolling = true;
 						this.tabItems = res;
 						this.scrollByIndex(this.currentTab, false);

@@ -8,33 +8,36 @@
 			<view class="user-info flex items-center" @tap="modal = true">
 				<view v-if="!userInfo" class="avatar">
 					<image src="../../static/logo.png"></image>
-
 				</view>
 				<view v-else class="avatar noshadow">
 					<image :src="userInfo.avatarUrl"></image>
 				</view>
-				<view class="flex flex-col" v-if="defaultClient==='admin'">
-					<text class="text-white">点击登录</text>
-					<text class="text-gray">共0台设备</text>
+				<view class="flex flex-col">
+					<view @tap="showModal=true">
+						<text class="text-white">点击登录</text>
+					</view>
+					<view v-if="role==='admin'">
+						<text class="text-gray">共0台设备</text>
+					</view>
 				</view>
 			</view>
 			<view class="actions-box flex items-center">
 				<view class="flex items-center w-full justify-between">
 					<view class="flex items-center">
 						<tui-icon name="people-fill" color="#E74C3C"></tui-icon>
-						<text v-if="defaultClient==='admin'" class="text-white">当前管理端</text>
+						<text v-if="role==='admin'" class="text-white">当前管理端</text>
 						<text v-else class="text-white">当前用户端</text>
 					</view>
 					<tui-form-button background="#ffc048" radius="67rpx" width="235rpx" height="67rpx" color="#000"
 						@click="toggleClient">
-						<text v-if="defaultClient==='admin'">进入用户端</text>
+						<text v-if="role==='admin'">进入用户端</text>
 						<text v-else>进入管理端</text>
 					</tui-form-button>
 				</view>
 			</view>
 		</view>
 		<view class="menulist">
-			<view v-if="defaultClient==='admin'" class="details flex justify-between">
+			<view v-if="role==='admin'" class="details flex justify-between">
 				<xui-card border-radius="20" class="flex-1">
 					<view class="flex items-center">
 						<image class="menu-icon" src="/static/icons/money-bag.svg" mode=""></image>
@@ -54,7 +57,7 @@
 					</view>
 				</xui-card>
 			</view>
-			<view class="list" v-if="defaultClient==='admin'">
+			<view class="list" v-if="role==='admin'">
 				<xui-card border-radius="20" class="flex-1">
 					<view class="flex items-center justify-between">
 						<view class="flex items-center">
@@ -120,20 +123,37 @@
 			</view>
 		</view>
 
-		<tui-modal :show="showModal" custom :maskClosable="true">
-			<view class="flex flex-col items-center">
-				<tui-lottie width="450" height="400" :options="options"></tui-lottie>
-				<text class="block my-15 title-text">您还未授权</text>
-				<text class="block sub-title-text">请先授权再进行操作</text>
-				<view class="w-full my-30">
-					<tui-button height="72rpx" :size="28" shape="circle" type="green" @tap="empower">立即授权</tui-button>
+		<block v-if="role==='consumer'">
+			<tui-modal :show="showModal" custom :maskClosable="true">
+				<view class="flex flex-col items-center">
+					<tui-lottie width="450" height="400" :options="options"></tui-lottie>
+					<text class="block my-15 title-text">您还未授权</text>
+					<text class="block sub-title-text">请先授权再进行操作</text>
+					<view class="w-full my-30">
+						<tui-button height="72rpx" :size="28" shape="circle" type="green" @tap="empower">立即授权</tui-button>
+					</view>
+					<view @tap="showModal=false">
+						<text class="text-gray">稍后再说</text>
+					</view>
 				</view>
-				<view @tap="showModal=false">
-					<text class="text-gray">稍后再说</text>
+			</tui-modal>
+		</block>
+		
+		<block v-if="role==='admin'">
+			<tui-modal :show="showModal" custom :maskClosable="true">
+				<view class="flex flex-col items-center">
+					<tui-lottie width="450" height="400" :options="options"></tui-lottie>
+					<text class="block my-15 title-text">您还未登录</text>
+					<text class="block sub-title-text">请先登录再进行操作</text>
+					<view class="w-full my-30">
+						<tui-button height="72rpx" :size="28" shape="circle" type="green" @tap="navToLogin">立即登录</tui-button>
+					</view>
+					<view @tap="showModal=false">
+						<text class="text-gray">稍后再说</text>
+					</view>
 				</view>
-			</view>
-		</tui-modal>
-
+			</tui-modal>
+		</block>
 		<tui-tabbar zIndex="8999"></tui-tabbar>
 	</view>
 </template>
@@ -153,7 +173,7 @@
 					//是否循环播放动画，可选，不传默认为true
 					loop: true
 				},
-				defaultClient: 'consumer', //默认为用户端
+				role: uni.getStorageSync('role') || 'consumer', //默认为用户端
 				consumerMenuList: [{
 						text: '充值记录',
 						iconPath: '/static/icons//log.svg',
@@ -194,9 +214,9 @@
 			try {
 				const userInfo = that.$g.tui.getUserInfo()
 				this.userInfo = this.userInfo ? this.userInfo : userInfo
-				if (userInfo) {
-					return
-				} else {
+				//检查授权状态
+				if (!that.isEmpower && !userInfo && that.role === 'consumer') {
+					//未授权
 					this.showModal = true //唤起授权
 				}
 			} catch (e) {}
@@ -227,6 +247,7 @@
 			},
 			//去登录
 			navToLogin() {
+				this.showModal = false
 				uni.navigateTo({
 					url: "../../subpackage/user/login",
 					fail(e) {
@@ -236,18 +257,22 @@
 			},
 			//切换用户端
 			toggleClient() {
-				if (this.defaultClient === 'consumer') {
+				if (this.role === 'consumer') {
 					// 切换到管理端
-					this.switchClient('admin')
-					this.defaultClient = 'admin'
+					this.switchRole('admin')
+					this.role = 'admin'
+					//缓存对应角色
+					uni.setStorageSync('role', this.role)
 					this.resetTabBarIndex()
 					uni.switchTab({
 						url: '/pages/index/index'
 					})
-				} else if (this.defaultClient === 'admin') {
+				} else if (this.role === 'admin') {
 					//切换到用户端
-					this.switchClient('consumer')
-					this.defaultClient = 'consumer'
+					this.switchRole('consumer')
+					this.role = 'consumer'
+					//缓存对应角色
+					uni.setStorageSync('role', this.role)
 					this.resetTabBarIndex()
 					uni.switchTab({
 						url: '/pages/index/index'
@@ -256,7 +281,7 @@
 
 				}
 			},
-			...mapMutations(["switchClient", "resetTabBarIndex"]),
+			...mapMutations(["switchRole", "resetTabBarIndex"]),
 			navTo(url, e) {
 				console.log(url);
 				if (url === '#') {
@@ -274,44 +299,55 @@
 					}
 				});
 			},
-			//用户向小程序授权允许获取用户信息
+			//授权允许获取用户信息
 			empower() {
 				const that = this
 				uni.getSetting({
-					success(res) {
+					async success(res) {
 						//未授权获取用户信息
 						if (!res.authSetting['scope.userInfo']) {
 							//要求授权并获取用户信息
 							uni.authorize({
 								scope: 'scope.userInfo',
-								success() {
+								async success() {
+									that.$g.tui.showLoading('登陆中')
 									// 用户已经同意小程序获取用户信息，后续调用相关接口不会弹窗询问
-									that.getUserInfo()
+									const userInfo = await that.getUserInfo()
+									that.$g.tui.setUserInfo(userInfo)
+									that.userInfo = userInfo
+									that.isEmpower = true
+									uni.hideLoading()
+									that.showModal = false
+
 								}
 							})
 						} else {
-							//直接获取用户信息
-							that.getUserInfo()
+							that.$g.tui.showLoading('登陆中')
+							// 用户已经同意小程序获取用户信息，后续调用相关接口不会弹窗询问
+							const userInfo = await that.getUserInfo()
+							that.$g.tui.setUserInfo(userInfo)
+							that.userInfo = userInfo
+							that.isEmpower = true
+							uni.hideLoading()
+							that.showModal = false
 						}
 					}
 				})
 			},
 			//向微信获取用户信息
 			getUserInfo() {
-				const that = this
-				uni.getUserInfo({
-					success(result) {
-						console.log(result);
-						that.$g.tui.setUserInfo(result.userInfo)
-						that.userInfo = result.userInfo
-						that.isEmpower = true
-						that.showModal = false
-					},
-					fail(e) {
-						console.log('获取用户信息失败');
-					}
+				return new Promise((resolve, reject) => {
+					uni.getUserInfo({
+						success(result) {
+							resolve(result.userInfo)
+						},
+						fail(e) {
+							console.log('获取用户信息失败');
+							reject(e)
+						}
+					})
 				})
-			}
+			},
 		}
 	}
 </script>
@@ -347,6 +383,8 @@
 	}
 
 	.user-info {
+		position: relative;
+		z-index: 2001;
 		margin-top: 128rpx;
 
 		.avatar {

@@ -1,117 +1,160 @@
 <template>
-	<view class="container relative">
-		<tui-navigation-bar :isOpacity="true" @init="initNavigation" backgroundColor="#ffffff00" transparent isCustom
-			color="#FFF" title="水表管理大师">
-			<!-- #ifndef MP-ALIPAY || MP-BAIDU -->
-			<template>
-				<view class="navigation-bar flex items-center" :style="{'height':titleBarHeight+'px'}">
-					<view class="scan" @tap="scanCode">
-						<tui-icon name="sweep" color="#FFF"></tui-icon>
-					</view>
-					<text class="navigation-bar-title text-white">水表管理大师</text>
-				</view>
-			</template>
-			<!-- #endif -->
-		</tui-navigation-bar>
-		<!-- 占位背景容器 -->
-		<view class="tui-header-bg">
-			<view class="tui-header-slide relative" :style="{'top':navigationBarHeight +'px'}">
-				<swiper class="swiper" circular :indicator-dots="true" indicator-color="#FFF"
-					indicator-active-color="#07C160" :autoplay="true">
-					<swiper-item v-for="(banner,index) in banners" :key="index">
-						<view class="swiper-item">
-							<image :src="banner.url"></image>
+	<view class="container relative" :class="{'admin-bg':role==='admin'}">
+		<block v-if="role==='consumer'">
+			<tui-navigation-bar :isOpacity="true" @init="initNavigation" backgroundColor="#ffffff00" transparent
+				isCustom color="#FFF" title="水表管理大师">
+				<!-- #ifndef MP-ALIPAY || MP-BAIDU -->
+				<template>
+					<view class="navigation-bar flex items-center" :style="{'height':titleBarHeight+'px'}">
+						<view class="ml-4p" @tap="scanCode">
+							<tui-icon name="sweep" color="#FFF"></tui-icon>
 						</view>
-					</swiper-item>
-				</swiper>
+						<text class="navigation-bar-title text-white">水表管理大师</text>
+					</view>
+				</template>
+				<!-- #endif -->
+			</tui-navigation-bar>
+			<!-- 占位背景容器 -->
+			<view class="tui-header-bg">
+				<view class="tui-header-slide relative" :style="{'top':navigationBarHeight +'px'}">
+					<swiper class="swiper" circular :indicator-dots="true" indicator-color="#FFF"
+						indicator-active-color="#07C160" :autoplay="true">
+						<swiper-item v-for="(banner,index) in banners" :key="index">
+							<view class="swiper-item">
+								<image :src="banner.url"></image>
+							</view>
+						</swiper-item>
+					</swiper>
+				</view>
 			</view>
-		</view>
 
-		<view class="card-wrap" :style="{'top':navigationBarHeight+123+'px','bottom':'0'}">
-			<xui-card :hover="false" :shadow="true">
-				<view v-if="!isBinding" class="flex h-full flex-col items-center justify-center"
-					style="min-height: 300px;">
-					<view class="nodata-img">
-						<image src="../../static/icons/shebei.svg" mode=""></image>
-					</view>
-					<text class="small-text">没有设备</text>
-					<tui-form-button background="#07C160" radius="45rpx" width="300rpx" height="90rpx" color="#000"
-						@click="scanCode">
-						<text class="text-white">扫描设备二维码</text>
-					</tui-form-button>
-				</view>
-				<view v-else class="device-info flex flex-col justify-center">
-					<view class="flex items-center">
-						<image class="device-icon" src="../../static/icons/log.svg" mode=""></image>
-						<view>
-							<text class="block title-text">深蓝工业园4#201</text>
-							<text class="block sub-title-text">蓝牙水表号:YM00232P0169</text>
+			<view class="card-wrap" :style="{'top':navigationBarHeight+123+'px','bottom':'0'}">
+				<xui-card :hover="false" :shadow="true">
+					<view v-if="!isBinding" class="flex h-full flex-col items-center justify-center"
+						style="min-height: 300px;">
+						<view class="nodata-img">
+							<image src="../../static/icons/shebei.svg" mode=""></image>
 						</view>
-					</view>
-					<view>
-						<view class="my-15 flex items-center justify-center">
-							<image class="icon" src="../../static/icons/water.svg" mode=""></image>
-							<text class="sub-title">剩余水量(m³)</text>
-						</view>
-					</view>
-					<view class="surplus flex justify-center">
-						16.67
-					</view>
-					<view class="my-15 flex justify-center">
-						<tui-form-button background="#07c16094" radius="67rpx" width="235rpx" height="67rpx"
-							color="#FFF">
-							抄表
+						<text class="small-text">没有设备</text>
+						<tui-form-button background="#07C160" radius="45rpx" width="300rpx" height="90rpx" color="#000"
+							@click="scanCode">
+							<text class="text-white">扫描设备二维码</text>
 						</tui-form-button>
 					</view>
-					<view class="meter-info p-30">
-						<view class="meter-info-item flex items-center justify-between">
-							<text class="title-text">总水量(m³)</text>
-							<text>0.20</text>
+					<view v-else class="device-info flex flex-col justify-center">
+						<view class="flex items-center">
+							<image class="device-icon" src="../../static/icons/log.svg" mode=""></image>
+							<view>
+								<text class="block title-text">深蓝工业园4#201</text>
+								<text class="block sub-title-text">蓝牙水表号:YM00232P0169</text>
+							</view>
 						</view>
-						<view class="meter-info-item flex items-center justify-between">
-							<text class="title-text">抄表时间</text>
-							<text>04-26 16:27</text>
+						<view>
+							<view class="my-15 flex items-center justify-center">
+								<image class="icon" src="../../static/icons/water.svg" mode=""></image>
+								<text class="sub-title">剩余水量(m³)</text>
+							</view>
 						</view>
-						<view class="meter-info-item flex items-center justify-between">
-							<text class="title-text">水量单价(元/m³)</text>
-							<text>3</text>
+						<view class="surplus flex justify-center">
+							16.67
 						</view>
+						<view class="my-15 flex justify-center">
+							<tui-form-button background="#07c16094" radius="67rpx" width="235rpx" height="67rpx"
+								color="#FFF">
+								抄表
+							</tui-form-button>
+						</view>
+						<view class="meter-info p-30">
+							<view class="meter-info-item flex items-center justify-between">
+								<text class="title-text">总水量(m³)</text>
+								<text>0.20</text>
+							</view>
+							<view class="meter-info-item flex items-center justify-between">
+								<text class="title-text">抄表时间</text>
+								<text>04-26 16:27</text>
+							</view>
+							<view class="meter-info-item flex items-center justify-between">
+								<text class="title-text">水量单价(元/m³)</text>
+								<text>3</text>
+							</view>
+						</view>
+
+						<tui-button shape="circle" type="green" @tap="gotoPay">
+							水表充值
+						</tui-button>
 					</view>
+				</xui-card>
+			</view>
 
-					<tui-button shape="circle" type="green" @tap="gotoPay">
-						水表充值
-					</tui-button>
+			<tui-modal :show="showModal" custom :maskClosable="true">
+				<view class="flex flex-col items-center">
+					<tui-lottie width="450" height="400" :options="options"></tui-lottie>
+					<text class="block my-15 title-text">您还未授权</text>
+					<text class="block sub-title-text">请先授权再进行操作</text>
+					<view class="w-full my-30">
+						<tui-button height="72rpx" :size="28" shape="circle" type="green"
+							@tap="empower">立即授权</tui-button>
+					</view>
+					<view @tap="showModal=false">
+						<text class="text-gray">稍后再说</text>
+					</view>
 				</view>
-			</xui-card>
-		</view>
+			</tui-modal>
 
-		<tui-modal :show="showModal" custom :maskClosable="true">
-			<view class="flex flex-col items-center">
-				<tui-lottie width="450" height="400" :options="options"></tui-lottie>
-				<text class="block my-15 title-text">您还未授权</text>
-				<text class="block sub-title-text">请先授权再进行操作</text>
-				<view class="w-full my-30">
-					<tui-button height="72rpx" :size="28" shape="circle" type="green" @tap="empower">立即授权</tui-button>
+			<tui-modal :show="showTipModal" custom :maskClosable="true">
+				<view class="flex flex-col items-center">
+					<text class="block my-15 title-text">提示</text>
+					<image class="qrcode" src="../../static/imgs/qrcode.jpg" mode=""></image>
+					<text class="block my-15 title-text">首次充值需要扫描</text>
+					<text class="block my-15 title-text">设备上的二维码,识别表号</text>
+					<view class="w-full my-30">
+						<tui-button height="72rpx" :size="28" shape="circle" type="green"
+							@tap="showTipModal=false">知道了</tui-button>
+					</view>
 				</view>
-				<view @tap="showModal=false">
-					<text class="text-gray">稍后再说</text>
+			</tui-modal>
+
+		</block>
+		<block v-if="role==='admin'">
+			<tui-navigation-bar :isOpacity="true" @init="initNavigation" backgroundColor="#ffffff00" transparent
+				isCustom color="#333">
+				<!-- #ifndef MP-ALIPAY || MP-BAIDU -->
+				<template>
+					<view class="navigation-bar flex items-center" :style="{'height':titleBarHeight+'px'}">
+						<view class="logo ml-4p">
+							<tui-icon name="people" color="#07C160"></tui-icon>
+						</view>
+						<text class="title-text">水表管理大师</text>
+					</view>
+				</template>
+				<!-- #endif -->
+			</tui-navigation-bar>
+			<view class="header">
+				<view class="header-searchbar relative flex items-center justify-between"
+					:style="{'top':navigationBarHeight +'px'}">
+					<xui-search @search="search" inputBgColor="#FFFFFF000" backgroundColor="#FFFFFF000"></xui-search>
+					<view class="flex-1 flex justify-end">
+						<tui-icon class="mr-20" name="down" color="#333"></tui-icon>
+						<tui-icon name="sweep" color="#333" @tap="scanCode"></tui-icon>
+					</view>
 				</view>
 			</view>
-		</tui-modal>
-
-		<tui-modal :show="showTipModal" custom :maskClosable="true">
-			<view class="flex flex-col items-center">
-				<text class="block my-15 title-text">提示</text>
-				<image class="qrcode" src="../../static/imgs/qrcode.jpg" mode=""></image>
-				<text class="block my-15 title-text">首次充值需要扫描</text>
-				<text class="block my-15 title-text">设备上的二维码,识别表号</text>
-				<view class="w-full my-30">
-					<tui-button height="72rpx" :size="28" shape="circle" type="green"
-						@tap="showTipModal=false">知道了</tui-button>
+			<view :style="{'top':'267rpx'}" class="relative flex h-full flex-col items-center justify-center">
+				<view class="tui-inner__box">
+					<tui-tab scroll backgroundColor="#FFFFFF000" :tabs="tabs" :size="30" bold color="#999" selectedColor="#07c160"
+						sliderBgColor="#07c160"></tui-tab>
 				</view>
+				
+				<!-- 				<view class="nodata-img">
+					<image src="../../static/icons/shebei.svg" mode=""></image>
+				</view>
+				<text class="small-text">没有设备,请先登录</text>
+				<tui-form-button background="#07C160" radius="45rpx" width="300rpx" height="90rpx" color="#000"
+					@click="scanCode">
+					<text class="text-white">立即登录</text>
+				</tui-form-button> -->
 			</view>
-		</tui-modal>
-
+		</block>
 		<tui-tabbar zIndex="8999"></tui-tabbar>
 	</view>
 </template>
@@ -149,6 +192,8 @@
 				],
 				userInfo: null,
 				contentHeight: 0,
+				role: '', //当前角色
+				tabs: ['水表A', '水表B', '水表C', '水表D']
 			}
 		},
 		created() {
@@ -160,6 +205,8 @@
 			this.screenHeight = systemInfo.screenHeight
 		},
 		onShow() {
+			//判断当前角色显示不同内容
+			this.role = uni.getStorageSync('role') || 'consumer'
 			const that = this
 			try {
 				const userInfo = that.$g.tui.getUserInfo()
@@ -316,10 +363,14 @@
 			checkBindMeter() {
 				this.isBinding = uni.getStorageSync('bindDevice')
 				return uni.getStorageSync('bindDevice')
+			},
+			//管理员首页搜索框
+			search(keyword) {
+
 			}
 		},
 		computed: {
-			...mapState(["tabBarIndex", "tabBar", "device"]),
+			...mapState(["tabBarIndex", "tabBar", "isLogin"]),
 		},
 	}
 </script>
@@ -329,16 +380,17 @@
 		min-height: 100vh;
 	}
 
+	.admin-bg {
+		background: rgb(232, 241, 253);
+		background: linear-gradient(180deg, rgba(232, 241, 253, 1) 0%, rgba(245, 246, 247, 1) 100%);
+	}
+
 	::v-deep tui-modal .tui-modal-box {
 		// width: 80% !important;
 	}
 
 	.navigation-bar {
 		position: relative;
-
-		.scan {
-			margin-left: 4%;
-		}
 
 		.navigation-bar-title {
 			position: absolute;
@@ -452,5 +504,29 @@
 		height: 250rpx;
 	}
 
-	.is-iphonex {}
+	//admin view style
+	.logo {
+		width: 64rpx;
+		height: 64rpx;
+	}
+
+	.header {
+		position: absolute;
+		left: 0;
+		right: 0;
+		height: 267rpx;
+
+		.header-searchbar {
+			margin: 0 4%;
+			padding: 10rpx 0;
+		}
+	}
+	
+		.tui-inner__box {
+			width: 100%;
+			height: 80rpx;
+			background-color: #fff;
+			border-radius: 40rpx;
+			overflow: hidden;
+		}
 </style>

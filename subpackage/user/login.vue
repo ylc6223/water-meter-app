@@ -47,6 +47,9 @@
 </template>
 
 <script>
+	import {
+		mapMutations
+	} from 'vuex'
 	import utils from "@/components/common/tui-utils/tui-utils.js"
 	// 校验规则
 	const rules = [{
@@ -82,7 +85,9 @@
 		created() {
 			// this.getCaptcha()
 		},
+		// computed: mapState(["isLogin"]),
 		methods: {
+			...mapMutations(["changeLoginState"]),
 			// 显示密码/隐藏密码
 			showOrHide() {
 				this.isShowPassword = !this.isShowPassword
@@ -96,16 +101,26 @@
 			},
 			//登录
 			userLogin() {
-				login(this.loginFrom).then(res => {
-					uni.setStorageSync('accessToken', res.result.accessToken);
-					getApp().globalData.accessToken = res.result.accessToken
+				setTimeout(() => {
+					this.changeLoginState(true)
 					uni.reLaunch({
 						url: "/pages/index/index",
 						fail(e) {
 							console.log(e, "登录跳转失败");
 						}
 					})
-				})
+				}, 1000)
+				// login(this.loginFrom).then(res => {
+				// 	uni.setStorageSync('accessToken', res.result.accessToken);
+				// 	getApp().globalData.accessToken = res.result.accessToken
+				// 	this.changeLoginState(true)
+				// 	uni.reLaunch({
+				// 		url: "/pages/index/index",
+				// 		fail(e) {
+				// 			console.log(e, "登录跳转失败");
+				// 		}
+				// 	})
+				// })
 			},
 			//获取验证码
 			getCaptcha() {

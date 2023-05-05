@@ -49,6 +49,8 @@ page.data-v-60cb334c {
   padding: 0 4%;
 }
 .user-info.data-v-60cb334c {
+  position: relative;
+  z-index: 2001;
   margin-top: 128rpx;
 }
 .user-info .avatar.data-v-60cb334c {

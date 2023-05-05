@@ -36,7 +36,8 @@ const store = new Vuex.Store({
 				"verify": true
 			}
 		],
-		tabBarIndex: 0 ,//当前选中第几项,
+		tabBarIndex: 0, //当前选中第几项,
+		isLogin: false //登录状态
 	},
 	mutations: {
 		changeTabBar(state, payload) {
@@ -47,7 +48,7 @@ const store = new Vuex.Store({
 		resetTabBarIndex(state, payload) {
 			state.tabBarIndex = 0
 		},
-		switchClient(state, payload) {
+		switchRole(state, payload) {
 			let adminTabbar = [{
 					"pagePath": "pages/index/index",
 					"text": "首页",
@@ -113,9 +114,12 @@ const store = new Vuex.Store({
 			const tabBar = payload === 'admin' ? adminTabbar : payload === 'consumer' ? consumerTabbar : []
 			state.tabBar = tabBar
 		},
+		changeLoginState(state, payload) {
+			state.isLogin = payload
+		}
 	},
 	actions: {
-		
+
 	}
 })
 
