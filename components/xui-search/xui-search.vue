@@ -127,6 +127,7 @@
 		width: 100%;
 		border: 1px solid #ccc;
 		transition: all .2s ease-in-out;
+		box-sizing: border-box;
 	}
 
 	.transition {

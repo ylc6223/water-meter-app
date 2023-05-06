@@ -170,6 +170,9 @@
 .ml-4p{
 	margin-left: 4%;
 }
+.mr-4p{
+	margin-right: 4%;
+}
 .mr-20{
 	margin-right: 20rpx;
 }
@@ -216,4 +219,13 @@
 }
 .text-gray{
 	color: #707070;
+}
+.border-box{
+	box-sizing: border-box;
+}
+.content-box{
+	box-sizing: content-box;
+}
+.overflow-hidden{
+	overflow: hidden;
 }

@@ -28,7 +28,8 @@
 				</view>
 			</view>
 
-			<view class="card-wrap" :style="{'top':navigationBarHeight+123+'px','bottom':'0'}">
+			<view class="card-wrap"
+				:style="{'top':`calc(${navigationBarHeight}px + 246rpx)`,'bottom':'0',height:`calc(100vh - ${navigationBarHeight}px - 246rpx - 100rpx - 40rpx - ${safeAreaHeight}px)`}">
 				<xui-card :hover="false" :shadow="true">
 					<view v-if="!isBinding" class="flex h-full flex-col items-center justify-center"
 						style="min-height: 300px;">
@@ -115,6 +116,8 @@
 			</tui-modal>
 
 		</block>
+		
+		
 		<block v-if="role==='admin'">
 			<tui-navigation-bar :isOpacity="true" @init="initNavigation" backgroundColor="#ffffff00" transparent
 				isCustom color="#333">
@@ -134,25 +137,41 @@
 					:style="{'top':navigationBarHeight +'px'}">
 					<xui-search @search="search" inputBgColor="#FFFFFF000" backgroundColor="#FFFFFF000"></xui-search>
 					<view class="flex-1 flex justify-end">
-						<tui-icon class="mr-20" name="down" color="#333"></tui-icon>
-						<tui-icon name="sweep" color="#333" @tap="scanCode"></tui-icon>
+						<tui-icon class="mr-20" custom-prefix="tui-icon__extend" name=".icon-liebiao" color="#333"
+							@tap="scanCode"></tui-icon>
+						<tui-icon custom-prefix="tui-icon__extend" name=".icon-saoma" color="#333"
+							@tap="scanCode"></tui-icon>
 					</view>
 				</view>
 			</view>
-			<view :style="{'top':'267rpx'}" class="relative flex h-full flex-col items-center justify-center">
-				<view class="tui-inner__box">
-					<tui-tab scroll backgroundColor="#FFFFFF000" :tabs="tabs" :size="30" bold color="#999" selectedColor="#07c160"
-						sliderBgColor="#07c160"></tui-tab>
+			<view :style="{top:`calc(${navigationBarHeight}px + 80rpx)`}" class="relative border-box">
+				<view class="flex items-center justify-between">
+					<view class="tab">
+						<tui-tab scroll backgroundColor="#FFFFFF000" :tabs="tabs" :size="30" bold color="#999"
+							selectedColor="#07c160" sliderBgColor="#07c160"></tui-tab>
+					</view>
+					<view class="tab-btn">
+						<tui-icon custom-prefix="tui-icon__extend" name=".icon-shebeiguanli" color="#333"></tui-icon>
+					</view>
 				</view>
-				
-				<!-- 				<view class="nodata-img">
-					<image src="../../static/icons/shebei.svg" mode=""></image>
+				<view class="tab-content flex items-center overflow-hidden"
+					:style="{height:`calc(100vh - ${navigationBarHeight}px - 100rpx - 80rpx - ${tabbarHeight} - ${safeAreaHeight}px)`}">
+					<!-- <view v-for="item in 10" class="tab-content-item">
+						{{item}}
+					</view> -->
+					<view class="w-full flex flex-col justify-center items-center">
+						<view class="empty-view" v-if="showEmpty">
+							<view class="empty-content">
+								<image class="empty-image" :src="emptyImage || defaultEmptyImage" mode=""></image>
+								<text class="empty-text">没有设备,请先登录</text>
+							</view>
+						</view>
+						<tui-form-button class="my-15" background="#07C160" radius="45rpx" width="300rpx" height="90rpx" color="#000"
+							@click="navToLogin">
+							<text class="text-white">立即登录</text>
+						</tui-form-button>
+					</view>
 				</view>
-				<text class="small-text">没有设备,请先登录</text>
-				<tui-form-button background="#07C160" radius="45rpx" width="300rpx" height="90rpx" color="#000"
-					@click="scanCode">
-					<text class="text-white">立即登录</text>
-				</tui-form-button> -->
 			</view>
 		</block>
 		<tui-tabbar zIndex="8999"></tui-tabbar>
@@ -160,6 +179,7 @@
 </template>
 
 <script>
+	import emptyImages from '@/static/emptyImage.js';
 	import Bluetooth from "@/utils/bluetooth/bluetoothManager.js"
 	import {
 		mapState,
@@ -178,11 +198,13 @@
 				titleBarHeight: 0, //标题栏高度
 				navigationBarHeight: 0, //导航栏高度
 				screenHeight: 0, //屏幕高度
+				safeAreaHeight: 0, //底部安全区高度
+				tabbarHeight: '100rpx',
 				isBinding: false, //是否已绑定设备
 				isEmpower: false, //用户是否已授权
 				showModal: false, //控制授权对话框显示隐藏
 				showTipModal: false, //控制提示用户充值需扫码的显示隐藏
-				tabbarHeight: 0,
+
 				banners: [{
 						url: '../../static/imgs/banner.png'
 					},
@@ -193,7 +215,11 @@
 				userInfo: null,
 				contentHeight: 0,
 				role: '', //当前角色
-				tabs: ['水表A', '水表B', '水表C', '水表D']
+
+				//管理端data
+				tabs: ['水表A', '水表B', '水表C', '水表D', '水表E', '水表F', '水表G', '水表H'],
+				defaultEmptyImage: emptyImages.data,
+				showEmpty: true, // 是否显示空数据
 			}
 		},
 		created() {
@@ -203,6 +229,15 @@
 			uni.hideTabBar()
 			const systemInfo = uni.getSystemInfoSync()
 			this.screenHeight = systemInfo.screenHeight
+			// 计算安全区域大小
+			const safeArea = systemInfo.safeArea
+			// 计算导航栏高度
+			const navBarHeight = systemInfo.statusBarHeight + 44 // 44 为导航栏高度
+			// 计算 TabBar 高度
+			const tabBarHeight = 50 //TabBar的高度预设为为100rpx
+			// 计算理想显示区域高度
+			this.safeAreaHeight = this.screenHeight - safeArea.bottom
+			// const idealHeight = screenHeight - safeArea.top - navBarHeight - tabBarHeight
 		},
 		onShow() {
 			//判断当前角色显示不同内容
@@ -367,7 +402,17 @@
 			//管理员首页搜索框
 			search(keyword) {
 
-			}
+			},
+			//去登录
+			navToLogin() {
+				this.showModal = false
+				uni.navigateTo({
+					url: "../../subpackage/user/login",
+					fail(e) {
+						console.log(e);
+					}
+				})
+			},
 		},
 		computed: {
 			...mapState(["tabBarIndex", "tabBar", "isLogin"]),
@@ -518,15 +563,42 @@
 
 		.header-searchbar {
 			margin: 0 4%;
-			padding: 10rpx 0;
+			// padding: 10rpx 0;
 		}
 	}
-	
-		.tui-inner__box {
-			width: 100%;
-			height: 80rpx;
-			background-color: #fff;
-			border-radius: 40rpx;
-			overflow: hidden;
+
+	.tab {
+		overflow: hidden;
+	}
+
+	.tab-btn {
+		box-sizing: border-box;
+		padding-right: 4%;
+		width: 120rpx;
+	}
+
+	.empty-view {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		.empty-content {
+			margin: auto;
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+
+			.empty-image {
+				width: 400rpx;
+				height: 400rpx;
+			}
+
+			.empty-text {
+				color: #606266;
+				margin-top: 20rpx;
+			}
 		}
+	}
 </style>

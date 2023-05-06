@@ -200,13 +200,12 @@
 					// 保持滚动后当前 item '尽可能' 在屏幕中间
 					let scrollLeft = itemLeft - (this.windowWidth - itemWidth) / 2;
 					this.scrollLeft = scrollLeft;
+					//这里下划线是根据父容器进行定位，而left是距离屏幕左边的距离，因此需要left-padding
 					this.translateX = itemLeft - this.gap;
-					console.log(itemLeft,this.gap);
 					this.lineWidth = itemWidth
 				} else {
 					// 不超出滚动的情况
 					this.translateX = itemLeft - this.gap;
-					console.log(itemLeft - this.gap,"####");
 					this.lineWidth = itemWidth
 				}
 			},
@@ -227,7 +226,6 @@
 							this.windowWidth = res.width || windowWidth;
 						}
 					}).selectAll(".tui-item__child").boundingClientRect((res) => {
-						console.log(res,"@@@@@");
 						this.scrolling = true;
 						this.tabItems = res;
 						this.scrollByIndex(this.currentTab, false);

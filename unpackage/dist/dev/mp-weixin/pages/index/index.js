@@ -125,10 +125,10 @@ try {
       return __webpack_require__.e(/*! import() | components/xui-search/xui-search */ "components/xui-search/xui-search").then(__webpack_require__.bind(null, /*! @/components/xui-search/xui-search.vue */ 184))
     },
     tuiTab: function () {
-      return __webpack_require__.e(/*! import() | components/thorui/tui-tab/tui-tab */ "components/thorui/tui-tab/tui-tab").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-tab/tui-tab.vue */ 410))
+      return __webpack_require__.e(/*! import() | components/thorui/tui-tab/tui-tab */ "components/thorui/tui-tab/tui-tab").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-tab/tui-tab.vue */ 191))
     },
     tuiTabbar: function () {
-      return __webpack_require__.e(/*! import() | components/thorui/tui-tabbar/tui-tabbar */ "components/thorui/tui-tabbar/tui-tabbar").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-tabbar/tui-tabbar.vue */ 191))
+      return __webpack_require__.e(/*! import() | components/thorui/tui-tabbar/tui-tabbar */ "components/thorui/tui-tabbar/tui-tabbar").then(__webpack_require__.bind(null, /*! @/components/thorui/tui-tabbar/tui-tabbar.vue */ 198))
     },
   }
 } catch (e) {
@@ -203,6 +203,7 @@ exports.default = void 0;
 var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 34));
 var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 36));
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
+var _emptyImage = _interopRequireDefault(__webpack_require__(/*! @/static/emptyImage.js */ 418));
 var _bluetoothManager = _interopRequireDefault(__webpack_require__(/*! @/utils/bluetooth/bluetoothManager.js */ 50));
 var _vuex = __webpack_require__(/*! vuex */ 43);
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
@@ -223,6 +224,9 @@ var _default = {
       //导航栏高度
       screenHeight: 0,
       //屏幕高度
+      safeAreaHeight: 0,
+      //底部安全区高度
+      tabbarHeight: '100rpx',
       isBinding: false,
       //是否已绑定设备
       isEmpower: false,
@@ -231,7 +235,7 @@ var _default = {
       //控制授权对话框显示隐藏
       showTipModal: false,
       //控制提示用户充值需扫码的显示隐藏
-      tabbarHeight: 0,
+
       banners: [{
         url: '../../static/imgs/banner.png'
       }, {
@@ -241,7 +245,11 @@ var _default = {
       contentHeight: 0,
       role: '',
       //当前角色
-      tabs: ['水表A', '水表B', '水表C', '水表D']
+
+      //管理端data
+      tabs: ['水表A', '水表B', '水表C', '水表D', '水表E', '水表F', '水表G', '水表H'],
+      defaultEmptyImage: _emptyImage.default.data,
+      showEmpty: true // 是否显示空数据
     };
   },
   created: function created() {
@@ -251,6 +259,15 @@ var _default = {
     uni.hideTabBar();
     var systemInfo = uni.getSystemInfoSync();
     this.screenHeight = systemInfo.screenHeight;
+    // 计算安全区域大小
+    var safeArea = systemInfo.safeArea;
+    // 计算导航栏高度
+    var navBarHeight = systemInfo.statusBarHeight + 44; // 44 为导航栏高度
+    // 计算 TabBar 高度
+    var tabBarHeight = 50; //TabBar的高度预设为为100rpx
+    // 计算理想显示区域高度
+    this.safeAreaHeight = this.screenHeight - safeArea.bottom;
+    // const idealHeight = screenHeight - safeArea.top - navBarHeight - tabBarHeight
   },
   onShow: function onShow() {
     //判断当前角色显示不同内容
@@ -443,7 +460,17 @@ var _default = {
       return uni.getStorageSync('bindDevice');
     },
     //管理员首页搜索框
-    search: function search(keyword) {}
+    search: function search(keyword) {},
+    //去登录
+    navToLogin: function navToLogin() {
+      this.showModal = false;
+      uni.navigateTo({
+        url: "../../subpackage/user/login",
+        fail: function fail(e) {
+          console.log(e);
+        }
+      });
+    }
   }),
   computed: _objectSpread({}, (0, _vuex.mapState)(["tabBarIndex", "tabBar", "isLogin"]))
 };
