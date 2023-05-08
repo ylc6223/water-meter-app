@@ -162,15 +162,16 @@
 		right: 0;
 		width: 180rpx;
 		height: 100%;
+		line-height: 100%;
 		transition: all .3s ease-in-out;
 		transform: translateX(100%);
 		text-align: center;
 
 		text {
 			position: absolute;
-			left: 50%;
+			left: 20%;
 			top: 50%;
-			transform: translate(-50%, -50%);
+			transform: translate(-20%, -50%);
 		}
 	}
 

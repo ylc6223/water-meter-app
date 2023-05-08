@@ -36,7 +36,7 @@
 				</view>
 			</view>
 		</view>
-		<view class="menulist">
+		<view class="menulist" :style="{height:`calc(100vh - 530rpx - 40rpx - ${safeAreaHeight}px)`}">
 			<view v-if="role==='admin'" class="details flex justify-between">
 				<xui-card border-radius="20" class="flex-1">
 					<view class="flex items-center">
@@ -57,7 +57,7 @@
 					</view>
 				</xui-card>
 			</view>
-			<view class="list" v-if="role==='admin'">
+			<view class="list admin" v-if="role==='admin'">
 				<xui-card border-radius="20" class="flex-1">
 					<view class="flex items-center justify-between">
 						<view class="flex items-center">
@@ -130,7 +130,8 @@
 					<text class="block my-15 title-text">您还未授权</text>
 					<text class="block sub-title-text">请先授权再进行操作</text>
 					<view class="w-full my-30">
-						<tui-button height="72rpx" :size="28" shape="circle" type="green" @tap="empower">立即授权</tui-button>
+						<tui-button height="72rpx" :size="28" shape="circle" type="green"
+							@tap="empower">立即授权</tui-button>
 					</view>
 					<view @tap="showModal=false">
 						<text class="text-gray">稍后再说</text>
@@ -138,7 +139,7 @@
 				</view>
 			</tui-modal>
 		</block>
-		
+
 		<block v-if="role==='admin'">
 			<tui-modal :show="showModal" custom :maskClosable="true">
 				<view class="flex flex-col items-center">
@@ -146,7 +147,8 @@
 					<text class="block my-15 title-text">您还未登录</text>
 					<text class="block sub-title-text">请先登录再进行操作</text>
 					<view class="w-full my-30">
-						<tui-button height="72rpx" :size="28" shape="circle" type="green" @tap="navToLogin">立即登录</tui-button>
+						<tui-button height="72rpx" :size="28" shape="circle" type="green"
+							@tap="navToLogin">立即登录</tui-button>
 					</view>
 					<view @tap="showModal=false">
 						<text class="text-gray">稍后再说</text>
@@ -160,11 +162,14 @@
 
 <script>
 	import {
-		mapMutations
+		mapState,
+		mapMutations,
+		mapGetters
 	} from 'vuex'
 	export default {
 		data() {
 			return {
+				safeAreaHeight: 0, //底部安全区高度
 				modal: false,
 				options: {
 					//注意：小程序端需确保域名已授权访问
@@ -202,12 +207,26 @@
 				],
 				adminMenuList: [],
 				userInfo: null,
-				isEmpower: false, //用户是否已授权
 				showModal: false, //控制授权对话框显示隐藏
 			}
 		},
+		computed: {
+			...mapState(["tabBarIndex", "tabBar", "isLogin", "userInfo"]),
+			...mapGetters(["isEmpower"])
+		},
 		onLoad() {
 			uni.hideTabBar()
+			const systemInfo = uni.getSystemInfoSync()
+			this.screenHeight = systemInfo.screenHeight
+			// 计算安全区域大小
+			const safeArea = systemInfo.safeArea
+			// 计算导航栏高度
+			const navBarHeight = systemInfo.statusBarHeight + 44 // 44 为导航栏高度
+			// 计算 TabBar 高度
+			const tabBarHeight = 50 //TabBar的高度预设为为100rpx
+			// 计算理想显示区域高度
+			this.safeAreaHeight = this.screenHeight - safeArea.bottom
+			// const idealHeight = screenHeight - safeArea.top - navBarHeight - tabBarHeight
 		},
 		onShow() {
 			const that = this
@@ -420,7 +439,6 @@
 		margin-top: -30rpx;
 		padding: 4%;
 		width: 100%;
-		height: calc(100vh - 530rpx);
 		border-top-left-radius: 32rpx;
 		border-top-right-radius: 32rpx;
 		background-color: #F7F7F7;
@@ -441,6 +459,10 @@
 		}
 
 		.list {
+			&.admin {
+				margin-top: 40rpx;
+			}
+
 			::v-deep xui-card:first-child .card {
 				margin: 0;
 			}
