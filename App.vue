@@ -35,7 +35,6 @@
 
 <style lang="scss">
 	@import url('@/static/styles/utils.scss');
-	@import url('@/static/styles/app.css');
 	@import url('@/static/styles/thorui-extend.css');
 	@import url('@/static/fonts/iconfont.css');
 	@import url('@/components/uni/uParse/src/wxParse.css');

@@ -89,6 +89,30 @@
 			}]
 		},
 		{
+			"root": "subpackage/admin",
+			"pages": [{
+                    "path" : "meter-page/meter-page",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "深蓝工业园4#201",
+					"navigationBarBackgroundColor": "#F8F8F8",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "meter-detail/meter-detail",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "设备详情",
+					"navigationBarBackgroundColor": "#F8F8F8",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+            ]
+		},
+		{
 			"root": "subpackage/public",
 			"pages": [{
 				"path": "richtext",
@@ -98,6 +122,13 @@
 					"navigationBarBackgroundColor": "#FFF",
 					"enablePullDownRefresh": false
 				}
+			}, {
+				"path": "question",
+				"style": {
+					"navigationBarTitleText": "",
+					"enablePullDownRefresh": false
+				}
+
 			}]
 		}
 	],

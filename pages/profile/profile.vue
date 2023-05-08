@@ -187,7 +187,7 @@
 					{
 						text: '常见问题',
 						iconPath: '/static/icons//question-circle.svg',
-						url: ''
+						url: '../../subpackage/public/question'
 					},
 					{
 						text: '设置',

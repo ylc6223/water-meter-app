@@ -54,7 +54,7 @@ class Bluetooth {
 						if (res.available) return
 						self.startDiscovery(discoveryCallback);
 					})
-					reject();
+					reject(false);
 				}
 			})
 		})

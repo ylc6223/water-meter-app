@@ -47,8 +47,8 @@
 							</tui-form-button>
 						</view>
 					</view>
-					<view v-else class="card-content-wrap flex flex-col justify-center">
-						<view class="card-head flex items-center">
+					<view v-else class="device-info flex flex-col justify-center">
+						<view class="flex items-center">
 							<image class="device-icon" src="../../static/icons/log.svg" mode=""></image>
 							<view>
 								<text class="block title-text">深蓝工业园4#201</text>
@@ -159,53 +159,28 @@
 						<tui-icon custom-prefix="tui-icon__extend" name=".icon-shebeiguanli" color="#333"></tui-icon>
 					</view>
 				</view>
-				<!-- <view class="tab-content flex items-center overflow-hidden" -->
-				<view class="tab-content overflow-hidden flex items-center"
+				<view class="tab-content flex items-center overflow-hidden"
 					:style="{height:`calc(100vh - ${navigationBarHeight}px - 100rpx - 80rpx - ${tabbarHeight} - ${safeAreaHeight}px)`}">
 					<!-- <view v-for="item in 10" class="tab-content-item">
 						{{item}}
 					</view> -->
-					<view class="w-full flex flex-col items-center" v-if="showEmpty">
-						<view class="empty-view">
-							<view class="empty-content">
-								<image class="empty-image" :src="emptyImage || defaultEmptyImage" mode=""></image>
-								<text class="empty-text">没有设备,请先登录</text>
+					<view class="w-full flex flex-col justify-center items-center">
+						<view class="w-full flex flex-col justify-center items-center" v-if="showEmpty">
+							<view class="empty-view">
+								<view class="empty-content">
+									<image class="empty-image" :src="emptyImage || defaultEmptyImage" mode=""></image>
+									<text class="empty-text">没有设备,请先登录</text>
+								</view>
 							</view>
+							<tui-form-button class="my-15" background="#07C160" radius="45rpx" width="300rpx"
+								height="90rpx" color="#000" @click="navToLogin">
+								<text class="text-white">立即登录</text>
+							</tui-form-button>
 						</view>
-						<tui-form-button class="my-15" background="#07C160" radius="45rpx" width="300rpx" height="90rpx"
-							color="#000" @click="navToLogin">
-							<text class="text-white">立即登录</text>
-						</tui-form-button>
-					</view>
-					<!-- 有设备 -->
-					<view class="w-full h-full" style="overflow-y: scroll;" v-else>
-						<view class="card-wrap">
-							<xui-card class="card-content-wrap w-full" v-for="item in 5" :key="item"
-								@tap="toMeterDashboard">
-								<view class="card-head flex items-center">
-									<image class="device-icon" src="../../static/icons/log.svg" mode=""></image>
-									<view>
-										<text class="block title-text">深蓝工业园4#201</text>
-										<text class="block sub-title-text">蓝牙水表号:YM00232P0169</text>
-									</view>
-								</view>
-								<view class="meter-info details p-30 flex justify-between">
-									<view class="meter-info-item flex flex-col items-center justify-between">
-										<text>0.20</text>
-										<text class="sub-title-text">总水量(m³)</text>
-									</view>
-									<view class="meter-info-item flex flex-col items-center justify-between">
-										<text>33.34</text>
-										<text class="sub-title-text">剩余水量</text>
-									</view>
-									<view class="meter-info-item flex flex-col items-center justify-between">
-										<text>3</text>
-										<text class="sub-title-text">单价(元/m³)</text>
-									</view>
-								</view>
-							</xui-card>
+						<!-- 有设备 -->
+						<view v-else>
+							<xui-card>123</xui-card>
 						</view>
-
 					</view>
 				</view>
 			</view>
@@ -253,10 +228,9 @@
 				role: '', //当前角色
 				scanPromise: null,
 				//管理端data
-				tabs: ['全部', 'A组', 'B组', 'C组', 'D组', 'E组', 'F组', 'G组', 'H组'],
+				tabs: ['水表A', '水表B', '水表C', '水表D', '水表E', '水表F', '水表G', '水表H'],
 				defaultEmptyImage: emptyImages.data,
-				// showEmpty: true, // 是否显示空数据，未登录为true
-				showEmpty: false, // 是否显示空数据，未登录为true
+				showEmpty: true, // 是否显示空数据，未登录为true
 			}
 		},
 		computed: {
@@ -298,10 +272,10 @@
 						}
 						this.scanPromise.then((result) => {
 							if (result) {
-								console.log('已成功绑定设备', result);
+								console.log('扫码完成', result);
 								!this.checkBindMeter() && (this.showTipModal = true)
 							} else {
-								console.log('未成功绑定设备');
+								console.log('扫码失败');
 							}
 						}).catch((error) => {
 							// 处理扫码失败的情况
@@ -310,8 +284,6 @@
 					}
 				} else if (this.role === 'admin') {
 					that.isLogin && (that.showEmpty = false)
-				} else {
-
 				}
 			} catch (e) {}
 		},
@@ -481,12 +453,6 @@
 					}
 				})
 			},
-			//查看水表对应详情
-			toMeterDashboard(id = 1) {
-				uni.navigateTo({
-					url: `../../subpackage/admin/meter-page/meter-page?${id}`
-				})
-			}
 		},
 	}
 </script>
@@ -576,13 +542,11 @@
 			color: #B0B3B7;
 		}
 
-		.card-content-wrap {
-			.card-head {
-				.device-icon {
-					width: 100rpx;
-					height: 120rpx;
-					margin-right: 20rpx;
-				}
+		.device-info {
+			.device-icon {
+				width: 100rpx;
+				height: 120rpx;
+				margin-right: 20rpx;
 			}
 
 			.icon {
@@ -595,7 +559,7 @@
 			}
 
 			.meter-info {
-				max-width: 560rpx;
+				width: 560rpx;
 				border-radius: 30rpx;
 				background-color: #F8F8F8;
 				margin-bottom: 20rpx;
@@ -607,11 +571,6 @@
 						color: var(--xui-text-color-grey);
 						font-size: 18px;
 					}
-				}
-
-				&.details {
-					background: rgb(232, 241, 253);
-					background: linear-gradient(90deg, rgba(232, 241, 253, 1) 0%, rgba(238, 243, 250, 1) 49%, rgba(245, 245, 247, 1) 100%);
 				}
 			}
 		}
