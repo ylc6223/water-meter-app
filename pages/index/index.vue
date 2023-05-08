@@ -1,5 +1,6 @@
 <template>
 	<view class="container relative" :class="{'admin-bg':role==='admin'}">
+		<!-- 普通用户 -->
 		<block v-if="role==='consumer'">
 			<tui-navigation-bar :isOpacity="true" @init="initNavigation" backgroundColor="#ffffff00" transparent
 				isCustom color="#FFF" title="水表管理大师">
@@ -31,16 +32,20 @@
 			<view class="card-wrap"
 				:style="{'top':`calc(${navigationBarHeight}px + 246rpx)`,'bottom':'0',height:`calc(100vh - ${navigationBarHeight}px - 246rpx - 100rpx - 40rpx - ${safeAreaHeight}px)`}">
 				<xui-card :hover="false" :shadow="true">
-					<view v-if="!isBinding" class="flex h-full flex-col items-center justify-center"
-						style="min-height: 300px;">
-						<view class="nodata-img">
-							<image src="../../static/icons/shebei.svg" mode=""></image>
+					<view class="empty-view flex h-full flex-col items-center justify-center" v-if="!isBinding">
+						<view class="empty-content">
+							<image class="empty-image" :src="emptyImage || defaultEmptyImage" mode=""></image>
+							<!-- <text class="empty-text">没有设备,请先登录</text> -->
+							<text class="small-text">没有设备</text>
+							<tui-form-button v-if="!userInfo" background="#07C160" radius="45rpx" width="300rpx"
+								height="90rpx" color="#000" @click="showModal=true">
+								<text class="text-white">授权登录</text>
+							</tui-form-button>
+							<tui-form-button v-else background="#07C160" radius="45rpx" width="300rpx" height="90rpx"
+								color="#000" @click="scanCode">
+								<text class="text-white">扫描设备二维码</text>
+							</tui-form-button>
 						</view>
-						<text class="small-text">没有设备</text>
-						<tui-form-button background="#07C160" radius="45rpx" width="300rpx" height="90rpx" color="#000"
-							@click="scanCode">
-							<text class="text-white">扫描设备二维码</text>
-						</tui-form-button>
 					</view>
 					<view v-else class="device-info flex flex-col justify-center">
 						<view class="flex items-center">
@@ -116,8 +121,8 @@
 			</tui-modal>
 
 		</block>
-		
-		
+
+		<!-- 管理员界面代码 -->
 		<block v-if="role==='admin'">
 			<tui-navigation-bar :isOpacity="true" @init="initNavigation" backgroundColor="#ffffff00" transparent
 				isCustom color="#333">
@@ -166,8 +171,8 @@
 								<text class="empty-text">没有设备,请先登录</text>
 							</view>
 						</view>
-						<tui-form-button class="my-15" background="#07C160" radius="45rpx" width="300rpx" height="90rpx" color="#000"
-							@click="navToLogin">
+						<tui-form-button class="my-15" background="#07C160" radius="45rpx" width="300rpx" height="90rpx"
+							color="#000" @click="navToLogin">
 							<text class="text-white">立即登录</text>
 						</tui-form-button>
 					</view>
@@ -183,7 +188,8 @@
 	import Bluetooth from "@/utils/bluetooth/bluetoothManager.js"
 	import {
 		mapState,
-		mapMutations
+		mapMutations,
+		mapGetters
 	} from 'vuex'
 	export default {
 		data() {
@@ -201,7 +207,7 @@
 				safeAreaHeight: 0, //底部安全区高度
 				tabbarHeight: '100rpx',
 				isBinding: false, //是否已绑定设备
-				isEmpower: false, //用户是否已授权
+				// isEmpower: false, //用户是否已授权
 				showModal: false, //控制授权对话框显示隐藏
 				showTipModal: false, //控制提示用户充值需扫码的显示隐藏
 
@@ -212,15 +218,18 @@
 						url: '../../static/imgs/banner1.png'
 					}
 				],
-				userInfo: null,
 				contentHeight: 0,
 				role: '', //当前角色
 
 				//管理端data
 				tabs: ['水表A', '水表B', '水表C', '水表D', '水表E', '水表F', '水表G', '水表H'],
 				defaultEmptyImage: emptyImages.data,
-				showEmpty: true, // 是否显示空数据
+				showEmpty: true, // 是否显示空数据，未登录为true
 			}
+		},
+		computed: {
+			...mapState(["tabBarIndex", "tabBar", "isLogin", "userInfo"]),
+			...mapGetters(["isEmpower"])
 		},
 		created() {
 			this.resetTabBarIndex()
@@ -244,20 +253,21 @@
 			this.role = uni.getStorageSync('role') || 'consumer'
 			const that = this
 			try {
-				const userInfo = that.$g.tui.getUserInfo()
-				this.userInfo = this.userInfo ? this.userInfo : userInfo
+				const userInfo = that.userInfo || that.$g.tui.getUserInfo()
 				//检查授权状态
 				if (!that.isEmpower && !userInfo) {
+					console.log('未授权');
 					//未授权
 					this.showModal = true //唤起授权
 				} else {
-					//已授权情况下检查是否绑定了蓝牙设备
-					!this.checkBindMeter() && (this.showTipModal = true)
+						//已授权情况下检查是否绑定了蓝牙设备
+						//存在扫码成功后，onshow生命周期重新触发才会执行绑定动作
+						!this.checkBindMeter() && (this.showTipModal = true)
 				}
 			} catch (e) {}
 		},
 		methods: {
-			...mapMutations(["changeTabBar", "resetTabBarIndex"]),
+			...mapMutations(["changeTabBar", "resetTabBarIndex", "setLoginState", "setUserInfo"]),
 			/**
 			 * @description 导航栏初始化信息，回传导航栏相关信息
 			 * @param {number} width 导航栏宽度
@@ -291,18 +301,18 @@
 						'qrCode'
 					],
 					success(res) {
-						console.log(res, "@");
+						console.log(res, "扫码二维码");
 						//扫到水表上的二维码,根据表号获取mac地址 连接对应的蓝牙
-						//尝试申请使用蓝牙
-						that.startBleAuth()
-						//绑定设备
 						uni.setStorageSync('bindDevice', {
 							name: 'zeer'
 						})
+						//尝试申请使用蓝牙
+						that.startBleAuth()
+						//绑定设备
 					},
 					fail() {
 						uni.setStorageSync('bindDevice', '')
-					}
+					},
 				})
 			},
 			//授权允许获取用户信息
@@ -320,8 +330,7 @@
 									// 用户已经同意小程序获取用户信息，后续调用相关接口不会弹窗询问
 									const userInfo = await that.getUserInfo()
 									that.$g.tui.setUserInfo(userInfo)
-									that.userInfo = userInfo
-									that.isEmpower = true
+									that.setUserInfo(userInfo)
 									uni.hideLoading()
 									that.showModal = false
 										//已授权情况下检查是否绑定了蓝牙设备,未绑将显示提示
@@ -334,8 +343,7 @@
 							// 用户已经同意小程序获取用户信息，后续调用相关接口不会弹窗询问
 							const userInfo = await that.getUserInfo()
 							that.$g.tui.setUserInfo(userInfo)
-							that.userInfo = userInfo
-							that.isEmpower = true
+							that.setUserInfo(userInfo)
 							uni.hideLoading()
 							that.showModal = false
 								//已授权情况下检查是否绑定了蓝牙设备,未绑将显示提示
@@ -396,8 +404,9 @@
 			},
 			//检查当前是否绑定了水表
 			checkBindMeter() {
-				this.isBinding = uni.getStorageSync('bindDevice')
-				return uni.getStorageSync('bindDevice')
+				const isBinding = uni.getStorageSync('bindDevice') ? true : false
+				this.isBinding = isBinding
+				return isBinding
 			},
 			//管理员首页搜索框
 			search(keyword) {
@@ -413,9 +422,6 @@
 					}
 				})
 			},
-		},
-		computed: {
-			...mapState(["tabBarIndex", "tabBar", "isLogin"]),
 		},
 	}
 </script>

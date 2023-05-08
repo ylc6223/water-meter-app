@@ -87,7 +87,7 @@
 		},
 		// computed: mapState(["isLogin"]),
 		methods: {
-			...mapMutations(["changeLoginState"]),
+			...mapMutations(["setLoginState"]),
 			// 显示密码/隐藏密码
 			showOrHide() {
 				this.isShowPassword = !this.isShowPassword
@@ -102,7 +102,7 @@
 			//登录
 			userLogin() {
 				setTimeout(() => {
-					this.changeLoginState(true)
+					this.setLoginState(true)
 					uni.reLaunch({
 						url: "/pages/index/index",
 						fail(e) {
@@ -113,7 +113,7 @@
 				// login(this.loginFrom).then(res => {
 				// 	uni.setStorageSync('accessToken', res.result.accessToken);
 				// 	getApp().globalData.accessToken = res.result.accessToken
-				// 	this.changeLoginState(true)
+				// 	this.setLoginState(true)
 				// 	uni.reLaunch({
 				// 		url: "/pages/index/index",
 				// 		fail(e) {

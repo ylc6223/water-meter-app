@@ -37,7 +37,9 @@ const store = new Vuex.Store({
 			}
 		],
 		tabBarIndex: 0, //当前选中第几项,
-		isLogin: false //登录状态
+		isLogin: false, //登录状态，
+		// isEmpower: false, //用户是否已授权
+		userInfo: uni.getStorageSync('userInfo') ? uni.getStorageSync('userInfo') : ''
 	},
 	mutations: {
 		changeTabBar(state, payload) {
@@ -114,12 +116,24 @@ const store = new Vuex.Store({
 			const tabBar = payload === 'admin' ? adminTabbar : payload === 'consumer' ? consumerTabbar : []
 			state.tabBar = tabBar
 		},
-		changeLoginState(state, payload) {
+		setLoginState(state, payload) {
 			state.isLogin = payload
-		}
+		},
+		setUserInfo(state, payload) {
+			state.userInfo = payload
+		},
+		// setEmpower(state, payload) {
+		// 	state.isEmpower = payload
+		// },
 	},
 	actions: {
 
+	},
+	getters: {
+		//用户是否已授权
+		isEmpower(state, otherGetters) {
+			return state.userInfo ? true : false
+		}
 	}
 })
 
