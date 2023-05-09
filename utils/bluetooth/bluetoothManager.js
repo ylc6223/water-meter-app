@@ -1,3 +1,7 @@
+import {
+	rejects
+} from "assert";
+
 class Bluetooth {
 	constructor(isIOS) {
 		this.isIOS = typeof isIOS === 'undefined' ? false : isIOS; // 是否是iphone
@@ -6,7 +10,7 @@ class Bluetooth {
 		this.discoveringTimer = null; // 搜索无设备提示延时器
 		this.isDiscovery = false; // 是否搜索到设备
 		this.discoveringTimeout = 20000; // 默认搜索时长20s
-		this.connectedDeviceId = null;
+		this.connectedDeviceId = null; //连接的蓝牙设备id
 		this.discoveredDevices = []; // 用于存储发现的蓝牙设备
 	}
 	/**
@@ -190,42 +194,44 @@ class Bluetooth {
 			console.error("低功耗蓝牙设备连接失败", err);
 		}
 	}
-	// async checkBluetoothConnection() {
-	// 	if (!this.connectedDeviceId) {
-	// 		console.log("没有已连接的设备");
-	// 		return;
-	// 	}
+	//根据 uuid 获取处于已连接状态的设备。
+	checkBluetoothConnection() {
+		if (!this.connectedDeviceId) {
+			console.log("没有已连接的设备");
+			return;
+		}
+		return new Promise((resolve, reject) => {
+			let isConnected = false
+			uni.getConnectedBluetoothDevices({
+				services: [], // 此处应填写需要查找的蓝牙设备主 service 的 uuid 列表
+				success(devices) {
+					isConnected = devices.some(
+						(device) => device.deviceId === this.connectedDeviceId
+					);
+					if (isConnected) {
+						resolve('设备已连接')
+					} else {
+						reject('设备未连接')
+					}
+				},
+				fail(e) {
+					reject('检查蓝牙连接状态失败', e)
+				}
+			});
+		})
+	}
 
-	// 	try {
-	// 		const result = await uni.getConnectedBluetoothDevices({
-	// 			services: [] // 此处应填写需要查找的服务uuid列表
-	// 		});
-
-	// 		const isConnected = result.devices.some(
-	// 			(device) => device.deviceId === this.connectedDeviceId
-	// 		);
-
-	// 		if (isConnected) {
-	// 			console.log("设备已连接");
-	// 		} else {
-	// 			console.log("设备未连接");
-	// 		}
-	// 	} catch (err) {
-	// 		console.error("检查蓝牙连接状态失败", err);
-	// 	}
-	// }
-
-	// async connectToDevice(deviceId) {
-	// 	try {
-	// 		await uni.createBLEConnection({
-	// 			deviceId
-	// 		});
-	// 		console.log("连接成功");
-	// 		this.connectedDeviceId = deviceId;
-	// 	} catch (err) {
-	// 		console.error("连接失败", err);
-	// 	}
-	// }
+	async connectToDevice(deviceId) {
+		try {
+			await uni.createBLEConnection({
+				deviceId
+			});
+			console.log("连接成功");
+			this.connectedDeviceId = deviceId;
+		} catch (err) {
+			console.error("连接失败", err);
+		}
+	}
 }
 
 export default Bluetooth;

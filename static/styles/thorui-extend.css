@@ -11,7 +11,7 @@ page {
 	/* font-family: SimHei, -apple-system-font, Helvetica Neue, Helvetica, sans-serif; */
 	font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
 	/* 行为相关颜色 */
-	--thorui-color-primary: #5677fc;
+	--thorui-color-primary: #27AE60;
 	--thorui-color-success: #07c160;
 	--thorui-color-warning: #ff7900;
 	--thorui-color-error: #EB0909;
@@ -52,11 +52,6 @@ page {
 	--thorui-font-size-xl: 40rpx;
 	--thorui-font-size-2xl: 48rpx;
 	--thorui-font-size-3xl: 60rpx;
-
-	/* 图片尺寸 */
-	--thorui-img-size-sm: 20px;
-	--thorui-img-size-base: 26px;
-	--thorui-img-size-lg: 40px;
 
 	/* Border Radius */
 	--thorui-border-radius-sm: 2px;
@@ -122,6 +117,9 @@ page {
 }
 .text-black{
 	color: var(--thorui-text-color);
+}
+.text-red{
+	color: var(--thorui-color-orange);
 }
 .tui-page__hd {
 	width: 100%;

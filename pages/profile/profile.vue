@@ -182,12 +182,12 @@
 				consumerMenuList: [{
 						text: '充值记录',
 						iconPath: '/static/icons//log.svg',
-						url: '../../subpackage/consumer/recharge-history/recharge-history'
+						url: '../../subpackage/public/recharge-history'
 					},
 					{
 						text: '抄表记录',
 						iconPath: '/static/icons//write.svg',
-						url: '../../subpackage/consumer/check-history/check-history'
+						url: '../../subpackage/public/check-history'
 					},
 					{
 						text: '常见问题',
@@ -206,7 +206,6 @@
 					},
 				],
 				adminMenuList: [],
-				userInfo: null,
 				showModal: false, //控制授权对话框显示隐藏
 			}
 		},
@@ -232,7 +231,7 @@
 			const that = this
 			try {
 				const userInfo = that.$g.tui.getUserInfo()
-				this.userInfo = this.userInfo ? this.userInfo : userInfo
+				// this.userInfo = this.userInfo ? this.userInfo : userInfo
 				//检查授权状态
 				if (!that.isEmpower && !userInfo && that.role === 'consumer') {
 					//未授权
@@ -300,7 +299,7 @@
 
 				}
 			},
-			...mapMutations(["switchRole", "resetTabBarIndex"]),
+			...mapMutations(["switchRole", "resetTabBarIndex", "setUserInfo"]),
 			navTo(url, e) {
 				console.log(url);
 				if (url === '#') {
@@ -333,8 +332,7 @@
 									// 用户已经同意小程序获取用户信息，后续调用相关接口不会弹窗询问
 									const userInfo = await that.getUserInfo()
 									that.$g.tui.setUserInfo(userInfo)
-									that.userInfo = userInfo
-									that.isEmpower = true
+									that.setUserInfo(userInfo)
 									uni.hideLoading()
 									that.showModal = false
 
@@ -345,8 +343,7 @@
 							// 用户已经同意小程序获取用户信息，后续调用相关接口不会弹窗询问
 							const userInfo = await that.getUserInfo()
 							that.$g.tui.setUserInfo(userInfo)
-							that.userInfo = userInfo
-							that.isEmpower = true
+							that.setUserInfo(userInfo)
 							uni.hideLoading()
 							that.showModal = false
 						}
@@ -456,6 +453,7 @@
 		.menu-icon {
 			width: 48rpx;
 			height: 48rpx;
+			margin-right: 20rpx;
 		}
 
 		.list {

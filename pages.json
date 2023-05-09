@@ -11,6 +11,7 @@
 			"style": {
 				"navigationBarTitleText": "设备列表",
 				"navigationBarBackgroundColor": "#F8F8F8",
+				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
 
@@ -44,6 +45,15 @@
 					"path": "app-setting",
 					"style": {
 						"navigationBarTitleText": "设置",
+						"navigationBarBackgroundColor": "#F8F8F8",
+						"enablePullDownRefresh": false
+					}
+
+				}, {
+					"path": "aboutus",
+					"style": {
+						"navigationBarTitleText": "关于我们",
+						"navigationBarBackgroundColor": "#F6F6F6",
 						"enablePullDownRefresh": false
 					}
 
@@ -53,23 +63,6 @@
 		{
 			"root": "subpackage/consumer",
 			"pages": [{
-				"path": "recharge-history/recharge-history",
-				"style": {
-					"navigationBarTextStyle": "black",
-					"navigationBarTitleText": "充值记录",
-					"navigationBarBackgroundColor": "#FFF",
-					"enablePullDownRefresh": false
-				}
-			}, {
-				"path": "check-history/check-history",
-				"style": {
-					"navigationBarTextStyle": "black",
-					"navigationBarTitleText": "抄表记录",
-					"navigationBarBackgroundColor": "#FFF",
-					"enablePullDownRefresh": false
-				}
-
-			}, {
 				"path": "recharge/recharge",
 				"style": {
 					"navigationBarTitleText": "充值",
@@ -91,90 +84,103 @@
 		{
 			"root": "subpackage/admin",
 			"pages": [{
-                    "path" : "meter-page/meter-page",
-                    "style" :                                                                                    
-                {
-                    "navigationBarTitleText": "深蓝工业园4#201",
-					"navigationBarBackgroundColor": "#F8F8F8",
-                    "enablePullDownRefresh": false
-                }
-                
-                }
-                ,{
-                    "path" : "meter-detail/meter-detail",
-                    "style" :                                                                                    
-                {
-                    "navigationBarTitleText": "设备详情",
-					"navigationBarBackgroundColor": "#F8F8F8",
-                    "enablePullDownRefresh": false
-                }
-                
-                }
-                ,{
-                    "path" : "reading-meter/reading-meter",
-                    "style" :                                                                                    
-                {
-                    "navigationBarTitleText": "抄表记录",
-                    "enablePullDownRefresh": false
-                }
-                
-                }
-                ,{
-                    "path" : "meter-reset/meter-reset",
-                    "style" :                                                                                    
-                {
-                    "navigationBarTitleText": "清零记录",
-                    "enablePullDownRefresh": false
-                }
-                
-                }
-                ,{
-                    "path" : "meter-recharge/meter-recharge",
-                    "style" :                                                                                    
-                {
-                    "navigationBarTitleText": "充值记录",
-                    "enablePullDownRefresh": false
-                }
-                
-                }
-                ,{
-                    "path" : "usage-count/usage-count",
-                    "style" :                                                                                    
-                {
-                    "navigationBarTitleText": "用水分析",
-                    "enablePullDownRefresh": false
-                }
-                
-                }
-                ,{
-                    "path" : "meter-qrcode/meter-qrcode",
-                    "style" :                                                                                    
-                {
-                    "navigationBarTitleText": "设备二维码",
-                    "enablePullDownRefresh": false
-                }
-                
-                }
-            ]
-		},
-		{
-			"root": "subpackage/public",
-			"pages": [{
-				"path": "richtext",
+				"path": "meter-page/meter-page",
 				"style": {
-					"navigationBarTextStyle": "black",
-					"navigationBarTitleText": "充值协议",
-					"navigationBarBackgroundColor": "#FFF",
+					"navigationBarTitleText": "深蓝工业园4#201",
+					"navigationBarBackgroundColor": "#F8F8F8",
 					"enablePullDownRefresh": false
 				}
+
 			}, {
-				"path": "question",
+				"path": "meter-detail/meter-detail",
 				"style": {
-					"navigationBarTitleText": "",
+					"navigationBarTitleText": "设备详情",
+					"navigationBarBackgroundColor": "#F8F8F8",
+					"enablePullDownRefresh": false
+				}
+
+			}, {
+				"path": "meter-reset/meter-reset",
+				"style": {
+					"navigationBarTitleText": "清零记录",
+					"enablePullDownRefresh": false
+				}
+
+			}, {
+				"path": "usage-count/usage-count",
+				"style": {
+					"navigationBarTitleText": "用水分析",
+					"enablePullDownRefresh": false
+				}
+
+			}, {
+				"path": "meter-qrcode/meter-qrcode",
+				"style": {
+					"navigationBarTitleText": "设备二维码",
+					"enablePullDownRefresh": false
+				}
+
+			}, {
+				"path": "meter-modify/meter-modify",
+				"style": {
+					"navigationBarTitleText": "底数修改",
+					"enablePullDownRefresh": false
+				}
+
+			}, {
+				"path": "recharge/recharge",
+				"style": {
+					"navigationBarTitleText": "水量充值",
+					"enablePullDownRefresh": false
+				}
+
+			}, {
+				"path": "usage-alert/usage-alert",
+				"style": {
+					"navigationBarTitleText": "欠费提醒",
 					"enablePullDownRefresh": false
 				}
 
 			}]
+		},
+		{
+			"root": "subpackage/public",
+			"pages": [{
+					"path": "richtext",
+					"style": {
+						"navigationBarTextStyle": "black",
+						"navigationBarTitleText": "充值协议",
+						"navigationBarBackgroundColor": "#FFF",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "check-history",
+					"style": {
+						"navigationBarTextStyle": "black",
+						"navigationBarTitleText": "抄表记录",
+						"navigationBarBackgroundColor": "#FFF",
+						"enablePullDownRefresh": false
+					}
+
+				},
+				{
+					"path": "recharge-history",
+					"style": {
+						"navigationBarTextStyle": "black",
+						"navigationBarTitleText": "充值记录",
+						"navigationBarBackgroundColor": "#FFF",
+						"enablePullDownRefresh": false
+					}
+				}, {
+					"path": "question",
+					"style": {
+						"navigationBarTitleText": "",
+						"enablePullDownRefresh": false
+					}
+
+				}
+			]
 		}
 	],
 	"tabBar": {

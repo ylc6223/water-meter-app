@@ -6,8 +6,9 @@
 				<text>{{currentMonth}}月</text>
 				<tui-icon name="turningdown" class="transition" :class="{'tui-animation-show':show}"></tui-icon>
 			</view>
-			<view class="total">
-				<text>支出￥100.00</text>
+			<view class="total flex items-center">
+				<tui-tag type="warning" padding="12rpx">支出</tui-tag>
+				<text>￥100.00</text>
 			</view>
 		</view>
 		<view>
@@ -17,17 +18,16 @@
 						<view class="flex items-center justify-between">
 							<view class="flex items-center">
 								<view class="icon">
-									<tui-icon class="mr-20" custom-prefix="tui-icon__extend" name=".icon-shui"
-										color="#1296DB"></tui-icon>
+									<tui-icon class="mr-20" custom-prefix="tui-icon__extend" name=".icon-wodexinxi"
+										color="#27AE60"></tui-icon>
 								</view>
 								<view class="detail flex flex-col">
-									<text class="title-text">总用水量</text>
-									<text class="sub-title-text">剩余水量33.34m³</text>
+									<text class="title-text">管理员支付</text>
+									<text class="sub-title-text">04月25日16:18</text>
 								</view>
 							</view>
-							<view class="number flex flex-col items-end ">
-								<text class="additional-text">0.2m³</text>
-								<text class="sub-title-text">04月25日16:18</text>
+							<view class="number flex items-center ">
+								<text class="additional-text">-50.00</text>
 							</view>
 						</view>
 					</tui-list-cell>
@@ -75,7 +75,7 @@
 	}
 
 	.additional-text {
-		font-size: var(--xui-font-size-xl);
+		font-size: var(--xui-font-size-2xl);
 		font-weight: 500;
 	}
-</style>''
+</style>

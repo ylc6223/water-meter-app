@@ -38,7 +38,6 @@ const store = new Vuex.Store({
 		],
 		tabBarIndex: 0, //当前选中第几项,
 		isLogin: false, //登录状态，
-		// isEmpower: false, //用户是否已授权
 		userInfo: uni.getStorageSync('userInfo') ? uni.getStorageSync('userInfo') : ''
 	},
 	mutations: {
@@ -122,9 +121,6 @@ const store = new Vuex.Store({
 		setUserInfo(state, payload) {
 			state.userInfo = payload
 		},
-		// setEmpower(state, payload) {
-		// 	state.isEmpower = payload
-		// },
 	},
 	actions: {
 

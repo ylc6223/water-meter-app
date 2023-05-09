@@ -35,7 +35,6 @@
 					<view class="empty-view flex h-full flex-col items-center justify-center" v-if="!isBinding">
 						<view class="empty-content">
 							<image class="empty-image" :src="emptyImage || defaultEmptyImage" mode=""></image>
-							<!-- <text class="empty-text">没有设备,请先登录</text> -->
 							<text class="small-text">没有设备</text>
 							<tui-form-button v-if="!userInfo" background="#07C160" radius="45rpx" width="300rpx"
 								height="90rpx" color="#000" @click="showModal=true">
@@ -263,11 +262,9 @@
 			...mapState(["tabBarIndex", "tabBar", "isLogin", "userInfo"]),
 			...mapGetters(["isEmpower"])
 		},
-		created() {
-			this.resetTabBarIndex()
-		},
 		onLoad() {
 			uni.hideTabBar()
+			this.resetTabBarIndex()
 			const systemInfo = uni.getSystemInfoSync()
 			this.screenHeight = systemInfo.screenHeight
 			// 计算安全区域大小
@@ -540,9 +537,9 @@
 				width: 688rpx;
 				height: 246rpx;
 				margin: 0 auto;
-
+				border-radius: 48rpx;
+				overflow: hidden;
 				.swiper-item {
-					border-radius: 48rpx;
 					height: 100%;
 					overflow: hidden;
 

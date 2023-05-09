@@ -112,6 +112,7 @@
 				</view>
 			</view>
 		</tui-bottom-popup>
+		<tui-tips position="bottom" ref="toast"></tui-tips>
 	</view>
 </template>
 
@@ -178,9 +179,13 @@
 			//支付前提醒用户同意用户协议
 			payBeforeConfirm() {
 				if (!this.val.length) {
-					this.$g.tui.toast({
-						text: '请阅读并同意《充值协议》'
-					})
+					// this.$g.tui.toast({
+					// 	text: '请阅读并同意《充值协议》'
+					// })
+					this.$refs.toast.showTips({
+						msg: '请阅读并同意《充值协议》',
+						duration: 2000
+					});
 					return
 				}
 				this.popupShow = true
@@ -208,10 +213,6 @@
 
 	.navigation-bar {
 		margin: 0 15rpx;
-	}
-
-	.relative {
-		padding: 0 15rpx;
 	}
 
 	.active {
