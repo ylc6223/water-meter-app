@@ -75,11 +75,12 @@
 						<tui-icon custom-prefix="tui-icon__extend" name=".icon-bianji" color="#333"></tui-icon>
 						<text>抄表</text>
 					</view>
-					<view class="menu-item flex flex-col justify-center items-center" @tap="gotoPage('../meter-detail/meter-detail',$event)">
+					<view class="menu-item flex flex-col justify-center items-center"
+						@tap="gotoPage('../meter-detail/meter-detail',$event)">
 						<tui-icon custom-prefix="tui-icon__extend" name=".icon-shebei" color="#333"></tui-icon>
 						<text>设备详情</text>
 					</view>
-					<view class="menu-item flex flex-col justify-center items-center">
+					<view class="menu-item flex flex-col justify-center items-center" @tap="gotoPage('../meter-qrcode/meter-qrcode',$event)">
 						<tui-icon name="qrcode" color="#333"></tui-icon>
 						<text>二维码</text>
 					</view>
@@ -87,19 +88,22 @@
 						<tui-icon custom-prefix="tui-icon__extend" name=".icon-shuaxin" color="#333"></tui-icon>
 						<text>修改底数</text>
 					</view>
-					<view class="menu-item flex flex-col justify-center items-center">
+					<view class="menu-item flex flex-col justify-center items-center" @tap="meterReset">
 						<tui-icon custom-prefix="tui-icon__extend" name=".icon-shuaxin" color="#333"></tui-icon>
 						<text>水量清零</text>
 					</view>
-					<view class="menu-item flex flex-col justify-center items-center">
+					<view class="menu-item flex flex-col justify-center items-center"
+						@tap="gotoPage('../reading-meter/reading-meter',$event)">
 						<tui-icon custom-prefix="tui-icon__extend" name=".icon-jiankongpingtai" color="#333"></tui-icon>
 						<text>抄表记录</text>
 					</view>
-					<view class="menu-item flex flex-col justify-center items-center">
+					<view class="menu-item flex flex-col justify-center items-center"
+						@tap="gotoPage('../meter-reset/meter-reset',$event)">
 						<tui-icon custom-prefix="tui-icon__extend" name=".icon-jiankongpingtai" color="#333"></tui-icon>
 						<text>清零记录</text>
 					</view>
-					<view class="menu-item flex flex-col justify-center items-center">
+					<view class="menu-item flex flex-col justify-center items-center"
+						@tap="gotoPage('../meter-recharge/meter-recharge',$event)">
 						<tui-icon custom-prefix="tui-icon__extend" name=".icon-jiankongpingtai" color="#333"></tui-icon>
 						<text>充值记录</text>
 					</view>
@@ -107,13 +111,21 @@
 						<tui-icon custom-prefix="tui-icon__extend" name=".icon-tishi" color="#333"></tui-icon>
 						<text>欠费提醒</text>
 					</view>
-					<view class="menu-item flex flex-col justify-center items-center">
+					<view class="menu-item flex flex-col justify-center items-center"
+						@tap="gotoPage('../usage-count/usage-count',$event)">
 						<tui-icon name="histogram" color="#333"></tui-icon>
 						<text>用水分析</text>
 					</view>
 				</view>
 			</view>
 		</tui-bottom-popup>
+
+		<tui-dialog :buttons="clearButtons" :show="resetDialog" title="水表清零" @close="resetDialog = false"
+			@click="resetButtonTap">
+				<template v-slot:content>
+					<text class="text-lg text-black">是否对当前设备进行剩余水量清零</text>		
+				</template>
+		</tui-dialog>
 	</view>
 </template>
 
@@ -128,16 +140,41 @@
 					//是否循环播放动画，可选，不传默认为true
 					loop: true
 				},
-				showPopup:false,//底部弹窗
+				showPopup: false, //底部弹窗
+				resetDialog: false, //清零弹窗
+				//包含确定和取消按钮
+				clearButtons: [{
+					text: '取消'
+				}, {
+					text: '清零',
+					color: '#586c94'
+				}],
+				timer: null,
 			};
 		},
-		methods:{
-			maskTap(){
+		methods: {
+			//水表清零
+			meterReset() {
+				this.showPopup = false
+				clearTimeout(this.timer)
+				const timer = setTimeout(() => {
+					this.resetDialog = true
+				}, 400)
+				this.timer = timer
+			},
+			resetButtonTap({index,item}){
+				if(!index){
+					this.resetDialog = false
+					return
+				}
+				this.resetDialog = false
+			},
+			maskTap() {
 				this.showPopup = false
 			},
-			gotoPage(url,e){
+			gotoPage(url, e) {
 				uni.navigateTo({
-					url:url
+					url: url
 				})
 			}
 		}

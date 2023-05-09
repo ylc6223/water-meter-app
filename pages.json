@@ -110,6 +110,51 @@
                 }
                 
                 }
+                ,{
+                    "path" : "reading-meter/reading-meter",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "抄表记录",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "meter-reset/meter-reset",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "清零记录",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "meter-recharge/meter-recharge",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "充值记录",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "usage-count/usage-count",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "用水分析",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "meter-qrcode/meter-qrcode",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "设备二维码",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
             ]
 		},
 		{
