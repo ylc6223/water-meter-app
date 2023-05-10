@@ -33,9 +33,6 @@
 						</tui-list-cell>
 					</block>
 				</tui-list-view>
-				<view v-else>
-					<tui-no-data imgUrl="/static/imgs/nodata.png">没有缴费记录</tui-no-data>
-				</view>
 			</view>
 			
 			<tui-datetime :type="3" ref="dateTime" @confirm="change"></tui-datetime>
@@ -113,4 +110,4 @@
 			}
 		}
 	}
-</style>''
+</style>

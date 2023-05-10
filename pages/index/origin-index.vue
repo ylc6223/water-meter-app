@@ -202,7 +202,7 @@
 			return {
 				options: {
 					//注意：小程序端需确保域名已授权访问
-					path: 'https://assets7.lottiefiles.com/packages/lf20_dqe40b1q.json',
+					path: 'https://assets2.lottiefiles.com/packages/lf20_zbui4bnx.json',
 					autoplay: true,
 					//是否循环播放动画，可选，不传默认为true
 					loop: true

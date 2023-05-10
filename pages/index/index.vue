@@ -158,12 +158,8 @@
 						<tui-icon custom-prefix="tui-icon__extend" name=".icon-shebeiguanli" color="#333"></tui-icon>
 					</view>
 				</view>
-				<!-- <view class="tab-content flex items-center overflow-hidden" -->
 				<view class="tab-content overflow-hidden flex items-center"
 					:style="{height:`calc(100vh - ${navigationBarHeight}px - 100rpx - 80rpx - ${tabbarHeight} - ${safeAreaHeight}px)`}">
-					<!-- <view v-for="item in 10" class="tab-content-item">
-						{{item}}
-					</view> -->
 					<view class="w-full flex flex-col items-center" v-if="showEmpty">
 						<view class="empty-view">
 							<view class="empty-content">
@@ -226,7 +222,7 @@
 			return {
 				options: {
 					//注意：小程序端需确保域名已授权访问
-					path: 'https://assets7.lottiefiles.com/packages/lf20_dqe40b1q.json',
+					path: 'https://assets2.lottiefiles.com/packages/lf20_zbui4bnx.json',
 					autoplay: true,
 					//是否循环播放动画，可选，不传默认为true
 					loop: true
@@ -549,6 +545,8 @@
 					image {
 						width: 100%;
 						height: 100%;
+						border-radius: 48rpx;
+						overflow: hidden;
 					}
 				}
 			}

@@ -141,7 +141,57 @@
 					"enablePullDownRefresh": false
 				}
 
-			}]
+			}    ,{
+                    "path" : "wallet/wallet",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "钱包",
+					"navigationBarBackgroundColor": "#F8F8F8",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "cash-history/cash-history",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "提现记录",
+					"navigationBarBackgroundColor": "#F8F8F8",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "income-rank/income-rank",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+					"navigationBarBackgroundColor": "#F8F8F8",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "income-account/income-account",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "收款账户",
+					"navigationBarBackgroundColor": "#F8F8F8",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "bind-card/bind-card",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+					"navigationBarBackgroundColor": "#F8F8F8",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+            ]
 		},
 		{
 			"root": "subpackage/public",

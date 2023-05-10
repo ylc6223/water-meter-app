@@ -36,6 +36,7 @@
 				</tui-wing-blank>
 			</view>
 		</block>
+
 		<block v-if="role==='admin'">
 			<tui-navigation-bar :isOpacity="true" @init="initNavigation" backgroundColor="#ffffff00" transparent isFixed
 				isCustom color="#FFF" title="">
@@ -58,24 +59,50 @@
 							</view>
 						</swiper-item>
 					</swiper>
-					<xui-card :hover="false">
-						<view class="flex items-center justify-between">
-							<view class="flex items-center">
-								<text>2023年</text>
-								<text>05月</text>
-								<tui-icon name="calendar"></tui-icon>
+					<view v-show="curTab===0">
+						<xui-card :hover="false">
+							<view class="flex items-center justify-between">
+								<view class="flex items-center">
+									<text>2023年</text>
+									<text>05月</text>
+									<tui-icon name="calendar"></tui-icon>
+								</view>
+								<view class="flex items-center">
+									<text>明细</text>
+									<tui-icon name="arrowright"></tui-icon>
+								</view>
 							</view>
-							<view class="flex items-center">
-								<text>明细</text>
-								<tui-icon name="arrowright"></tui-icon>
+							<view class="my-30">
+								<view class="count">
+									<text class="text block my-15 text-gray">本月合计收入</text>
+									<view class="money">
+										<text class="unit">￥</text>
+										<text class="amount">0.00</text>
+									</view>
+								</view>
+								<tui-charts-line ref="tui_line_1" tooltip :xAxis="options1.xAxis"
+									:yAxisLine="options1.yAxisLine" :yAxisLabel="options1.yAxisLabel"
+									:dataset="options1.dataset" :max="options1.max" :splitLine="options1.splitLine"
+									:splitNumber="options1.splitNumber" @click="dotClick"></tui-charts-line>
 							</view>
-						</view>
-						<view class="">
-							<tui-charts-line ref="tui_line_1" tooltip :xAxis="options1.xAxis" :yAxisLine="options1.yAxisLine" :yAxisLabel="options1.yAxisLabel"
-								:dataset="options1.dataset" :max="options1.max" :splitLine="options1.splitLine" :splitNumber="options1.splitNumber"
-								@click="dotClick"></tui-charts-line>
-						</view>
-					</xui-card>
+						</xui-card>
+						<xui-card :hover="false">
+							<view class="flex items-center justify-between">
+								<view class="flex items-center">
+									<text class="text-bold">收入排行榜</text>
+								</view>
+								<view class="flex items-center" @tap="viewRanking(curTab,$event)">
+									<text>全部排名</text>
+									<tui-icon name="arrowright"></tui-icon>
+								</view>
+							</view>
+						</xui-card>
+					</view>
+					
+					<view v-show="curTab===1">
+						
+						
+					</view>
 				</tui-wing-blank>
 			</view>
 		</block>
@@ -122,9 +149,17 @@
 						color: "transparent",
 						type: "dashed"
 					},
-					yAxisLine:{color: 'transparent',itemGap: 60},
-					yAxisLabel:	{show: false,color: "#333",size: 24},
+					yAxisLine: {
+						color: 'transparent',
+						itemGap: 60
+					},
+					yAxisLabel: {
+						show: false,
+						color: "#333",
+						size: 24
+					},
 				},
+				curTab: 0, //tab默认索引 0表示默认选中月收入
 			}
 		},
 		computed: {
@@ -201,8 +236,17 @@
 			dotClick() {
 
 			},
-			change(){
-				
+			//tab选项选中
+			change({
+				index
+			}) {
+				this.curTab = index
+			},
+			//查看收入排行榜
+			viewRanking(index, e) {
+				uni.navigateTo({
+					url: `../../subpackage/admin/income-rank/income-rank?index=${index}`
+				})
 			}
 		}
 	}
@@ -288,7 +332,24 @@
 			image {
 				width: 100%;
 				height: 100%;
+				border-radius: 48rpx;
+				overflow: hidden;
 			}
+		}
+	}
+
+	.count {
+		.money {
+			display: flex;
+			align-items: center;
+		}
+
+		.unit {
+			font-size: var(--thorui-font-size-2xl);
+		}
+
+		.amount {
+			font-size: 80rpx;
 		}
 	}
 </style>

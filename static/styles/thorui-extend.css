@@ -108,7 +108,9 @@ page {
 .text-3xl {
 	font-size: var(--thorui-font-size-3xl);
 }
-
+.text-bold{
+	font-weight: bold;
+}
 .text-white{
 	color: #FFF;
 }

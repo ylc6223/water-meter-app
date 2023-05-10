@@ -6,7 +6,9 @@
 				<text>{{currentMonth}}月</text>
 				<tui-icon name="turningdown" class="transition" :class="{'tui-animation-show':show}"></tui-icon>
 			</view>
-			<view class="total">
+			<view class="total flex items-center">
+				<tui-tag type="warning" padding="12rpx">收入</tui-tag>
+				<text>￥100.00</text>
 			</view>
 		</view>
 		<view>
@@ -15,18 +17,19 @@
 					<tui-list-cell :arrow="false">
 						<view class="flex items-center justify-between">
 							<view class="flex items-center">
+								<text class="inline-block text-gray text-lg mr-20">{{item}}</text>
 								<view class="icon">
-									<tui-icon class="mr-20" custom-prefix="tui-icon__extend" name=".icon-shui"
-										color="#1296DB"></tui-icon>
+									<tui-icon class="mr-20" custom-prefix="tui-icon__extend" name=".icon-wodexinxi"
+										color="#27AE60"></tui-icon>
 								</view>
 								<view class="detail flex flex-col">
-									<text class="title-text">总用水量</text>
-									<text class="sub-title-text">剩余水量33.34m³</text>
+									<text class="title-text">深蓝工业园4#201</text>
 								</view>
 							</view>
-							<view class="number flex flex-col items-end ">
-								<text class="additional-text">0.2m³</text>
-								<text class="sub-title-text">04月25日16:18</text>
+							
+							<view class="flex items-center">
+								<text class="text-bold text-lg">￥0</text>
+								<tui-icon name="arrowright"></tui-icon>
 							</view>
 						</view>
 					</tui-list-cell>
@@ -36,7 +39,7 @@
 				<view class="empty-view flex h-full flex-col items-center justify-center">
 					<view class="empty-content">
 						<image class="empty-image" :src="emptyImage || defaultEmptyImage" mode=""></image>
-						<text class="small-text">没有抄表记录</text>
+						<text class="small-text">没有提现记录</text>
 					</view>
 				</view>
 			</block>
@@ -57,6 +60,18 @@
 				currentMonth: String(new Date().getMonth() + 1).length > 1 ? String(new Date().getMonth() + 1) : 0 +
 					String(new Date().getMonth() + 1),
 				data: [1]
+			}
+		},
+		onLoad(params) {
+			const index = Number(params.index)
+			if (!index) {
+				uni.setNavigationBarTitle({
+					title: "收入月排行榜"
+				})
+			} else {
+				uni.setNavigationBarTitle({
+					title: "收入年排行榜"
+				})
 			}
 		},
 		methods: {
@@ -80,28 +95,24 @@
 		margin: 0 4%;
 	}
 
-	.additional-text {
-		font-size: var(--xui-font-size-xl);
-		font-weight: 500;
-	}
 	.empty-view {
 		width: 100%;
 		height: 100%;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-	
+
 		.empty-content {
 			margin: auto;
 			display: flex;
 			align-items: center;
 			flex-direction: column;
-	
+
 			.empty-image {
 				width: 400rpx;
 				height: 400rpx;
 			}
-	
+
 			.empty-text {
 				color: #606266;
 				margin-top: 20rpx;

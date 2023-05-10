@@ -33,9 +33,14 @@
 					</tui-list-cell>
 				</block>
 			</tui-list-view>
-			<view v-else>
-				<tui-no-data imgUrl="/static/imgs/nodata.png">没有缴费记录</tui-no-data>
-			</view>
+			<block v-else>
+				<view class="empty-view flex h-full flex-col items-center justify-center">
+					<view class="empty-content">
+						<image class="empty-image" :src="emptyImage || defaultEmptyImage" mode=""></image>
+						<text class="small-text">没有充值记录</text>
+					</view>
+				</view>
+			</block>
 		</view>
 
 		<tui-datetime :type="3" ref="dateTime" @confirm="change"></tui-datetime>
@@ -43,9 +48,11 @@
 </template>
 
 <script>
+	import emptyImages from '@/static/emptyImage.js';
 	export default {
 		data() {
 			return {
+				defaultEmptyImage: emptyImages.data,
 				show: false,
 				currentYear: String(new Date().getFullYear()),
 				currentMonth: String(new Date().getMonth() + 1).length > 1 ? String(new Date().getMonth() + 1) : 0 +
@@ -77,5 +84,29 @@
 	.additional-text {
 		font-size: var(--xui-font-size-2xl);
 		font-weight: 500;
+	}
+	.empty-view {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	
+		.empty-content {
+			margin: auto;
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+	
+			.empty-image {
+				width: 400rpx;
+				height: 400rpx;
+			}
+	
+			.empty-text {
+				color: #606266;
+				margin-top: 20rpx;
+			}
+		}
 	}
 </style>

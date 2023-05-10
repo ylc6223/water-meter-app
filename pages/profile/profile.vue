@@ -38,7 +38,7 @@
 		</view>
 		<view class="menulist" :style="{height:`calc(100vh - 530rpx - 40rpx - ${safeAreaHeight}px)`}">
 			<view v-if="role==='admin'" class="details flex justify-between">
-				<xui-card border-radius="20" class="flex-1">
+				<xui-card border-radius="20" class="flex-1" @tap="navTo(walletPageUrl,$event)">
 					<view class="flex items-center">
 						<image class="menu-icon" src="/static/icons/money-bag.svg" mode=""></image>
 						<text>钱包</text>
@@ -58,6 +58,17 @@
 				</xui-card>
 			</view>
 			<view class="list admin" v-if="role==='admin'">
+				<xui-card border-radius="20" class="flex-1" @tap="navTo('../../subpackage/admin/income-account/income-account',$event)">
+					<view class="flex items-center justify-between">
+						<view class="flex items-center">
+							<image class="menu-icon" src="/static/icons//analyze-query-20.svg" mode=""></image>
+							<text>收款账户</text>
+						</view>
+						<view class="flex items-center">
+							<tui-icon name="arrowright"></tui-icon>
+						</view>
+					</view>
+				</xui-card>
 				<xui-card border-radius="20" class="flex-1">
 					<view class="flex items-center justify-between">
 						<view class="flex items-center">
@@ -173,7 +184,7 @@
 				modal: false,
 				options: {
 					//注意：小程序端需确保域名已授权访问
-					path: 'https://assets7.lottiefiles.com/packages/lf20_dqe40b1q.json',
+					path: 'https://assets2.lottiefiles.com/packages/lf20_zbui4bnx.json',
 					autoplay: true,
 					//是否循环播放动画，可选，不传默认为true
 					loop: true
@@ -205,6 +216,7 @@
 						url: '#',
 					},
 				],
+				walletPageUrl:'../../subpackage/admin/wallet/wallet',
 				adminMenuList: [],
 				showModal: false, //控制授权对话框显示隐藏
 			}

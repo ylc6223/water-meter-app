@@ -1,11 +1,12 @@
 <template>
 	<view class="container relative">
 		<view class="content">
-			<xui-card :hover="false" class="card-content-wrap w-full">
+			<xui-card :hover="false" class="card-content-wrap w-full" :class="{'close':isClose}">
 				<view class="card-head flex items-center justify-between">
 					<image class="device-icon" src="../../../static/icons/log.svg" mode=""></image>
 					<view>
-						<text class="block text-white text-lg">正常启用中</text>
+						<text class="block text-white text-lg" v-if="!isClose">正常启用中</text>
+						<text class="block text-white text-lg" v-else>已欠费关闭</text>
 						<text class="block text-base text-gray">蓝牙水表号:YM00232P0169</text>
 					</view>
 					<view class="flex items-center justify-center flex-col" @tap="showPopup=true">
@@ -177,6 +178,7 @@
 				showPricePopup: false, //修改价格弹窗
 				resetDialog: false, //清零弹窗
 				valveDialog: false, //关阀弹窗
+				isClose: false, //水表阀门状态
 				//包含确定和取消按钮
 				clearButtons: [{
 					text: '取消'
@@ -265,7 +267,7 @@
 					}
 					uni.hideLoading()
 				}, 1000)
-
+				this.isClose = true
 			},
 			//点击蒙层关闭弹窗
 			maskTap() {
@@ -329,6 +331,11 @@
 
 		::v-deep xui-card:first-child .card {
 			background-color: #a2d8b9;
+			// background-color: #4DB1F5;
+		}
+
+		::v-deep xui-card.close:first-child .card {
+			background-color: #393B4F;
 		}
 
 		xui-card.controls {
