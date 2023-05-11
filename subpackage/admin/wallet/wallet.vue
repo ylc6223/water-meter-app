@@ -1,11 +1,13 @@
 <template>
 	<view class="container relative">
-		<view class="notice-bar">
-			<view class="flex items-center justify-center">
-				<tui-icon name="news" color="#EB0909"></tui-icon>
-				<text>收款安全升级，绑定银行卡每日自动到账</text>
-			</view>
-		</view>
+		<tui-notice-bar isLeft size="32" backgroundColor="#F7E5D5" color="#EB0909" class="text-center"
+			:padding="['20rpx','30rpx']" single content="收款安全升级，绑定银行卡每日自动到账">
+			<template v-slot:left>
+				<view class="tui-padding">
+					<tui-icon name="news-fill" :size="48" unit="rpx" color="#f54f46"></tui-icon>
+				</view>
+			</template>
+		</tui-notice-bar>
 		<tui-wing-blank size="large">
 			<view class="link" @tap="viewCash">
 				<text>明细</text>
@@ -56,13 +58,6 @@
 	.container {
 		min-height: 100vh;
 		overflow: hidden;
-	}
-
-	.notice-bar {
-		background-color: #ffe2d8;
-		color: var(--thorui-color-error);
-		font-size: var(--thorui-font-size-base);
-		padding: 10rpx 0;
 	}
 
 	.link {

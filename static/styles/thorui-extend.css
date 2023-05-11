@@ -123,6 +123,11 @@ page {
 .text-red{
 	color: var(--thorui-color-orange);
 }
+
+.text-center{
+	text-align: center;
+}
+
 .tui-page__hd {
 	width: 100%;
 	padding: 40px;

@@ -1,11 +1,14 @@
 <template>
 	<view class="container relative">
 		<tui-wing-blank size="large">
-			<view class="notice-bar">
-				<view class="flex items-center justify-center">
-					<text>缴费收入将直接进入收款账户,请谨慎填写</text>
-				</view>
-			</view>
+			<tui-notice-bar isLeft size="32" backgroundColor="#F7E5D5" color="#EB0909" class="text-center"
+				:padding="['20rpx','30rpx']" single content="缴费收入将直接进入收款账户,请谨慎填写">
+				<template v-slot:left>
+					<view class="tui-padding">
+						<tui-icon name="news-fill" :size="48" unit="rpx" color="#f54f46"></tui-icon>
+					</view>
+				</template>
+			</tui-notice-bar>
 			<view>
 				<xui-card :hover="false" @tap="primaryAccount">
 					<view class="pl-30">
@@ -32,16 +35,16 @@
 	export default {
 		data() {
 			return {
-				primary:[],
-				public:[]
+				primary: [],
+				public: []
 			};
 		},
 		methods: {
-			primaryAccount(){
+			primaryAccount() {
 				//未绑定任何账户
-				if(!this.primary.length){
+				if (!this.primary.length) {
 					uni.navigateTo({
-						url:"../bind-card/bind-card"
+						url: "../bind-card/bind-card"
 					})
 				}
 			}
@@ -56,12 +59,8 @@
 		overflow: hidden;
 	}
 
-	.notice-bar {
-		background-color: #F7E5D5;
-		color: var(--thorui-color-error);
-		font-size: var(--thorui-font-size-base);
-		padding: 20rpx;
-		border-radius: 20rpx;
+	::v-deep tui-notice-bar .tui-notice__bar {
+		border-radius: 15rpx;
 	}
 
 	::v-deep xui-card:nth-child(1) .card {
