@@ -1,11 +1,12 @@
 import http from '@/components/common/tui-request'
 import tui from "@/components/common/httpRequest.js" //工具类
-import {
+import utils from "@/utils/util.js"
+const {
 	transParams
-} from "@/utils/index.js";
+} = utils
 //初始化请求配置项
 http.create({
-	host: 'http://8.142.169.72:9018',
+	host: 'http://8.142.169.72:9020',
 	header: {
 		// 'content-type': 'application/x-www-form-urlencoded'
 		'content-type': 'application/json;charset=UTF-8'

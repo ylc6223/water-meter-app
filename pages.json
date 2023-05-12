@@ -22,6 +22,30 @@
 				"enablePullDownRefresh": false,
 				"navigationStyle": "custom"
 			}
+		}, {
+			"path": "pages/admin-index/admin-index",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/admin-income/admin-income",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/admin-profile/admin-profile",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+
 		}
 	],
 	"subPackages": [{
@@ -179,9 +203,9 @@
 					"navigationBarTitleText": "",
 					"navigationBarBackgroundColor": "#F8F8F8",
 					"enablePullDownRefresh": false,
-					  "usingComponents": {
-					    "ocr-plugin": "plugin://ocr-plugin/ocr-plugin"
-					  }
+					"usingComponents": {
+						"ocr-plugin": "plugin://ocr-plugin/ocr-plugin"
+					}
 				}
 
 			}]
@@ -236,6 +260,13 @@
 			},
 			{
 				"pagePath": "pages/dashboard/dashboard",
+				"text": ""
+			},
+			{
+				"pagePath": "pages/admin-index/admin-index",
+				"text": ""
+			}, {
+				"pagePath": "pages/admin-income/admin-income",
 				"text": ""
 			},
 			{

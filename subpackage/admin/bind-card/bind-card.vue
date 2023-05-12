@@ -79,6 +79,7 @@
 </template>
 
 <script>
+	import utils from "@/components/common/tui-utils/tui-utils.js"
 	const credential = {
 		secretId: 'AKIDINBj01tVqviETR8XfW6PQAajbCWZLq3z',
 		secretKey: 'g5D4exzkFTQ6WeV5OQBfspVv5yavzmIX',

@@ -18,8 +18,9 @@ const utils = {
 	},
 	//金额格式化
 	rmoney: function(money) {
-		return parseFloat(money).toFixed(2).toString().split('').reverse().join('').replace(/(\d{3})/g, '$1,').replace(
-			/\,$/, '').split('').reverse().join('');
+		return parseFloat(money).toFixed(2).toString().split('').reverse().join('').replace(/(\d{3})/g, '$1,')
+			.replace(
+				/\,$/, '').split('').reverse().join('');
 	},
 	//日期格式化
 	formatDate: function(formatStr, fdate) {
@@ -61,10 +62,10 @@ const utils = {
 			return "";
 		}
 	},
-	rgbToHex: function (r, g, b) {
+	rgbToHex: function(r, g, b) {
 		return "#" + utils.toHex(r) + utils.toHex(g) + utils.toHex(b)
 	},
-	toHex: function (n) {
+	toHex: function(n) {
 		n = parseInt(n, 10);
 		if (isNaN(n)) return "00";
 		n = Math.max(0, Math.min(n, 255));
@@ -78,6 +79,39 @@ const utils = {
 			g: parseInt(result[2], 16),
 			b: parseInt(result[3], 16)
 		} : null;
+	},
+	//json转query参数
+	transParams(params) {
+		let result = ''
+		for (const propName of Object.keys(params)) {
+			const value = params[propName]; //键值
+			var part = encodeURIComponent(propName) + "="; //给键名加=
+			if (value !== null && value !== "" && typeof(value) !== "undefined") {
+				if (typeof value === 'object') {
+					for (const key of Object.keys(value)) {
+						if (value[key] !== null && value[key] !== "" && typeof(value[key]) !== 'undefined') {
+							let params = propName + '[' + key + ']';
+							var subPart = encodeURIComponent(params) + "=";
+							result += subPart + encodeURIComponent(value[key]) + "&";
+						}
+					}
+				} else {
+					result += part + encodeURIComponent(value) + "&";
+				}
+			}
+		}
+		return result
+	},
+	//多条件筛选
+	multiFilter(array, filters) {
+		const filterKeys = Object.keys(filters)
+		return array.filter((item) => {
+			return filterKeys.every(key => {
+				//如果筛选条件空返回所有
+				if (!filters[key].length) return true
+				return !!~filters[key].indexOf(item[key])
+			})
+		})
 	}
 }
 
@@ -88,5 +122,7 @@ export default {
 	rmoney: utils.rmoney,
 	formatDate: utils.formatDate,
 	rgbToHex: utils.rgbToHex,
-	hexToRgb: utils.hexToRgb
+	hexToRgb: utils.hexToRgb,
+	transParams: utils.transParams,
+	multiFilter: utils.multiFilter
 }

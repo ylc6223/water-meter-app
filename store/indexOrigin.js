@@ -38,7 +38,7 @@ const store = new Vuex.Store({
 		],
 		tabBarIndex: 0, //当前选中第几项,
 		isLogin: false, //登录状态，
-		userInfo: uni.getStorageSync('userInfo') ? uni.getStorageSync('userInfo') : '',
+		userInfo: uni.getStorageSync('userInfo') ? uni.getStorageSync('userInfo') : ''
 	},
 	mutations: {
 		changeTabBar(state, payload) {
@@ -51,7 +51,7 @@ const store = new Vuex.Store({
 		},
 		switchRole(state, payload) {
 			let adminTabbar = [{
-					"pagePath": "pages/admin-index/admin-index",
+					"pagePath": "pages/index/index",
 					"text": "首页",
 					"iconPath": "/static/icons/deactive-index.svg",
 					"selectedIconPath": "/static/icons/index.svg",
@@ -61,7 +61,7 @@ const store = new Vuex.Store({
 					"verify": true
 				},
 				{
-					"pagePath": "pages/admin-income/admin-income",
+					"pagePath": "pages/dashboard/dashboard",
 					"text": "收入",
 					"iconPath": "/static/icons/deactive-shouru.svg",
 					"selectedIconPath": "/static/icons/shouru.svg",

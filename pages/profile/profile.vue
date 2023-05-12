@@ -7,7 +7,7 @@
 		<view class="tui-header-bg">
 			<view class="user-info flex items-center" @tap="modal = true">
 				<view v-if="!userInfo" class="avatar">
-					<image src="../../static/logo.png"></image>
+					<image src="../../static/default-avatar.png"></image>
 				</view>
 				<view v-else class="avatar noshadow">
 					<image :src="userInfo.avatarUrl"></image>
@@ -58,7 +58,8 @@
 				</xui-card>
 			</view>
 			<view class="list admin" v-if="role==='admin'">
-				<xui-card border-radius="20" class="flex-1" @tap="navTo('../../subpackage/admin/income-account/income-account',$event)">
+				<xui-card border-radius="20" class="flex-1"
+					@tap="navTo('../../subpackage/admin/income-account/income-account',$event)">
 					<view class="flex items-center justify-between">
 						<view class="flex items-center">
 							<image class="menu-icon" src="/static/icons//analyze-query-20.svg" mode=""></image>
@@ -141,8 +142,7 @@
 					<text class="block my-15 title-text">您还未授权</text>
 					<text class="block sub-title-text">请先授权再进行操作</text>
 					<view class="w-full my-30">
-						<tui-button height="72rpx" :size="28" shape="circle" type="green"
-							@tap="empower">立即授权</tui-button>
+						<tui-button height="72rpx" :size="28" shape="circle" type="green" open-type="getPhoneNumber" @getphonenumber="empower">立即授权</tui-button>
 					</view>
 					<view @tap="showModal=false">
 						<text class="text-gray">稍后再说</text>
@@ -216,7 +216,7 @@
 						url: '#',
 					},
 				],
-				walletPageUrl:'../../subpackage/admin/wallet/wallet',
+				walletPageUrl: '../../subpackage/admin/wallet/wallet',
 				adminMenuList: [],
 				showModal: false, //控制授权对话框显示隐藏
 			}
@@ -295,7 +295,8 @@
 					uni.setStorageSync('role', this.role)
 					this.resetTabBarIndex()
 					uni.switchTab({
-						url: '/pages/index/index'
+						// url: '/pages/index/index'
+						url: '/pages/admin-index/admin-index'
 					})
 				} else if (this.role === 'admin') {
 					//切换到用户端
@@ -313,7 +314,10 @@
 			},
 			...mapMutations(["switchRole", "resetTabBarIndex", "setUserInfo"]),
 			navTo(url, e) {
-				console.log(url);
+				if (!this.userInfo) {
+					this.showModal = true
+					return
+				}
 				if (url === '#') {
 					uni.openSetting({
 						success(res) {

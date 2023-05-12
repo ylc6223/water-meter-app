@@ -47,7 +47,10 @@
 						url: "../bind-card/bind-card"
 					})
 				}
-			}
+			},
+			publicAccount(){
+				this.$g.tui.toast({text:'暂未开放，敬请期待'})
+			},
 		},
 		onLoad() {}
 	}
