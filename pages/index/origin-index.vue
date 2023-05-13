@@ -3,14 +3,14 @@
 		<!-- 普通用户 -->
 		<block v-if="role==='consumer'">
 			<tui-navigation-bar :isOpacity="true" @init="initNavigation" backgroundColor="#ffffff00" transparent
-				isCustom color="#FFF" title="水表管理大师">
+				isCustom color="#FFF" title="二师兄管家">
 				<!-- #ifndef MP-ALIPAY || MP-BAIDU -->
 				<template>
 					<view class="navigation-bar flex items-center" :style="{'height':titleBarHeight+'px'}">
 						<view class="ml-4p" @tap="scanCode">
 							<tui-icon name="sweep" color="#FFF"></tui-icon>
 						</view>
-						<text class="navigation-bar-title text-white">水表管理大师</text>
+						<text class="navigation-bar-title text-white">二师兄管家</text>
 					</view>
 				</template>
 				<!-- #endif -->
@@ -132,7 +132,7 @@
 						<view class="logo ml-4p">
 							<tui-icon name="people" color="#07C160"></tui-icon>
 						</view>
-						<text class="title-text">水表管理大师</text>
+						<text class="title-text">二师兄管家</text>
 					</view>
 				</template>
 				<!-- #endif -->

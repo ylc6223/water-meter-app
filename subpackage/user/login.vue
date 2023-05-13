@@ -39,7 +39,7 @@
 				<image :src="captcha" mode="aspectFit"></image>
 			</view>
 		</tui-form>
-		<view class="menu-link">
+		<view class="menu-link" v-if="false">
 			<text @click="register">没有账号?</text>
 		</view>
 		<view class="login-btn" @click="submit">登录</view>

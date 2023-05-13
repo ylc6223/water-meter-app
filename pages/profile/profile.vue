@@ -261,7 +261,8 @@
 					this.showModal = true //唤起授权
 				}
 				//已登录并且是管理员
-				if (userInfo && userInfo.accountType === 89) {
+				// if (userInfo && userInfo.accountType === 89) {
+				if (userInfo && true) {
 					this.adminMenuList.unshift({
 						text: '收款账户',
 						iconPath: '/static/icons//analyze-query-20.svg',

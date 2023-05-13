@@ -8,7 +8,7 @@
 					<view class="logo">
 						<tui-icon name="people" color="#07C160"></tui-icon>
 					</view>
-					<text>水表管理大师</text>
+					<text>二师兄管家</text>
 				</view>
 			</template>
 			<!-- #endif -->
