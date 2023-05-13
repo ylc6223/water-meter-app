@@ -10,7 +10,7 @@
 					<image src="../../static/default-avatar.png"></image>
 				</view>
 				<view v-else class="avatar noshadow">
-					<image :src="userInfo.avatarUrl"></image>
+					<image :src="userInfo.avatarUrl||'../../static/default-avatar.png'"></image>
 				</view>
 				<view class="flex flex-col">
 					<view @tap="showModal=true">
@@ -47,7 +47,7 @@
 						<text>余额￥0.00</text>
 					</view>
 				</xui-card>
-				<xui-card border-radius="20" class="flex-1">
+				<xui-card border-radius="20" class="flex-1" @tap="changePayLimit">
 					<view class="flex items-center">
 						<image class="menu-icon" src="/static/icons/rechargesvg.svg" mode=""></image>
 						<text>起充</text>
@@ -57,71 +57,25 @@
 					</view>
 				</xui-card>
 			</view>
-			<view class="list admin" v-if="role==='admin'">
-				<xui-card border-radius="20" class="flex-1"
-					@tap="navTo('../../subpackage/admin/income-account/income-account',$event)">
+			<scroll-view scroll-y class="list admin" :style="{maxHeight:screenHeight>736?'auto':'568rpx'}"
+				v-if="role==='admin'">
+				<xui-card border-radius="20" class="flex-1" v-for="(aitem,index) in adminMenuList" :key="index"
+					@tap="navTo(aitem,$event)">
 					<view class="flex items-center justify-between">
 						<view class="flex items-center">
-							<image class="menu-icon" src="/static/icons//analyze-query-20.svg" mode=""></image>
-							<text>收款账户</text>
+							<image class="menu-icon" :src="aitem.iconPath" mode=""></image>
+							<text>{{aitem.text}}</text>
 						</view>
 						<view class="flex items-center">
 							<tui-icon name="arrowright"></tui-icon>
 						</view>
 					</view>
 				</xui-card>
-				<xui-card border-radius="20" class="flex-1">
-					<view class="flex items-center justify-between">
-						<view class="flex items-center">
-							<image class="menu-icon" src="/static/icons//analyze-query-20.svg" mode=""></image>
-							<text>能耗分析</text>
-						</view>
-						<view class="flex items-center">
-							<tui-icon name="arrowright"></tui-icon>
-						</view>
-					</view>
-				</xui-card>
+			</scroll-view>
 
-				<xui-card border-radius="20" class="flex-1">
-					<view class="flex items-center justify-between">
-						<view class="flex items-center">
-							<image class="menu-icon" src="/static/icons//message.svg" mode=""></image>
-							<text>通知管理</text>
-						</view>
-						<view class="flex items-center">
-							<tui-icon name="arrowright"></tui-icon>
-						</view>
-					</view>
-				</xui-card>
-
-				<xui-card border-radius="20" class="flex-1">
-					<view class="flex items-center justify-between">
-						<view class="flex items-center">
-							<image class="menu-icon" src="/static/icons//question-circle.svg" mode=""></image>
-							<text>常见问题</text>
-						</view>
-						<view class="flex items-center">
-							<tui-icon name="arrowright"></tui-icon>
-						</view>
-					</view>
-				</xui-card>
-
-				<xui-card border-radius="20" class="flex-1">
-					<view class="flex items-center justify-between">
-						<view class="flex items-center">
-							<image class="menu-icon" src="/static/icons//setting.svg" mode=""></image>
-							<text>设置</text>
-						</view>
-						<view class="flex items-center">
-							<tui-icon name="arrowright"></tui-icon>
-						</view>
-					</view>
-				</xui-card>
-			</view>
-
-			<view class="list" v-else>
+			<scroll-view scroll-y class="list" :style="{maxHeight:screenHeight>736?'auto':'570rpx'}" v-else>
 				<xui-card border-radius="20" class="flex-1" v-for="(uitem,index) in consumerMenuList" :key="index"
-					@tap="navTo(uitem.url,$event)">
+					@tap="navTo(uitem,$event)">
 					<view class="flex items-center justify-between">
 						<view class="flex items-center">
 							<image class="menu-icon" :src="uitem.iconPath" mode=""></image>
@@ -132,7 +86,7 @@
 						</view>
 					</view>
 				</xui-card>
-			</view>
+			</scroll-view>
 		</view>
 
 		<block v-if="role==='consumer'">
@@ -142,7 +96,8 @@
 					<text class="block my-15 title-text">您还未授权</text>
 					<text class="block sub-title-text">请先授权再进行操作</text>
 					<view class="w-full my-30">
-						<tui-button height="72rpx" :size="28" shape="circle" type="green" open-type="getPhoneNumber" @getphonenumber="empower">立即授权</tui-button>
+						<tui-button height="72rpx" :size="28" shape="circle" type="green" open-type="getPhoneNumber"
+							@getphonenumber="empower">立即授权</tui-button>
 					</view>
 					<view @tap="showModal=false">
 						<text class="text-gray">稍后再说</text>
@@ -167,6 +122,27 @@
 				</view>
 			</tui-modal>
 		</block>
+
+		<block>
+			<tui-bottom-popup :zIndex="9001" :maskZIndex="9000" :show="showPopup" @close="showPopup = false">
+				<view class="bottom-popup">
+					<text class="block my-30 text-black text-lg text-center">起充金额</text>
+					<view class="mx-30 p-20 rounded-xl bg-grey flex items-center justify-between">
+						<text class="text-black text-lg">当前起充金额</text>
+						<text class="text-light-green">30元</text>
+					</view>
+					<text class="my-30 mx-30 inline-block text-base text-black">调整起充金额</text>
+					<view class="tui-input__box" @tap="cursor = true">
+						<view class="tui-symbol">￥</view>
+						<view class="tui-input">{{value}}</view>
+						<view class="tui-cursor" v-if="cursor"></view>
+					</view>
+					<tui-digital-keyboard buttonBackground="#27AE60" buttonText="确定" :show="true" :disabled="value==''"
+						:isDecimal="true" @click="keyTap" @backspace="backspace"
+						@confirm="confirm"></tui-digital-keyboard>
+				</view>
+			</tui-bottom-popup>
+		</block>
 		<tui-tabbar zIndex="8999"></tui-tabbar>
 	</view>
 </template>
@@ -180,6 +156,7 @@
 	export default {
 		data() {
 			return {
+				screenHeight: 0,
 				safeAreaHeight: 0, //底部安全区高度
 				modal: false,
 				options: {
@@ -190,35 +167,70 @@
 					loop: true
 				},
 				role: uni.getStorageSync('role') || 'consumer', //默认为用户端
+				//普通用户菜单
 				consumerMenuList: [{
 						text: '充值记录',
 						iconPath: '/static/icons//log.svg',
-						url: '../../subpackage/public/recharge-history'
+						url: '../../subpackage/public/recharge-history',
+						isVerify: true
 					},
 					{
 						text: '抄表记录',
 						iconPath: '/static/icons//write.svg',
-						url: '../../subpackage/public/check-history'
+						url: '../../subpackage/public/check-history',
+						isVerify: true
 					},
 					{
 						text: '常见问题',
 						iconPath: '/static/icons//question-circle.svg',
-						url: '../../subpackage/public/question'
+						url: '../../subpackage/public/question',
+						isVerify: false
 					},
 					{
 						text: '设置',
 						iconPath: '/static/icons//setting.svg',
-						url: '../../subpackage/user/app-setting'
+						url: '../../subpackage/user/app-setting',
+						isVerify: false
 					},
 					{
 						text: '权限设置',
 						iconPath: '/static/icons//setting.svg',
 						url: '#',
+						isVerify: false
 					},
 				],
+				//管理员菜单
+				adminMenuList: [{
+						text: '能耗分析',
+						iconPath: '/static/icons//analyze-query-20.svg',
+						url: '',
+						isVerify: true
+					},
+					{
+						text: '通知管理',
+						iconPath: '/static/icons//message.svg',
+						url: '../../subpackage/public/question',
+						isVerify: true
+					},
+					{
+						text: '常见问题',
+						iconPath: '/static/icons//setting.svg',
+						url: '/static/icons//question-circle.svg',
+						isVerify: true
+					},
+					{
+						text: '设置',
+						iconPath: '/static/icons//setting.svg',
+						url: '#',
+						isVerify: false
+					},
+
+				],
 				walletPageUrl: '../../subpackage/admin/wallet/wallet',
-				adminMenuList: [],
 				showModal: false, //控制授权对话框显示隐藏
+				showPopup: false,
+				cursor: false,
+				value: '', //起充金额
 			}
 		},
 		computed: {
@@ -243,11 +255,19 @@
 			const that = this
 			try {
 				const userInfo = that.$g.tui.getUserInfo()
-				// this.userInfo = this.userInfo ? this.userInfo : userInfo
 				//检查授权状态
 				if (!that.isEmpower && !userInfo && that.role === 'consumer') {
 					//未授权
 					this.showModal = true //唤起授权
+				}
+				//已登录并且是管理员
+				if (userInfo && userInfo.accountType === 89) {
+					this.adminMenuList.unshift({
+						text: '收款账户',
+						iconPath: '/static/icons//analyze-query-20.svg',
+						url: '../../subpackage/admin/income-account/income-account',
+						isVerify: true
+					})
 				}
 			} catch (e) {}
 		},
@@ -295,7 +315,6 @@
 					uni.setStorageSync('role', this.role)
 					this.resetTabBarIndex()
 					uni.switchTab({
-						// url: '/pages/index/index'
 						url: '/pages/admin-index/admin-index'
 					})
 				} else if (this.role === 'admin') {
@@ -313,8 +332,11 @@
 				}
 			},
 			...mapMutations(["switchRole", "resetTabBarIndex", "setUserInfo"]),
-			navTo(url, e) {
-				if (!this.userInfo) {
+			navTo({
+				url,
+				isVerify
+			}, e) {
+				if (!this.userInfo && isVerify) {
 					this.showModal = true
 					return
 				}
@@ -334,8 +356,9 @@
 				});
 			},
 			//授权允许获取用户信息
-			empower() {
+			empower(e) {
 				const that = this
+				const phoneCode = e.code
 				uni.getSetting({
 					async success(res) {
 						//未授权获取用户信息
@@ -346,40 +369,81 @@
 								async success() {
 									that.$g.tui.showLoading('登陆中')
 									// 用户已经同意小程序获取用户信息，后续调用相关接口不会弹窗询问
-									const userInfo = await that.getUserInfo()
-									that.$g.tui.setUserInfo(userInfo)
-									that.setUserInfo(userInfo)
+									const {
+										result
+									} = await that.usePhonelogin({
+										"phoneCode": phoneCode,
+										"openId": uni.getStorageSync('openid')
+									})
+									console.log(result);
+									that.$g.tui.setUserInfo(result)
+									that.setUserInfo(result)
 									uni.hideLoading()
 									that.showModal = false
-
 								}
 							})
 						} else {
 							that.$g.tui.showLoading('登陆中')
 							// 用户已经同意小程序获取用户信息，后续调用相关接口不会弹窗询问
-							const userInfo = await that.getUserInfo()
-							that.$g.tui.setUserInfo(userInfo)
-							that.setUserInfo(userInfo)
+							const {
+								result
+							} = await that.usePhonelogin({
+								"phoneCode": phoneCode,
+								"openId": uni.getStorageSync('openid')
+							})
+							console.log(result);
+							that.$g.tui.setUserInfo(result)
+							that.setUserInfo(result)
 							uni.hideLoading()
 							that.showModal = false
 						}
 					}
 				})
 			},
-			//向微信获取用户信息
-			getUserInfo() {
-				return new Promise((resolve, reject) => {
-					uni.getUserInfo({
-						success(result) {
-							resolve(result.userInfo)
-						},
-						fail(e) {
-							console.log('获取用户信息失败');
-							reject(e)
-						}
+			usePhonelogin(data) {
+				return new Promise(function(resolve, reject) {
+					login(data).then(res => {
+						resolve(res)
+					}).catch(e => {
+						reject(e)
 					})
 				})
 			},
+			keyTap(e) {
+				let keyVal = e.value;
+				let value = this.value;
+				if (~value.indexOf('.') && keyVal == '.') return;
+				//最大9位，自行控制即可
+				if (value.length == 9) {
+					this.tui.toast('超过限制位数，不可输入')
+					return
+				}
+				if (!this.value && keyVal == '.') {
+					this.value = '0.'
+				} else {
+					this.value = this.value + e.value;
+				}
+			},
+			backspace(e) {
+				let val = this.value;
+				if (val) {
+					this.value = val.substring(0, val.length - 1)
+				}
+			},
+			confirm(e) {
+				this.showPopup = false;
+				this.cursor = false;
+				this.$g.tui.toast({
+					text: '水价修改为：' + Number(this.value)
+				})
+			},
+			changePayLimit() {
+				if (!this.userInfo) {
+					this.showModal = true
+					return
+				}
+				this.showPopup = true
+			}
 		}
 	}
 </script>
@@ -448,9 +512,10 @@
 	.menulist {
 		position: relative;
 		box-sizing: border-box;
+		overflow: hidden;
 		z-index: 999;
 		margin-top: -30rpx;
-		padding: 4%;
+		padding: 10rpx 30rpx;
 		width: 100%;
 		border-top-left-radius: 32rpx;
 		border-top-right-radius: 32rpx;
@@ -474,12 +539,59 @@
 
 		.list {
 			&.admin {
-				margin-top: 40rpx;
+				// margin-top: 40rpx;
 			}
 
 			::v-deep xui-card:first-child .card {
 				margin: 0;
 			}
+		}
+	}
+
+	.bottom-popup {
+		min-height: 70vh;
+	}
+
+	.tui-input__box {
+		display: flex;
+		align-items: center;
+		border-bottom: 1rpx solid rgba(0, 0, 0, .1);
+		height: 88rpx;
+		margin: 0 30rpx;
+		padding-bottom: 2rpx;
+	}
+
+	.tui-symbol {
+		font-size: 60rpx;
+		font-weight: bold;
+	}
+
+	.tui-input {
+		font-size: 80rpx;
+		line-height: 80rpx;
+		font-weight: bold;
+		padding-right: 6rpx;
+	}
+
+	.tui-cursor {
+		display: block;
+		width: 2px;
+		border-radius: 2px;
+		height: 88rpx;
+		animation: blink 1s infinite steps(1, start)
+	}
+
+	@keyframes blink {
+		0% {
+			background-color: white;
+		}
+
+		50% {
+			background-color: #5677fc;
+		}
+
+		100% {
+			background-color: white;
 		}
 	}
 </style>

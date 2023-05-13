@@ -136,6 +136,9 @@ page {
 	color: var(--thorui-color-success);
 }
 
+.bg-grey{
+	background-color: #F7F7F7;
+}
 
 
 

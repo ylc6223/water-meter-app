@@ -124,6 +124,9 @@
 	import emptyImages from '@/static/emptyImage.js';
 	import Bluetooth from "@/utils/bluetooth/bluetoothManager.js"
 	import {
+		login
+	} from "@/api/public.js"
+	import {
 		mapState,
 		mapMutations,
 		mapGetters
@@ -161,7 +164,6 @@
 				tabs: ['全部', 'A组', 'B组', 'C组', 'D组', 'E组', 'F组', 'G组', 'H组'],
 				defaultEmptyImage: emptyImages.data,
 				showEmpty: false, // 是否显示空数据，未登录为true，
-				dynamicCode: '' //动态令牌code，用于向服务端获取手机号
 			}
 		},
 		computed: {
@@ -279,9 +281,8 @@
 			},
 			//授权允许获取用户信息
 			empower(e) {
-				console.log(e, "手机号");
 				const that = this
-				that.dynamicCode = e.code
+				const phoneCode = e.code
 				uni.getSetting({
 					async success(res) {
 						//未授权获取用户信息
@@ -292,9 +293,15 @@
 								async success() {
 									that.$g.tui.showLoading('登陆中')
 									// 用户已经同意小程序获取用户信息，后续调用相关接口不会弹窗询问
-									const userInfo = await that.getUserInfo()
-									that.$g.tui.setUserInfo(userInfo)
-									that.setUserInfo(userInfo)
+									const {
+										result
+									} = await that.usePhonelogin({
+										"phoneCode": phoneCode,
+										"openId": uni.getStorageSync('openid')
+									})
+									console.log(result);
+									that.$g.tui.setUserInfo(result)
+									that.setUserInfo(result)
 									uni.hideLoading()
 									that.showModal = false
 										//已授权情况下检查是否绑定了蓝牙设备,未绑将显示提示
@@ -304,29 +311,21 @@
 						} else {
 							that.$g.tui.showLoading('登陆中')
 							// 用户已经同意小程序获取用户信息，后续调用相关接口不会弹窗询问
-							const userInfo = await that.getUserInfo()
-							that.$g.tui.setUserInfo(userInfo)
-							that.setUserInfo(userInfo)
+							const {
+								result
+							} = await that.usePhonelogin({
+								"phoneCode": phoneCode,
+								"openId": uni.getStorageSync('openid')
+							})
+							console.log(result);
+							that.$g.tui.setUserInfo(result)
+							that.setUserInfo(result)
 							uni.hideLoading()
 							that.showModal = false
 								//已授权情况下检查是否绑定了蓝牙设备,未绑将显示提示
 								!that.checkBindMeter() && (that.showTipModal = true)
 						}
 					}
-				})
-			},
-			//向微信获取用户信息
-			getUserInfo() {
-				return new Promise((resolve, reject) => {
-					uni.getUserInfo({
-						success(result) {
-							resolve(result.userInfo)
-						},
-						fail(e) {
-							console.log('获取用户信息失败');
-							reject(e)
-						}
-					})
 				})
 			},
 			//尝试授权使用蓝牙，如先前已同意则静默开启蓝牙并连接
@@ -371,10 +370,15 @@
 				this.isBinding = isBinding
 				return isBinding
 			},
-			//管理员首页搜索框
-			search(keyword) {
-
-			},
+			usePhonelogin(data) {
+				return new Promise(function(resolve, reject) {
+					login(data).then(res => {
+						resolve(res)
+					}).catch(e => {
+						reject(e)
+					})
+				})
+			}
 		},
 	}
 </script>
@@ -442,6 +446,10 @@
 				}
 			}
 		}
+	}
+
+	::v-deep xui-card .card {
+		height: 100%;
 	}
 
 	.small-text {

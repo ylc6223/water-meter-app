@@ -1,6 +1,7 @@
 <template>
-	<view class="card" :style="{'border-radius':borderRadius+'rpx','box-shadow':'0px 2px 4px rgba(0, 0, 0, 0.1)'}" :hover-class="hover ? 'card-hover' : ''"
-		:hover-stay-time="150">
+	<view class="card"
+		:style="{'border-radius':borderRadius+'rpx','box-shadow':'0px 2px 4px rgba(0, 0, 0, 0.1)','padding':padding}"
+		:hover-class="hover ? 'card-hover' : ''" :hover-stay-time="150">
 		<slot></slot>
 	</view>
 </template>
@@ -21,6 +22,10 @@
 			shadow: {
 				type: Boolean,
 				default: false
+			},
+			padding: {
+				type: String,
+				default: '28rpx'
 			}
 		},
 		computed: {
@@ -38,8 +43,7 @@
 		box-sizing: border-box;
 		background-color: white;
 		// box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-		height: 100%;
-		padding: 28rpx;
+		// padding: 28rpx;
 		margin: 20rpx 0;
 	}
 

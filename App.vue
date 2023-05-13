@@ -36,14 +36,14 @@
 					if (res.code) {
 						// 授权登录
 						that.$g.http.request({
-							url: '/SysWechatOpen/snsOAuth2',
+							url: '/api/SysWechatOpen/snsOAuth2',
 							method: 'POST',
 							data: {
 								code: res.code
 							}
 						}).then(res1 => {
 							const openid = res1.result;
-							console.log("openid", openid);
+							wx.setStorageSync('openid', res1.result)
 						}).catch(e => {
 							console.log("fail");
 						})

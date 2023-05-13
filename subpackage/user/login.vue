@@ -87,7 +87,7 @@
 		},
 		// computed: mapState(["isLogin"]),
 		methods: {
-			...mapMutations(["setLoginState"]),
+			...mapMutations(["setLoginState", "setUserInfo"]),
 			// 显示密码/隐藏密码
 			showOrHide() {
 				this.isShowPassword = !this.isShowPassword
@@ -103,8 +103,9 @@
 			userLogin() {
 				setTimeout(() => {
 					this.setLoginState(true)
+					this.setUserInfo('userInfo', {})
 					uni.reLaunch({
-						url: "/pages/index/index",
+						url: "/pages/admin-index/admin-index",
 						fail(e) {
 							console.log(e, "登录跳转失败");
 						}
