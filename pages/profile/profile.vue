@@ -38,7 +38,7 @@
 		</view>
 		<view class="menulist" :style="{height:`calc(100vh - 530rpx - 40rpx - ${safeAreaHeight}px)`}">
 			<view v-if="role==='admin'" class="details flex justify-between">
-				<xui-card border-radius="20" class="flex-1" @tap="navTo(walletPageUrl,$event)">
+				<xui-card border-radius="20" class="flex-1" @tap="navTo({'url':walletPageUrl,'isVerify':true},$event)">
 					<view class="flex items-center">
 						<image class="menu-icon" src="/static/icons/money-bag.svg" mode=""></image>
 						<text>钱包</text>
@@ -214,8 +214,8 @@
 					},
 					{
 						text: '常见问题',
-						iconPath: '/static/icons//setting.svg',
-						url: '/static/icons//question-circle.svg',
+						iconPath: '/static/icons//question-circle.svg',
+						url: '',
 						isVerify: true
 					},
 					{
@@ -227,14 +227,14 @@
 
 				],
 				walletPageUrl: '../../subpackage/admin/wallet/wallet',
-				showModal: false, //控制授权对话框显示隐藏
+				showModal: false, //控制对话框显示隐藏
 				showPopup: false,
 				cursor: false,
 				value: '', //起充金额
 			}
 		},
 		computed: {
-			...mapState(["tabBarIndex", "tabBar", "isLogin", "userInfo"]),
+			...mapState(["tabBarIndex", "tabBar", "isLogin", "userInfo", "adminUserInfo"]),
 			...mapGetters(["isEmpower"])
 		},
 		onLoad() {
@@ -255,14 +255,17 @@
 			const that = this
 			try {
 				const userInfo = that.$g.tui.getUserInfo()
+				const adminUserInfo = that.adminUserInfo || uni.getStorageSync('adminUserInfo')
 				//检查授权状态
 				if (!that.isEmpower && !userInfo && that.role === 'consumer') {
 					//未授权
 					this.showModal = true //唤起授权
-				}
-				//已登录并且是管理员
-				// if (userInfo && userInfo.accountType === 89) {
-				if (userInfo && true) {
+				} else if (!adminUserInfo && that.role === 'admin') {
+					//未登录，
+					this.showModal = true //要求登录
+				} else if (adminUserInfo && that.role === 'admin') {
+					if (this.adminMenuList.length === 5) return
+					//已登录并且是管理员
 					this.adminMenuList.unshift({
 						text: '收款账户',
 						iconPath: '/static/icons//analyze-query-20.svg',
@@ -337,9 +340,19 @@
 				url,
 				isVerify
 			}, e) {
-				if (!this.userInfo && isVerify) {
-					this.showModal = true
-					return
+				if (this.role === 'admin') {
+					if (!(this.adminUserInfo) && isVerify) {
+						this.showModal = true
+						return
+					}
+					this.showModal = false
+				}
+				if (this.role === 'consumer') {
+					if (!(this.userInfo) && isVerify) {
+						this.showModal = true
+						return
+					}
+					this.showModal = false
 				}
 				if (url === '#') {
 					uni.openSetting({
@@ -439,7 +452,7 @@
 				})
 			},
 			changePayLimit() {
-				if (!this.userInfo) {
+				if (!(this.adminUserInfo)) {
 					this.showModal = true
 					return
 				}

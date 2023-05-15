@@ -15,7 +15,16 @@ const logout = function(data = {}) {
 		data
 	})
 }
+//管理员登录
+const adminLogin = function(data = {}) {
+	return http.request({
+		url: '/api/Admin/Login',
+		method: 'POST',
+		data
+	})
+}
 export {
 	login,
-	logout
+	logout,
+	adminLogin
 }

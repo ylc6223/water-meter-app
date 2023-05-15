@@ -112,6 +112,18 @@ const utils = {
 				return !!~filters[key].indexOf(item[key])
 			})
 		})
+	},
+	getQueryString(url, name) {
+		var index = url.indexOf('?');
+		var query = url.substr(index + 1);
+		var pairs = query.split('&');
+		for (var i = 0; i < pairs.length; i++) {
+			var pair = pairs[i].split('=');
+			if (pair[0] === name) {
+				return pair[1];
+			}
+		}
+		return null;
 	}
 }
 
@@ -124,5 +136,6 @@ export default {
 	rgbToHex: utils.rgbToHex,
 	hexToRgb: utils.hexToRgb,
 	transParams: utils.transParams,
-	multiFilter: utils.multiFilter
+	multiFilter: utils.multiFilter,
+	getQueryString: utils.getQueryString
 }

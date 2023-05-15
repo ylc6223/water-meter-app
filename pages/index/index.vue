@@ -104,7 +104,7 @@
 			</view>
 		</tui-modal>
 
-		<tui-modal :show="showTipModal" custom :maskClosable="true">
+		<!-- <tui-modal :show="showTipModal" custom :maskClosable="true">
 			<view class="flex flex-col items-center">
 				<text class="block my-15">提示</text>
 				<image class="qrcode" src="../../static/imgs/qrcode.jpg" mode=""></image>
@@ -115,7 +115,7 @@
 						@tap="showTipModal=false">知道了</tui-button>
 				</view>
 			</view>
-		</tui-modal>
+		</tui-modal> -->
 		<tui-tabbar zIndex="8999"></tui-tabbar>
 	</view>
 </template>
@@ -126,6 +126,9 @@
 	import {
 		login
 	} from "@/api/public.js"
+	import {
+		meterInfo
+	} from "@/api/meter/index.js"
 	import {
 		mapState,
 		mapMutations,
@@ -158,17 +161,23 @@
 					}
 				],
 				contentHeight: 0,
-				role: '', //当前角色
+				role: 'consumer', //当前角色
 				scanPromise: null,
 				defaultEmptyImage: emptyImages.data,
 				showEmpty: false, // 是否显示空数据，未登录为true，
+				meterInfo: '', //存储二维码对应表信息
 			}
 		},
 		computed: {
 			...mapState(["tabBarIndex", "tabBar", "isLogin", "userInfo"]),
 			...mapGetters(["isEmpower"])
 		},
-		onLoad() {
+		async onLoad(query) {
+			const q = decodeURIComponent(query.q) // 获取到二维码原始链接内容
+			if (q) {
+				// uni.setStorageSync('meterNo', 'ZR000000000002')
+			}
+			const meterNo = "ZR000000000001" //二维码链接携带的表号
 			uni.hideTabBar()
 			this.resetTabBarIndex()
 			const systemInfo = uni.getSystemInfoSync()
@@ -182,39 +191,25 @@
 			// 计算理想显示区域高度
 			this.safeAreaHeight = this.screenHeight - safeArea.bottom
 			// const idealHeight = screenHeight - safeArea.top - navBarHeight - tabBarHeight
+			if (!meterNo) {
+				return
+			}
+			const meterInfo = await this.getMeterInfo(meterNo)
+			this.meterInfo = meterInfo
 		},
 		onShow() {
 			const that = this
-			//默认进入小程序为客户端
-			this.role = uni.getStorageSync('role') || 'consumer'
+			uni.setStorageSync('role', 'consumer')
 			const userInfo = that.userInfo || that.$g.tui.getUserInfo()
 			try {
-				if (this.role === 'consumer') {
-					//检查授权状态
-					if (!that.isEmpower && !userInfo) {
-						//未授权要求授权
-						this.showModal = true
-					} else {
-						//已授权情况下检查是否绑定了蓝牙设备
-						if (!this.scanPromise) {
-							return
-						}
-						this.scanPromise.then((result) => {
-							if (result) {
-								console.log('已成功绑定设备', result);
-								!this.checkBindMeter() && (this.showTipModal = true)
-							} else {
-								console.log('未成功绑定设备');
-							}
-						}).catch((error) => {
-							// 处理扫码失败的情况
-							console.error(error);
-						})
-					}
-				} else if (this.role === 'admin') {
-					that.isLogin && (that.showEmpty = false)
-				} else {
-
+				//检查授权状态
+				if (!that.isEmpower && !userInfo) {
+					this.showModal = true //要求授权
+				}
+				//已登录
+				else {
+					//检查二维码对应的表是否已完成初始化设定
+					that.checkMeterInitState()
 				}
 			} catch (e) {}
 		},
@@ -254,10 +249,7 @@
 						if (res) {
 							console.log(res, "扫码二维码");
 							//扫到水表上的二维码,根据表号获取mac地址 连接对应的蓝牙
-							//绑定设备
-							uni.setStorageSync('bindDevice', {
-								name: 'zeer'
-							})
+							//开户
 							//尝试申请使用蓝牙
 							that.startBleAuth()
 							const isBinding = true
@@ -297,13 +289,13 @@
 										"phoneCode": phoneCode,
 										"openId": uni.getStorageSync('openid')
 									})
-									console.log(result);
 									that.$g.tui.setUserInfo(result)
 									that.setUserInfo(result)
 									uni.hideLoading()
 									that.showModal = false
-										//已授权情况下检查是否绑定了蓝牙设备,未绑将显示提示
-										!that.checkBindMeter() && (that.showTipModal = true)
+									that.checkMeterInitState()
+									// 已授权情况下检查是否绑定了蓝牙设备,未绑将显示提示
+									// !that.checkBindMeter() && (that.showTipModal = true)
 								}
 							})
 						} else {
@@ -320,8 +312,9 @@
 							that.setUserInfo(result)
 							uni.hideLoading()
 							that.showModal = false
-								//已授权情况下检查是否绑定了蓝牙设备,未绑将显示提示
-								!that.checkBindMeter() && (that.showTipModal = true)
+							that.checkMeterInitState()
+							// 已授权情况下检查是否绑定了蓝牙设备,未绑将显示提示
+							// !that.checkBindMeter() && (that.showTipModal = true)
 						}
 					}
 				})
@@ -351,6 +344,16 @@
 					}
 				})
 			},
+			//获取表信息
+			getMeterInfo(meterNo) {
+				return new Promise((resolve, reject) => {
+					meterInfo(meterNo).then(res => {
+						resolve(res.result)
+					}).catch(e => {
+						reject(e)
+					})
+				})
+			},
 			//充值水费
 			gotoPay() {
 				uni.navigateTo({
@@ -368,6 +371,34 @@
 				this.isBinding = isBinding
 				return isBinding
 			},
+			//检查当前二维码对应的表初始化设置
+			checkMeterInitState() {
+				const that = this
+				let initState;
+				if (!this.meterInfo) {
+					//不是扫码进来的
+					return
+				}
+				//管理员有无完成初始化设定
+				if (!this.meterInfo.roomText && !this.meterInfo.price) {
+					initState = false
+					//未设定,提醒管理员去完成
+					this.$g.tui.toast({
+						text: "未完成初始化设定,请联系管理员"
+					})
+					return initState
+				}
+				//已完成
+				else {
+					initState = true
+					//提醒用户完善信息
+					this.$g.tui.toast({
+						text: "请填写信息完成开户"
+					})
+					return initState
+				}
+			},
+			//手机号登录
 			usePhonelogin(data) {
 				return new Promise(function(resolve, reject) {
 					login(data).then(res => {

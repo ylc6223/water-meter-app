@@ -15,7 +15,14 @@ http.create({
 })
 //请求拦截
 http.interceptors.request.use(config => {
-	let token = uni.getStorageSync('accessToken');
+	//根据当前角色使用不同的token
+	let role = uni.getStorageSync('role')
+	let token
+	if (role === 'admin') {
+		token = uni.getStorageSync('adminUserInfo').accessToken;
+	} else {
+		token = uni.getStorageSync('userInfo').accessToken;
+	}
 	if (config.header) {
 		config.header['Authorization'] = "Bearer " + token
 	} else {
